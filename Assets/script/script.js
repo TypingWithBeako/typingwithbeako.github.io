@@ -287,7 +287,7 @@ const loopText = document.querySelector('.looptext')
 loopVideo.addEventListener('click',function() {
     loopclickCount++
     if (loopclickCount % 2 == 1){
-        loopText.innerHTML = "Disable looping";
+        loopText.innerHTML = "Tắt lặp video";
         videoPlayer.removeEventListener('ended',ResetArray);
         videoPlayer.addEventListener('ended', enableLoopingListener);
         if (clickCount % 2 == 1){ 
@@ -302,18 +302,18 @@ loopVideo.addEventListener('click',function() {
         }
     }
     else {
-        loopText.innerHTML = "Enable looping";
+        loopText.innerHTML = "Bật lặp video";
         videoPlayer.removeEventListener('ended', enableLoopingListener);
         videoPlayer.addEventListener('ended',ResetArray);
         if (clickCount % 2 == 1){
             const songName = newvideoUrls[newcurrentIndex].split('/').pop();
             console.log('Video looping disabled for:', songName)
-            alert("Video looping disabled for: " + songName);
+            alert("Video được lặp: " + songName);
         }
         else {
             const songName = videoUrls[currentIndex].split('/').pop();
             console.log('Video looping disabled for:', songName);
-            alert("Video looping disabled for: " + songName);
+            alert("Tắt tính năng lặp cho: " + songName);
         }
     }
 });
