@@ -121,8 +121,8 @@ moveableimg.addEventListener('click', function(){
     console.log("Image clicked!"); // Add this line for testing
     if (clickCount % 2 === 1) {
         textToChange.innerHTML = "All <s> OPs and EDs</s> Insert Songs";
-        bodytext.innerHTML = "Insert Songs and more!"
-        songname.innerHTML = "Openings and Endings"
+        bodytext.innerHTML = "Nhạc chủ đề"
+        songname.innerHTML = "Mở đầu và Kết thúc."
         navbarContent.style.display = 'none';
         newnavbarContent.style.display ='block';
         videoPlayer.src= newvideoUrls[0];
@@ -143,12 +143,12 @@ moveableimg.addEventListener('click', function(){
         Openings_Content.style.display = 'none';
         Endings_Content.style.display = 'none';
         Insert_Songs_Content.style.display = '';
-        SidebarButton.innerHTML = "Change to OPs and EDs";
+        SidebarButton.innerHTML = "Chuyển sang Mở đầu và Kết thúc";
     }
     else {
         textToChange.innerHTML = " All OPs and EDs ";
-        bodytext.innerHTML = "Openings and Endings!";
-        songname.innerHTML = "Insert Songs"
+        bodytext.innerHTML = "Mở đầu và Kết thúc";
+        songname.innerHTML = "Nhạc chủ đề."
         navbarContent.style.display ='block';
         newnavbarContent.style.display ='none';
         videoPlayer.src=videoUrls[0];
@@ -168,7 +168,7 @@ moveableimg.addEventListener('click', function(){
         Openings_Content.style.display = '';
         Endings_Content.style.display = '';
         Insert_Songs_Content.style.display = 'none';
-        SidebarButton.innerHTML = "Change to Insert Songs";
+        SidebarButton.innerHTML = "Chuyển sang Nhạc chủ đề";
     }
     setTimeout(() => {
     isAnimating = false; // Reset the flag once the animation is complete
@@ -341,7 +341,7 @@ shuffleButton.addEventListener('click', function() {
         playVideo(videoUrls[0]);
         preloadedVideos = [];
     }
-    alert("Videos shuffled! (check console logs for more info)");
+    alert("Video đã được xáo (vào console log để biết thêm)");
 // You can now use the shuffled videoUrls array for playing the songs in a random order
     if (clickCount % 2 == 1)
         console.log('Shuffled videos to:', newvideoUrls);
@@ -356,25 +356,25 @@ function updateDelay(newDelay) {
 // Add event listener for button click
 document.getElementById("Delay").addEventListener("click", function() {
     // Prompt user for new delay
-    let newDelay = parseInt(prompt("Enter new delay in milliseconds (Current delay: " + delay + "ms)"));
+    let newDelay = parseInt(prompt("Nhập độ trễ mới bằng mili giây (Độ trễ hiện tại: " + delay + "ms)"));
     // Validate user input
     if (isNaN(newDelay) || newDelay < 0) {
-        alert("Invalid delay. Please enter a non-negative number.");
+        alert("Độ trễ không đúng. Vui lòng nhập lại độ trễ");
     return;
     }
     if (newDelay > 10000) {
-        alert("You really like to sleep when switching videos! (Delay not changed)");
+        alert("Đây không phải là nơi để bạn đi ngủ :V");
     return;
     }
     // Update delay and optionally display confirmation
     updateDelay(newDelay);
-    console.log("Delay updated to", newDelay, "milliseconds");
+    console.log("Độ trễ được cập nhật thành: ", newDelay, "mili giây");
 });
 
 // Check for orientation change using matchMedia (for mobile devices)
 const checkOrientation = () => {
     if (window.matchMedia("(max-width: 722px) and (orientation: landscape)").matches) {
-        alert("Please switch to portrait mode for the best experience.");
+        alert("Vui lòng chỉnh sang chế độ dọc để có trải nghiệm tốt nhất.");
     }
 };
 // Listen for orientation changes
