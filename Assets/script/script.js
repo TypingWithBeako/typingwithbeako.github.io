@@ -143,7 +143,7 @@ moveableimg.addEventListener('click', function(){
         Openings_Content.style.display = 'none';
         Endings_Content.style.display = 'none';
         Insert_Songs_Content.style.display = '';
-        SidebarButton.innerHTML = "Chuyển sang Mở đầu và Kết thúc";
+        SidebarButton.innerHTML = "Chuyển sang OPs và EDs";
     }
     else {
         textToChange.innerHTML = " All OPs and EDs ";
@@ -293,12 +293,12 @@ loopVideo.addEventListener('click',function() {
         if (clickCount % 2 == 1){ 
             const songName = newvideoUrls[newcurrentIndex].split('/').pop(); // Get the last part of the path after splitting by '/'   
             console.log('Video looping enabled for:', songName);
-            alert("Video looping enabled for: " + songName);
+            alert("Video được lặp: " + songName);
         }
         else {
             const songName = videoUrls[currentIndex].split('/').pop();
             console.log('Video looping enabled for:', songName);
-            alert("Video looping enabled for: " + songName);   
+            alert("Tắt tính năng lặp cho: " + songName);   
         }
     }
     else {
@@ -359,7 +359,7 @@ document.getElementById("Delay").addEventListener("click", function() {
     let newDelay = parseInt(prompt("Nhập độ trễ mới bằng mili giây (Độ trễ hiện tại: " + delay + "ms)"));
     // Validate user input
     if (isNaN(newDelay) || newDelay < 0) {
-        alert("Độ trễ không đúng. Vui lòng nhập lại độ trễ");
+        alert("Độ trễ không đúng. Vui lòng nhập lại độ trễ.");
     return;
     }
     if (newDelay > 10000) {
