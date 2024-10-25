@@ -356,7 +356,7 @@ function updateDelay(newDelay) {
 // Add event listener for button click
 document.getElementById("Delay").addEventListener("click", function() {
     // Prompt user for new delay
-    let newDelay = parseInt(prompt("Nhập độ trễ mới bằng mili giây (Độ trễ hiện tại: " + delay + "ms)"));
+    let newDelay = parseInt(prompt("Nhập độ trễ mới bằng mili giây: (Độ trễ hiện tại: " + delay + "ms)"));
     // Validate user input
     if (isNaN(newDelay) || newDelay < 0) {
         alert("Độ trễ không đúng. Vui lòng nhập lại độ trễ.");
