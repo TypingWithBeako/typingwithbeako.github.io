@@ -277,8 +277,9 @@ to {
     }
     .moveable_img {
         position: relative;
-        width: 37.5vw;
-        height: 15vw;
+        margin-bottom: 0.5vh;
+        width: 30vw;
+        height: auto;
     }  
     h1 {
         font-size: 5vw; /* Adjust the font size of h1 for mobile */
