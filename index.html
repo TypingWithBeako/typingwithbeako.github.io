@@ -28,8 +28,8 @@
         </svg>
      </button>
      
-     <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full 2xl:translate-x-0" aria-label="Sidenav">
-       <div class="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+     <aside id="default-sidebar" class="fixed overflow-y-auto top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full 2xl:translate-x-0" aria-label="Sidenav">
+       <div style="padding-bottom:15vh" class="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
            <ul class="space-y-1">
                <li>
                     <button type="button" id="Openings" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="Openings_Content" data-collapse-toggle="Openings_Content">
@@ -246,6 +246,7 @@
                     <button id="CloseKeyboardButton" class="modal__close" aria-hidden="true" aria-label="Close modal" data-micromodal-close></button>
                 </header>
                 <main class="font-sans" style="line-height: 2.5; margin-top:2vh;margin-bottom:0" id="modal-1-content">
+                    <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">F</kbd> : Chế độ toàn màn hình <br>
                     <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Phím cách</kbd> : Phát / Dừng video <br>
                     <kbd class="rtl:rotate-180 inline-flex items-center me-1  px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
                         <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 16">
@@ -258,10 +259,9 @@
                         </svg>
                         <span class="sr-only">Arrow key right</span>
                     </kbd> : Chuyển nhanh sang video trước / sau <br>
-                    <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Numpad0</kbd> - <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Numpad9</kbd> / <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">0</kbd> - <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">9</kbd> : Chỉnh video đang phát<br>
-                    <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Tab</kbd> : Chuyển sang Mở đầu và Kết thúc / Nhạc chủ đề <br>
                     <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Q</kbd> , <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">W</kbd> , <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">E</kbd> , <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">R</kbd> , <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">T</kbd> : Các nút (từ trái sang phải) <br>
-                    <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">F</kbd> : Chế độ toàn màn hình
+                    <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Tab</kbd> : Chuyển sang Mở đầu và Kết thúc / Nhạc chủ đề <br>
+                    <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Numpad0</kbd> - <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Numpad9</kbd> / <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">0</kbd> - <kbd class = "px-2 py-2 text-xs font-bold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">9</kbd> : Chỉnh video đang phát <br>
                 </main>
             </div>
         </div>
