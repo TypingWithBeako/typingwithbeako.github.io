@@ -686,14 +686,7 @@ TheaterMode.addEventListener('click',function() {
     }
     else
         if (clickCount%2==1){
-            if (nextClickCount%2==1){
-                S3.style.display = 'block';
-                navbarContent.style.display = 'none';
-            }
-            else {
-                S3.style.display = 'none';
-                navbarContent.style.display = 'block';
-            }
+            newnavbarContent.style.display = 'block';
             paragraph.style.display = 'block';
             ReZeroCast.style.display = 'block';
             Trademark.style.display = 'block';
@@ -715,7 +708,14 @@ TheaterMode.addEventListener('click',function() {
             closeFullscreen();
         }
         else {
-            navbarContent.style.display = 'block';
+            if (nextClickCount%2==1){
+                S3.style.display = 'block';
+                navbarContent.style.display = 'none';
+            }
+            else {
+                S3.style.display = 'none';
+                navbarContent.style.display = 'block';
+            }
             paragraph.style.display = 'block';
             ReZeroCast.style.display = 'block';
             Trademark.style.display = 'block';
