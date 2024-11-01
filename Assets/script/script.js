@@ -40,6 +40,7 @@ let isAnimating = false;
 let intervalId;
 let isIntervalActive = true;
 let FclickCount = 0;
+let nextClickCount = 0;
 
 function playVideo(videoName) {
     // Extract the file name from the full path
@@ -118,6 +119,7 @@ moveableimg.addEventListener('click', function(){
     isAnimating = true; // Set the flag to indicate that an animation is in progress
     this.setAttribute('disabled', 'disabled'); // Disable the clickable element
     clickCount++;
+    nextClickCount = 0;
     console.log("Image clicked!"); // Add this line for testing
     if (clickCount % 2 === 1) {
         textToChange.innerHTML = "All <s> OPs and EDs</s> Insert Songs";
@@ -526,6 +528,7 @@ nextButton.addEventListener('click',function(){
     if (isAnimating || this.hasAttribute('disabled')) {
         return; // Exit the function if an animation is already in progress or the element is disabled
     }
+    nextClickCount++;
     isAnimating = true; // Set the flag to indicate that an animation is in progress
     this.setAttribute('disabled', 'disabled'); // Disable the clickable element
     navbarContent.style.display = 'none';
@@ -543,6 +546,7 @@ backButton.addEventListener('click',function(){
     if (isAnimating || this.hasAttribute('disabled')) {
         return; // Exit the function if an animation is already in progress or the element is disabled
     }
+    nextClickCount++;
     isAnimating = true; // Set the flag to indicate that an animation is in progress
     this.setAttribute('disabled', 'disabled'); // Disable the clickable element
     navbarContent.style.display = 'block';
@@ -658,6 +662,7 @@ TheaterMode.addEventListener('click',function() {
     if (TheaterModeClickCount%2==1){
         navbarContent.style.display = 'none';
         newnavbarContent.style.display = 'none';
+        S3.style.display = 'none';
         paragraph.style.display = 'none';
         ReZeroCast.style.display = 'none';
         Trademark.style.display = 'none';
@@ -681,7 +686,14 @@ TheaterMode.addEventListener('click',function() {
     }
     else
         if (clickCount%2==1){
-            newnavbarContent.style.display = 'block';
+            if (nextClickCount%2==1){
+                S3.style.display = 'block';
+                navbarContent.style.display = 'none';
+            }
+            else {
+                S3.style.display = 'none';
+                navbarContent.style.display = 'block';
+            }
             paragraph.style.display = 'block';
             ReZeroCast.style.display = 'block';
             Trademark.style.display = 'block';
