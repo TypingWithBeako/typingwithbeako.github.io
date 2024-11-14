@@ -22,6 +22,7 @@ var newvideoUrls = [
     "Insert_Songs/Wishing.mp4",
     "Insert_Songs/Door.mp4",
     "Insert_Songs/What you dont know.mp4",
+    "Insert_Songs/I Trust You.mp4",
 ];
     
 let isPosterSet = false; //Track if poster is set
