@@ -296,12 +296,12 @@ loopVideo.addEventListener('click',function() {
         if (clickCount % 2 == 1){ 
             const songName = newvideoUrls[newcurrentIndex].split('/').pop(); // Get the last part of the path after splitting by '/'   
             console.log('Video looping enabled for:', songName);
-            alert("Video được lặp: " + songName);
+            alert("Bật tính năng lặp cho: " + songName);
         }
         else {
             const songName = videoUrls[currentIndex].split('/').pop();
             console.log('Video looping enabled for:', songName);
-            alert("Tắt tính năng lặp cho: " + songName);   
+            alert("Bật tính năng lặp cho: " + songName);   
         }
     }
     else {
@@ -311,7 +311,7 @@ loopVideo.addEventListener('click',function() {
         if (clickCount % 2 == 1){
             const songName = newvideoUrls[newcurrentIndex].split('/').pop();
             console.log('Video looping disabled for:', songName)
-            alert("Video được lặp: " + songName);
+            alert("Tắt tính năng lặp cho: " + songName);
         }
         else {
             const songName = videoUrls[currentIndex].split('/').pop();
