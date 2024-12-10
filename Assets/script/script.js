@@ -717,7 +717,7 @@ TheaterMode.addEventListener('click',function() {
             paragraph.style.display = 'block';
             ReZeroCast.style.display = 'block';
             Trademark.style.display = 'block';
-            GitHub.style.display = 'none';
+            GitHub.style.display = 'block';
             KeyboardControls.style.display = 'flex';
             moveableimg.style.setProperty('display', 'inline', 'important');
             textToChange.style.display = 'inline';
