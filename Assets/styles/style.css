@@ -208,11 +208,8 @@ nav a {
     position: relative;
     top: 1vh;
 }
-#Season3Content a:first-child {
-    margin-left: 40px;
-}
-#newnavbarContent a:first-child {
-    margin-left: 30px;
+#Season3Content a:first-child, #newnavbarContent a:first-child {
+    margin-left: 2vw;
 }
 #text_to_change, #bodytext, #songname {
 transition: opacity 0.5s, transform 0.5s; /* Define the transition properties */
