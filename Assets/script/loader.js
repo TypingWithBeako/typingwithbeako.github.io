@@ -1,5 +1,6 @@
+let loader;
 $(window).on('load', function() {
-    setTimeout(function() {
+    loader = setTimeout(function() {
         $(".skip").css("pointer-events", "none");
         $(".loader--wrapper").slideUp(1200);
         $(".loader").fadeOut(600);
@@ -28,12 +29,7 @@ function SkipLoading(){
     $(".loader").fadeOut(600);
     $(".skip").fadeOut(600);
     $(window).off('load');
-    setTimeout(function(){
-        $(".header").fadeIn(1200);
-        $(".content__navbar").fadeIn(1200);
-        $(".content__video").fadeIn(1200);
-        $(".footer").fadeIn(1200);
-    },1200)
+    clearTimeout(loader);
 }
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
