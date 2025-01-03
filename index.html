@@ -89,8 +89,13 @@
                                 <a href="#" onclick="playVideo('Openings_and_Endings/ED4 - Believe in you.mp4')" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-green-100">ED4 - Believe in you</a>
                             </li>
                             <li>
-                                <a href="#" onclick="playVideo('Openings_and_Endings/ED5 - Nox Lux.mp4')" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-green-100">ED5 - Nox Lux</a>
+                                <a href="#" onclick="playVideo('Openings_and_Endings/ED5 - Nox Lux.mp4')" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-green-100">ED5 - NOX LUX</a>
                             </li>
+                            <li class="Endings--Seasons">
+                                <a href="#" onclick="playVideo('Openings_and_Endings/S1 Ending.mp4')" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-green-100">Season 1 Ending</a>
+                            </li>
+                            <li class="Endings--Seasons">
+                                <a href="#" onclick="playVideo('Openings_and_Endings/S2 Ending.mp4')" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-green-100">Season 2 Ending</a>
                         </ul>
                     </li>
                     <li class="space-y-1">
@@ -128,16 +133,16 @@
                             </li>
                         </ul>
                         <span id="ExitTheaterModeButton" onclick="ExitTheaterMode();simulateClick();closeFullscreen()" style="display: none;" onclick="simulateClick()" type="button" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700">
-                            <svg style="cursor: pointer;" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
                             </svg>
-                            <span style="cursor: pointer;" class="flex-1 ml-3 text-left whitespace-nowrap">Thoát chế độ nhà hát</span>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap">Thoát chế độ nhà hát</span>
                         </span>
                         <footer onclick="ChangeToInsertSongs();simulateClick()" class="flex items-center p-5 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700">
-                            <svg style="cursor: pointer;" class="w-6 h-6 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-6 h-6 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M5 13.17a3.001 3.001 0 0 0 0 5.66V20a1 1 0 1 0 2 0v-1.17a3.001 3.001 0 0 0 0-5.66V4a1 1 0 0 0-2 0v9.17ZM11 20v-9.17a3.001 3.001 0 0 1 0-5.66V4a1 1 0 1 1 2 0v1.17a3.001 3.001 0 0 1 0 5.66V20a1 1 0 1 1-2 0Zm6-1.17V20a1 1 0 1 0 2 0v-1.17a3.001 3.001 0 0 0 0-5.66V4a1 1 0 1 0-2 0v9.17a3.001 3.001 0 0 0 0 5.66Z"/>
                             </svg>
-                            <span style="cursor: pointer;" class="flex-1 ml-3 text-left whitespace-nowrap"><span id="SidebarButton">Chuyển sang Nhạc chủ đề</span></span>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap"><span id="SidebarButton">Chuyển sang Nhạc chủ đề</span></span>
                         </footer>
                     </li>
                 </ul>
@@ -150,7 +155,7 @@
         <p  id='paragraph' style="line-height: normal;font-family: Roboto;">
             Dự án đầu tiên của mình! Hãy thưởng thức các <span id="bodytext">Mở đầu và Kết thúc</span> của <span class ="Re" style = "color:#7771b3">Re</span>:<span class="ZE">ZE</span><span class ="RO">RO</span>!
             <br>
-            (Nhấn vào logo để chuyển sang <span id="songname">Nhạc chủ đề.</span>)
+            (Nhấn vào logo để chuyển sang <span id="songname">Nhạc chủ đề</span>)
         </p>
         <div id="github">
             <a href="https://github.com/TypingWithBeako/typingwithbeako.github.io" target="_blank">
@@ -166,63 +171,63 @@
                 <button id="backButton">
                     <img class = "backIcon" src="Other_Files/previous.png">
                 </button>
-                <nav  id = "oldnavbarContent">
-                    <a href="#" onclick="playVideo('Openings_and_Endings/OP1 - Redo.mp4')">OP1 - Redo</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/ED1 - STYX HELIX.mp4')" id="STYX_HELIX_OG">ED1 - STYX HELIX</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/ED1 - STYX HELIX nocut.mp4')" style="display: none;" id="STYX_HELIX_FULL">ED1 - STYX HELIX</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/OP2 - Paradisus - Paradoxum.mp4')">OP2 - Paradisus - Paradoxum</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/ED2 - Stay Alive.mp4')">ED2 - Stay Alive</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/OP3 - Realize.mp4')">OP3 - Realize</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/ED3 - Memento.mp4')">ED3 - Memento</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/OP4 - Long shot.mp4')">OP4 - Long shot</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/ED4 - Believe in you.mp4')">ED4 - Believe in you</a>
+                <nav id = "oldnavbarContent">
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/OP1 - Redo.mp4')">OP1 - Redo</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/ED1 - STYX HELIX.mp4')" id="STYX_HELIX_OG">ED1 - STYX HELIX</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/ED1 - STYX HELIX nocut.mp4')" style="display: none;" id="STYX_HELIX_FULL">ED1 - STYX HELIX</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/OP2 - Paradisus - Paradoxum.mp4')">OP2 - Paradisus - Paradoxum</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/ED2 - Stay Alive.mp4')">ED2 - Stay Alive</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/OP3 - Realize.mp4')">OP3 - Realize</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/ED3 - Memento.mp4')">ED3 - Memento</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/OP4 - Long shot.mp4')">OP4 - Long shot</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/ED4 - Believe in you.mp4')">ED4 - Believe in you</a></li>
                 </nav>
                 <button id="nextButton">
                     <img class="nextIcon" src="Other_Files/next.png">
                 </button>
-                <nav  id = "Season3Content">
-                    <a href="#" onclick="playVideo('Openings_and_Endings/OP5 - Reweave.mp4')">OP5 - Reweave</a>
-                    <a href="#" onclick="playVideo('Openings_and_Endings/ED5 - Nox Lux.mp4')">ED5 - Nox Lux</a>
-                    <a href="#">OP6 - Chưa được công bố</a>
-                    <a href="#">ED6 - Chưa được công bố</a>
+                <nav id = "Season3Content">
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/OP5 - Reweave.mp4')">OP5 - Reweave</a></li>
+                    <li><a href="#" onclick="playVideo('Openings_and_Endings/ED5 - Nox Lux.mp4')">ED5 - NOX LUX</a></li>
+                    <li><a href="#">OP6 - Chưa được công bố</a></li>
+                    <li><a href="#">ED6 - Chưa được công bố</a></li>
                 </nav>
             </div>
             <div class ="newtopnav">
-                <nav  id = "newnavbarContent">
-                    <a href="#" onclick="playVideo('Insert_Songs/STRAIGHT BET.mp4')">EP 8 - STRAIGHT BET</a>
-                    <a href="#" onclick="playVideo('Insert_Songs/Memories.mp4')">Memories</a>
-                    <a href="#" onclick="playVideo('Insert_Songs/White White Snow.mp4')">White White Snow</a>
-                    <a href="#" onclick="playVideo('Insert_Songs/Yuki no hate ni Kimi no na wo.mp4')">Your Name</a>
-                    <a href="#" onclick="playVideo('Insert_Songs/Wishing.mp4')">EP 18 - Wishing</a>
-                    <a href="#" onclick="playVideo('Insert_Songs/Door.mp4')">EP 40 - Door</a>
-                    <a href="#" onclick="playVideo('Insert_Songs/What you dont know.mp4')">EP 48 - What you don't know</a>
-                    <a href="#" onclick="playVideo('Insert_Songs/I Trust You.mp4')">EP 57 - I Trust You</a>
+                <nav id = "newnavbarContent">
+                    <li><a href="#" onclick="playVideo('Insert_Songs/STRAIGHT BET.mp4')">EP 8 - STRAIGHT BET</a></li>
+                    <li><a href="#" onclick="playVideo('Insert_Songs/Memories.mp4')">Memories</a></li>
+                    <li><a href="#" onclick="playVideo('Insert_Songs/White White Snow.mp4')">White White Snow</a></li>
+                    <li><a href="#" onclick="playVideo('Insert_Songs/Yuki no hate ni Kimi no na wo.mp4')">Your Name</a></li>
+                    <li><a href="#" onclick="playVideo('Insert_Songs/Wishing.mp4')">EP 18 - Wishing</a></li>
+                    <li><a href="#" onclick="playVideo('Insert_Songs/Door.mp4')">EP 40 - Door</a></li>
+                    <li><a href="#" onclick="playVideo('Insert_Songs/What you dont know.mp4')">EP 48 - What you don't know</a></li>
+                    <li><a href="#" onclick="playVideo('Insert_Songs/I Trust You.mp4')">EP 57 - I Trust You</a></li>
                 </nav>
             </div>
         </div>
         <div class="content__video">
             <div class="button-container">
-                <span  class="fa-stack fa-1x" style="font-size: 1.05vw;cursor: pointer;" >
+                <span  class="fa-stack fa-1x" style="font-size: 1.05vw;" >
                     <i class="far fa-circle fa-stack-2x" ></i>
                     <i id = "randomize" class="fas fa-random fa-stack-1x" aria-hidden="true"></i>
                 </span>
                 <span style="font-size: 1vw;font-family:Roboto;">Xáo video</span>
-                <span class="fa-stack fa-1x" style="font-size: 1.05vw;cursor: pointer;">
+                <span class="fa-stack fa-1x" style="font-size: 1.05vw;">
                     <i class="far fa-circle fa-stack-2x" ></i>
                     <i id = "loop" class="fas fa-sync fa-stack-1x" aria-hidden="true"></i>
                 </span>
                 <span class ="looptext" style="font-size: 1vw; font-family: Roboto">Bật lặp video</span>
-                <span  class="fa-stack fa-1x" style="font-size: 1.05vw;cursor: pointer;">
+                <span  class="fa-stack fa-1x" style="font-size: 1.05vw;">
                     <i class="far fa-circle fa-stack-2x"></i>
                     <i id = "Delay" class="fas fa-clock fa-stack-1x" aria-hidden="true"></i>
                 </span>
                 <span  style="font-size: 1vw;font-family: Roboto">Chỉnh độ trễ</span>
-                <span id="Desktop" onclick="togglePictureInPicture()" class="fa-stack fa-1x" style="font-size: 1.05vw;cursor: pointer;" >
+                <span id="Desktop" onclick="togglePictureInPicture()" class="fa-stack fa-1x" style="font-size: 1.05vw;" >
                     <i class="far fa-circle fa-stack-2x" ></i>
                     <i class="fa fa-expand" aria-hidden="true"></i>
                 </span>
                 <span id="Desktop-text" style="font-size: 1vw;font-family:Roboto;">Hình trong hình</span>
-                <span id="Theater" class="fa-stack fa-1x" style="font-size: 1.05vw;cursor: pointer;" >
+                <span id="Theater" class="fa-stack fa-1x" style="font-size: 1.05vw;" >
                     <i class="far fa-circle fa-stack-2x" ></i>
                     <i class="fas fa-music" aria-hidden="true"></i>
                 </span>
@@ -232,7 +237,7 @@
                 <source src="Openings_and_Endings/OP1 - Redo.mp4" type="video/mp4">
             </video>
             <div class="button-container-mobile">
-                <span onclick="togglePictureInPicture()" class="fa-stack fa-1x" style="font-size: 1.05vw;cursor: pointer;" >
+                <span onclick="togglePictureInPicture()" class="fa-stack fa-1x" style="font-size: 1.05vw;" >
                     <i class="far fa-circle fa-stack-2x" ></i>
                     <i class="fa fa-expand" aria-hidden="true"></i>
                 </span>
