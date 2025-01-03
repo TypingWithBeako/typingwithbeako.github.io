@@ -39,6 +39,7 @@ video::-webkit-media-controls-fullscreen-button:hover,
 video::-webkit-media-controls-rewind-button:hover,
 video::-webkit-media-controls-return-to-realtime-button:hover,
 video::-webkit-media-controls-toggle-closed-captions-button:hover {
+    cursor: pointer;
     cursor: var(--pointermouse)
 }
 .subaru:hover {
