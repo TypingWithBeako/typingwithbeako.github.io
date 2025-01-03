@@ -69,10 +69,8 @@ button:disabled {
     position:absolute;
     margin: 0;
     top: 50%;
-    left:0;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    display:none;
     padding-left:0;
     background-color: transparent;
     border:none;
