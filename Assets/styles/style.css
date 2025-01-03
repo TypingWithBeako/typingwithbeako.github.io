@@ -6,7 +6,7 @@
 nav li:not(:last-child)::after {
     content: '|';
     background-color: white; 
-    margin: 0 1.7vw; 
+    margin: 0 0 0 2vw; 
 }  
 nav a:hover {
     text-decoration: underline;
@@ -102,15 +102,19 @@ button:disabled {
     background-color: #333;
     margin-top: 3vh;
 }
-#oldnavbarContent{
+#oldnavbarContent,#newnavbarContent,#Season3Content{
     display: flex;
+    justify-content: space-evenly;
+}
+#Season3Content {
+    width: 55%;
+    display: none;
 }
 nav li {
     float: left;
     color: #f2f2f2;
     text-align: justify;
     padding: 0.911vw 0;
-    margin-left: 1.45vw;
     text-decoration: none;
     font-size: 0.911vw;
     white-space: nowrap; /* Prevent text wrapping */  
@@ -124,7 +128,6 @@ nav li {
     color: #f2f2f2;
     text-align: left;
     padding: 0.911vw 0;
-    margin-left: 1.6vw;
     text-decoration: none;
     font-size: 0.911vw;
     white-space: nowrap; /* Prevent text wrapping */  
@@ -241,9 +244,6 @@ nav li {
     text-align: center;
     position: relative;
     top: 1vh;
-}
-#Season3Content li:first-child, #newnavbarContent li:first-child {
-    margin-left: 2vw;
 }
 #text_to_change, #bodytext, #songname {
 transition: opacity 0.5s, transform 0.5s; /* Define the transition properties */
