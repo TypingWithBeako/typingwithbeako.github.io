@@ -333,7 +333,7 @@ to {
         font-size: 3.2vw;
     }
     p {
-        font-size: 2.6vw; /* Adjust the font size of p for mobile */
+        font-size: 2.5vw; /* Adjust the font size of p for mobile */
         margin-top: -0.5vh;
     }
      #videoPlayer {
