@@ -8,9 +8,6 @@ nav li:not(:last-child)::after {
     background-color: white; 
     margin: 0 0 0 2.34vw;
 }  
-nav a:hover {
-    text-decoration: underline;
-}
 nav li {
     list-style-type: none;
 }
