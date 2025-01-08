@@ -51,6 +51,10 @@ html,aside *, aside *:hover{
 button:disabled {
     cursor: var(--normalmouse)
 }
+.navbar--tooltips div img {
+    width: 20.833vw;
+    height: auto
+}
 .Endings--Seasons {
     display: none;
 }
@@ -421,4 +425,8 @@ to {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
-
+@media (max-width: 768px) { /* Adjust min-width as needed for medium screens */
+    .navbar--tooltips div {
+      display: none !important; 
+    }
+  }
