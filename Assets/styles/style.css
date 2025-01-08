@@ -135,6 +135,7 @@ nav li {
 }
 #newnavbarContent {
     display:none;
+    width: 87%;
 }
 #oldnavbarContent {
     display: flex;
