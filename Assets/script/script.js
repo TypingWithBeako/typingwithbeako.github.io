@@ -8,7 +8,7 @@ var videoUrls = [
     "Openings_and_Endings/OP4 - Long shot.mp4",
     "Openings_and_Endings/ED4 - Believe in you.mp4",
     "Openings_and_Endings/OP5 - Reweave.mp4",
-    "Openings_and_Endings/ED5 - Nox Lux.mp4",
+    "Openings_and_Endings/ED5 - NOX LUX.mp4",
 ];
 var newvideoUrls = [
     "Insert_Songs/STRAIGHT BET.mp4",
@@ -71,7 +71,21 @@ videoPlayer.addEventListener('play',function(){
     isPosterSet = true;
     }
     var name = ''
-    if (clickCount %2 == 1){
+    var artist = ''
+    const songName = videoPlayer.src.split('/').pop(); // Get the last part of the path after splitting by '/'
+    if (songName == "S1%20Ending.mp4"){
+        name = 'Season 1 Ending'
+        artist = 'Myth & Roid'
+    }
+    else if (songName == "S2%20Ending.mp4"){
+        name = 'Season 2 Ending'
+        artist = 'Mayu Maeshima'
+    }
+    else if (songName == "Theater%20D.mp4"){
+        name = 'Theater D'
+        artist = 'Myth & Roid'
+    }
+    else if (clickCount %2 == 1){
         const songName = newvideoUrls[newcurrentIndex].split('/').pop();
         const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
         name = songName.slice(0, lastDot); // characters from the start to the last dot
@@ -81,6 +95,30 @@ videoPlayer.addEventListener('play',function(){
         const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
         name = songName.slice(6, lastDot)
     }
+    if (name == 'STYX HELIX' || name == 'Paradisus - Paradoxum' || name == 'NOX LUX' ||name == 'STRAIGHT BET')
+        artist = 'Myth & Roid'
+    else if (name == 'STYX HELIX nocut') {
+        name = 'STYX HELIX'
+        artist = 'Myth & Roid'
+    }
+    else if (name == 'Long shot')
+        artist = 'Mayu Maeshima'
+    else if (name == 'Redo' || name == 'Realize' || name == 'Reweave')
+        artist = 'Konomi Suzuki'
+    else if (name == 'Stay Alive' || name == 'Door' || name == 'I Trust You')
+        artist = 'Emilia (CV: 高橋李依)'
+    else if (name == 'Memento' || name == 'Believe in you' || name == 'Yuki no hate ni Kimi no na wo' || name == 'White White Snow')
+        artist = 'nonoc'
+    else if (name == 'Memories')
+        artist = 'Azuna Riko'
+    else if (name == 'Wishing')
+        artist = 'Rem (CV: Inori Minase)'
+    else if (name == 'What you don\'t know')
+        artist = 'Ram (CV: Rie Murakawa)'
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: name,//the title of the media
+        artist: artist,//the artist of the media
+      });
     document.title = name;
 })
 // Automatically play next video after ending with a delay
