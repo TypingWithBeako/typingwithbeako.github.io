@@ -72,18 +72,34 @@ videoPlayer.addEventListener('play',function(){
     }
     var name = ''
     var artist = ''
+    let musicArtwork = ''
     const songName = videoPlayer.src.split('/').pop(); // Get the last part of the path after splitting by '/'
     if (songName == "S1%20Ending.mp4"){
         name = 'Season 1 Ending'
         artist = 'Myth & Roid'
+        musicArtwork = {
+            src: "Icons/artworks/STYX_HELIX_Cover.webp",
+            sizes: "1008x1000",
+            type: "image/png",
+          }
     }
     else if (songName == "S2%20Ending.mp4"){
         name = 'Season 2 Ending'
         artist = 'Mayu Maeshima'
+        musicArtwork = {
+            src: "Icons/artworks/Long_Shot_Cover.webp",
+            sizes: "997x992",
+            type: "image/png",
+          }
     }
     else if (songName == "Theater%20D.mp4"){
         name = 'Theater D'
         artist = 'Myth & Roid'
+        musicArtwork = {
+            src: "Icons/artworks/Theater_D_Cover.jpg",
+            sizes: "1080x1080",
+            type: "image/png",
+          }
     }
     else if (clickCount %2 == 1){
         const songName = newvideoUrls[newcurrentIndex].split('/').pop();
@@ -95,29 +111,150 @@ videoPlayer.addEventListener('play',function(){
         const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
         name = songName.slice(6, lastDot)
     }
-    if (name == 'STYX HELIX' || name == 'Paradisus - Paradoxum' || name == 'NOX LUX' ||name == 'STRAIGHT BET')
+    if (name == 'STYX HELIX' || name == 'Paradisus - Paradoxum' || name == 'NOX LUX' ||name == 'STRAIGHT BET'){
         artist = 'Myth & Roid'
+        if (name == 'STYX HELIX')
+            musicArtwork = {
+                src: "Icons/artworks/STYX_HELIX_Cover.webp",
+                sizes: "1008x1000",
+                type: "image/png",
+              }
+        else if (name == 'Paradisus - Paradoxum')
+            musicArtwork = {
+                src: "Icons/artworks/Paradisus-Paradoxum_Cover.webp",
+                sizes: "1000x993",
+                type: "image/png",
+              }
+        else if (name == 'NOX LUX')
+            musicArtwork = {
+                src: "Icons/artworks/NOX_LOX_Cover.webp",
+                sizes: "1080x1080",
+                type: "image/png",
+              }
+        else if (name == 'STRAIGHT BET')
+            musicArtwork = {
+                src: "Icons/artworks/STRAIGHT_BET_Cover.jpg",
+                sizes: "721x720",
+                type: "image/png",
+              }
+        }
     else if (name == 'STYX HELIX nocut') {
         name = 'STYX HELIX'
         artist = 'Myth & Roid'
+        musicArtwork = {
+            src: "Icons/artworks/STYX_HELIX_Cover.webp",
+            sizes: "997x992",
+            type: "image/png",
+          }
     }
-    else if (name == 'Long shot')
+    else if (name == 'Long shot'){
         artist = 'Mayu Maeshima'
-    else if (name == 'Redo' || name == 'Realize' || name == 'Reweave')
+        musicArtwork = {
+            src: "Icons/artworks/Long_Shot_Cover.webp",
+            sizes: "1400x1400",
+            type: "image/png",
+          }
+    }
+    else if (name == 'Redo' || name == 'Realize' || name == 'Reweave'){
         artist = 'Konomi Suzuki'
-    else if (name == 'Stay Alive' || name == 'Door' || name == 'I Trust You')
+        if (name == 'Redo')
+            musicArtwork = {
+                src: "Icons/artworks/Redo_Cover.webp",
+                sizes: "997x992",
+                type: "image/png",
+            }
+        else if (name == 'Realize')
+            musicArtwork = {
+                src: "Icons/artworks/Realize_cover.webp",
+                sizes: "500x500",
+                type: "image/png",
+            }
+        else if (name == 'Reweave')
+            musicArtwork = {
+                src: "Icons/artworks/Reweave_Cover.webp",
+                sizes: "1600x1600",
+                type: "image/png",
+            }
+        }
+    else if (name == 'Stay Alive' || name == 'Door' || name == 'I Trust You'){
         artist = 'Emilia (CV: 高橋李依)'
-    else if (name == 'Memento' || name == 'Believe in you' || name == 'Yuki no hate ni Kimi no na wo' || name == 'White White Snow')
+        if (name == 'Stay Alive')
+            musicArtwork = {
+                src: "Icons/artworks/Stay_Alive_Cover.webp",
+                sizes: "1280x1281",
+                type: "image/png",
+            }
+        else if (name == 'Door')
+            musicArtwork = {
+                src: "Icons/artworks/Character_song_album.webp",
+                sizes: "1280x1280",
+                type: "image/png",
+            }
+        else if (name == 'I Trust You')
+            musicArtwork = {
+                src: "Icons/artworks/Character_song_album.webp",
+                sizes: "1280x1280",
+                type: "image/png",
+            }
+    }
+    else if (name == 'Memento' || name == 'Believe in you' || name == 'Yuki no hate ni Kimi no na wo' || name == 'White White Snow'){
         artist = 'nonoc'
-    else if (name == 'Memories')
+        if (name == 'Memento')
+            musicArtwork = {
+                src: "Icons/artworks/Memento_cover.webp",
+                sizes: "500x500",
+                type: "image/png",
+            }
+        else if (name == 'Believe in you')
+            musicArtwork = {
+                src: "Icons/artworks/Believe_in_you_cover.webp",
+                sizes: "500x500",
+                type: "image/png",
+            }
+        else if (name == 'Yuki no hate ni Kimi no na wo')
+            musicArtwork = {
+                src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
+                sizes: "640x640",
+                type: "image/png",
+            }
+        else if (name == 'White White Snow')
+            musicArtwork = {
+                src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
+                sizes: "640x640",
+                type: "image/png",
+            }
+    }
+    else if (name == 'Memories'){
         artist = 'Azuna Riko'
-    else if (name == 'Wishing')
+        musicArtwork = {
+            src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
+            sizes: "640x640",
+            type: "image/png",
+        }
+    }
+    else if (name == 'Wishing'){
         artist = 'Rem (CV: Inori Minase)'
-    else if (name == 'What you don\'t know')
+        musicArtwork = {
+            src: "Icons/artworks/Character_song_album.webp",
+            sizes: "1280x1280",
+            type: "image/png",
+        }
+    }
+    else if (name == 'What you don\'t know'){
         artist = 'Ram (CV: Rie Murakawa)'
+        musicArtwork = {
+            src: "Icons/artworks/Character_song_album.webp",
+            sizes: "1280x1280",
+            type: "image/png",
+        }
+    }
+    
     navigator.mediaSession.metadata = new MediaMetadata({
         title: name,//the title of the media
         artist: artist,//the artist of the media
+        artwork: [
+            musicArtwork
+        ]
       });
     document.title = name;
 })

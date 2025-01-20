@@ -58,3 +58,8 @@ img = $('<img />', { src : images[0].src, width: "auto", height: "160px" });
 div = $('<div></div>', { class : 'loader' });
 div.append(img);
 cont.append(div);
+
+window.addEventListener('blur', () => {
+    // Remove focus from all interactive elements
+    document.activeElement?.blur(); 
+})
