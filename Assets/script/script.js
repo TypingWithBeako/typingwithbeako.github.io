@@ -44,6 +44,13 @@ function playVideo(videoName) {
     nextVideo.src = '';
     // Extract the file name from the full path
     const songName = videoName.split('/').pop(); // Get the last part of the path after splitting by '/'
+    const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+    var name = ''
+    if (clickCount %2 == 1)
+        name = songName.slice(0, lastDot); // characters from the start to the last dot
+    else
+        name = songName.slice(6, lastDot)
+    document.title = name;
     // Update the video player screen with the selected video
     // For example, you can set the video source and play the video
     document.getElementById('videoPlayer').src = videoName;
@@ -80,9 +87,17 @@ function playNextVideo() {
             if (clickCount % 2 === 1) {
                 newcurrentIndex = (newcurrentIndex + 1) % newvideoUrls.length;
                 videoPlayer.src = newvideoUrls[newcurrentIndex];
+                const songName = newvideoUrls[newcurrentIndex].split('/').pop();
+                const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+                const name = songName.slice(0, lastDot); // characters from the start to the last dot
+                document.title = name;
             } else {
                 currentIndex = (currentIndex + 1) % videoUrls.length;
                 videoPlayer.src = videoUrls[currentIndex];
+                const songName = videoUrls[currentIndex].split('/').pop();
+                const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+                const name = songName.slice(6, lastDot); // characters from the start to the last dot
+                document.title = name;
             }
             videoPlayer.poster = "Other_Files/black.png"; // Clear the poster attribute
             videoPlayer.play();
@@ -128,6 +143,10 @@ moveableimg.addEventListener('click', function(){
         navbarContent.style.display = 'none';
         newnavbarContent.style.display ='flex';
         videoPlayer.src= newvideoUrls[0];
+        const songName = newvideoUrls[0].split('/').pop();
+        const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+        const name = songName.slice(0, lastDot); // characters from the start to the last dot
+        document.title = name;
         newcurrentIndex=0;
         clearTimeout(nextVideoTimeout);
         isSwitching = false; 
@@ -154,6 +173,11 @@ moveableimg.addEventListener('click', function(){
         navbarContent.style.display ='flex';
         newnavbarContent.style.display ='none';
         videoPlayer.src=videoUrls[0];
+        videoPlayer.src = videoUrls[0];
+        const songName = videoUrls[0].split('/').pop();
+        const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+        const name = songName.slice(6, lastDot); // characters from the start to the last dot
+        document.title = name;
         currentIndex=0;
         clearTimeout(nextVideoTimeout); 
         isSwitching = false; 
