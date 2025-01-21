@@ -11,6 +11,11 @@ nav li:not(:last-child)::after {
 nav li {
     list-style-type: none;
 }
+nav a:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 0.7;
+}
 h3 a{
     color:#0000EE;
 }
@@ -19,9 +24,6 @@ h3 a:visited {
 }
 h3 a:link:active, h3 a:visited:active {
     color: #FF0000; 
-}
-a:active {
-    color: gray !important;
 }
 a:hover,button:hover,i:hover,.moveable_img:hover,#songname:hover,
 video::-webkit-media-controls-play-button:hover,
