@@ -63,3 +63,11 @@ window.addEventListener('blur', () => {
     // Remove focus from all interactive elements
     document.activeElement?.blur(); 
 })
+
+$('a[data-tooltip-target]').on('click', function() {
+    $('.navbar--tooltips').hide();
+})
+
+$('a[data-tooltip-target]').on('mouseout', function() {
+    $('.navbar--tooltips').show();
+})
