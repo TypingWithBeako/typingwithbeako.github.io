@@ -635,7 +635,7 @@ const checkOrientation = () => {
         videoPlayer.style.height = "auto";
         videoPlayer.style.marginTop = "6vw"; 
     }
-    else {
+    else if (!TheaterModeFlag){
         videoPlayer.style.height = "46.855vh"
         videoPlayer.style.marginTop = "2vh"
     }
