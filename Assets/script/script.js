@@ -101,6 +101,15 @@ videoPlayer.addEventListener('play',function(){
             type: "image/png",
           }
     }
+    else if (songName == 'ED1%20-%20STYX%20HELIX%20slow.mp4') {
+        name = 'STYX HELIX (slow ver.)'
+        artist = 'Mayu Maeshima'
+        musicArtwork = {
+            src: "Icons/artworks/STYX_HELIX_Cover.webp",
+            sizes: "997x992",
+            type: "image/png",
+          }
+    }
     else if (clickCount %2 == 1){
         const songName = newvideoUrls[newcurrentIndex].split('/').pop();
         const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
@@ -257,6 +266,12 @@ videoPlayer.addEventListener('play',function(){
         ]
       });
     document.title = name;
+    navigator.mediaSession.setActionHandler("previoustrack", () => {
+        previousVideoTrack()
+    });
+    navigator.mediaSession.setActionHandler("nexttrack", () => {
+        nextVideoTrack()
+    });
 })
 // Automatically play next video after ending with a delay
 function playNextVideo() {
@@ -467,9 +482,19 @@ function ResetArray(){
 }
 videoPlayer.addEventListener('ended',ResetArray)
 
+function cleanVideoSrc(src) {
+    const startIndex = src.lastIndexOf("/") - 20; 
+    const cleanedPath = src.substring(startIndex);
+    return cleanedPath.replace(/%20/g, ' ');
+}
+
 // Enable and Disable Looping functions
 enableLoopingListener = function EnableLooping() {
-    if (clickCount % 2 == 1) {
+    const currentVideo = cleanVideoSrc(videoPlayer.src)
+    if (!videoUrls.includes(currentVideo) && !newvideoUrls.includes(currentVideo)){
+        clearTimeout(nextVideoTimeout);
+    }
+    else if (clickCount % 2 == 1) {
         loopcurrentIndex = newcurrentIndex;
         videoPlayer.src = newvideoUrls[loopcurrentIndex];
         clearTimeout(nextVideoTimeout);
@@ -490,30 +515,50 @@ loopVideo.addEventListener('click',function() {
         loopText.innerHTML = "Tắt lặp video";
         videoPlayer.removeEventListener('ended',ResetArray);
         videoPlayer.addEventListener('ended', enableLoopingListener);
-        if (clickCount % 2 == 1){ 
+        const currentVideo = cleanVideoSrc(videoPlayer.src)
+        if (!videoUrls.includes(currentVideo) && !newvideoUrls.includes(currentVideo)){
+            const songName = currentVideo.split('/').pop(); // Get the last part of the path after splitting by '/'
+            const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+            const name = songName.slice(0, lastDot); // characters from the start to the last dot
+            console.log('Video looping enabled for:', songName);
+            alert("Bật tính năng lặp cho: " + name);   
+        }
+        else if (clickCount % 2 == 1){ 
             const songName = newvideoUrls[newcurrentIndex].split('/').pop(); // Get the last part of the path after splitting by '/'   
             console.log('Video looping enabled for:', songName);
             alert("Bật tính năng lặp cho: " + songName);
         }
         else {
             const songName = videoUrls[currentIndex].split('/').pop();
+            const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+            const name = songName.slice(0, lastDot); // characters from the start to the last dot
             console.log('Video looping enabled for:', songName);
-            alert("Bật tính năng lặp cho: " + songName);   
+            alert("Bật tính năng lặp cho: " + name);   
         }
     }
     else {
         loopText.innerHTML = "Bật lặp video";
         videoPlayer.removeEventListener('ended', enableLoopingListener);
         videoPlayer.addEventListener('ended',ResetArray);
-        if (clickCount % 2 == 1){
+        const currentVideo = cleanVideoSrc(videoPlayer.src)
+        if (!videoUrls.includes(currentVideo) && !newvideoUrls.includes(currentVideo)){
+            const songName = currentVideo.split('/').pop(); // Get the last part of the path after splitting by '/'
+            const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+            const name = songName.slice(0, lastDot); // characters from the start to the last dot
+            console.log('Video looping disabled for:', name);
+            alert("Tắt tính năng lặp cho: " + name);
+        }
+        else if (clickCount % 2 == 1){
             const songName = newvideoUrls[newcurrentIndex].split('/').pop();
             console.log('Video looping disabled for:', songName)
             alert("Tắt tính năng lặp cho: " + songName);
         }
         else {
             const songName = videoUrls[currentIndex].split('/').pop();
-            console.log('Video looping disabled for:', songName);
-            alert("Tắt tính năng lặp cho: " + songName);
+            const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
+            const name = songName.slice(0, lastDot); // characters from the start to the last dot
+            console.log('Video looping disabled for:', name);
+            alert("Tắt tính năng lặp cho: " + name);
         }
     }
 });
@@ -571,14 +616,59 @@ document.getElementById("Delay").addEventListener("click", function() {
     console.log("Độ trễ được cập nhật thành: ", newDelay, "mili giây");
 });
 
+Fullscreen = function(){
+    document.documentElement.requestFullscreen();
+}
+
 // Check for orientation change using matchMedia (for mobile devices)
 const checkOrientation = () => {
-    if (window.matchMedia("(max-width: 722px) and (orientation: landscape)").matches) {
-        alert("Vui lòng chỉnh sang chế độ dọc để có trải nghiệm tốt nhất.");
+    if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
+        body.addEventListener('click',Fullscreen(),{once :  true})
+        body.removeEventListener('click', Fullscreen(),{once : true})
+        setTimeout(function(){
+            videoPlayer.style.width = "auto";
+            videoPlayer.style.height = "100vh";
+            videoPlayer.style.margin = "0 auto";
+        },700)
+    }
+    else if (window.matchMedia("(max-width: 768px) and (orientation: portrait").matches) {
+        videoPlayer.style.height = "auto";
+        videoPlayer.style.marginTop = "6vw"; 
+    }
+    else {
+        videoPlayer.style.height = "46.855vh"
+        videoPlayer.style.marginTop = "2vh"
     }
 };
+
 // Listen for orientation changes
 window.addEventListener("resize", checkOrientation);
+
+function nextVideoTrack(){
+    if (clickCount % 2 === 1) {
+        const nextnewcurrentIndex = (newcurrentIndex + 1) % newvideoUrls.length;
+        playVideo(newvideoUrls[nextnewcurrentIndex]);
+    }
+    else {
+        const nextcurrentIndex = (currentIndex + 1) % videoUrls.length;
+        playVideo(videoUrls[nextcurrentIndex]);
+    }
+}
+
+function previousVideoTrack() {
+    if (clickCount % 2 === 1) {
+        if (newcurrentIndex > 0) {
+            prevnewIndex = newcurrentIndex - 1;
+            playVideo(newvideoUrls[prevnewIndex]);
+        }
+    }   
+    else {
+        if (currentIndex > 0) {
+            prevIndex = currentIndex - 1;
+            playVideo(videoUrls[prevIndex]);
+        }
+    }
+}
 
 // Register key being pressed
 document.addEventListener("keydown", function(event) {
@@ -591,29 +681,11 @@ document.addEventListener("keydown", function(event) {
     }
     // Skipping to the next video using the playVideo function when pressing right arrow key
     if (event.code === "ArrowRight") {
-        if (clickCount % 2 === 1) {
-            const nextnewcurrentIndex = (newcurrentIndex + 1) % newvideoUrls.length;
-            playVideo(newvideoUrls[nextnewcurrentIndex]);
-        }
-        else {
-            const nextcurrentIndex = (currentIndex + 1) % videoUrls.length;
-            playVideo(videoUrls[nextcurrentIndex]);
-        }
+        nextVideoTrack()
     }
     // Returning to the previous video using the playVideo function (doesn't work if used on first video)
     if (event.code === "ArrowLeft") {
-        if (clickCount % 2 === 1) {
-            if (newcurrentIndex > 0) {
-                prevnewIndex = newcurrentIndex - 1;
-                playVideo(newvideoUrls[prevnewIndex]);
-            }
-        }   
-        else {
-            if (currentIndex > 0) {
-                prevIndex = currentIndex - 1;
-                playVideo(videoUrls[prevIndex]);
-            }
-        }
+        previousVideoTrack()
     }
     if (event.code === "Numpad1"||event.code === "Digit1")  {
         if (clickCount % 2 === 1) {
@@ -735,6 +807,12 @@ document.addEventListener("keydown", function(event) {
     }
     if (event.code === "KeyP"){
         videoPlayer.src = "Openings_and_Endings/S2 Ending.mp4";
+        videoPlayer.play();
+        currentIndex = -1;
+        newcurrentIndex = -1;
+    }
+    if (event.code === "KeyS"){
+        videoPlayer.src = "Openings_and_Endings/ED1 - STYX HELIX slow.mp4";
         videoPlayer.play();
         currentIndex = -1;
         newcurrentIndex = -1;

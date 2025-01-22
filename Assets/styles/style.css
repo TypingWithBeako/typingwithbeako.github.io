@@ -393,10 +393,6 @@ to {
         max-width: 80%;
         height:70vh !important;
     }
-    @media screen and (orientation: landscape) {
-         body {
-             display: none; /* Hide content in landscape mode */     }
-    }
 }
 .loader--wrapper {
     width: 100%;
@@ -430,3 +426,20 @@ to {
       display: none !important; 
     }
   }
+@media screen and (max-width: 768px) and (orientation: landscape) {
+.content__navbar, #paragraph, .subaru, .trademark, #github, #KeyboardControls, #text_to_change, .button-container,.button-container-mobile, #ExitTheaterModeButton, #moveable_img {
+    display: none !important;
+}
+#videoPlayer {
+    width: auto;
+    height: 100vh;
+    margin: 0 auto;
+}
+body {
+    background-color: #000000;
+    background-image: none;
+}
+.oldtopnav {
+    margin-top: 0;
+}
+}
