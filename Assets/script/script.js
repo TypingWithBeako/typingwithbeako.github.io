@@ -265,7 +265,7 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork
         ]
       });
-    document.title = name;
+    document.title = "「" + name + "」";
     navigator.mediaSession.setActionHandler("previoustrack", () => {
         previousVideoTrack()
     });
