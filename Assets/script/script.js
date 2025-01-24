@@ -657,16 +657,18 @@ function nextVideoTrack(){
 
 function previousVideoTrack() {
     if (clickCount % 2 === 1) {
-        if (newcurrentIndex > 0) {
-            prevnewIndex = newcurrentIndex - 1;
-            playVideo(newvideoUrls[prevnewIndex]);
-        }
+        if (newcurrentIndex > 0) 
+            prevnewIndex = newcurrentIndex - 1
+        else if (newcurrentIndex == 0) 
+            prevnewIndex = newvideoUrls.length - 1
+        playVideo(newvideoUrls[prevnewIndex]);
     }   
     else {
-        if (currentIndex > 0) {
+        if (currentIndex > 0) 
             prevIndex = currentIndex - 1;
-            playVideo(videoUrls[prevIndex]);
-        }
+        else if (currentIndex == 0) 
+            prevIndex = videoUrls.length - 1
+        playVideo(videoUrls[prevIndex])
     }
 }
 
