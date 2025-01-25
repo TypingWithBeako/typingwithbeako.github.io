@@ -629,18 +629,15 @@ const checkOrientation = () => {
             videoPlayer.style.width = "auto";
             videoPlayer.style.height = "100vh";
             videoPlayer.style.margin = "0 auto";
-            videoPlayer.controlsList = "nofullscreen" 
         },700)
     }
     else if (window.matchMedia("(max-width: 768px) and (orientation: portrait").matches) {
         videoPlayer.style.height = "auto";
         videoPlayer.style.marginTop = "6vw";
-        videoPlayer.controlsList = "nofullscreen" 
     }
     else if (!TheaterModeFlag){
         videoPlayer.style.height = "46.855vh"
         videoPlayer.style.marginTop = "2vh"
-        videoPlayer.controlsList = ""
     }
 };
 
