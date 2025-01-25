@@ -622,7 +622,7 @@ Fullscreen = function(){
 
 // Check for orientation change using matchMedia (for mobile devices)
 const checkOrientation = () => {
-    if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
+    if (window.matchMedia("(max-width: 922px) and (orientation: landscape)").matches) {
         body.addEventListener('click',Fullscreen(),{once :  true})
         body.removeEventListener('click', Fullscreen(),{once : true})
         setTimeout(function(){
@@ -631,7 +631,7 @@ const checkOrientation = () => {
             videoPlayer.style.margin = "0 auto";
         },700)
     }
-    else if (window.matchMedia("(max-width: 768px) and (orientation: portrait").matches) {
+    else if (window.matchMedia("(max-width: 922px) and (orientation: portrait").matches) {
         videoPlayer.style.height = "auto";
         videoPlayer.style.marginTop = "6vw"; 
     }

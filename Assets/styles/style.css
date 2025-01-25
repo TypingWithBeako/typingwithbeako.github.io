@@ -54,6 +54,13 @@ button:disabled {
     width: 20.833vw;
     height: auto
 }
+#footer {
+    background-color: white;
+    bottom: 0;
+}
+#footer:hover {
+    background-color:  rgb(209 213 219);
+}
 .Endings--Seasons {
     display: none;
 }
@@ -304,7 +311,7 @@ to {
         display:none;
     }
 }
-@media only screen and (max-width: 722px) {
+@media only screen and (max-width: 922px) {
     #KeyboardControls {
         display:none;
     }
@@ -426,7 +433,7 @@ to {
       display: none !important; 
     }
   }
-@media screen and (max-width: 768px) and (orientation: landscape) {
+@media screen and (max-width: 922px) and (orientation: landscape) {
 .content__navbar, #paragraph, .subaru, .trademark, #github, #KeyboardControls, #text_to_change, .button-container,.button-container-mobile, #ExitTheaterModeButton, #moveable_img {
     display: none !important;
 }
