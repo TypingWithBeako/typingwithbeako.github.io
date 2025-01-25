@@ -311,7 +311,7 @@ to {
         display:none;
     }
 }
-@media only screen and (max-width: 922px) {
+@media only screen and (max-width: 768px) {
     #KeyboardControls {
         display:none;
     }
@@ -433,7 +433,7 @@ to {
       display: none !important; 
     }
   }
-@media screen and (max-width: 922px) and (orientation: landscape) {
+@media screen and (max-width: 768px) and (orientation: landscape) {
 .content__navbar, #paragraph, .subaru, .trademark, #github, #KeyboardControls, #text_to_change, .button-container,.button-container-mobile, #ExitTheaterModeButton, #moveable_img {
     display: none !important;
 }

@@ -622,22 +622,25 @@ Fullscreen = function(){
 
 // Check for orientation change using matchMedia (for mobile devices)
 const checkOrientation = () => {
-    if (window.matchMedia("(max-width: 922px) and (orientation: landscape)").matches) {
+    if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
         body.addEventListener('click',Fullscreen(),{once :  true})
         body.removeEventListener('click', Fullscreen(),{once : true})
         setTimeout(function(){
             videoPlayer.style.width = "auto";
             videoPlayer.style.height = "100vh";
             videoPlayer.style.margin = "0 auto";
+            videoPlayer.controlsList = "nofullscreen" 
         },700)
     }
-    else if (window.matchMedia("(max-width: 922px) and (orientation: portrait").matches) {
+    else if (window.matchMedia("(max-width: 768px) and (orientation: portrait").matches) {
         videoPlayer.style.height = "auto";
-        videoPlayer.style.marginTop = "6vw"; 
+        videoPlayer.style.marginTop = "6vw";
+        videoPlayer.controlsList = "nofullscreen" 
     }
     else if (!TheaterModeFlag){
         videoPlayer.style.height = "46.855vh"
         videoPlayer.style.marginTop = "2vh"
+        videoPlayer.controlsList = ""
     }
 };
 
