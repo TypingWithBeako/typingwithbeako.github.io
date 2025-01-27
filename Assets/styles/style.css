@@ -189,9 +189,11 @@ h1 {
 .subaru {
     position:absolute;
     bottom:0;
-    left:38vw;
-    width: 24vw;
-    height: 9.45vw;
+    left:0;
+    right: 0;
+    margin: 0 auto;
+    width: auto;
+    height: 15vh;
     pointer-events: auto;
     user-select: none;
 }
@@ -322,9 +324,7 @@ to {
         display:block !important;
     }
     .subaru {
-        width: 60vw;
-        height: 23.62vw;
-        left: 25vw;
+        height: 10vh;
     }
     h3 {
         font-size:1.1vw;
