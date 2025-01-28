@@ -186,7 +186,7 @@ videoPlayer.addEventListener('play',function(){
             }
         }
     else if (name == 'Stay Alive' || name == 'Door' || name == 'I Trust You'){
-        artist = 'Emilia (CV: 高橋李依)'
+        artist = 'Emilia (CV: Rie Takahashi)'
         if (name == 'Stay Alive')
             musicArtwork = {
                 src: "Icons/artworks/Stay_Alive_Cover.webp",

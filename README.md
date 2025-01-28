@@ -1,22 +1,4 @@
-/23.09.2024/ <br>
-Nguyễn Thái Tuấn <br>
-I have completed the website! Still looking forward to adding more changes though! <br> <br>
-/24.09.2024/ <br>
-Nguyễn Thái Tuấn <br>
-Finished adding preloading feature and cleaned up the code (can actually look at the code now). <br>
-<br> <br>
-/27.09.2024/ <br>
-Nguyễn Thái Tuấn <br>
-Finished adding the loop, randomize and delay button!
-<br> <br>
-/11.10.2024/ <br>
-Nguyễn Thái Tuấn <br>
-Mostly completed! Aiming to add caching videos feature to reserve bandwidth (gonna take a while)
-<br> <br>
-/13.10.2024/ <br>
-Nguyễn Thái Tuấn <br>
-Made the website totally responsive! Expect to see consistent designs across your devices!
-<br> <br>
-/20.10.2024/ <br>
-Nguyễn Thái Tuấn <br>
-The website functionality is greater than I ever imagined. If anyone want to improve on this, feel free to do it! 
+## 20/09/2024 -> 28/01/2025 <br>
+- My first project to learn about ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) and ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) <br>
+- Took me 4 months but it was totally worth it - I understood many concepts that textbooks alone can not teach. <br>
+- Feel free to understand my code and make changes! ***(if it's possible)*** since I won't be actively updating this myself :D 
