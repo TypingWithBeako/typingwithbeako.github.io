@@ -983,6 +983,8 @@ TheaterMode.addEventListener('click',function() {
         body.style.backgroundColor = '#000000';
         body.style.backgroundImage = 'none';
         document.documentElement.requestFullscreen();
+        if (document.pictureInPictureElement)
+            document.exitPictureInPicture();
         TheaterModeFlag = true;
         ExitTheaterModeButton.style.display ='flex';
     }
