@@ -314,6 +314,9 @@ to {
     }
 }
 @media only screen and (max-width: 768px) {
+    .navbar--tooltips div {
+        display: none !important; 
+    }
     #KeyboardControls {
         display:none;
     }
@@ -353,9 +356,6 @@ to {
         margin-top: 6vw;
         width:auto;
         height:auto;
-    }
-    #nextButton {
-        padding:3px;
     }
     .topnav a {
         font-size:2.2vw;
@@ -428,11 +428,6 @@ to {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
-@media (max-width: 768px) { /* Adjust min-width as needed for medium screens */
-    .navbar--tooltips div {
-      display: none !important; 
-    }
-  }
 @media screen and (max-width: 768px) and (orientation: landscape) {
 .content__navbar, #paragraph, .subaru, .trademark, #github, #KeyboardControls, #text_to_change, .button-container,.button-container-mobile, #ExitTheaterModeButton, #moveable_img {
     display: none !important;
