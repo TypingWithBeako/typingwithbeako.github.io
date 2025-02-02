@@ -961,6 +961,7 @@ let TheaterModeFlag = false;
 let TheaterModeClickCount = 0;
 const ExitTheaterModeButton = document.getElementById('ExitTheaterModeButton');
 const KeyboardControls = document.getElementById("KeyboardControls")
+const navbar = document.querySelector(".oldtopnav")
 
 TheaterMode.addEventListener('click',function() {
     TheaterModeClickCount++;
@@ -990,6 +991,7 @@ TheaterMode.addEventListener('click',function() {
             document.exitPictureInPicture();
         TheaterModeFlag = true;
         ExitTheaterModeButton.style.display ='flex';
+        navbar.style.marginTop = '2vh'
     }
     else{
         if (clickCount%2==1){
@@ -1012,6 +1014,7 @@ TheaterMode.addEventListener('click',function() {
             videoPlayer.style.marginTop = '2vh';
             ExitTheaterModeButton.style.display ='none';
             TheaterModeFlag = false;
+            navbar.style.marginTop = '3vh'
             closeFullscreen();
         }
         else {
@@ -1041,6 +1044,7 @@ TheaterMode.addEventListener('click',function() {
             videoPlayer.style.marginTop = '2vh';
             ExitTheaterModeButton.style.display ='none';
             TheaterModeFlag = false;
+            navbar.style.marginTop = '3vh'
             closeFullscreen();
         }
     }
