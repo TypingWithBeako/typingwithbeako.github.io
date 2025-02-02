@@ -982,8 +982,7 @@ TheaterMode.addEventListener('click',function() {
         videoPlayer.style.position = 'relative';
         videoPlayer.style.width =  '160vh';
         videoPlayer.style.height = '90vh';
-        videoPlayer.style.marginTop = '4vh';
-        videoPlayer.style.marginBottom = '5vh';
+        videoPlayer.style.margin = '5vh auto';
         body.style.backgroundColor = '#000000';
         body.style.backgroundImage = 'none';
         document.documentElement.requestFullscreen();
