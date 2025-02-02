@@ -966,8 +966,6 @@ TheaterMode.addEventListener('click',function() {
     TheaterModeClickCount++;
     if (TheaterModeClickCount%2==1){
         navbarContent.style.display = 'none';
-        nextButton.style.display = 'none'
-        backButton.style.display = 'none'
         newnavbarContent.style.display = 'none';
         S3.style.display = 'none';
         paragraph.style.display = 'none';
@@ -1019,12 +1017,10 @@ TheaterMode.addEventListener('click',function() {
         else {
             if (nextClickCount%2==1){
                 S3.style.display = 'flex';
-                backButton.style.display = 'flex'
                 navbarContent.style.display = 'none';
             }
             else {
                 S3.style.display = 'none';
-                nextButton.style.display = 'flex'
                 navbarContent.style.display = 'flex';
             }
             paragraph.style.display = 'block';
