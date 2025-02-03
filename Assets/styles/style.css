@@ -77,8 +77,9 @@ button:disabled {
     font-family: "Playfair Display"
 }
 .title {
-    font-size: 0.8vw;
-    vertical-align: middle;
+    margin-left: 0.1vw;
+    font-size: 0.625vw;
+    vertical-align: text-top;
 }
 #nextButton,#backButton {
     position:absolute;
