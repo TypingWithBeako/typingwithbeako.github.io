@@ -1123,6 +1123,3 @@ document.addEventListener('keydown',function(event){
         ChangeStyxHelix();
     }
 })
-songname.addEventListener('click',function(){
-    ChangeStyxHelix();
-})
