@@ -324,9 +324,8 @@ moveableimg.addEventListener('click', function(){
     nextClickCount = 0;
     console.log("Image clicked!"); // Add this line for testing
     if (clickCount % 2 === 1) {
-        textToChange.innerHTML = " Âm nhạc từ thế giới khác";
-        bodytext.innerHTML = "Nhạc chủ đề"
-        songname.innerHTML = "Mở đầu và Kết thúc"
+        bodytext.innerHTML = 'Nhạc chủ đề <span class="songname--title title" title="Cách gọi khác: Insert Song">ℹ️</span>';
+        songname.innerHTML = 'Mở đầu và Kết thúc <span class="bodytext--title title" title="Cách gọi khác: Opening (OP) và Ending (ED)">ℹ️</span>';
         navbarContent.style.display = 'none';
         newnavbarContent.style.display ='flex';
         videoPlayer.src= newvideoUrls[0];
@@ -350,9 +349,8 @@ moveableimg.addEventListener('click', function(){
         SidebarButton.innerHTML = "Chuyển sang OPs và EDs";
     }
     else {
-        textToChange.innerHTML = "  Âm nhạc từ thế giới khác ";
-        bodytext.innerHTML = "Mở đầu và Kết thúc";
-        songname.innerHTML = "Nhạc chủ đề"
+        bodytext.innerHTML = 'Mở đầu và Kết thúc <span class="bodytext--title title" title="Cách gọi khác: Opening (OP) và Ending (ED)">ℹ️</span>';
+        songname.innerHTML = 'Nhạc chủ đề <span class="songname--title title" title="Cách gọi khác: Insert Song">ℹ️</span>';
         navbarContent.style.display ='flex';
         newnavbarContent.style.display ='none';
         videoPlayer.src=videoUrls[0];

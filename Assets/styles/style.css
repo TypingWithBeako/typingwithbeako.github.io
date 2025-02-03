@@ -76,6 +76,10 @@ button:disabled {
 #text_to_change {
     font-family: "Playfair Display"
 }
+.title {
+    font-size: 0.8vw;
+    vertical-align: middle;
+}
 #nextButton,#backButton {
     position:absolute;
     margin: 0;
@@ -266,9 +270,9 @@ transition: opacity 0.5s, transform 0.5s; /* Define the transition properties */
 }
 
 .slide-in {
-animation: slideIn 3.25s ease;
-animation-delay:2s;
-animation-fill-mode: backwards;
+    animation: slideIn 3.25s ease;
+    animation-delay:1.5s;
+    animation-fill-mode: backwards;
 }
 .fade-in{
     animation: fadeIn 2.5s ease;
@@ -280,12 +284,12 @@ animation-fill-mode: backwards;
 }
 .fade-in-bodytext{
     animation: fadeIn 2.5s ease;
-    animation-delay:2.5s;
+    animation-delay:1.5s;
     animation-fill-mode: both;
 }
 .fade-in-songname{
     animation: fadeIn 2.5s ease;
-    animation-delay:3.25s;
+    animation-delay:2.5s;
     animation-fill-mode: both;
 }
 @keyframes fadeIn {
@@ -314,6 +318,9 @@ to {
     }
 }
 @media only screen and (max-width: 768px) {
+    .title {
+        display: none
+    }
     .navbar--tooltips div {
         display: none !important; 
     }
