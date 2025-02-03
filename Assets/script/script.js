@@ -823,6 +823,7 @@ document.addEventListener("keydown", function(event) {
         newcurrentIndex = -1;
     }
     if (event.code === 'Escape') {
+        event.preventDefault(); // Prevent default ESC behaviour
         if (TheaterModeFlag)
             TheaterMode.click()
     }   
