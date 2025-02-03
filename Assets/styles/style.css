@@ -74,7 +74,7 @@ button:disabled {
     font-size: 18px;
 }
 #text_to_change {
-    font-family: 'Times New Roman', Times, serif!important;
+    font-family: "Playfair Display"
 }
 #nextButton,#backButton {
     position:absolute;

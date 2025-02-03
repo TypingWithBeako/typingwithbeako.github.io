@@ -324,7 +324,7 @@ moveableimg.addEventListener('click', function(){
     nextClickCount = 0;
     console.log("Image clicked!"); // Add this line for testing
     if (clickCount % 2 === 1) {
-        textToChange.innerHTML = "All <s> OPs and EDs</s> Insert Songs";
+        textToChange.innerHTML = " Âm nhạc từ thế giới khác";
         bodytext.innerHTML = "Nhạc chủ đề"
         songname.innerHTML = "Mở đầu và Kết thúc"
         navbarContent.style.display = 'none';
@@ -333,7 +333,7 @@ moveableimg.addEventListener('click', function(){
         newcurrentIndex=0;
         clearTimeout(nextVideoTimeout);
         isSwitching = false; 
-        textToChange.classList.add('fade-in-title');
+        textToChange.classList.add('fade-in');
         bodytext.classList.add('fade-in-bodytext');
         songname.classList.add('fade-in-songname');
         newnavbarContent.classList.add('slide-in');
@@ -350,7 +350,7 @@ moveableimg.addEventListener('click', function(){
         SidebarButton.innerHTML = "Chuyển sang OPs và EDs";
     }
     else {
-        textToChange.innerHTML = " All OPs and EDs ";
+        textToChange.innerHTML = "  Âm nhạc từ thế giới khác ";
         bodytext.innerHTML = "Mở đầu và Kết thúc";
         songname.innerHTML = "Nhạc chủ đề"
         navbarContent.style.display ='flex';
@@ -360,7 +360,7 @@ moveableimg.addEventListener('click', function(){
         currentIndex=0;
         clearTimeout(nextVideoTimeout); 
         isSwitching = false; 
-        textToChange.classList.add('fade-in-title');
+        textToChange.classList.add('fade-in');
         bodytext.classList.add('fade-in-bodytext');
         songname.classList.add('fade-in-songname');
         navbarContent.classList.add('slide-in');
@@ -382,7 +382,7 @@ moveableimg.addEventListener('click', function(){
 });
 // Remove the animation class after the animation ends
 textToChange.addEventListener('animationend', () => {
-textToChange.classList.remove('fade-in-title');
+textToChange.classList.remove('fade-in');
 });
 bodytext.addEventListener('animationend', () => {
 bodytext.classList.remove('fade-in-bodytext');
