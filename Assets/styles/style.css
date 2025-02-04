@@ -168,9 +168,6 @@ h1 {
     text-align:center;
     margin-top: -2vh;
     font-weight: bolder!important;
-    text-shadow:-3px 4px 4px rgba(0,0,0,0.4),
-                -3px 8px 13px rgba(0,0,0,0.1),
-                -3px 18px 23px rgba(0,0,0,0.1);
 }
 .Re {
     font-size:1.4vw;
