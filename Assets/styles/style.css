@@ -155,7 +155,7 @@ nav li {
     display: flex;
 }
 body {
-    background-image: url("../../Other_Files/bg-tv.png");
+    background-image: url("../../Other_Files/bg-tv.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
