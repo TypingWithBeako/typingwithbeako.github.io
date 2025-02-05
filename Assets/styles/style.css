@@ -25,26 +25,26 @@ h3 a:visited {
 h3 a:link:active, h3 a:visited:active {
     color: #FF0000; 
 }
-a,button:hover,i:hover,.moveable_img:hover,
-video::-webkit-media-controls-play-button:hover,
-video::-webkit-media-controls-volume-slider-container:hover,
-video::-webkit-media-controls-volume-slider:hover,
-video::-webkit-media-controls-mute-button:hover,
-video::-webkit-media-controls-timeline:hover,
-video::-webkit-media-controls-timeline-container:hover,
-video::-webkit-media-controls-seek-back-button:hover,
-video::-webkit-media-controls-seek-forward-button:hover,
-video::-webkit-media-controls-fullscreen-button:hover,
-video::-webkit-media-controls-rewind-button:hover,
-video::-webkit-media-controls-return-to-realtime-button:hover,
-video::-webkit-media-controls-toggle-closed-captions-button:hover {
+a,button,i,.moveable_img,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-volume-slider-container,
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-timeline,
+video::-webkit-media-controls-timeline-container,
+video::-webkit-media-controls-seek-back-button,
+video::-webkit-media-controls-seek-forward-button,
+video::-webkit-media-controls-fullscreen-button,
+video::-webkit-media-controls-rewind-button,
+video::-webkit-media-controls-return-to-realtime-button,
+video::-webkit-media-controls-toggle-closed-captions-button {
     cursor: pointer;
     cursor: var(--pointermouse)
 }
-.subaru:hover {
+.subaru {
     cursor: var(--subarumouse)
 }
-html,aside *, aside *:hover{
+html,aside *, aside *{
     cursor: var(--normalmouse)
 }
 button:disabled {
