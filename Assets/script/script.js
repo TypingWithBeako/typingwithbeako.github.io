@@ -398,12 +398,15 @@ newnavbarContent.classList.remove('slide-in');
 moveable_img.addEventListener('animationend', () => {
 moveable_img.classList.remove('fade-in');
 });
-nextButton.addEventListener('animationend', () => {
-nextButton.classList.remove('fade-in-songname');
-});
+S3.addEventListener('animationend', () => {
+    S3.classList.remove('fade-in');
+})
 backButton.addEventListener('animationend', () => {
-backButton.classList.remove('fade-in-songname');
-});
+    backButton.classList.remove('fade-in-songname');
+})
+nextButton.addEventListener('animationend', () => {
+    nextButton.classList.remove('fade-in-songname');
+})
 
 function handleFontSizeChange(mediaQuery) {
     // Change font size for mobile devices
@@ -869,18 +872,6 @@ backButton.addEventListener('click',function(){
         this.removeAttribute('disabled'); // Re-enable the clickable element
         nextButton.disabled = false; // Disable the clickable element
         }, 2501);
-})
-S3.addEventListener('animationend', () => {
-    S3.classList.remove('fade-in');
-})
-backButton.addEventListener('animationend', () => {
-    backButton.classList.remove('fade-in');
-})
-navbarContent.addEventListener('animationend', () => {
-navbarContent.classList.remove('fade-in');
-})
-nextButton.addEventListener('animationend', () => {
-    nextButton.classList.remove('fade-in');
 })
 /*
 window.addEventListener('load', function() {
