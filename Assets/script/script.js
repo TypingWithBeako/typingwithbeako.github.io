@@ -1009,7 +1009,7 @@ TheaterMode.addEventListener('click',function() {
             for (let i = 0; i < ButtonContainer.length; i++) {
                 ButtonContainer[i].style.display = 'block';
             }
-            body.style.backgroundImage = 'url(Other_Files/bg-tv.png)';
+            body.style.backgroundImage = 'url(Other_Files/bg-tv.webp)';
             body.style.backgroundColor = '#FFFFFF';
             videoPlayer.style.width =  'auto';
             videoPlayer.style.height = '46.855vh';
@@ -1039,7 +1039,7 @@ TheaterMode.addEventListener('click',function() {
             for (let i = 0; i < ButtonContainer.length; i++) {
                 ButtonContainer[i].style.display = 'block';
             }
-            body.style.backgroundImage = 'url(Other_Files/bg-tv.png)';
+            body.style.backgroundImage = 'url(Other_Files/bg-tv.webp)';
             body.style.backgroundColor = '#FFFFFF';
             videoPlayer.style.width =  'auto';
             videoPlayer.style.height = '46.855vh';
