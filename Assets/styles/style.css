@@ -248,7 +248,6 @@ nav li {
     margin-top: 2vw;
     top: -1.7vw;
     left: 0;
-    cursor: pointer;
     pointer-events: all !important;
 }
 .button-container-mobile {
