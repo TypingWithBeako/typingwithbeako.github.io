@@ -149,7 +149,7 @@ nav li {
 }
 #newnavbarContent {
     display:none;
-    width: 87%;
+    width: 100%;
 }
 #oldnavbarContent {
     display: flex;
