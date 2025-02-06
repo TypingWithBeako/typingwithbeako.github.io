@@ -5,9 +5,7 @@
 
 ## Overview
 
-  
-
-This is a web-based video player designed specifically for Re:Zero anime openings, endings, and insert songs. Built from scratch using pure JavaScript, HTML, and CSS, it offers a streamlined and immersive viewing experience without relying on any external frameworks or libraries.
+A web-based video player for Re:Zero anime openings, endings, and insert songs. The core video logic is built from scratch using vanilla JavaScript, HTML, and CSS, enhanced with Tailwind CSS, Flowbite, jQuery, and MicroModal for a streamlined and immersive experience.
 
   
 
