@@ -401,6 +401,9 @@ moveable_img.classList.remove('fade-in');
 S3.addEventListener('animationend', () => {
     S3.classList.remove('fade-in');
 })
+navbarContent.addEventListener('animationend', () => {
+    navbarContent.classList.remove('fade-in');
+});
 backButton.addEventListener('animationend', () => {
     backButton.classList.remove('fade-in-songname');
 })
