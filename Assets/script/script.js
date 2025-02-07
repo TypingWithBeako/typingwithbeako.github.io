@@ -679,6 +679,8 @@ function nextVideoTrack(){
 
 function previousVideoTrack() {
     if (clickCount % 2 === 1) {
+        if (newcurrentIndex < 0)
+            return
         if (newcurrentIndex > 0) 
             prevnewIndex = newcurrentIndex - 1
         else if (newcurrentIndex == 0) 
@@ -686,6 +688,8 @@ function previousVideoTrack() {
         playVideo(newvideoUrls[prevnewIndex]);
     }   
     else {
+        if (currentIndex < 0)
+            return
         if (currentIndex > 0) 
             prevIndex = currentIndex - 1;
         else if (currentIndex == 0) 
