@@ -325,7 +325,7 @@ to {
         display:none;
     }
     body {
-        background-image: url(../../Other_Files/bg-tv.png);
+        background-image: url(../../Other_Files/bg-tv.webp);
     }
     #default-sidebar{
         display:block !important;
