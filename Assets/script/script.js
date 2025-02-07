@@ -429,6 +429,10 @@ function handleFontSizeChange(mediaQuery) {
     }
 }
 
+Fullscreen = function(){
+    document.documentElement.requestFullscreen();
+}
+
 // Initial call to set font size based on device width
 handleFontSizeChange(mediaQuery);
 // Add event listener for changes in media query
@@ -491,7 +495,7 @@ function disableFocus(element) {
 }
 disableFocus(videoPlayer);
 
-// Reset preloadedVideos array every 60 seconds (worst case scenario) to optimize playback.
+// Reset preloadedVideos array every time a video ends to optimize memory usage.
 function ResetArray(){
     preloadedVideos = [];
 }
@@ -576,6 +580,8 @@ loopVideo.addEventListener('click',function() {
             alert("Tắt tính năng lặp cho: " + name);
         }
     }
+    if (TheaterModeFlag)
+        setTimeout(Fullscreen,0)
 });
 
 // Function to shuffle the array elements randomly
@@ -602,6 +608,8 @@ shuffleButton.addEventListener('click', function() {
         preloadedVideos = [];
     }
     alert("Video đã được xáo (vào console log để biết thêm)");
+    if (TheaterModeFlag)
+        setTimeout(Fullscreen,0)
 // You can now use the shuffled videoUrls array for playing the songs in a random order
     if (clickCount % 2 == 1)
         console.log('Shuffled videos to:', newvideoUrls);
@@ -629,11 +637,10 @@ document.getElementById("Delay").addEventListener("click", function() {
     // Update delay and optionally display confirmation
     updateDelay(newDelay);
     console.log("Độ trễ được cập nhật thành: ", newDelay, "mili giây");
+    if (TheaterModeFlag)
+        setTimeout(Fullscreen,0)
 });
 
-Fullscreen = function(){
-    document.documentElement.requestFullscreen();
-}
 
 // Check for orientation change using matchMedia (for mobile devices)
 const checkOrientation = () => {
