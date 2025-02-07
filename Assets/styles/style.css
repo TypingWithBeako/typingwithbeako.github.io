@@ -331,10 +331,11 @@ to {
         display:block !important;
     }
     .subaru {
+        display: none;
         height: 10vh;
     }
     h3 {
-        font-size:1.1vw;
+        font-size:2vw;
     }
     .moveable_img {
         position: relative;
