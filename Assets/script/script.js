@@ -30,6 +30,7 @@ let clickCount = 0;
 let preloadedVideos = [];
 let disablePreloading = false;
 let nextVideoTimeout;
+let videoLoopingTimeout;
 let loopcurrentIndex = 0;
 let loopclickCount = 0;
 let enableLoopingListener = null;
@@ -59,7 +60,8 @@ function playVideo(videoName) {
         isPosterSet = true;
     }
     // Clear the timeout for playNextVideo
-    clearTimeout(nextVideoTimeout); 
+    clearTimeout(nextVideoTimeout);
+    clearTimeout(videoLoopingTimeout); 
     // When playVideo is executed, reset isSwitching.
     isSwitching = false; 
     simulateClick();
@@ -509,22 +511,11 @@ function cleanVideoSrc(src) {
 
 // Enable and Disable Looping functions
 enableLoopingListener = function EnableLooping() {
-    const currentVideo = cleanVideoSrc(videoPlayer.src)
-    if (!videoUrls.includes(currentVideo) && !newvideoUrls.includes(currentVideo)){
-        clearTimeout(nextVideoTimeout);
-    }
-    else if (clickCount % 2 == 1) {
-        loopcurrentIndex = newcurrentIndex;
-        videoPlayer.src = newvideoUrls[loopcurrentIndex];
-        clearTimeout(nextVideoTimeout);
-    }
-    else {
-        loopcurrentIndex = currentIndex;
-        videoPlayer.src = videoUrls[loopcurrentIndex];
-        clearTimeout(nextVideoTimeout);
-    }
-    videoPlayer.play();
-    isSwitching = false;
+    clearTimeout(nextVideoTimeout);
+    videoLoopingTimeout = setTimeout(() =>{
+        videoPlayer.play();
+        isSwitching = false;
+    },delay)
 };
 const loopVideo = document.querySelector('#loop')
 const loopText = document.querySelector('.looptext')
