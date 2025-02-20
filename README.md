@@ -200,26 +200,29 @@ The core video player logic, dynamic content switching, and state management wer
 
 ## Screenshots
 
-### Desktop
 
 - **Main page**
+
+
 ![Main page](Other_Files/Screenshots/Main-page.png)
 
+
  - **Main page with tooltips**
+
+
 ![Screenshot 1](Other_Files/Screenshots/Main-page%201.png)
 
+
 - **Main page with title and Media Session controls**
+
+
 ![Screenshot 2](Other_Files/Screenshots/Main-page%202.png)
 
+
 - **Theater Mode**
+
+
 ![Screenshot 3](Other_Files/Screenshots/Theater%20mode.png)
-
-### Mobile
- - **Portrait**
-![Main page](Other_Files/Screenshots/Mobile%20(Portrait).jpg)
-
-- **Landscape**
-![Main page](Other_Files/Screenshots/Mobile%20(landscape).jpg)
 
 
 ## How to Use
