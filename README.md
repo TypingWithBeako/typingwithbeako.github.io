@@ -197,9 +197,17 @@ The core video player logic, dynamic content switching, and state management wer
 
 -  **Smart Preloading:** Seamlessly transition to next videos without delay.
 
-  
+## Screenshots
 
-  
+### Main page
+
+![Screenshot 1](Other_Files/Screenshots/Main-page%201.png)
+
+![Screenshot 2](Other_Files/Screenshots/Main-page%202.png)
+
+### Theater Mode
+
+![Screenshot 3](Other_Files/Screenshots/Theater%20mode.png)
 
 ## How to Use
 
