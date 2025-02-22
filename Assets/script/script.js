@@ -2,11 +2,11 @@ var videoUrls = [
     "Openings_and_Endings/OP1 - Redo.mp4",
     "Openings_and_Endings/ED1 - STYX HELIX.mp4",
     "Openings_and_Endings/OP2 - Paradisus - Paradoxum.mp4",
-    "Openings_and_Endings/ED2 - Stay Alive.mp4",
+    "Openings_and_Endings/ED2 - Stay Alive.webm",
     "Openings_and_Endings/OP3 - Realize.mp4",
     "Openings_and_Endings/ED3 - Memento.mp4",
     "Openings_and_Endings/OP4 - Long shot.mp4",
-    "Openings_and_Endings/ED4 - Believe in you.mp4",
+    "Openings_and_Endings/ED4 - Believe in you.webm",
     "Openings_and_Endings/OP5 - Reweave.mp4",
     "Openings_and_Endings/ED5 - NOX LUX.mp4",
 ];
