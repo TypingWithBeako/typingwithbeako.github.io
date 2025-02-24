@@ -833,13 +833,19 @@ document.addEventListener("keydown", function(event) {
     }
     if (event.code === 'ArrowUp'){
         if (currentVolume + 0.1 > 1) // Check if the volume is already at 1
-            return
+        {
+            videoPlayer.volume = 1
+            return;
+        }
         videoPlayer.volume = currentVolume + 0.1
         currentVolume = videoPlayer.volume
     }
     if (event.code === 'ArrowDown'){
         if (currentVolume - 0.1 < 0) // Check if the volume is already at 0
-            return
+        {
+            videoPlayer.volume = 0
+            return;
+        }
         videoPlayer.volume = currentVolume - 0.1
         currentVolume = videoPlayer.volume
     }
@@ -1127,4 +1133,8 @@ document.addEventListener('keydown',function(event){
     if (event.code === "KeyB"){
         ChangeStyxHelix();
     }
+})
+// Dynamically change the volume (if the user used the volume slider)
+videoPlayer.addEventListener('volumechange',() =>{
+    currentVolume = videoPlayer.volume
 })
