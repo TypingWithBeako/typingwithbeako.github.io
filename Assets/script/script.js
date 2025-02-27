@@ -25,7 +25,6 @@ var newvideoUrls = [
 let isPosterSet = false; //Track if poster is set
 let currentIndex = 0; // For videoUrls
 let newcurrentIndex =0; // For newvideoUrls
-let isSwitching = false;
 let clickCount = 0;
 let preloadedVideos = [];
 let disablePreloading = false;
@@ -59,17 +58,15 @@ function playVideo(videoName) {
         videoPlayer.poster = "Other_Files/black.png";
         isPosterSet = true;
     }
-    // Clear the timeout for playNextVideo
+    // Clear the timeout for playNextVideo and enableLoopingListener
     clearTimeout(nextVideoTimeout);
     clearTimeout(videoLoopingTimeout); 
-    // When playVideo is executed, reset isSwitching.
-    isSwitching = false; 
     simulateClick();
 }
 const videoPlayer = document.getElementById('videoPlayer');
 videoPlayer.addEventListener('play',function(){
     clearTimeout(nextVideoTimeout);
-    isSwitching = false;
+    clearTimeout(videoLoopingTimeout);
     if (!isPosterSet) {
     videoPlayer.poster = "Other_Files/black.png";
     isPosterSet = true;
@@ -285,22 +282,18 @@ videoPlayer.addEventListener('play',function(){
 })
 // Automatically play next video after ending with a delay
 function playNextVideo() {
-    if (!isSwitching) {
-        isSwitching = true;
-        // Delay before switching to the next video
-        nextVideoTimeout = setTimeout(function() {
-            if (clickCount % 2 === 1) {
-                newcurrentIndex = (newcurrentIndex + 1) % newvideoUrls.length;
-                videoPlayer.src = newvideoUrls[newcurrentIndex];
-            } else {
-                currentIndex = (currentIndex + 1) % videoUrls.length;
-                videoPlayer.src = videoUrls[currentIndex];
-            }
-            videoPlayer.poster = "Other_Files/black.png"; // Clear the poster attribute
-            videoPlayer.play();
-            isSwitching = false;
-        }, delay);     
-    }
+    // Delay before switching to the next video
+    nextVideoTimeout = setTimeout(function() {
+        if (clickCount % 2 === 1) {
+            newcurrentIndex = (newcurrentIndex + 1) % newvideoUrls.length;
+            videoPlayer.src = newvideoUrls[newcurrentIndex];
+        } else {
+            currentIndex = (currentIndex + 1) % videoUrls.length;
+            videoPlayer.src = videoUrls[currentIndex];
+        }
+        videoPlayer.poster = "Other_Files/black.png"; // Clear the poster attribute
+        videoPlayer.play();
+    }, delay);     
 }
 
 // Add event listener to stop the timeout if playVideo is pressed while setTimeout is running
@@ -341,7 +334,7 @@ moveableimg.addEventListener('click', function(){
         videoPlayer.src= newvideoUrls[0];
         newcurrentIndex=0;
         clearTimeout(nextVideoTimeout);
-        isSwitching = false; 
+        clearTimeout(videoLoopingTimeout);
         textToChange.classList.add('fade-in');
         bodytext.classList.add('fade-in-bodytext');
         songname.classList.add('fade-in-songname');
@@ -367,7 +360,7 @@ moveableimg.addEventListener('click', function(){
         videoPlayer.src = videoUrls[0];
         currentIndex=0;
         clearTimeout(nextVideoTimeout); 
-        isSwitching = false; 
+        clearTimeout(videoLoopingTimeout);
         textToChange.classList.add('fade-in');
         bodytext.classList.add('fade-in-bodytext');
         songname.classList.add('fade-in-songname');
@@ -404,8 +397,8 @@ navbarContent.classList.remove('slide-in');
 newnavbarContent.addEventListener('animationend', () => {
 newnavbarContent.classList.remove('slide-in');
 });
-moveable_img.addEventListener('animationend', () => {
-moveable_img.classList.remove('fade-in');
+moveableimg.addEventListener('animationend', () => {
+moveableimg.classList.remove('fade-in');
 });
 S3.addEventListener('animationend', () => {
     S3.classList.remove('fade-in');
@@ -514,7 +507,6 @@ enableLoopingListener = function EnableLooping() {
     clearTimeout(nextVideoTimeout);
     videoLoopingTimeout = setTimeout(() =>{
         videoPlayer.play();
-        isSwitching = false;
     },delay)
 };
 const loopVideo = document.querySelector('#loop')
@@ -523,6 +515,9 @@ loopVideo.addEventListener('click',function() {
     loopclickCount++
     if (loopclickCount % 2 == 1){
         loopText.innerHTML = "Tắt lặp video";
+        if (videoPlayer.ended){
+            enableLoopingListener();
+        }
         videoPlayer.removeEventListener('ended',ResetArray);
         videoPlayer.addEventListener('ended', enableLoopingListener);
         const currentVideo = cleanVideoSrc(videoPlayer.src)
@@ -548,6 +543,10 @@ loopVideo.addEventListener('click',function() {
     }
     else {
         loopText.innerHTML = "Bật lặp video";
+        if (videoPlayer.ended){
+            clearTimeout(videoLoopingTimeout)
+            playNextVideo();
+        }
         videoPlayer.removeEventListener('ended', enableLoopingListener);
         videoPlayer.addEventListener('ended',ResetArray);
         const currentVideo = cleanVideoSrc(videoPlayer.src)
