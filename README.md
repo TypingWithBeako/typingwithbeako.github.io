@@ -1,398 +1,157 @@
 
-# Re:Zero Openings and Endings Video Player
+# 🎬 Trình phát video Mở đầu và Kết thúc của Re:Zero
+
+## 📋 Tổng quan 
+
+Một trình phát video bản web cho các Mở đầu, Kết thúc và Nhạc chèn của bộ anime Re:Zero. Logic video cốt lõi được tự làm bằng HTML, CSS và JavaScript thuần túy, được tăng cường bằng các công nghệ web hiện đại để mang lại trải nghiệm mượt mà và sống động.
+
+### ⚠️ Tuyên bố từ chối trách nhiệm
 
   
 
-  
+Dự án này sử dụng nội dung Re:Zero được cấp phép bởi Muse Asia:
 
-## Overview
+- Các Mở đầu
 
-  
+- Các Kết thúc (bao gồm cả Kết thúc mùa)
 
-A web-based video player for Re:Zero anime openings, endings, and insert songs. The core video logic is built from scratch using vanilla JavaScript, HTML, and CSS, enhanced with modern web technologies for a streamlined and immersive experience.
+- Các Nhạc chèn
 
-  
+Tất cả các quyền được bảo lưu bởi chủ sở hữu bản quyền tương ứng.
 
-  
 
-### Disclaimer
+Để có trải nghiệm Re:Zero toàn vẹn nhất, hãy truy cập [kênh YouTube chính thức của Muse Asia](https://www.youtube.com/c/MuseAsia).
 
-  
+Đây là một dự án giáo dục và không được dùng để kiếm tiền.
 
-This project uses Re:Zero content licensed by Muse Asia:
+### 🤔 Tại sao có dự án này?
 
-  
+Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát triển web đồng thời giải quyết nhu cầu cá nhân - để dễ dàng xem các Mở đầu, Kết thúc và Nhạc nền của Re:Zero. Dự án này đã giúp mình hiểu thêm về các API trên trình duyệt, quản lý state và tối ưu hóa hiệu suất.
 
-- Opening themes
+### ⏱️ Thời gian phát triển
 
-  
+20/09/2024 - 07/02/2025 (≈ 4,5 tháng)
 
-- Ending themes (including season endings)
+## 💻 Công nghệ cốt lõi
 
-  
-
-- Insert songs
-
-  
-
-  
-
-All rights reserved by their respective copyright holders.
-
-  
-
-For the complete Re:Zero experience, visit [Muse Asia's official YouTube channel](https://www.youtube.com/c/MuseAsia).
-
-  
-
-  
-
-This is an educational project and is not monetized.
-
-  
-
-  
-
-### Why This Project?
-
-  
-
-I created this project to learn web development fundamentals while solving a personal need - having a reliable way to watch Re:Zero openings, endings, and insert songs. This project helped me understand browser APIs, state management, and performance optimization.
-
-  
-
-  
-
-### Development Period
-
-  
-
-September 20, 2024 - February 7, 2025 (≈ 4.5 months)
-
-  
-  
-
-## Core Technology
-
-  
-
-The core video player logic, dynamic content switching, and state management were built from scratch using pure JavaScript, HTML, and CSS.
-
-  
-
-  
+Logic trình phát video cốt lõi, chuyển đổi nội dung động và quản lý trạng thái được tự làm bằng HTML, CSS và JavaScript thuần túy.
 
 > "Hãy cùng bắt đầu từ đây, từ con số một. Không,.. Từ số 0!" - Rem, Re:Zero
-  
 
-  
-
-### Tech Stack
-
-  
+### 🛠️ Các công nghệ được sử dụng
 
 - HTML
 
-  
-
 - CSS
 
-  
-
-- JavaScript (Vanilla)
-
-  
+- JavaScript (chính)
 
 - Tailwind CSS
-
   
-
 - Flowbite
-
-  
 
 - jQuery
 
-  
-
 - MicroModal
 
-  
+## ✨ Tính năng
 
-  
+-  🔄 **Chuyển đổi nội dung động:** Chuyển đổi liền mạch giữa các video Mở đầu, Kết thúc và Nhạc chèn.
 
-## Features
+-  🖼️ **Chế độ Hình trong hình:** Xem video trong khi đa nhiệm.
 
-  
+-  🎭 **Chế độ Nhà hát:** Đắm mình trong trải nghiệm xem như rạp chiếu phim.
 
-  
+-  ⌨️ **Phím tắt Bàn phím:** Điều khiển trình phát video bằng các phím tắt bàn phím tiện lợi.
 
-  
+-  🎵 **Tích hợp Media Session API:** Điều khiển phát lại từ các điều khiển phương tiện của trình duyệt hoặc thiết bị của bạn.
 
--  **Custom Video Player:** Enjoy a tailored video playback experience with custom controls.
+-  📱 **Thiết kế Responsive:** Tận hưởng trải nghiệm nhất quán trên nhiều kích thước màn hình và thiết bị khác nhau.
 
-  
+-  🔀 **Phát ngẫu nhiên:** Xáo trộn danh sách phát video để có trải nghiệm mới mẻ.
 
-  
+-  🔁 **Lặp video:** Bật phát lại liên tục các video yêu thích của bạn.
 
--  **Dynamic Content Switching:** Seamlessly switch between openings, endings, and insert songs.
+-  ⏱️ **Điều chỉnh độ trễ:** Tùy chỉnh độ trễ giữa các video để có trải nghiệm xem được cá nhân hóa.
 
-  
-
-  
-
--  **Picture-in-Picture Mode:** Watch videos while multitasking.
-
-  
-
-  
-
--  **Theater Mode:** Immerse yourself in a cinema-like viewing experience.
-
-  
-
-  
-
--  **Keyboard Shortcuts:** Control playback with convenient keyboard shortcuts.
-
-  
-
-  
-
--  **Media Session Integration:** Control playback from your browser or device's media controls.
-
-  
-
-  
-
--  **Responsive Design:** Enjoy a consistent experience across various screen sizes and devices.
-
-  
-
-  
-
--  **All-in-One Page:** All content is accessible on a single, scroll-free page for immediate access.
-
-  
-
-  
-
--  **Randomize:** Shuffle the video playlist for a fresh experience.
-
-  
-
-  
-
--  **Looping:** Enable continuous playback of your favorite songs.
-
-  
-
-  
-
--  **Adjustable Delay:** Customize the delay between videos for a personalized viewing experience.
-
-  
-
-  
-
--  **Smart Preloading:** Seamlessly transition to next videos without delay.
+-   ⚡ **Tải trước thông minh:** Chuyển tiếp liền mạch sang các video tiếp theo mà không cần phải đơi.
 
 
-## Screenshots
+## 📸 Ảnh chụp giao diện
 
 
-- **Main page**
+- **Trang chính**
 
 
 ![Main page](Other_Files/Screenshots/Main-page.png)
 
 
- - **Main page with tooltips**
+ - **Trang chính (với mô tả video)**
 
 
 ![Screenshot 1](Other_Files/Screenshots/Main-page%201.png)
 
 
-- **Main page with title and Media Session controls**
+- **Trang chính (với tiêu đề và các nút điều khiển từ Media Session API)**
 
 
 ![Screenshot 2](Other_Files/Screenshots/Main-page%202.png)
 
 
-- **Theater Mode**
+- **Chế độ Nhà hát**
 
 
 ![Screenshot 3](Other_Files/Screenshots/Theater%20mode.png)
 
 
-## How to Use
+## 🚀 Cách sử dụng
 
-- Visit the live demo at [https://typingwithbeako.github.io](https://typingwithbeako.github.io)
+- Truy cập bản demo trực tiếp tại [https://typingwithbeako.github.io](https://typingwithbeako.github.io)
 
+## ⌨️ Phím tắt bàn phím
 
+-  `Space`: Phát/Tạm dừng
 
-## Keyboard Shortcuts
+-  `←`/`→`: Video Trước/Tiếp theo
 
-  
+-  `↑`/`↓`: Tăng/Giảm âm lượng
 
-  
+-  `0-9`: Phát Video cụ thể (số 1 tương ứng với video đầu tiên) 
 
-  
+-  `Tab`: Chuyển đổi giữa Mở đầu/Kết thúc và Nhạc chèn
 
--  `Space`: Play/Pause
+-  `Q`: Phát ngẫu nhiên
 
-  
+-  `W`: Bật/Tắt Lặp video
 
-  
+-  `E`: Thay đổi Độ trễ
 
--  `ArrowRight`: Next Video
+-  `R`: Bật/Tắt chế độ Hình trong hình
 
-  
+-  `F`: Bật/Tắt chế độ Toàn màn hình
 
-  
+-  `T`: Bật/Tắt chế độ Nhà hát
 
--  `ArrowLeft`: Previous Video
+-  `D`: Phát "Theater D"
 
-  
+-  `O`: Phát "Kết thúc Mùa 1"
 
-  
+-  `P`: Phát "Kết thúc Mùa 2"
 
--  `ArrowUp`: Increase Volume
+-  `S`: Phát "STYX HELIX (bản chậm)"
 
-  
+-  `Escape`: Thoát chế độ Nhà hát
 
-  
+-  `B`: Chuyển đổi giữa bản cắt và bản đầy đủ của "STYX HELIX"
 
--  `ArrowDown`: Decrease Volume
+## 👥 Đóng góp
 
-  
+Đóng góp được hoan nghênh! Vui lòng gửi Pull Request hoặc mở vấn đề để đề xuất cải tiến hoặc báo cáo lỗi.
 
-  
-
--  `1-9`: Play Specific Video (based on order)
-
-  
-
-  
-
--  `Tab`: Switch between OPs/EDs and Insert Songs
-
-  
-
-  
-
--  `Q`: Shuffle Videos
-
-  
-
-  
-
--  `W`: Enable/Disable Looping
-
-  
-
-  
-
--  `E`: Change Delay
-
-  
-
-  
-
--  `R`: Toggle Picture-in-Picture
-
-  
-
-  
-
--  `F`: Toggle Fullscreen
-
-  
-
-  
-
--  `T`: Toggle Theater Mode
-
-  
-
-  
-
--  `D`: Play "Theater D"
-
-  
-
-  
-
--  `O`: Play "Season 1 Ending"
-
-  
-
-  
-
--  `P`: Play "Season 2 Ending"
-
-  
-
-  
-
--  `S`: Play "STYX HELIX (slow ver.)"
-
-  
-
-  
-
--  `Escape`: Exit Theater Mode
-
-  
-
-  
-
--  `B`: Switch between cut and full version of "ED1 - STYX HELIX"
-
-  
-
-  
-
-  
-
-## Contributing
-
-  
-
-  
-
-  
-
-Contributions are welcome! Feel free to submit pull requests or open issues to suggest improvements or report bugs.
-
-  
-
-  
-
-  
-
-## License
-
-  
-
-  
-
-  
+## 📄 Giấy phép
 
 MIT License
 
-  
-
-  
-
-  
-
-## Author
-
-  
-
-  
-
-  
+## 👨‍💻 Tác giả
 
 Nguyễn Thái Tuấn

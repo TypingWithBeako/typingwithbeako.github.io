@@ -76,7 +76,7 @@ videoPlayer.addEventListener('play',function(){
     let musicArtwork = ''
     const songName = videoPlayer.src.split('/').pop(); // Get the last part of the path after splitting by '/'
     if (songName == "S1%20Ending.mp4"){
-        name = 'Season 1 Ending'
+        name = 'Kết thúc Mùa 1'
         artist = 'Myth & Roid'
         musicArtwork = {
             src: "Icons/artworks/STYX_HELIX_Cover.webp",
@@ -85,7 +85,7 @@ videoPlayer.addEventListener('play',function(){
           }
     }
     else if (songName == "S2%20Ending.mp4"){
-        name = 'Season 2 Ending'
+        name = 'Kết thúc Mùa 2'
         artist = 'Mayu Maeshima'
         musicArtwork = {
             src: "Icons/artworks/Long_Shot_Cover.webp",
@@ -103,7 +103,7 @@ videoPlayer.addEventListener('play',function(){
           }
     }
     else if (songName == 'ED1%20-%20STYX%20HELIX%20slow.mp4') {
-        name = 'STYX HELIX (slow ver.)'
+        name = 'STYX HELIX (bản chậm)'
         artist = 'Mayu Maeshima'
         musicArtwork = {
             src: "Icons/artworks/STYX_HELIX_Cover.webp",
