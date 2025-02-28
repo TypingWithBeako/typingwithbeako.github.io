@@ -3,24 +3,24 @@
 
 ## 📋 Tổng quan 
 
-Một trình phát video bản web cho các Mở đầu, Kết thúc và Nhạc chèn của bộ anime Re:Zero. Logic video cốt lõi được tự làm bằng HTML, CSS và JavaScript thuần túy, được tăng cường bằng các công nghệ web hiện đại để mang lại trải nghiệm mượt mà và sống động.
+Một trình phát video bản web cho các Mở đầu, Kết thúc và Nhạc chủ đề của bộ anime Re:Zero. Logic video cốt lõi được tự làm bằng HTML, CSS và JavaScript thuần túy, được tăng cường bằng các công nghệ web hiện đại để mang lại trải nghiệm mượt mà và sống động.
 
 ### ⚠️ Tuyên bố từ chối trách nhiệm
 
   
 
-Dự án này sử dụng nội dung Re:Zero được cấp phép bởi Muse Asia:
+Dự án này sử dụng nội dung Re:Zero được cấp phép bởi Muse Việt Nam:
 
 - Các Mở đầu
 
 - Các Kết thúc (bao gồm cả Kết thúc mùa)
 
-- Các Nhạc chèn
+- Các Nhạc chủ đề
 
 Tất cả các quyền được bảo lưu bởi chủ sở hữu bản quyền tương ứng.
 
 
-Để có trải nghiệm Re:Zero toàn vẹn nhất, hãy truy cập [kênh YouTube chính thức của Muse Asia](https://www.youtube.com/c/MuseAsia).
+Để có trải nghiệm Re:Zero toàn vẹn nhất, hãy truy cập [kênh YouTube chính thức của Muse Việt Nam](https://www.youtube.com/c/MuseVi%E1%BB%87tNam).
 
 Đây là một dự án giáo dục và không được dùng để kiếm tiền.
 
@@ -56,7 +56,7 @@ Logic trình phát video cốt lõi, chuyển đổi nội dung động và qu�
 
 ## ✨ Tính năng
 
--  🔄 **Chuyển đổi nội dung động:** Chuyển đổi liền mạch giữa các video Mở đầu, Kết thúc và Nhạc chèn.
+-  🔄 **Chuyển đổi nội dung động:** Chuyển đổi liền mạch giữa các video Mở đầu, Kết thúc và Nhạc chủ đề.
 
 -  🖼️ **Chế độ Hình trong hình:** Xem video trong khi đa nhiệm.
 
@@ -118,7 +118,7 @@ Logic trình phát video cốt lõi, chuyển đổi nội dung động và qu�
 
 -  `0-9`: Phát Video cụ thể (số 1 tương ứng với video đầu tiên) 
 
--  `Tab`: Chuyển đổi giữa Mở đầu/Kết thúc và Nhạc chèn
+-  `Tab`: Chuyển đổi giữa Mở đầu/Kết thúc và Nhạc chủ đề
 
 -  `Q`: Phát ngẫu nhiên
 
