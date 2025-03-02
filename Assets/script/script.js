@@ -616,6 +616,8 @@ document.getElementById("Delay").addEventListener("click", function() {
     // Prompt user for new delay
     let newDelay = parseInt(prompt("Nhập độ trễ mới bằng mili giây: (Độ trễ hiện tại: " + delay + "ms)"));
     // Validate user input
+    if (TheaterModeFlag)
+        setTimeout(Fullscreen,0)
     if (isNaN(newDelay) || newDelay < 0) {
         alert("Độ trễ không đúng. Vui lòng nhập lại độ trễ.");
     return;
@@ -627,8 +629,7 @@ document.getElementById("Delay").addEventListener("click", function() {
     // Update delay and optionally display confirmation
     updateDelay(newDelay);
     console.log("Độ trễ được cập nhật thành: ", newDelay, "mili giây");
-    if (TheaterModeFlag)
-        setTimeout(Fullscreen,0)
+    
 });
 
 
