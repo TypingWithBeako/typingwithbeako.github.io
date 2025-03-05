@@ -7,8 +7,6 @@ Một trình phát video bản web cho các Mở đầu, Kết thúc và Nhạc 
 
 ### ⚠️ Tuyên bố từ chối trách nhiệm
 
-  
-
 Dự án này sử dụng nội dung Re:Zero được cấp phép bởi Muse Việt Nam:
 
 - Các Mở đầu
@@ -26,7 +24,7 @@ Tất cả các quyền được bảo lưu bởi chủ sở hữu bản quyền
 
 ### 🤔 Tại sao có dự án này?
 
-Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát triển web đồng thời giải quyết nhu cầu cá nhân - để dễ dàng xem các Mở đầu, Kết thúc và Nhạc nền của Re:Zero. Dự án này đã giúp mình hiểu thêm về các API trên trình duyệt, quản lý state và tối ưu hóa hiệu suất.
+Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát triển web đồng thời giải quyết nhu cầu cá nhân - để dễ dàng xem các Mở đầu, Kết thúc và Nhạc chủ đề của Re:Zero. Dự án này đã giúp mình hiểu thêm về các API trên trình duyệt, quản lý state và tối ưu hóa hiệu suất.
 
 ### ⏱️ Thời gian phát triển
 
@@ -74,7 +72,7 @@ Logic trình phát video cốt lõi, chuyển đổi nội dung động và qu�
 
 -  ⏱️ **Điều chỉnh độ trễ:** Tùy chỉnh độ trễ giữa các video để có trải nghiệm xem được cá nhân hóa.
 
--   ⚡ **Tải trước thông minh:** Chuyển tiếp liền mạch sang các video tiếp theo mà không cần phải đơi.
+-   ⚡ **Tải trước thông minh:** Chuyển tiếp liền mạch sang video tiếp theo mà không cần phải buffer video.
 
 
 ## 📸 Ảnh chụp giao diện
