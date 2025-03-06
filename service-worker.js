@@ -57,40 +57,32 @@ self.addEventListener('fetch', event => {
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
   
   if (isMediaFile) {
-    event.respondWith(handleMediaRequest(event.request));
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        // Return from cache if present
+        if (response) {
+          return response;
+        }
+        
+        // Otherwise fetch from network and cache for future
+        return fetch(event.request).then(networkResponse => {
+          const clonedResponse = networkResponse.clone();
+          
+          // Cache media files for future use
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, clonedResponse);
+          });
+          
+          return networkResponse;
+        });
+      })
+    );
   } else {
-    event.respondWith(handleNonMediaRequest(event.request));
+    // For non-media files - cache first, network fallback
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        return response || fetch(event.request);
+      })
+    );
   }
 });
-
-// Media request handler
-async function handleMediaRequest(request) {
-  const cache = await caches.open(CACHE_NAME);
-  
-  // Try to get from cache first
-  const cachedResponse = await cache.match(request);
-  if (cachedResponse) {
-    return cachedResponse;
-  }
-  
-  try {
-    // Not in cache, get from network with no-cors
-    const response = await fetch(request.url, { mode: 'no-cors' });
-    
-    // Cache the response
-    await cache.put(request, response.clone());
-    return response;
-  } catch (error) {
-    console.error('Video fetch failed:', error);
-    // You could return a fallback here if needed
-  }
-}
-
-// Non-media request handler
-async function handleNonMediaRequest(request) {
-  const cachedResponse = await caches.match(request);
-  if (cachedResponse) {
-    return cachedResponse;
-  }
-  return fetch(request);
-}
