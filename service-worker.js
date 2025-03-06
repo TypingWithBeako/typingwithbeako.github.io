@@ -56,7 +56,7 @@ self.addEventListener('fetch', event => {
   if (isMediaFile) {
     // Handle range requests for video files
     if (event.request.headers.get('range')) {
-      event.respondWith(fetch(request));  // Pass through range requests
+      event.respondWith(fetch(event.request));  // Pass through range requests
     } else {
       event.respondWith(handleMediaRequest(event.request));
     }
