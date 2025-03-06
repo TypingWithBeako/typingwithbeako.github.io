@@ -54,7 +54,12 @@ self.addEventListener('fetch', event => {
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
 
   if (isMediaFile) {
-    event.respondWith(handleMediaRequest(event.request));
+    // Handle range requests for video files
+    if (event.request.headers.get('range')) {
+      event.respondWith(fetch(request));  // Pass through range requests
+    } else {
+      event.respondWith(handleMediaRequest(event.request));
+    }
   } else {
     event.respondWith(handleNonMediaRequest(event.request));
   }
@@ -65,24 +70,21 @@ async function handleMediaRequest(request) {
   const cachedResponse = await cache.match(request);
   
   if (cachedResponse) {
-    console.log('Serving from cache:', request.url);
+    console.log('[SW] Cache hit:', request.url);
     return cachedResponse;
   }
   
   try {
-    // Accept and cache 206 responses
-    const response = await fetch(request);
-    console.log('Video response status:', response.status);
+    // Use no-cors for initial video requests
+    const response = await fetch(request.url, { mode: 'no-cors' });
+    console.log('[SW] Caching video with no-cors');
     
-    if (response.status === 206 || response.ok) {
-      console.log('Caching partial content:', request.url);
-      const clonedResponse = response.clone();
-      await cache.put(request, clonedResponse);
-    }
+    const responseToCache = response.clone();
+    await cache.put(request, responseToCache);
     
     return response;
   } catch (error) {
-    console.error('Video fetch failed:', error);
+    console.error('[SW] Video fetch failed:', error);
     throw error;
   }
 }
