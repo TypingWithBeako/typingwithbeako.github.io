@@ -28,7 +28,7 @@ Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát
 
 ### ⏱️ Thời gian phát triển
 
-20/09/2024 - 07/02/2025 (≈ 4,5 tháng)
+20/09/2024 - 06/03/2025 (≈ 5,5 tháng)
 
 ## 💻 Công nghệ cốt lõi
 
@@ -73,6 +73,10 @@ Logic trình phát video cốt lõi, chuyển đổi nội dung động và qu�
 -  ⏱️ **Điều chỉnh độ trễ:** Tùy chỉnh độ trễ giữa các video để có trải nghiệm xem được cá nhân hóa.
 
 -   ⚡ **Tải trước thông minh:** Chuyển tiếp liền mạch sang video tiếp theo mà không cần phải buffer video.
+
+-  📲 **Ứng dụng PWA:** Cài đặt như ứng dụng trên thiết bị và truy cập ngoại tuyến mà không cần kết nối Internet.
+
+-  🔊 **Lưu trữ âm lượng:** Ghi nhớ cài đặt âm lượng ưa thích của bạn giữa các phiên sử dụng.
 
 
 ## 📸 Ảnh chụp giao diện
