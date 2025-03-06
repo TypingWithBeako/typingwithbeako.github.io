@@ -49,45 +49,43 @@ self.addEventListener('activate', event => {
   );
 });
 
+// Fetch event - serve from cache if available
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
+  
+  // For media files - cache only when accessed
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
-
+  
   if (isMediaFile) {
-    // Handle range requests for video files
-    if (event.request.headers.get('range')) {
-      event.respondWith(fetch(event.request));  // Pass through range requests
-    } else {
-      event.respondWith(handleMediaRequest(event.request));
-    }
+    event.respondWith(handleMediaRequest(event.request));
   } else {
     event.respondWith(handleNonMediaRequest(event.request));
   }
 });
 
+// Media request handler
 async function handleMediaRequest(request) {
   const cache = await caches.open(CACHE_NAME);
-  const cachedResponse = await cache.match(request);
   
+  // Try to get from cache first
+  const cachedResponse = await cache.match(request);
   if (cachedResponse) {
-    console.log('[SW] Cache hit:', request.url);
     return cachedResponse;
   }
   
   try {
-    // Use no-cors for initial video requests
+    // Not in cache, get from network with no-cors
     const response = await fetch(request.url, { mode: 'no-cors' });
-    console.log('[SW] Caching video with no-cors');
     
-    const responseToCache = response.clone();
-    await cache.put(request, responseToCache);
-    
+    // Cache the response
+    await cache.put(request, response.clone());
     return response;
   } catch (error) {
-    console.error('[SW] Video fetch failed:', error);
-    throw error;
+    console.error('Video fetch failed:', error);
+    // You could return a fallback here if needed
   }
 }
+
 // Non-media request handler
 async function handleNonMediaRequest(request) {
   const cachedResponse = await caches.match(request);
