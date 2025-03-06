@@ -86,3 +86,11 @@ async function handleMediaRequest(request) {
     throw error;
   }
 }
+// Non-media request handler
+async function handleNonMediaRequest(request) {
+  const cachedResponse = await caches.match(request);
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+  return fetch(request);
+}
