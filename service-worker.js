@@ -67,38 +67,20 @@ self.addEventListener('fetch', event => {
 
 // Media request handler
 async function handleRangeRequest(request) {
-  const pos = Number(/^bytes\=(\d+)\-$/g.exec(request.headers.get('range'))[1]);
-  console.log('Range request for', request.url, ', starting position:', pos);
-
   try {
-    const cache = await caches.open(CACHE_NAME);
-    let response = await cache.match(request.url);
-    
-    let ab;
-    if (!response) {
-      // Fetch from network if not in cache
-      response = await fetch(request);
-      ab = await response.arrayBuffer();
-      // Cache the full response
-      await cache.put(request.url, new Response(ab));
-    } else {
-      ab = await response.arrayBuffer();
-    }
+    // Forward range request directly to server
+    const response = await fetch(request, {
+      headers: request.headers
+    });
 
-    return new Response(
-      ab.slice(pos),
-      {
-        status: 206,
-        statusText: 'Partial Content',
-        headers: [
-          ['Content-Range', 'bytes ' + pos + '-' + 
-            (ab.byteLength - 1) + '/' + ab.byteLength]
-        ]
-      }
-    );
+    // Return response without caching range requests
+    return response;
   } catch (error) {
     console.error('Range request failed:', error);
-    return fetch(request);
+    return new Response('Failed to load video', {
+      status: 500,
+      statusText: 'Internal Server Error'
+    });
   }
 }
 
@@ -108,7 +90,7 @@ async function handleMediaRequest(request) {
   if (cachedResponse) return cachedResponse;
   
   const response = await fetch(request);
-  if (response && response.status === 200) {
+  if (response) {
     await cache.put(request, response.clone());
   }
   return response;
