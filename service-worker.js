@@ -49,41 +49,69 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event - serve from cache if available
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
-  
-  // For media files - cache only when accessed
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
-  
+
   if (isMediaFile) {
-    event.respondWith(handleMediaRequest(event.request));
+    // Handle range requests for video files
+    if (event.request.headers.get('range')) {
+      event.respondWith(handleRangeRequest(event.request));
+    } else {
+      event.respondWith(handleMediaRequest(event.request));
+    }
   } else {
     event.respondWith(handleNonMediaRequest(event.request));
   }
 });
 
 // Media request handler
+async function handleRangeRequest(request) {
+  const pos = Number(/^bytes\=(\d+)\-$/g.exec(request.headers.get('range'))[1]);
+  console.log('Range request for', request.url, ', starting position:', pos);
+
+  try {
+    const cache = await caches.open(CACHE_NAME);
+    let response = await cache.match(request.url);
+    
+    let ab;
+    if (!response) {
+      // Fetch from network if not in cache
+      response = await fetch(request);
+      ab = await response.arrayBuffer();
+      // Cache the full response
+      await cache.put(request.url, new Response(ab));
+    } else {
+      ab = await response.arrayBuffer();
+    }
+
+    return new Response(
+      ab.slice(pos),
+      {
+        status: 206,
+        statusText: 'Partial Content',
+        headers: [
+          ['Content-Range', 'bytes ' + pos + '-' + 
+            (ab.byteLength - 1) + '/' + ab.byteLength]
+        ]
+      }
+    );
+  } catch (error) {
+    console.error('Range request failed:', error);
+    return fetch(request);
+  }
+}
+
 async function handleMediaRequest(request) {
   const cache = await caches.open(CACHE_NAME);
-  
-  // Try to get from cache first
   const cachedResponse = await cache.match(request);
-  if (cachedResponse) {
-    return cachedResponse;
-  }
+  if (cachedResponse) return cachedResponse;
   
-  try {
-    // Not in cache, get from network with no-cors
-    const response = await fetch(request.url, { mode: 'no-cors' });
-    
-    // Cache the response
+  const response = await fetch(request);
+  if (response && response.status === 200) {
     await cache.put(request, response.clone());
-    return response;
-  } catch (error) {
-    console.error('Video fetch failed:', error);
-    // You could return a fallback here if needed
   }
+  return response;
 }
 
 // Non-media request handler
