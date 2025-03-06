@@ -54,53 +54,35 @@ self.addEventListener('fetch', event => {
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
 
   if (isMediaFile) {
-    // Handle range requests for video files
-    if (event.request.headers.get('range')) {
-      event.respondWith(handleRangeRequest(event.request));
-    } else {
-      event.respondWith(handleMediaRequest(event.request));
-    }
+    event.respondWith(handleMediaRequest(event.request));
   } else {
     event.respondWith(handleNonMediaRequest(event.request));
   }
 });
 
-// Media request handler
-async function handleRangeRequest(request) {
-  try {
-    // Forward range request directly to server
-    const response = await fetch(request, {
-      headers: request.headers
-    });
-
-    // Return response without caching range requests
-    return response;
-  } catch (error) {
-    console.error('Range request failed:', error);
-    return new Response('Failed to load video', {
-      status: 500,
-      statusText: 'Internal Server Error'
-    });
-  }
-}
-
 async function handleMediaRequest(request) {
   const cache = await caches.open(CACHE_NAME);
   const cachedResponse = await cache.match(request);
-  if (cachedResponse) return cachedResponse;
   
-  const response = await fetch(request);
-  if (response) {
-    await cache.put(request, response.clone());
-  }
-  return response;
-}
-
-// Non-media request handler
-async function handleNonMediaRequest(request) {
-  const cachedResponse = await caches.match(request);
   if (cachedResponse) {
+    console.log('Serving from cache:', request.url);
     return cachedResponse;
   }
-  return fetch(request);
+  
+  try {
+    // Accept and cache 206 responses
+    const response = await fetch(request);
+    console.log('Video response status:', response.status);
+    
+    if (response.status === 206 || response.ok) {
+      console.log('Caching partial content:', request.url);
+      const clonedResponse = response.clone();
+      await cache.put(request, clonedResponse);
+    }
+    
+    return response;
+  } catch (error) {
+    console.error('Video fetch failed:', error);
+    throw error;
+  }
 }
