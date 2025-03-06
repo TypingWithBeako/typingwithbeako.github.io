@@ -1,0 +1,21 @@
+{
+    "name": "Re:Zero - Âm nhạc từ thế giới khác",
+    "short_name": "Trình phát nhạc Re:Zero",
+    "description": "Trình phát video Mở đầu, Kết thúc và Nhạc chủ đề của Re:Zero",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#4a4a4a",
+    "icons": [
+      {
+        "src": "Icons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "Icons/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

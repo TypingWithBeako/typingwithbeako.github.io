@@ -893,38 +893,7 @@ backButton.addEventListener('click',function(){
         nextButton.disabled = false; // Disable the clickable element
         }, 2501);
 })
-/*
-window.addEventListener('load', function() {
-    setTimeout(function(){ 
-        Swal.fire({
-            html: '<b>Happy Halloween!</b> 🎃',
-            imageUrl: "Other_Files/Halloween_poster.jpg",
-            imageHeight: "80vh",
-            imageWidth: "auto",
-            showCloseButton: true,
-            showConfirmButton: false,
-            background: "#716add",
-            color: "#eb6123",
-            backdrop: `
-                rgba(0,0,123,0.4)
-            `,
-            showClass: {
-                popup: `
-                    animate__animated
-                    animate__fadeIn
-                    animate__faster
-                `
-            },
-            hideClass: {
-                popup: `
-                    animate__animated
-                    animate__fadeOut
-                    animate__faster
-                `
-            },
-    })},2000)
-});
-*/
+
 function simulateClick() {
     // Get the element at the bottom right corner of the screen
     const elementAtPoint = document.elementFromPoint(window.innerWidth - 10, window.innerHeight - 100);
@@ -1138,3 +1107,32 @@ document.addEventListener('keydown',function(event){
 videoPlayer.addEventListener('volumechange',() =>{
     currentVolume = videoPlayer.volume
 })
+
+// Get current volume from video player before exiting site
+window.addEventListener('beforeunload', () => {
+    currentVolume = videoPlayer.volume;
+    // Save to local storage
+    localStorage.setItem('volume', currentVolume);
+});
+// Load volume when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if we have a saved volume
+    const savedVolume = localStorage.getItem('volume');
+    // Apply saved volume if it exists
+    if (savedVolume !== null) {
+        videoPlayer.volume = parseFloat(savedVolume);
+        console.log("Restored user volume to: ", savedVolume);
+    }
+});
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        })
+        .catch(error => {
+          console.log('ServiceWorker registration failed: ', error);
+        });
+    });
+}
