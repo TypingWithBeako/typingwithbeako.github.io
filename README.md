@@ -74,7 +74,7 @@ Logic trình phát video cốt lõi, chuyển đổi nội dung động và qu�
 
 -   ⚡ **Tải trước thông minh:** Chuyển tiếp liền mạch sang video tiếp theo mà không cần phải buffer video.
 
--  📲 **Ứng dụng PWA:** Cài đặt như ứng dụng trên thiết bị và truy cập ngoại tuyến mà không cần kết nối Internet.
+-  📲 **Ứng dụng PWA:** Cài đặt như ứng dụng trên thiết bị và truy cập nhanh hơn vào các lần tiếp theo.
 
 -  🔊 **Lưu trữ âm lượng:** Ghi nhớ cài đặt âm lượng ưa thích của bạn giữa các phiên sử dụng.
 
