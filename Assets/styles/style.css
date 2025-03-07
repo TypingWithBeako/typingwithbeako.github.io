@@ -84,9 +84,7 @@ button:disabled {
 #nextButton,#backButton {
     position:absolute;
     margin: 0;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    top: 20% !important;
     padding-left:0;
     background-color: transparent;
     border:none;
