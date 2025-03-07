@@ -14,6 +14,12 @@ const INITIAL_ASSETS = [
   '/Assets/styles/tailwind.min.css',
   '/Font/fontawesome/css/all.min.css',
   '/Assets/styles/micromodal.min.css',
+  '/Other_Files/bg-tv.webp',
+  '/Other_Files/next.png',
+  '/Other_Files/previous.png',
+  '/Other_Files/Re_ZERO icon.png',
+  '/Other_Files/subaru cheering.webp',
+  '/Other_Files/black.png'
   // Add other critical assets
 ];
 
@@ -49,40 +55,37 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event - serve from cache if available
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
-  
-  // For media files - cache only when accessed
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
-  
+
   if (isMediaFile) {
+    console.log('[SW] Video request, passing through to server:', url.pathname);
+    return;  // Let the browser handle it normally
+  } else {
+    // For non-video requests, use cache-first strategy
     event.respondWith(
-      caches.match(event.request).then(response => {
-        // Return from cache if present
-        if (response) {
-          return response;
+      caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) {
+          return cachedResponse;
         }
         
-        // Otherwise fetch from network and cache for future
-        return fetch(event.request).then(networkResponse => {
-          const clonedResponse = networkResponse.clone();
+        // Not in cache, get from network
+        return fetch(event.request).then(response => {
+          // Don't cache non-successful responses
+          if (!response || response.status !== 200) {
+            return response;
+          }
           
-          // Cache media files for future use
+          // Cache the successful response
+          const responseToCache = response.clone();
           caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, clonedResponse);
+            cache.put(event.request, responseToCache);
           });
           
-          return networkResponse;
+          return response;
         });
       })
     );
-  } else {
-    // For non-media files - cache first, network fallback
-    event.respondWith(
-      caches.match(event.request).then(response => {
-        return response || fetch(event.request);
-      })
-    );
   }
-});
+})
