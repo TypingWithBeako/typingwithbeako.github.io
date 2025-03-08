@@ -81,7 +81,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/STYX_HELIX_Cover.webp",
             sizes: "1008x1000",
-            type: "image/png",
+            type: "image/webp",
           }
     }
     else if (songName == "S2%20Ending.mp4"){
@@ -90,7 +90,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Long_Shot_Cover.webp",
             sizes: "997x992",
-            type: "image/png",
+            type: "image/webp",
           }
     }
     else if (songName == "Theater%20D.mp4"){
@@ -99,7 +99,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Theater_D_Cover.jpg",
             sizes: "1080x1080",
-            type: "image/png",
+            type: "image/jpeg",
           }
     }
     else if (songName == 'ED1%20-%20STYX%20HELIX%20slow.mp4') {
@@ -108,7 +108,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/STYX_HELIX_Cover.webp",
             sizes: "997x992",
-            type: "image/png",
+            type: "image/webp",
           }
     }
     else if (clickCount %2 == 1){
@@ -127,25 +127,25 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/STYX_HELIX_Cover.webp",
                 sizes: "1008x1000",
-                type: "image/png",
+                type: "image/webp",
               }
         else if (name == 'Paradisus - Paradoxum')
             musicArtwork = {
                 src: "Icons/artworks/Paradisus-Paradoxum_Cover.webp",
                 sizes: "1000x993",
-                type: "image/png",
+                type: "image/webp",
               }
         else if (name == 'NOX LUX')
             musicArtwork = {
                 src: "Icons/artworks/NOX_LOX_Cover.webp",
                 sizes: "1080x1080",
-                type: "image/png",
+                type: "image/webp",
               }
         else if (name == 'STRAIGHT BET')
             musicArtwork = {
                 src: "Icons/artworks/STRAIGHT_BET_Cover.jpg",
                 sizes: "721x720",
-                type: "image/png",
+                type: "image/jpeg",
               }
         }
     else if (name == 'STYX HELIX nocut') {
@@ -154,7 +154,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/STYX_HELIX_Cover.webp",
             sizes: "997x992",
-            type: "image/png",
+            type: "image/webp",
           }
     }
     else if (name == 'Long shot'){
@@ -162,7 +162,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Long_Shot_Cover.webp",
             sizes: "1400x1400",
-            type: "image/png",
+            type: "image/webp",
           }
     }
     else if (name == 'Redo' || name == 'Realize' || name == 'Reweave'){
@@ -171,19 +171,19 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Redo_Cover.webp",
                 sizes: "997x992",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Realize')
             musicArtwork = {
                 src: "Icons/artworks/Realize_cover.webp",
                 sizes: "500x500",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Reweave')
             musicArtwork = {
                 src: "Icons/artworks/Reweave_Cover.webp",
                 sizes: "1600x1600",
-                type: "image/png",
+                type: "image/webp",
             }
         }
     else if (name == 'Stay Alive' || name == 'Door' || name == 'I Trust You' || name == 'Bouya no Yume yo'){
@@ -192,25 +192,25 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Stay_Alive_Cover.webp",
                 sizes: "1280x1281",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Door')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'I Trust You')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Bouya no Yume yo')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/png",
+                type: "image/webp",
             }
     }
     else if (name == 'Memento' || name == 'Believe in you' || name == 'Yuki no hate ni Kimi no na wo' || name == 'White White Snow'){
@@ -219,25 +219,25 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Memento_cover.webp",
                 sizes: "500x500",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Believe in you')
             musicArtwork = {
                 src: "Icons/artworks/Believe_in_you_cover.webp",
                 sizes: "500x500",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Yuki no hate ni Kimi no na wo')
             musicArtwork = {
                 src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
                 sizes: "640x640",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'White White Snow')
             musicArtwork = {
                 src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
                 sizes: "640x640",
-                type: "image/png",
+                type: "image/webp",
             }
     }
     else if (name == 'Memories'){
@@ -245,7 +245,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
             sizes: "640x640",
-            type: "image/png",
+            type: "image/webp",
         }
     }
     else if (name == 'Wishing'){
@@ -253,7 +253,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Character_song_album.webp",
             sizes: "1280x1280",
-            type: "image/png",
+            type: "image/webp",
         }
     }
     else if (name == 'What you don\'t know'){
@@ -261,7 +261,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Character_song_album.webp",
             sizes: "1280x1280",
-            type: "image/png",
+            type: "image/webp",
         }
     }
     
@@ -1096,6 +1096,8 @@ function ChangeStyxHelix(){
             }
             alert("Reverted changes to ED1 - STYX HELIX")
         }
+    if (TheaterModeFlag)
+        setTimeout(Fullscreen,0)
 }
 
 document.addEventListener('keydown',function(event){
