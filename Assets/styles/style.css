@@ -323,7 +323,7 @@ to {
         display: none !important; 
     }
     #KeyboardControls {
-        display:none;
+        display:none !important;
     }
     body {
         background-image: url(../../Other_Files/bg-tv.webp);
@@ -332,7 +332,7 @@ to {
         display:block !important;
     }
     .subaru {
-        display: none;
+        display: none !important;
         height: 10vh;
     }
     h3 {
