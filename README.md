@@ -56,13 +56,7 @@ Mặc dù dự án này vượt trội hơn nhiều giải pháp bằng framewor
 
 20/09/2024 - 06/03/2025 (≈ 5,5 tháng)
 
-## 💻 Công nghệ cốt lõi
-
-Logic trình phát video cốt lõi, chuyển đổi nội dung động và quản lý trạng thái được tự làm bằng HTML, CSS và JavaScript thuần túy.
-
-> "Hãy cùng bắt đầu từ đây, từ con số một. Không,.. Từ số 0!" - Rem, Re:Zero
-
-### 🛠️ Các công nghệ được sử dụng
+#### 🧱 Công nghệ cốt lõi
 
 - HTML
 
@@ -70,13 +64,30 @@ Logic trình phát video cốt lõi, chuyển đổi nội dung động và qu�
 
 - JavaScript (chính)
 
-- Tailwind CSS
+#### 🔌 Các thư viện hỗ trợ
+
+- Tailwind CSS 
 
 - Flowbite
 
 - jQuery
 
 - MicroModal
+
+### 💻 Yêu cầu phần cứng tối thiểu
+
+Dự án này được phát triển trên một laptop không ổn định:
+
+- CPU: Bất kỳ (Dự án được phát triển trên laptop hay tắt nguồn)
+
+- RAM: Đủ để mở trình duyệt
+
+- Ổ cứng: Đủ để lưu code
+
+- Điện: Không cần liên tục (Dự án vẫn hoàn thành dù laptop hay tắt)
+
+> ⚡ Lưu ý: Nếu laptop của bạn có thể mở được trình duyệt web, dự án này sẽ chạy tốt hơn YouTube trên nó.
+
 
 ## ✨ Tính năng
 
