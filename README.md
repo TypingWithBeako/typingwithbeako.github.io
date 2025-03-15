@@ -30,6 +30,8 @@ Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát
 
 Dự án này được sinh ra bởi vì Re:Zero đã cứu cuộc đời của mình. Giống như Subaru, mình đã bắt đầu từ con số 0, với không một kinh nghiệm lập trình nào, dùng chỉ những công nghệ cơ bản của lập trình web. Qua hơn 416 commits xuyên suốt 5.5 tháng, dự án này mang đậm lời nhắn của Re:Zero: Bắt đầu từ con số 0 và đạt được điều không thể qua ý chí kiên cường.
 
+<br>
+
 ### 🧱 Cách tiếp cận thô sơ nhất
 
 > **"Hãy cùng bắt đầu từ đây, từ con số một. Không,.. từ số 0!"** — Rem, Re:Zero
@@ -44,15 +46,19 @@ Dự án này cố tình sử dụng HTML, CSS và JavaScript thuần túy ở t
 
 - 🔌 Các API có sẵn của Trình duyệt  
 
+<br>
 
 ### 💝 Ý nghĩa thật sự của dự án
 
 Dự án này không được tạo nên do mình cần sự công nhận hay thể hiện tài năng chuyên môn của mình. Giống như Subaru luôn chỉ quan tâm đến việc bảo vệ những người mà anh ấy quan tâm, dự án này chỉ có 1 động lực duy nhất: để xem Re:Zero một cách hoàn hảo nhất. Các tính năng về mặt chuyên môn chỉ là tác dụng phụ của ý muốn trên của mình.
 
+<br>
+
 ### 🌟 Một ý nhấn mạnh về độ phức tạp
 
 Mặc dù dự án này vượt trội hơn nhiều giải pháp bằng framework khác, nó không được sinh ra để chứng minh framework là không cần thiết. Dự án này được tạo nên bởi các công nghệ cơ bản bởi vì đó là cách trực diện nhất mà mình thấy để đến với mục đích chính của mình: xem Re:Zero một cách hoàn hảo.
 
+<br>
 
 ### ⏱️ Thời gian phát triển
 
@@ -99,7 +105,7 @@ Dự án này được phát triển trên một laptop không ổn định:
 - ⚡ Điện: Pin chai còn 30 phút
   > Dự án vẫn hoàn thành dù laptop tự tắt liên tục.
 
-> 🚀 **Fun fact:** Dự án này được phát triển trên một laptop cũ hơn nhiều điện thoại hiện đại, nhưng vẫn chạy mượt hơn YouTube trên mọi thiết bị.
+🚀 **Fun fact:** Dự án này được phát triển trên một laptop cũ hơn nhiều điện thoại hiện đại, nhưng vẫn chạy mượt hơn YouTube trên mọi thiết bị.
 
 
 ## ✨ Tính năng
@@ -134,13 +140,19 @@ Dự án này được phát triển trên một laptop không ổn định:
 
 ![Main page](Other_Files/Screenshots/Main-page.png)
 
+<br>
+
 -  **Trang chính (với mô tả video)**
 
 ![Screenshot 1](Other_Files/Screenshots/Main-page%201.png)
 
+<br>
+
 -  **Trang chính (với tiêu đề và các nút điều khiển từ Media Session API)**
 
 ![Screenshot 2](Other_Files/Screenshots/Main-page%202.png)
+
+<br>
 
 -  **Chế độ Nhà hát**
 
