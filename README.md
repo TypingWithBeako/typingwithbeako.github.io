@@ -32,15 +32,18 @@ Dự án này được sinh ra bởi vì Re:Zero đã cứu cuộc đời của 
 
 ### 🧱 Cách tiếp cận thô sơ nhất
 
-Dự án này cố tình sử dụng HTML, CSS và JavaScript thuần túy ở tính năng chính của nó. Giống như Subaru phải học tất cả từ con số 0, mình đã tạo dự án này bằng cách sử dụng những thứ cơ bản nhất (Thật sự là do mình không biết abstractions đm):
+> **"Hãy cùng bắt đầu từ đây, từ con số một. Không,.. từ số 0!"** — Rem, Re:Zero
 
-- 📝 Cú pháp JavaScript đơn giản
+Dự án này cố tình sử dụng HTML, CSS và JavaScript thuần túy ở tính năng chính của nó. Giống như Subaru phải học tất cả từ con số 0, mình đã tạo dự án này bằng cách sử dụng những thứ cơ bản nhất (Thật sự là do mình không biết abstractions đm):
 
 - 🏗️ Các phần tử HTML tự code
 
 - 🎨 Các tính năng cốt lõi của CSS
 
+- 📝 Cú pháp JavaScript đơn giản
+
 - 🔌 Các API có sẵn của Trình duyệt  
+
 
 ### 💝 Ý nghĩa thật sự của dự án
 
@@ -50,43 +53,53 @@ Dự án này không được tạo nên do mình cần sự công nhận hay th
 
 Mặc dù dự án này vượt trội hơn nhiều giải pháp bằng framework khác, nó không được sinh ra để chứng minh framework là không cần thiết. Dự án này được tạo nên bởi các công nghệ cơ bản bởi vì đó là cách trực diện nhất mà mình thấy để đến với mục đích chính của mình: xem Re:Zero một cách hoàn hảo.
 
->⭐ Hãy nhớ: "Hãy cùng bắt đầu từ đây, từ con số một. Không,.. từ số 0!" - Rem, Re:Zero
 
 ### ⏱️ Thời gian phát triển
 
 20/09/2024 - 06/03/2025 (≈ 5,5 tháng)
 
-#### 🧱 Công nghệ cốt lõi
+## 💻 Công nghệ
 
-- HTML
+### 🧱 Công nghệ cốt lõi
+Logic trình phát video cốt lõi được xây dựng hoàn toàn bằng:
 
-- CSS
+- HTML: Tạo nên cấu trúc trang web
 
-- JavaScript (chính)
+- CSS: Xây dựng giao diện người dùng
 
-#### 🔌 Các thư viện hỗ trợ
+- JavaScript: Quản lý logic trình phát video
 
-- Tailwind CSS 
+> 💡 Tất cả các tính năng chính đều được xây dựng từ số 0, không dùng framework.
 
-- Flowbite
+### 🔌 Các thư viện hỗ trợ
 
-- jQuery
+Các tính năng phụ được hỗ trợ bởi:
 
-- MicroModal
+- Tailwind CSS: Hỗ trợ thiết kế giao diện
+
+- Flowbite: Bổ sung các thành phần UI
+
+- jQuery: Đơn giản hóa một số tương tác + làm loading screen
+
+- MicroModal: Quản lý hộp thoại nổi
 
 ### 💻 Yêu cầu phần cứng tối thiểu
 
 Dự án này được phát triển trên một laptop không ổn định:
 
-- CPU: Bất kỳ (Dự án được phát triển trên laptop hay tắt nguồn)
+- 🔲 CPU: Intel Core i5-3337U (2013) 
+  > Nếu laptop của bạn mua sau năm 2013, chúc mừng bạn đã vượt yêu cầu.
 
-- RAM: Đủ để mở trình duyệt
+- 🧠 RAM: 4GB DDR3 
+  > Chỉ cần 1 tab trình duyệt là bạn đã chạy được dự án.
 
-- Ổ cứng: Đủ để lưu code
+- 💾 Ổ cứng: HDD 5400rpm
+  > Nếu bạn có SSD, dự án sẽ chạy nhanh đến mức khó tin.
 
-- Điện: Không cần liên tục (Dự án vẫn hoàn thành dù laptop hay tắt)
+- ⚡ Điện: Pin chai còn 30 phút
+  > Dự án vẫn hoàn thành dù laptop tự tắt liên tục.
 
-> ⚡ Lưu ý: Nếu laptop của bạn có thể mở được trình duyệt web, dự án này sẽ chạy tốt hơn YouTube trên nó.
+> 🚀 **Fun fact:** Dự án này được phát triển trên một laptop cũ hơn nhiều điện thoại hiện đại, nhưng vẫn chạy mượt hơn YouTube trên mọi thiết bị.
 
 
 ## ✨ Tính năng
