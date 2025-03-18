@@ -30,16 +30,15 @@ let preloadedVideos = [];
 let disablePreloading = false;
 let nextVideoTimeout;
 let videoLoopingTimeout;
-let loopcurrentIndex = 0;
 let loopclickCount = 0;
 let enableLoopingListener = null;
 let delay = 0;
 let isAnimating = false;
-let intervalId;
-let isIntervalActive = true;
 let FclickCount = 0;
 let nextClickCount = 0;
 let keyB = 0
+let TheaterModeFlag = false;
+let TheaterModeClickCount = 0;
 let currentVolume = 1 // 1 stands for maximum volume, 0 stands for muted
 
 function playVideo(videoName) {
@@ -68,101 +67,87 @@ videoPlayer.addEventListener('play',function(){
     clearTimeout(nextVideoTimeout);
     clearTimeout(videoLoopingTimeout);
     if (!isPosterSet) {
-    videoPlayer.poster = "Other_Files/black.png";
-    isPosterSet = true;
+        videoPlayer.poster = "Other_Files/black.png";
+        isPosterSet = true;
     }
-    var name = ''
-    var artist = ''
+    let name = cleanVideoSrcName(videoPlayer.src);
+    if (name.substr(0,2) == 'OP' || name.substr(0,2) == 'ED'){
+        name = name.split(' - ')[1];  // Split by delimiter and take second part
+    }
+    let artist = ''
     let musicArtwork = ''
-    const songName = videoPlayer.src.split('/').pop(); // Get the last part of the path after splitting by '/'
-    if (songName == "S1%20Ending.mp4"){
-        name = 'Kết thúc Mùa 1'
-        artist = 'Myth & Roid'
-        musicArtwork = {
-            src: "Icons/artworks/STYX_HELIX_Cover.webp",
-            sizes: "1008x1000",
-            type: "image/webp",
-          }
-    }
-    else if (songName == "S2%20Ending.mp4"){
-        name = 'Kết thúc Mùa 2'
-        artist = 'Mayu Maeshima'
-        musicArtwork = {
-            src: "Icons/artworks/Long_Shot_Cover.webp",
-            sizes: "997x992",
-            type: "image/webp",
-          }
-    }
-    else if (songName == "Theater%20D.mp4"){
-        name = 'Theater D'
-        artist = 'Myth & Roid'
-        musicArtwork = {
-            src: "Icons/artworks/Theater_D_Cover.jpg",
-            sizes: "1080x1080",
-            type: "image/jpeg",
-          }
-    }
-    else if (songName == 'ED1%20-%20STYX%20HELIX%20slow.mp4') {
-        name = 'STYX HELIX (bản chậm)'
-        artist = 'Mayu Maeshima'
-        musicArtwork = {
-            src: "Icons/artworks/STYX_HELIX_Cover.webp",
-            sizes: "997x992",
-            type: "image/webp",
-          }
-    }
-    else if (clickCount %2 == 1){
-        const songName = newvideoUrls[newcurrentIndex].split('/').pop();
-        const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
-        name = songName.slice(0, lastDot); // characters from the start to the last dot
-    }
-    else {
-        const songName = videoUrls[currentIndex].split('/').pop();
-        const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
-        name = songName.slice(6, lastDot)
-    }
-    if (name == 'STYX HELIX' || name == 'Paradisus - Paradoxum' || name == 'NOX LUX' ||name == 'STRAIGHT BET'){
+    if (name == 'STYX HELIX' || name == 'Paradisus - Paradoxum' || name == 'NOX LUX' ||name == 'STRAIGHT BET' || name == 'S1 Ending' || name == 'S2 Ending' || name == 'Theater D' || name == 'STYX HELIX slow' || name == 'STYX HELIX nocut'){ 
         artist = 'Myth & Roid'
         if (name == 'STYX HELIX')
             musicArtwork = {
                 src: "Icons/artworks/STYX_HELIX_Cover.webp",
                 sizes: "1008x1000",
-                type: "image/webp",
+                type: "image/png",
               }
         else if (name == 'Paradisus - Paradoxum')
             musicArtwork = {
                 src: "Icons/artworks/Paradisus-Paradoxum_Cover.webp",
                 sizes: "1000x993",
-                type: "image/webp",
+                type: "image/png",
               }
         else if (name == 'NOX LUX')
             musicArtwork = {
                 src: "Icons/artworks/NOX_LOX_Cover.webp",
                 sizes: "1080x1080",
-                type: "image/webp",
+                type: "image/png",
               }
         else if (name == 'STRAIGHT BET')
             musicArtwork = {
                 src: "Icons/artworks/STRAIGHT_BET_Cover.jpg",
                 sizes: "721x720",
-                type: "image/jpeg",
+                type: "image/png",
+              }
+        else if (name == 'S1 Ending'){
+            name = 'Kết thúc Mùa 1'
+            musicArtwork = {
+                src: "Icons/artworks/STYX_HELIX_Cover.webp",
+                sizes: "1008x1000",
+                type: "image/png",
               }
         }
-    else if (name == 'STYX HELIX nocut') {
-        name = 'STYX HELIX'
-        artist = 'Myth & Roid'
-        musicArtwork = {
-            src: "Icons/artworks/STYX_HELIX_Cover.webp",
-            sizes: "997x992",
-            type: "image/webp",
-          }
+        else if (name == 'S2 Ending'){
+            name = "Kết thúc Mùa 2"
+            musicArtwork = {
+                src: "Icons/artworks/Long_Shot_Cover.webp",
+                sizes: "997x992",
+                type: "image/png",
+              }
+        }
+        else if (name == 'Theater D')
+            musicArtwork = {
+                src: "Icons/artworks/Theater_D_Cover.jpg",
+                sizes: "1080x1080",
+                type: "image/png",
+              }
+        else if (name == 'STYX HELIX slow'){
+            name = "STYX HELIX (bản chậm)"
+            musicArtwork = {
+                src: "Icons/artworks/STYX_HELIX_Cover.webp",
+                sizes: "1008x1000",
+                type: "image/png",
+              }
+        }
+        else if (name == 'STYX HELIX nocut') {
+            name = 'STYX HELIX'
+            artist = 'Myth & Roid'
+            musicArtwork = {
+                src: "Icons/artworks/STYX_HELIX_Cover.webp",
+                sizes: "997x992",
+                type: "image/png",
+            }
+        }
     }
     else if (name == 'Long shot'){
         artist = 'Mayu Maeshima'
         musicArtwork = {
             src: "Icons/artworks/Long_Shot_Cover.webp",
             sizes: "1400x1400",
-            type: "image/webp",
+            type: "image/png",
           }
     }
     else if (name == 'Redo' || name == 'Realize' || name == 'Reweave'){
@@ -171,19 +156,19 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Redo_Cover.webp",
                 sizes: "997x992",
-                type: "image/webp",
+                type: "image/png",
             }
         else if (name == 'Realize')
             musicArtwork = {
                 src: "Icons/artworks/Realize_cover.webp",
                 sizes: "500x500",
-                type: "image/webp",
+                type: "image/png",
             }
         else if (name == 'Reweave')
             musicArtwork = {
                 src: "Icons/artworks/Reweave_Cover.webp",
                 sizes: "1600x1600",
-                type: "image/webp",
+                type: "image/png",
             }
         }
     else if (name == 'Stay Alive' || name == 'Door' || name == 'I Trust You' || name == 'Bouya no Yume yo'){
@@ -192,25 +177,25 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Stay_Alive_Cover.webp",
                 sizes: "1280x1281",
-                type: "image/webp",
+                type: "image/png",
             }
         else if (name == 'Door')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/webp",
+                type: "image/png",
             }
         else if (name == 'I Trust You')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/webp",
+                type: "image/png",
             }
         else if (name == 'Bouya no Yume yo')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/webp",
+                type: "image/png",
             }
     }
     else if (name == 'Memento' || name == 'Believe in you' || name == 'Yuki no hate ni Kimi no na wo' || name == 'White White Snow'){
@@ -219,25 +204,25 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Memento_cover.webp",
                 sizes: "500x500",
-                type: "image/webp",
+                type: "image/png",
             }
         else if (name == 'Believe in you')
             musicArtwork = {
                 src: "Icons/artworks/Believe_in_you_cover.webp",
                 sizes: "500x500",
-                type: "image/webp",
+                type: "image/png",
             }
         else if (name == 'Yuki no hate ni Kimi no na wo')
             musicArtwork = {
                 src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
                 sizes: "640x640",
-                type: "image/webp",
+                type: "image/png",
             }
         else if (name == 'White White Snow')
             musicArtwork = {
                 src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
                 sizes: "640x640",
-                type: "image/webp",
+                type: "image/png",
             }
     }
     else if (name == 'Memories'){
@@ -245,7 +230,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
             sizes: "640x640",
-            type: "image/webp",
+            type: "image/png",
         }
     }
     else if (name == 'Wishing'){
@@ -253,7 +238,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Character_song_album.webp",
             sizes: "1280x1280",
-            type: "image/webp",
+            type: "image/png",
         }
     }
     else if (name == 'What you don\'t know'){
@@ -261,25 +246,34 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Character_song_album.webp",
             sizes: "1280x1280",
-            type: "image/webp",
+            type: "image/png",
         }
     }
-    
+
     navigator.mediaSession.metadata = new MediaMetadata({
-        title: name,//the title of the media
-        artist: artist,//the artist of the media
-        artwork: [
+        title: name, //the title of the media
+        artist: artist, //the artist of the media
+        artwork: 
+        [
             musicArtwork
         ]
       });
     document.title = "「" + name + "」";
-    navigator.mediaSession.setActionHandler("previoustrack", () => {
-        previousVideoTrack()
-    });
-    navigator.mediaSession.setActionHandler("nexttrack", () => {
-        nextVideoTrack()
-    });
 })
+
+navigator.mediaSession.setActionHandler("play", () => {
+    videoPlayer.play()
+});
+navigator.mediaSession.setActionHandler("pause", () => {
+    videoPlayer.pause()
+});
+navigator.mediaSession.setActionHandler("previoustrack", () => {
+    previousVideoTrack()
+});
+navigator.mediaSession.setActionHandler("nexttrack", () => {
+    nextVideoTrack()
+});
+
 // Automatically play next video after ending with a delay
 function playNextVideo() {
     // Delay before switching to the next video
@@ -315,6 +309,7 @@ const backButton = document.getElementById('backButton');
 const S3 = document.getElementById('Season3Content');
 const SidebarButton = document.getElementById('SidebarButton');
 const Trademark = document.getElementById('trademark');
+const DelayButton = document.getElementById('Delay');
 
 moveableimg.addEventListener('click', function(){
         
@@ -502,12 +497,19 @@ function cleanVideoSrc(src) {
     return cleanedPath.replace(/%20/g, ' ');
 }
 
-// Enable and Disable Looping functions
+function cleanVideoSrcName(src){
+    const startIndex = src.lastIndexOf("/")+1;
+    const lastDot = src.lastIndexOf('.'); // exactly what it says on the tin
+    const cleanedPath = src.substring(startIndex,lastDot);
+    return cleanedPath.replace(/%20/g, ' ');
+}
+
+// Enable and Disable Looping function
 enableLoopingListener = function EnableLooping() {
     clearTimeout(nextVideoTimeout);
     videoLoopingTimeout = setTimeout(() =>{
         videoPlayer.play();
-    },delay)
+    }, delay)
 };
 const loopVideo = document.querySelector('#loop')
 const loopText = document.querySelector('.looptext')
@@ -699,14 +701,14 @@ document.addEventListener("keydown", function(event) {
             videoPlayer.pause();
     }
     // Skipping to the next video using the playVideo function when pressing right arrow key
-    if (event.code === "ArrowRight") {
+    else if (event.code === "ArrowRight") {
         nextVideoTrack()
     }
     // Returning to the previous video using the playVideo function (doesn't work if used on first video)
-    if (event.code === "ArrowLeft") {
+    else if (event.code === "ArrowLeft") {
         previousVideoTrack()
     }
-    if (event.code === "Numpad1"||event.code === "Digit1")  {
+    else if (event.code === "Numpad1"||event.code === "Digit1")  {
         if (clickCount % 2 === 1) {
             playVideo(newvideoUrls[0]);
         }   
@@ -714,7 +716,7 @@ document.addEventListener("keydown", function(event) {
             playVideo(videoUrls[0]);
         }
     }
-    if (event.code === "Numpad2"||event.code === "Digit2")  {
+    else if (event.code === "Numpad2"||event.code === "Digit2")  {
         if (clickCount % 2 === 1) {
             playVideo(newvideoUrls[1]);
         }   
@@ -722,7 +724,7 @@ document.addEventListener("keydown", function(event) {
            playVideo(videoUrls[1]);
             }
     }
-    if (event.code === "Numpad3"||event.code === "Digit3")  {
+    else if (event.code === "Numpad3"||event.code === "Digit3")  {
         if (clickCount % 2 === 1) {
             playVideo(newvideoUrls[2]);
         }   
@@ -730,7 +732,7 @@ document.addEventListener("keydown", function(event) {
             playVideo(videoUrls[2]);
         }
     }
-    if (event.code === "Numpad4"||event.code === "Digit4")  {
+    else if (event.code === "Numpad4"||event.code === "Digit4")  {
         if (clickCount % 2 === 1) {
             playVideo(newvideoUrls[3]);
         }   
@@ -738,7 +740,7 @@ document.addEventListener("keydown", function(event) {
             playVideo(videoUrls[3]);
         }
     }
-    if (event.code === "Numpad5"||event.code === "Digit5")  {
+    else if (event.code === "Numpad5"||event.code === "Digit5")  {
         if (clickCount % 2 === 1) {
             playVideo(newvideoUrls[4]);
         }   
@@ -746,7 +748,7 @@ document.addEventListener("keydown", function(event) {
             playVideo(videoUrls[4]);
         }
     }
-    if (event.code === "Numpad6"||event.code === "Digit6")  {
+    else if (event.code === "Numpad6"||event.code === "Digit6")  {
         if (clickCount % 2 === 1) {
             playVideo(newvideoUrls[5]);
         }   
@@ -754,7 +756,7 @@ document.addEventListener("keydown", function(event) {
             playVideo(videoUrls[5]);
         }
     }
-    if (event.code === "Numpad7"||event.code === "Digit7")  {
+    else if (event.code === "Numpad7"||event.code === "Digit7")  {
         if (clickCount % 2 === 1) {
             playVideo(newvideoUrls[6]);
         }   
@@ -762,7 +764,7 @@ document.addEventListener("keydown", function(event) {
             playVideo(videoUrls[6]);
             }
     }
-    if (event.code === "Numpad8"||event.code === "Digit8")  {
+    else if (event.code === "Numpad8"||event.code === "Digit8")  {
         if (clickCount % 2 === 0) {
             playVideo(videoUrls[7]);
         }
@@ -770,19 +772,19 @@ document.addEventListener("keydown", function(event) {
             playVideo(newvideoUrls[7]);
         }      
     }
-    if (event.code === 'Numpad9'||event.code === "Digit9") {
+    else if (event.code === 'Numpad9'||event.code === "Digit9") {
         if (clickCount % 2 === 0) {
             playVideo(videoUrls[8]);
         }
         else 
             playVideo(newvideoUrls[8])   
     }
-    if (event.code === 'Numpad0'||event.code === "Digit0") {
+    else if (event.code === 'Numpad0'||event.code === "Digit0") {
         if (clickCount % 2 === 0) {
             playVideo(videoUrls[9]);
         }   
     }
-    if (event.code === 'Tab') {
+    else if (event.code === 'Tab') {
         event.preventDefault(); // Prevent the default tab behavior
         moveableimg.click();
         if (TheaterModeFlag){
@@ -790,19 +792,19 @@ document.addEventListener("keydown", function(event) {
             navbarContent.style.display='none';
         }
     }
-    if (event.code === 'KeyQ') {
+    else if (event.code === 'KeyQ') {
         shuffleButton.click();
     }   
-    if (event.code === 'KeyW') {
+    else if (event.code === 'KeyW') {
         loopVideo.click();
     }   
-    if (event.code === 'KeyE') {
-        document.getElementById("Delay").click();
+    else if (event.code === 'KeyE') {
+        DelayButton.click();
     }
-    if (event.code === 'KeyR') {
+    else if (event.code === 'KeyR') {
         togglePictureInPicture();
     }
-    if (event.code === 'KeyF'){
+    else if (event.code === 'KeyF'){
         if ((document.fullscreenElement && document.fullscreenElement === videoPlayer) ||
             (document.webkitFullscreenElement && document.webkitFullscreenElement === videoPlayer) ||
             (document.msFullscreenElement && document.msFullscreenElement === videoPlayer)
@@ -811,27 +813,30 @@ document.addEventListener("keydown", function(event) {
         else 
             openFullscreen();  // Video is not in fullscreen mode, so open fullscreen
     }
-    if (event.code === "KeyT"){
+    else if (event.code === "KeyT"){
         TheaterMode.click();
     }
-    if (event.code === "KeyD"){
+    else if (event.code === "KeyD"){
         playVideo("Insert_Songs/Theater D.mp4")
     }
-    if (event.code === "KeyO"){
+    else if (event.code === "KeyO"){
         playVideo("Openings_and_Endings/S1 Ending.mp4");
     }
-    if (event.code === "KeyP"){
+    else if (event.code === "KeyP"){
         playVideo("Openings_and_Endings/S2 Ending.mp4")
     }
-    if (event.code === "KeyS"){
+    else if (event.code === "KeyS"){
         playVideo("Openings_and_Endings/ED1 - STYX HELIX slow.mp4");
     }
-    if (event.code === 'Escape') {
+    else if (event.code === "KeyB"){
+        ChangeStyxHelix();
+    }
+    else if (event.code === 'Escape') {
         if (TheaterModeFlag){
            TheaterMode.click() // Exit Theater Mode if Theater Mode is active
        }
     }
-    if (event.code === 'ArrowUp'){
+    else if (event.code === 'ArrowUp'){
         if (currentVolume + 0.1 > 1) // Check if the volume is already at 1
         {
             videoPlayer.volume = 1
@@ -840,7 +845,7 @@ document.addEventListener("keydown", function(event) {
         videoPlayer.volume = currentVolume + 0.1
         currentVolume = videoPlayer.volume
     }
-    if (event.code === 'ArrowDown'){
+    else if (event.code === 'ArrowDown'){
         if (currentVolume - 0.1 < 0) // Check if the volume is already at 0
         {
             videoPlayer.volume = 0
@@ -851,7 +856,6 @@ document.addEventListener("keydown", function(event) {
     }
 });
     
-let isAnimatingbutton = false;
 // Next and Back button implementation:
 nextButton.addEventListener('click',function(){
     if (isAnimating || this.hasAttribute('disabled')) {
@@ -941,8 +945,6 @@ const paragraph = document.getElementById('paragraph');
 const body = document.getElementById('body');
 const ReZeroCast = document.getElementById('subaru');
 const GitHub = document.getElementById('github');
-let TheaterModeFlag = false;
-let TheaterModeClickCount = 0;
 const ExitTheaterModeButton = document.getElementById('ExitTheaterModeButton');
 const KeyboardControls = document.getElementById("KeyboardControls")
 const navbar = document.querySelector(".oldtopnav")
@@ -1033,14 +1035,14 @@ TheaterMode.addEventListener('click',function() {
     }
 })
 function ChangeToInsertSongs() {
-        moveableimg.click();
-        if (TheaterModeFlag==true) {
-            newnavbarContent.style.display='none';
-            navbarContent.style.display='none';
-        }
+    moveableimg.click();
+    if (TheaterModeFlag==true) {
+        newnavbarContent.style.display='none';
+        navbarContent.style.display='none';
+    }
 }
 function ExitTheaterMode() {
-        TheaterMode.click();
+    TheaterMode.click();
 }
 document.addEventListener("DOMContentLoaded", function() {
 MicroModal.init({
@@ -1100,11 +1102,6 @@ function ChangeStyxHelix(){
         setTimeout(Fullscreen,0)
 }
 
-document.addEventListener('keydown',function(event){
-    if (event.code === "KeyB"){
-        ChangeStyxHelix();
-    }
-})
 // Dynamically change the volume (if the user used the volume slider)
 videoPlayer.addEventListener('volumechange',() =>{
     currentVolume = videoPlayer.volume
