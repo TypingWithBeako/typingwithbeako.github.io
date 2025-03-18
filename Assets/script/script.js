@@ -72,7 +72,8 @@ videoPlayer.addEventListener('play',function(){
     }
     let name = cleanVideoSrcName(videoPlayer.src);
     if (name.substr(0,2) == 'OP' || name.substr(0,2) == 'ED'){
-        name = name.split(' - ')[1];  // Split by delimiter and take second part
+        let firstIndexOfHyphen = name.indexOf(' - ')
+        name = name.substr(firstIndexOfHyphen + 3)
     }
     let artist = ''
     let musicArtwork = ''
