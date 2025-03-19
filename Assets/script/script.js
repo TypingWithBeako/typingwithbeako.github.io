@@ -1136,3 +1136,10 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
+// Audio resync when changing from tabs to tabs
+document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+            videoPlayer.currentTime = videoPlayer.currentTime;
+    }
+});
