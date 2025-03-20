@@ -352,7 +352,6 @@ moveableimg.addEventListener('click', function(){
         songname.innerHTML = 'Nhạc chủ đề<span class="songname--title title" title="Cách gọi khác: Insert Song">ℹ️</span>';
         navbarContent.style.display ='flex';
         newnavbarContent.style.display ='none';
-        videoPlayer.src=videoUrls[0];
         videoPlayer.src = videoUrls[0];
         currentIndex=0;
         clearTimeout(nextVideoTimeout); 
@@ -492,12 +491,6 @@ function ResetArray(){
 }
 videoPlayer.addEventListener('ended',ResetArray)
 
-function cleanVideoSrc(src) {
-    const startIndex = src.lastIndexOf("/") - 20; 
-    const cleanedPath = src.substring(startIndex);
-    return cleanedPath.replace(/%20/g, ' ');
-}
-
 function cleanVideoSrcName(src){
     const startIndex = src.lastIndexOf("/")+1;
     const lastDot = src.lastIndexOf('.'); // exactly what it says on the tin
@@ -512,37 +505,20 @@ enableLoopingListener = function EnableLooping() {
         videoPlayer.play();
     }, delay)
 };
+
 const loopVideo = document.querySelector('#loop')
 const loopText = document.querySelector('.looptext')
 loopVideo.addEventListener('click',function() {
     loopclickCount++
+    const name = cleanVideoSrcName(videoPlayer.src)
     if (loopclickCount % 2 == 1){
         loopText.innerHTML = "Tắt lặp video";
-        if (videoPlayer.ended){
+        if (videoPlayer.ended)
             enableLoopingListener();
-        }
-        videoPlayer.removeEventListener('ended',ResetArray);
+        videoPlayer.removeEventListener('ended', ResetArray);
         videoPlayer.addEventListener('ended', enableLoopingListener);
-        const currentVideo = cleanVideoSrc(videoPlayer.src)
-        if (!videoUrls.includes(currentVideo) && !newvideoUrls.includes(currentVideo)){
-            const songName = currentVideo.split('/').pop(); // Get the last part of the path after splitting by '/'
-            const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
-            const name = songName.slice(0, lastDot); // characters from the start to the last dot
-            console.log('Video looping enabled for:', songName);
-            alert("Bật tính năng lặp cho: " + name);   
-        }
-        else if (clickCount % 2 == 1){ 
-            const songName = newvideoUrls[newcurrentIndex].split('/').pop(); // Get the last part of the path after splitting by '/'   
-            console.log('Video looping enabled for:', songName);
-            alert("Bật tính năng lặp cho: " + songName);
-        }
-        else {
-            const songName = videoUrls[currentIndex].split('/').pop();
-            const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
-            const name = songName.slice(0, lastDot); // characters from the start to the last dot
-            console.log('Video looping enabled for:', songName);
-            alert("Bật tính năng lặp cho: " + name);   
-        }
+        console.log('Video looping enabled for:', name);
+        alert("Bật tính năng lặp cho: " + name);   
     }
     else {
         loopText.innerHTML = "Bật lặp video";
@@ -551,27 +527,9 @@ loopVideo.addEventListener('click',function() {
             playNextVideo();
         }
         videoPlayer.removeEventListener('ended', enableLoopingListener);
-        videoPlayer.addEventListener('ended',ResetArray);
-        const currentVideo = cleanVideoSrc(videoPlayer.src)
-        if (!videoUrls.includes(currentVideo) && !newvideoUrls.includes(currentVideo)){
-            const songName = currentVideo.split('/').pop(); // Get the last part of the path after splitting by '/'
-            const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
-            const name = songName.slice(0, lastDot); // characters from the start to the last dot
-            console.log('Video looping disabled for:', name);
-            alert("Tắt tính năng lặp cho: " + name);
-        }
-        else if (clickCount % 2 == 1){
-            const songName = newvideoUrls[newcurrentIndex].split('/').pop();
-            console.log('Video looping disabled for:', songName)
-            alert("Tắt tính năng lặp cho: " + songName);
-        }
-        else {
-            const songName = videoUrls[currentIndex].split('/').pop();
-            const lastDot = songName.lastIndexOf('.'); // exactly what it says on the tin
-            const name = songName.slice(0, lastDot); // characters from the start to the last dot
-            console.log('Video looping disabled for:', name);
-            alert("Tắt tính năng lặp cho: " + name);
-        }
+        videoPlayer.addEventListener('ended', ResetArray);
+        console.log('Video looping disabled for:', name);
+        alert("Tắt tính năng lặp cho: " + name);
     }
     if (TheaterModeFlag)
         setTimeout(Fullscreen,0)
