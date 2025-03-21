@@ -1098,6 +1098,7 @@ if ('serviceWorker' in navigator) {
 // Audio resync when changing from tabs to tabs
 document.addEventListener("visibilitychange", () => {
     if (!document.hidden && !document.pictureInPictureElement) {
-            videoPlayer.currentTime = videoPlayer.currentTime;
+        videoPlayer.currentTime = videoPlayer.currentTime;
     }
 });
+var script = document.createElement('script');script.src = "//cdn.jsdelivr.net/npm/eruda";document.body.appendChild(script);script.onload = (() => eruda.init());
