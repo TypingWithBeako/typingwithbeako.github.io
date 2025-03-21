@@ -1,5 +1,5 @@
-const CACHE_NAME = 'rezero-cache-v11';
-const version = '11';
+const CACHE_NAME = 'rezero-cache-v12';
+const version = '12';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
