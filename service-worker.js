@@ -3,7 +3,7 @@ const version = '6';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
-  '/index.html',
+  `/index.html?v=${version}`,
   '/Assets/styles/style.min.css',
   `/Assets/script/script.min.js?v=${version}`,
   '/Assets/script/jquery.min.js',
@@ -66,12 +66,13 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
   const isJsFile = url.pathname.endsWith('.js');
+  const isHtmlFile = url.pathname.endsWith('.html') || url.pathname === '/' || event.request.mode === 'navigate';
 
   if (isMediaFile) {
     console.log('[SW] Video request, passing through to server:', url.pathname);
     return;  // Let the browser handle it normally
-  } else if (isJsFile) {
-    // For JS files, use network-first strategy
+  } else if (isJsFile|| isHtmlFile) {
+    // For JS and HTML files, use network-first strategy
     event.respondWith(
       fetch(event.request)
         .then(response => {
