@@ -1,5 +1,5 @@
 const CACHE_NAME = 'rezero-cache-v6';
-const version = 'v6';
+const version = '6';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
