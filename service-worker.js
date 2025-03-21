@@ -65,7 +65,7 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
   const isMainScript = url.pathname.includes('script.min.js');  // Only main script
-  const isMainHTML = url.pathname.endsWith('index.html'); // Only index.html
+  const isMainHTML = url.pathname.endsWith('index.html') || url.pathname === '/'; // Only index.html
 
   if (isMediaFile) {
     console.log('[SW] Video request, passing through to server:', url.pathname);
