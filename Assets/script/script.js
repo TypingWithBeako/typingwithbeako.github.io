@@ -1,8 +1,4 @@
-// Polyfill for MediaSession API and nextVideo
-if (typeof nextVideo === 'undefined') {
-    var nextVideo = document.createElement('video');
-}
-
+// Polyfill for MediaSession API
 if (!('mediaSession' in navigator)) {
     navigator.mediaSession = {
         setActionHandler: function() {},
@@ -19,6 +15,8 @@ if (typeof MediaMetadata !== 'function') {
         this.artwork = metadata.artwork || [];
     };
 }
+// DOM <video> element for preloading
+const nextVideo = document.createElement('video');
 
 var videoUrls = [
     "Openings_and_Endings/OP1 - Redo.mp4",
@@ -472,7 +470,6 @@ disablePreloadingbutton.addEventListener('click',function(){
     }
 }, );
 
-const nextVideo = document.createElement('video');
 // Video preloading 
 videoPlayer.addEventListener('timeupdate', function() {
     const currentTime = videoPlayer.currentTime;
