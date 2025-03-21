@@ -1,11 +1,10 @@
-const CACHE_NAME = 'rezero-cache-v12';
-const version = '12';
+const CACHE_NAME = 'rezero-cache-echidna-approved-v1';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
-  `/index.html?v=${version}`,
+  '/index.html',
   '/Assets/styles/style.min.css',
-  `/Assets/script/script.min.js?v=${version}`,
+  '/Assets/script/script.min.js',
   '/Assets/script/jquery.min.js',
   '/Assets/script/loader.min.js',
   '/Assets/script/micromodal.min.js',
@@ -65,14 +64,14 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
-  const isJsFile = url.pathname.endsWith('.js');
-  const isHtmlFile = url.pathname.endsWith('.html') || url.pathname === '/' || event.request.mode === 'navigate';
+  const isMainScript = url.pathname.includes('script.min.js');  // Only main script
+  const isMainHTML = url.pathname.endsWith('index.html'); // Only index.html
 
   if (isMediaFile) {
     console.log('[SW] Video request, passing through to server:', url.pathname);
     return;  // Let the browser handle it normally
-  } else if (isJsFile|| isHtmlFile) {
-    // For JS and HTML files, use network-first strategy
+  } else if (isMainScript || isMainHTML) {
+    // Network-first strategy
     event.respondWith(
       fetch(event.request)
         .then(response => {
