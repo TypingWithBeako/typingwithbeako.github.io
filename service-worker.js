@@ -1,11 +1,11 @@
-const CACHE_NAME = 'rezero-cache-v5';
-
+const CACHE_NAME = 'rezero-cache-v6';
+const version = 'v6';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
   '/index.html',
   '/Assets/styles/style.min.css',
-  '/Assets/script/script.min.js',
+  `/Assets/script/script.min.js?v=${version}`,
   '/Assets/script/jquery.min.js',
   '/Assets/script/loader.min.js',
   '/Assets/script/micromodal.min.js',
@@ -31,6 +31,7 @@ const MEDIA_URLS = [
 
 // Install event - cache initial assets
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -64,11 +65,30 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const isMediaFile = MEDIA_URLS.some(mediaPath => url.pathname.includes(mediaPath));
+  const isJsFile = url.pathname.endsWith('.js');
 
   if (isMediaFile) {
     console.log('[SW] Video request, passing through to server:', url.pathname);
     return;  // Let the browser handle it normally
-  } else {
+  } else if (isJsFile) {
+    // For JS files, use network-first strategy
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          // Cache the fresh response
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseToCache);
+          });
+          return response;
+        })
+        .catch(() => {
+          // Fallback to cache if network fails
+          return caches.match(event.request);
+        })
+    );
+  } 
+  else {
     // For non-video requests, use cache-first strategy
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
