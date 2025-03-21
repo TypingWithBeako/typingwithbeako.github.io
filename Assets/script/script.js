@@ -1,3 +1,25 @@
+// Polyfill for MediaSession API and nextVideo
+if (typeof nextVideo === 'undefined') {
+    var nextVideo = document.createElement('video');
+}
+
+if (!('mediaSession' in navigator)) {
+    navigator.mediaSession = {
+        setActionHandler: function() {},
+        setPositionState: function() {},
+        metadata: null
+    };
+}
+
+if (typeof MediaMetadata !== 'function') {
+    window.MediaMetadata = function(metadata) {
+        this.title = metadata.title || '';
+        this.artist = metadata.artist || '';
+        this.album = metadata.album || '';
+        this.artwork = metadata.artwork || [];
+    };
+}
+
 var videoUrls = [
     "Openings_and_Endings/OP1 - Redo.mp4",
     "Openings_and_Endings/ED1 - STYX HELIX.mp4",
@@ -41,41 +63,6 @@ let TheaterModeFlag = false;
 let TheaterModeClickCount = 0;
 let currentVolume = 1 // 1 stands for maximum volume, 0 stands for muted
 
-const videoPlayer = document.getElementById('videoPlayer');
-const mediaQuery = window.matchMedia('(max-width: 722px)'); // Define a media query for mobile devices
-const moveableimg = document.querySelector('.moveable_img');
-const textToChange = document.getElementById('text_to_change');
-const navbarContent = document.getElementById('oldnavbarContent');
-const newnavbarContent = document.getElementById('newnavbarContent');
-const bodytext =document.getElementById('bodytext');
-const songname =document.getElementById('songname');
-const disablePreloadingbutton = document.querySelector('.subaru');
-const enablePreloadingbutton = document.querySelector('.trademark');
-const nextButton = document.getElementById('nextButton');
-const backButton = document.getElementById('backButton');
-const S3 = document.getElementById('Season3Content');
-const SidebarButton = document.getElementById('SidebarButton');
-const Trademark = document.getElementById('trademark');
-const DelayButton = document.getElementById('Delay');
-const root = document.documentElement;
-const loopVideo = document.querySelector('#loop')
-const loopText = document.querySelector('.looptext')
-const nextVideo = document.createElement('video');
-const TheaterMode = document.getElementById('Theater');
-const ButtonContainer = document.getElementsByClassName('button-container');
-const paragraph = document.getElementById('paragraph');
-const body = document.getElementById('body');
-const ReZeroCast = document.getElementById('subaru');
-const GitHub = document.getElementById('github');
-const ExitTheaterModeButton = document.getElementById('ExitTheaterModeButton');
-const KeyboardControls = document.getElementById("KeyboardControls")
-const navbar = document.querySelector(".oldtopnav")
-const FULL = document.getElementById('STYX_HELIX_FULL');
-const FULL_sidebar = document.getElementById('STYX_HELIX_FULL_sidebar')
-const OG = document.getElementById('STYX_HELIX_OG')
-const OG_sidebar = document.getElementById('STYX_HELIX_OG_sidebar')
-const SeasonsEndings = document.getElementsByClassName('Endings--Seasons')
-
 function playVideo(videoName) {
     nextVideo.src = '';
     // Extract the file name from the full path
@@ -97,7 +84,7 @@ function playVideo(videoName) {
     clearTimeout(videoLoopingTimeout); 
     simulateClick();
 }
-
+const videoPlayer = document.getElementById('videoPlayer');
 videoPlayer.addEventListener('play',function(){
     clearTimeout(nextVideoTimeout);
     clearTimeout(videoLoopingTimeout);
@@ -331,6 +318,22 @@ videoPlayer.addEventListener('play', function() {
     clearTimeout(nextVideoTimeout);
 });
 
+const mediaQuery = window.matchMedia('(max-width: 722px)'); // Define a media query for mobile devices
+const moveableimg = document.querySelector('.moveable_img');
+const textToChange = document.getElementById('text_to_change');
+const navbarContent = document.getElementById('oldnavbarContent');
+const newnavbarContent = document.getElementById('newnavbarContent');
+const bodytext =document.getElementById('bodytext');
+const songname =document.getElementById('songname');
+const disablePreloadingbutton = document.querySelector('.subaru');
+const enablePreloadingbutton = document.querySelector('.trademark');
+const nextButton = document.getElementById('nextButton');
+const backButton = document.getElementById('backButton');
+const S3 = document.getElementById('Season3Content');
+const SidebarButton = document.getElementById('SidebarButton');
+const Trademark = document.getElementById('trademark');
+const DelayButton = document.getElementById('Delay');
+
 moveableimg.addEventListener('click', function(){
         
     if (isAnimating || this.hasAttribute('disabled')) {
@@ -447,6 +450,7 @@ handleFontSizeChange(mediaQuery);
 // Add event listener for changes in media query
 mediaQuery.addEventListener('change', handleFontSizeChange);
 
+const root = document.documentElement;
 // Disable preloading when clicking on re:zero cast image
 disablePreloadingbutton.addEventListener('click',function(){
     if (!disablePreloading) {
@@ -468,6 +472,7 @@ disablePreloadingbutton.addEventListener('click',function(){
     }
 }, );
 
+const nextVideo = document.createElement('video');
 // Video preloading 
 videoPlayer.addEventListener('timeupdate', function() {
     const currentTime = videoPlayer.currentTime;
@@ -523,6 +528,8 @@ enableLoopingListener = function EnableLooping() {
     }, delay)
 };
 
+const loopVideo = document.querySelector('#loop')
+const loopText = document.querySelector('.looptext')
 loopVideo.addEventListener('click',function() {
     loopclickCount++
     const name = cleanVideoSrcName(videoPlayer.src)
@@ -913,6 +920,16 @@ function closeFullscreen() {
     }
 }
 
+const TheaterMode = document.getElementById('Theater');
+const ButtonContainer = document.getElementsByClassName('button-container');
+const paragraph = document.getElementById('paragraph');
+const body = document.getElementById('body');
+const ReZeroCast = document.getElementById('subaru');
+const GitHub = document.getElementById('github');
+const ExitTheaterModeButton = document.getElementById('ExitTheaterModeButton');
+const KeyboardControls = document.getElementById("KeyboardControls")
+const navbar = document.querySelector(".oldtopnav")
+
 TheaterMode.addEventListener('click',function() {
     TheaterModeClickCount++;
     if (TheaterModeClickCount%2==1){
@@ -1026,6 +1043,12 @@ var button = document.querySelector('#KeyboardControls');
 button.addEventListener('click', function(){
     MicroModal.show('modal-1', { awaitCloseAnimation: true,})
 });
+
+const FULL = document.getElementById('STYX_HELIX_FULL');
+const FULL_sidebar = document.getElementById('STYX_HELIX_FULL_sidebar')
+const OG = document.getElementById('STYX_HELIX_OG')
+const OG_sidebar = document.getElementById('STYX_HELIX_OG_sidebar')
+const SeasonsEndings = document.getElementsByClassName('Endings--Seasons')
 
 // Switch OP1 - STYX HELIX between cut and full version
 function ChangeStyxHelix(){
