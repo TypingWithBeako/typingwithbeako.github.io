@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-echidna-approved-v1';
+const CACHE_NAME = 'rezero-cache-echidna-approved-v2';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
@@ -18,7 +18,13 @@ const INITIAL_ASSETS = [
   '/Other_Files/previous.png',
   '/Other_Files/Re_ZERO icon.png',
   '/Other_Files/subaru cheering.webp',
-  '/Other_Files/black.png'
+  '/Other_Files/black.png',
+  '/Other_Files/angry beako v2.gif',
+  '/Other_Files/spinning beako.gif',
+  '/Other_Files/beako super surprised (gif).gif',
+  '/Other_Files/Puck clapping.gif',
+  '/Other_Files/fuck you leave me alone (gif).gif',
+  '/Other_Files/angry beatrice gif.gif',
   // Add other critical assets
 ];
 
