@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-v4';
+const CACHE_NAME = 'rezero-cache-v5';
 
 // Assets to cache initially
 const INITIAL_ASSETS = [
@@ -43,15 +43,21 @@ self.addEventListener('install', event => {
 // Activate event - clean up old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    Promise.all([
+      // Clear old caches
+      caches.keys().then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            if (cacheName !== CACHE_NAME) {
+              console.log('[SW] Deleting old cache:', cacheName);
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      }),
+      // Force this service worker to become active
+      self.clients.claim()
+    ])
   );
 });
 
