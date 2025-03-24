@@ -23,18 +23,21 @@
       "src": "Other_Files/Screenshots/Screenshot (Desktop).png",
       "sizes": "1920x1080",
       "type": "image/png",
+      "form_factor": "wide",
       "label": "Màn hình chính của ứng dụng"
     },
     {
       "src": "Other_Files/Screenshots/Screenshot (Desktop - Theater Mode).png",
       "sizes": "1920x1080",
       "type": "image/png",
+      "form_factor": "wide",
       "label": "Chế độ nhà hát"
     },
     {
       "src": "Other_Files/Screenshots/Screenshot (Desktop - Sidebar).png",
       "sizes": "1920x1080",
       "type": "image/png",
+      "form_factor": "wide",
       "label": "Thanh điều hướng trượt"
     }
   ]
