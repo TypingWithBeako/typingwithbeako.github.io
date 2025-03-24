@@ -20,25 +20,32 @@
     ],
     "screenshots": [
     {
-      "src": "Other_Files/Screenshots/Screenshot (Desktop).png",
-      "sizes": "1920x1080",
+      "src": "Other_Files/Screenshots/Long shot.png",
+      "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Màn hình chính của ứng dụng"
+      "label": "Long shot"
     },
     {
-      "src": "Other_Files/Screenshots/Screenshot (Desktop - Sidebar).png",
-      "sizes": "1920x1080",
+      "src": "Other_Files/Screenshots/STYX HELIX.png",
+      "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Thanh điều hướng trượt"
+      "label": "STYX HELIX"
     },
     {
-      "src": "Other_Files/Screenshots/Screenshot (Desktop - Theater Mode).png",
-      "sizes": "1920x1080",
+      "src": "Other_Files/Screenshots/Your Name.png",
+      "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Chế độ nhà hát"
+      "label": "Your Name"
+    },
+    {
+      "src": "Other_Files/Screenshots/Wishing.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Wishing"
     }
   ]
-  }
+}
