@@ -17,5 +17,25 @@
         "sizes": "512x512",
         "type": "image/png"
       }
-    ]
+    ],
+    "screenshots": [
+    {
+      "src": "Other_Files/Screenshots/Screenshot (Desktop).png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "label": "Màn hình chính của ứng dụng"
+    },
+    {
+      "src": "Other_Files/Screenshots/Screenshot (Desktop - Theater Mode).png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "label": "Chế độ nhà hát"
+    },
+    {
+      "src": "Other_Files/Screenshots/Screenshot (Desktop - Sidebar).png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "label": "Thanh điều hướng trượt"
+    }
+  ]
   }
