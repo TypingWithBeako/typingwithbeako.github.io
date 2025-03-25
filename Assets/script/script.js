@@ -69,7 +69,7 @@ function playVideo(videoName) {
     // For example, you can set the video source and play the video
     document.getElementById('videoPlayer').src = videoName;
     document.getElementById('videoPlayer').play();
-    console.log('Video selected:',songName)
+    console.log('Video được chọn:',songName)
     // Update the currentIndex and newcurrentIndex based on the selected video
     currentIndex = videoUrls.indexOf(videoName);
     newcurrentIndex = newvideoUrls.indexOf(videoName);
@@ -191,7 +191,7 @@ videoPlayer.addEventListener('play',function(){
                 sizes: "1600x1600",
                 type: "image/png",
             }
-        }
+    }
     else if (name == 'Stay Alive' || name == 'Door' || name == 'I Trust You' || name == 'Bouya no Yume yo'){
         artist = 'Emilia (CV: Rie Takahashi)'
         if (name == 'Stay Alive')
@@ -341,7 +341,6 @@ moveableimg.addEventListener('click', function(){
     this.setAttribute('disabled', 'disabled'); // Disable the clickable element
     clickCount++;
     nextClickCount = 0;
-    console.log("Image clicked!"); // Add this line for testing
     if (clickCount % 2 === 1) {
         bodytext.innerHTML = 'Nhạc chủ đề<span class="songname--title title" title="Cách gọi khác: Insert Song">ℹ️</span>';
         songname.innerHTML = 'Mở đầu và Kết thúc<span class="bodytext--title title" title="Cách gọi khác: Opening (OP) và Ending (ED)">ℹ️</span>';
@@ -366,6 +365,7 @@ moveableimg.addEventListener('click', function(){
         Endings_Content.style.display = 'none';
         Insert_Songs_Content.style.display = '';
         SidebarButton.innerHTML = "Chuyển sang OPs và EDs";
+        console.log("- Chuyển sang trình phát Nhạc chủ đề - ");
     }
     else {
         bodytext.innerHTML = 'Mở đầu và Kết thúc<span class="bodytext--title title" title="Cách gọi khác: Opening (OP) và Ending (ED)">ℹ️</span>';
@@ -390,6 +390,7 @@ moveableimg.addEventListener('click', function(){
         Endings_Content.style.display = '';
         Insert_Songs_Content.style.display = 'none';
         SidebarButton.innerHTML = "Chuyển sang Nhạc chủ đề";
+        console.log("- Chuyển sang trình phát Mở đầu và kết thúc - ");
     }
     setTimeout(() => {
     isAnimating = false; // Reset the flag once the animation is complete
@@ -398,22 +399,22 @@ moveableimg.addEventListener('click', function(){
 });
 // Remove the animation class after the animation ends
 textToChange.addEventListener('animationend', () => {
-textToChange.classList.remove('fade-in');
+    textToChange.classList.remove('fade-in');
 });
 bodytext.addEventListener('animationend', () => {
-bodytext.classList.remove('fade-in-bodytext');
+    bodytext.classList.remove('fade-in-bodytext');
 });
 songname.addEventListener('animationend', () => {
-songname.classList.remove('fade-in-songname');
+    songname.classList.remove('fade-in-songname');
 });
 navbarContent.addEventListener('animationend', () => {
-navbarContent.classList.remove('slide-in');
+    navbarContent.classList.remove('slide-in');
 });
 newnavbarContent.addEventListener('animationend', () => {
-newnavbarContent.classList.remove('slide-in');
+    newnavbarContent.classList.remove('slide-in');
 });
 moveableimg.addEventListener('animationend', () => {
-moveableimg.classList.remove('fade-in');
+    moveableimg.classList.remove('fade-in');
 });
 S3.addEventListener('animationend', () => {
     S3.classList.remove('fade-in');
@@ -452,16 +453,16 @@ const root = document.documentElement;
 // Disable preloading when clicking on re:zero cast image
 disablePreloadingbutton.addEventListener('click',function(){
     if (!disablePreloading) {
-        alert("Preloading disabled!");
-        console.log('Preloading disabled!');
+        alert("Tắt tính năng tải trước! (nhấn vào tên mình để bật lại)");
+        console.log('Tắt tính năng tải trước! (nhấn vào tên mình để bật lại)');
         disablePreloading = true;
         root.style.setProperty('--subarumouse', 'image-set(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAllBMVEUAAAAkJCQfHx8SEhIMDAwNDQ0JCQkKCgoODg7x8fFycnL8/Pz9/f3Dw8MJCQn6+vqNjY3////y8vLp6ene3t7u7u7S0tLr6+vDw8P09PT29vb4+Pju7u7a2trw8PClpaVbW1ubm5utra0jKDP///8/Q03j5OWtrrNaXmbx8vLIycyRk5loa3MxNkCDhox2eYDx8fK6vL8DdzWRAAAAI3RSTlMABAcIDQsSFQ+YJePhKhrUOvCojG5nYVdUyMa0iYN3My0cGZgGfOIAAAD+SURBVDjLzZLZcsIwDEWxvJJAwtZC98WKk5LQ5f9/rso4Mx4UwjN61RndI9mzmypxvStAghDTEOzXOF/KSUTIMtS4eNUwQYDK/3xFyB0hFweo+Zf3vgm42JPLGAC1w8ZT/QR8WsYgFpHht/cDsult2ZLa5kcfq2qRFgJGaEMSQ0XbGJMk3D1JJOS4/hTMkiRSv6vx4zyEJMpB4tQGRHxWwC5BEqe+3/3iw8shMzoCI4kOy1VRWKOkGF+ipfSQvxfGaZmWSBKPJFHjyjqdHp5LVLgpXDzjGHAHbGiA0anNMrIccWsVTPRpxNt2Z5k9+xSGbccAkJJ/Fo70NbvB+gfwVhoJL6w+jwAAAABJRU5ErkJggg==) 1x, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAvVBMVEUAAAAdHR0TExMSEhIODg4KCgoHBwcGBgYHBwcJCQkMDAwGBgb+/v78/PwGBgYGBgbBwcH39/dra2vq6urExMT19fXu7u74+Pj09PTk5OTs7OzQ0NDm5ub+/v75+fn7+/vo6Oji4uLv7+/X19e1tbWysrKIiIjX19fa2trg4ODU1NRSUlKEhIS1tbW8vLwjKDP////j5OU/Q012eICtrrNaXmbx8fKfoaaRlJkxNkDIyczW19loa3ODhoxNUFlr0DWwAAAAL3RSTlMABgoIDQ8XEhUUERnx4yAbKsYnjFOmm7SXfWhiWeHU0p+Rd3JaRT1zS0k7Mh8YF+5vndUAAAIwSURBVFjD7ZbbUttAEERhtaurLcl2HDCXBJJA7tFYiMQBkv//rPRIU0FClFcrqige3O/d6jmz4/LeTju9UO1DT3F7P7573tgQ+PMZ0emRUsgY4/fyU2JNT5RCD/fvqyXcPwk6yDVP4lpAvyW6KzfEWuaug6AAB1wXRVkR6zDXLhEooMwh0aaAmojpO6cETBAfE90Uta7XdcSR5kGGB8xh+l00umoiTga34AD/TQ2hE3EgKIYFvCb6VfxXZyGDIIYCQdRaiFL2EvvKRAJB1F0IWtgqmKALobsQKwpACB5AeGQhW5+ijsNXRLf3zt5CkOAEobeQz0iwzDDDPRWiPs2JRoDLS+hG4NK/YJ1bZ2hB6OuW6JOyQpg8CqG8+1MxyG+DIFw9fAkVytdaxNshKEBYAEJ/hbUmq0hvbyAQ1u3uN413dvbxIgkDDQZOEP6u2X3+IU3TDH6jPEuADhKG0N4cnX2FO0v8KDCYYM92Dm0I5Rqfx9fhDtluPWpAiNsQKvgv0/rjMezit0FIAKFs+KP/cZr5mB323jXbIWCAJfyR2K1+OWl/RVRJgekl/LHuuC0U5SVIgfMswep4d0PlYQaBwAXm6K+76OwQ5Bx4he8TH/3Z7pCgTbjiH/cNCmR4u/369kVe1H8TuEBklHOApw1+llizJIydCzBGE4SLKU0Wc/hrgK4VOMGf4/W7+4WCMnEU4HgEgHMAYzBGaz3OjwBMwZL+4zpA/PzHi9077fRs+gdaMIOfVRGM4AAAAABJRU5ErkJggg==) 2x) 8 8, default');
         Trademark.style.cursor = "var(--pointermouse)"
         // Added failsafe if mistakenly clicked on picture (in IF statements: "!const" = "const === false")
         if (disablePreloading){
             enablePreloadingbutton.addEventListener('click',function(){
-                alert("Preloading enabled!");
-                console.log('Preloading enabled!');
+                alert("Bật tính năng tải trước!");
+                console.log('Bật tính năng tải trước!');
                 disablePreloading = false;
                 root.style.setProperty('--subarumouse', 'image-set(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAmVBMVEUAAAAbGxsZGRkTExMICAgJCQkPDw8QEBB1YfIICAh0X/BwXeltWuFZSrdyXuxpV9xnVdZiU8tvXehyX+1wXehuXOZfT8VdUcE0LWxyX+1zX+1lU8xmU81hUchVSbJYTLdSR6P///91YfOGdfX39f6pnPfLxPvu6/3Y0/zCuvq6sPmxpviXiPaPfvV+a/R9a/TDuvqhkvegkvdrWLcYAAAAIXRSTlMABQcLEBQNCfEX45aKVcaOfye4lId2Tykk1LRycWFCQBntRKz0AAABCUlEQVQ4y83S11LDMBAF0KhLNm6k0tmVbCchBfj/j8MaGHmIZHhjuLNve7xWm/2vkF/azXze0Ok+Xesz6vX0FJVj359zNSlYfnJwyDibEIStcAs73HCmKEkBucFX2KLWt1ovWGwIE1kLPbatr3zZREKJmzdwCOALMXsmEbg+AnyBvsclJRGwAKFwwcjFGp7wHcbglfwOqCyt+xFw/QIAnQUA23nAaQrs0X+9T04oT26c4LCW9OIkH/VxXESHq2gX4h4PAdhMBBD+Ye6w/Wy7Fh84jc6amwpt58DtLFZCRoAwbooMfcrCcJW4ccWFKeqqLoxIvxtC2UCMb/ubSomBSCnDm0qjIbM/zgdM/h9ZMvytJwAAAABJRU5ErkJggg==) 1x, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAsVBMVEUAAAAlJSUVFRUODg4KCgoICAgGBgYHBwcJCQkHBwd0YPIHBwcGBgYLCwtjU810X+9zX+9kU8xRQp5vXOdEOox0YPBzX+9wXelvXOZnVtdQRKc0LWpxXupyX+1rWd5tXORhUclWR7JkVMxORKJwXedwXupqWdtYSbZiVcv///91YfOGdfXu6/26sPn39f6onPfd1/x+a/TUzvuxpvipnffDuvqXiPbl4f3LxPuhkveypviacpDcAAAAKXRSTlMABQkMDxMWEBIY8RseFXLj00wZhzjiw5aof0Ylx8SeZmFXOTG4tmpXJ53eMHQAAAJ8SURBVFjD7ZfXdtswEEQTopAARXVbzXZc0jSUZFWX/P+HZQkgKocyQDMvOUnmAUcvczG7WEjQh//6a/XxN+1W9e0H1fVH3e/3UWQItfzdngb0oBvVIJjt2zBq1yGQPxoAyHMAPUaE9wdgGphPp3NAd+sQ2D2QT0k50GHROwlFgAcH2ACDmJXaEAZMNDAjwBq4FpwIVpUBXHwBdgRYAFomRCBZRlXACNi6JvSliBkrMfyAbOya8Aq0NK6/di41Lj85RhjAxASA7eKxeswhwiWolu3iDifqcGYJoQSJvALW9hgeF7PHX6u2hQQIBjAEXgjwbIIs3EoKTbdLEMseMCfAzLbCrU6dIoMfwLMRsHHWw+oKuWRBQJw1gW0J4ArR3EugDhHgFni1pvKKOBDBJXgyo5gfrw4gOPMmIMCDdoCyAGQ88gN4cgHks7cBMaNCfYAOTMPeAkhvE4pTHJozCAB8LWgDy6nVHPP9h+qAi0MFAPYfTgDeuxQAqMSfgAtTQv0EPBkAT2cBdpSDPUg6cBHKTVwC7cxMovc2fwZWz9Nz2gBDEfsnkXExaRHh7CjlwC2NsjcB1aD6rfPD/AJcqIQHb6NQfX2OMMuBpu1h6Fs1HRtC2d9S/ttMADMKMr2DJZz60d+PkTcCFyptAljt9vbFfAWgqdxlrkpAvl0uaPP1j8Kum6m0AQIA00iZ0lmcqD1OpeCRAYQJnAiN5hFCjxqF3waoREikShvfbq40mds3d41UycT5qxJEgXAiu4iN3wHChIjHSSaVUmlKixTF9tZfmcAoRSJEJoRIaHdW/m0PI4hhxDyvC++j+0h1nr1OUf3HPzFqmf+ov0//hn4CGZ+XfMz98P8AAAAASUVORK5CYII=) 2x) 10 6, pointer');
                 Trademark.style.cursor = "var(--normalmouse)"
@@ -483,7 +484,7 @@ videoPlayer.addEventListener('timeupdate', function() {
                 nextVideo.src = newvideoUrls[nextNewIndex];
                 nextVideo.preload = 'auto';
                 preloadedVideos.push(newvideoUrls[nextNewIndex]);
-                console.log('Next new video preloaded:', newvideoUrls[nextNewIndex]);                                      
+                console.log('Video đã được tải trước:', newvideoUrls[nextNewIndex]);                                      
             }
         }
         else {
@@ -492,7 +493,7 @@ videoPlayer.addEventListener('timeupdate', function() {
                 nextVideo.src = videoUrls[nextIndex];
                 nextVideo.preload = 'auto';
                 preloadedVideos.push(videoUrls[nextIndex]);
-                console.log('Next video preloaded:', videoUrls[nextIndex]);  
+                console.log('Video đã được tải trước:', videoUrls[nextIndex]);  
             }
         }
     }      
@@ -536,7 +537,7 @@ loopVideo.addEventListener('click',function() {
             enableLoopingListener();
         videoPlayer.removeEventListener('ended', ResetArray);
         videoPlayer.addEventListener('ended', enableLoopingListener);
-        console.log('Video looping enabled for:', name);
+        console.log('Bật tính năng lặp cho: ', name);
         alert("Bật tính năng lặp cho: " + name);   
     }
     else {
@@ -547,7 +548,7 @@ loopVideo.addEventListener('click',function() {
         }
         videoPlayer.removeEventListener('ended', enableLoopingListener);
         videoPlayer.addEventListener('ended', ResetArray);
-        console.log('Video looping disabled for:', name);
+        console.log('Tắt tính năng lặp cho: ', name);
         alert("Tắt tính năng lặp cho: " + name);
     }
     if (TheaterModeFlag)
@@ -577,14 +578,14 @@ shuffleButton.addEventListener('click', function() {
         playVideo(videoUrls[0]);
         preloadedVideos = [];
     }
-    alert("Video đã được xáo (vào console log để biết thêm)");
+    alert("Danh sách video đã được trộn lại (vào console để biết thêm)");
     if (TheaterModeFlag)
         setTimeout(Fullscreen,0)
 // You can now use the shuffled videoUrls array for playing the songs in a random order
     if (clickCount % 2 == 1)
-        console.log('Shuffled videos to:', newvideoUrls);
+        console.log('Danh sách video sau khi trộn là: ', newvideoUrls);
     else
-        console.log('Shuffled videos to:', videoUrls);
+        console.log('Danh sách video sau khi trộn là: ', videoUrls);
 });
     
 // Update the delay variable
@@ -602,16 +603,15 @@ document.getElementById("Delay").addEventListener("click", function() {
         alert("Độ trễ không đúng. Vui lòng nhập lại độ trễ.");
     return;
     }
-    if (newDelay > 10000) {
+    if (newDelay > 25000) {
         alert("Đây không phải là nơi để bạn đi ngủ :V");
     return;
     }
     // Update delay and optionally display confirmation
     updateDelay(newDelay);
-    console.log("Độ trễ được cập nhật thành: ", newDelay, "mili giây");
+    console.log("Độ trễ được cập nhật thành: ", newDelay, "ms");
     
 });
-
 
 // Check for orientation change using matchMedia (for mobile devices)
 const checkOrientation = () => {
@@ -873,7 +873,7 @@ backButton.addEventListener('click',function(){
         isAnimating = false; // Reset the flag once the animation is complete
         this.removeAttribute('disabled'); // Re-enable the clickable element
         nextButton.disabled = false; // Disable the clickable element
-        }, 2501);
+    }, 2501);
 })
 
 function simulateClick() {
@@ -892,7 +892,7 @@ async function togglePictureInPicture() {
         try {
             await videoPlayer.requestPictureInPicture();
         } catch (error) {
-            console.error('Error entering Picture-in-Picture mode:', error);
+            console.error('Xuất hiện lỗi khi dùng tính năng Thu nhỏ video: ', error);
         }
     }
 }
@@ -956,7 +956,7 @@ TheaterMode.addEventListener('click',function() {
         ExitTheaterModeButton.style.display ='flex';
         navbar.style.marginTop = '2vh'
     }
-    else{
+    else {
         if (clickCount%2==1){
             newnavbarContent.style.display = 'flex';
             paragraph.style.display = 'block';
@@ -1023,18 +1023,18 @@ function ExitTheaterMode() {
     TheaterMode.click();
 }
 document.addEventListener("DOMContentLoaded", function() {
-MicroModal.init({
-    onShow: modal => console.info(`${modal.id} is shown`), // [1]
-    onClose: modal => console.info(`${modal.id} is hidden`), // [2]
-    openTrigger: 'data-custom-open', // [3]
-    closeTrigger: 'data-custom-close', // [4]
-    openClass: 'is-open', // [5]
-    disableScroll: true, // [6]
-    disableFocus: true, // [7]
-    awaitOpenAnimation: true, // [8]
-    awaitCloseAnimation: true, // [9]
-    debugMode: false // [10]
-  });
+    MicroModal.init({
+        onShow: modal => console.info(`${modal.id} is shown`), // [1]
+        onClose: modal => console.info(`${modal.id} is hidden`), // [2]
+        openTrigger: 'data-custom-open', // [3]
+        closeTrigger: 'data-custom-close', // [4]
+        openClass: 'is-open', // [5]
+        disableScroll: true, // [6]
+        disableFocus: true, // [7]
+        awaitOpenAnimation: true, // [8]
+        awaitCloseAnimation: true, // [9]
+        debugMode: false // [10]
+    });
 })
 var button = document.querySelector('#KeyboardControls');
 button.addEventListener('click', function(){
@@ -1061,7 +1061,7 @@ function ChangeStyxHelix(){
             for (let i = 0; i < SeasonsEndings.length; i++) {
                 SeasonsEndings[i].style.display = 'flex';
             }
-            alert("Changed ED1 - STYX HELIX to full version")
+            alert("Đã chuyển ED1 - STYX HELIX sang bản đầy đủ")
         }
         else
         {
@@ -1074,7 +1074,7 @@ function ChangeStyxHelix(){
             for (let i = 0; i < SeasonsEndings.length; i++) {
                 SeasonsEndings[i].style.display = 'none';
             }
-            alert("Reverted changes to ED1 - STYX HELIX")
+            alert("Đã đảo ngược các thay đổi lên ED1 - STYX HELIX")
         }
     if (TheaterModeFlag)
         setTimeout(Fullscreen,0)
@@ -1087,7 +1087,7 @@ videoPlayer.addEventListener('volumechange',() =>{
 
 // Get current volume from video player before exiting site
 window.addEventListener('beforeunload', () => {
-    currentVolume = videoPlayer.volume;
+    currentVolume = videoPlayer.volume.toFixed(2);
     // Save to local storage
     localStorage.setItem('volume', currentVolume);
 });
@@ -1097,8 +1097,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedVolume = localStorage.getItem('volume');
     // Apply saved volume if it exists
     if (savedVolume !== null) {
-        videoPlayer.volume = parseFloat(savedVolume);
-        console.log("Restored user volume to: ", savedVolume);
+        const volumeNumber = Number (parseFloat(savedVolume).toFixed(2)); // Take only 2 significant digits
+        videoPlayer.volume = volumeNumber
+        console.log("Thiết lập âm lượng đã lưu:", volumeNumber*100 + "%");
     }
 });
 
@@ -1106,10 +1107,10 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('service-worker.js')
         .then(registration => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          console.log('Đăng kí Service Worker thành công với scope: ', registration.scope);
         })
         .catch(error => {
-          console.log('ServiceWorker registration failed: ', error);
+          console.log('Đăng kí Service Worker thất bại: ', error);
         });
     });
 }
