@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-echidna-approved-v2';
+const CACHE_NAME = 'rezero-cache-echidna-approved-v1';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
@@ -40,7 +40,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Caching initial assets');
+        console.log('[SW] Đang khởi tạo bộ nhớ đệm mới');
         return cache.addAll(INITIAL_ASSETS);
       })
   );
@@ -55,7 +55,7 @@ self.addEventListener('activate', event => {
         return Promise.all(
           cacheNames.map(cacheName => {
             if (cacheName !== CACHE_NAME) {
-              console.log('[SW] Deleting old cache:', cacheName);
+              console.log('[SW] Xóa bộ nhớ đệm cũ:', cacheName);
               return caches.delete(cacheName);
             }
           })
@@ -74,7 +74,6 @@ self.addEventListener('fetch', event => {
   const isMainHTML = url.pathname.endsWith('index.html') || url.pathname === '/'; // Only index.html
 
   if (isMediaFile) {
-    console.log('[SW] Video request, passing through to server:', url.pathname);
     return;  // Let the browser handle it normally
   } else if (isMainScript || isMainHTML) {
     // Network-first strategy
