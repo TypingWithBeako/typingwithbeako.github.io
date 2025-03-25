@@ -1117,6 +1117,8 @@ if ('serviceWorker' in navigator) {
 // Audio resync when changing from tabs to tabs
 document.addEventListener("visibilitychange", () => {
     if (!document.hidden && !document.pictureInPictureElement) {
-        videoPlayer.currentTime = videoPlayer.currentTime;
+        setTimeout(() => { 
+            videoPlayer.currentTime = videoPlayer.currentTime;
+        },300)   // Needs delay (300ms) to work reliably + to make user experience a little bit normal
     }
 });
