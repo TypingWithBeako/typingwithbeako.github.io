@@ -808,7 +808,7 @@ document.addEventListener("keydown", function(event) {
         playVideo(`${URL}Theater D.mp4`)
     }
     if (event.code === "KeyO"){
-        playVideo(`${URL}S1 Ending.mp4`);
+        playVideo(`${URL}S1 Ending.webm`);
     }
     if (event.code === "KeyP"){
         playVideo(`${URL}S2 Ending.mp4`)

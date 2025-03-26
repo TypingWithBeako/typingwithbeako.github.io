@@ -62,7 +62,7 @@ Mặc dù dự án này vượt trội hơn nhiều giải pháp bằng framewor
 
 ### ⏱️ Thời gian phát triển
 
-20/09/2024 - 25/03/2025 (≈ 6 tháng)
+20/09/2024 - 27/03/2025 (≈ 6 tháng+)
 
 ## 💻 Công nghệ
 
@@ -133,6 +133,8 @@ Dự án này được phát triển trên một laptop không ổn định:
 - 📲 **Ứng dụng PWA:** Cài đặt như ứng dụng trên thiết bị và truy cập nhanh hơn vào các lần tiếp theo.
 
 - 🔊 **Lưu trữ âm lượng:** Ghi nhớ cài đặt âm lượng ưa thích của bạn giữa các phiên sử dụng.
+
+- ☁️ **Video được host trên Cloudflare R2**: Lưu trữ và phân phối nội dung video với hiệu suất cao
 
 ## 📸 Ảnh chụp giao diện
 
