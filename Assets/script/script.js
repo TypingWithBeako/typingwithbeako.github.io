@@ -349,6 +349,7 @@ moveableimg.addEventListener('click', function(){
         newnavbarContent.style.display ='flex';
         videoPlayer.src= newvideoUrls[0];
         newcurrentIndex=0;
+        videoPlayer.currentTime = videoPlayer.currentTime
         clearTimeout(nextVideoTimeout);
         clearTimeout(videoLoopingTimeout);
         textToChange.classList.add('fade-in');
@@ -375,6 +376,7 @@ moveableimg.addEventListener('click', function(){
         newnavbarContent.style.display ='none';
         videoPlayer.src = videoUrls[0];
         currentIndex=0;
+        videoPlayer.currentTime = videoPlayer.currentTime
         clearTimeout(nextVideoTimeout); 
         clearTimeout(videoLoopingTimeout);
         textToChange.classList.add('fade-in');
@@ -481,20 +483,22 @@ videoPlayer.addEventListener('timeupdate', function() {
     // Preload multiple videos based on the current video type
         if (clickCount % 2 === 1) {
             const nextNewIndex = (newcurrentIndex + 1) % newvideoUrls.length;
+            const newName = cleanVideoSrcName(newvideoUrls[nextNewIndex]);
             if (!preloadedVideos.includes(newvideoUrls[nextNewIndex])) {
                 nextVideo.src = newvideoUrls[nextNewIndex];
                 nextVideo.preload = 'auto';
                 preloadedVideos.push(newvideoUrls[nextNewIndex]);
-                console.log('Video đã được tải trước:', newvideoUrls[nextNewIndex]);                                      
+                console.log('Video đã được tải trước:', newName);                                      
             }
         }
         else {
             const nextIndex = (currentIndex + 1) % videoUrls.length;
+            const name = cleanVideoSrcName(videoUrls[nextIndex]);
             if (!preloadedVideos.includes(videoUrls[nextIndex])) {
                 nextVideo.src = videoUrls[nextIndex];
                 nextVideo.preload = 'auto';
                 preloadedVideos.push(videoUrls[nextIndex]);
-                console.log('Video đã được tải trước:', videoUrls[nextIndex]);  
+                console.log('Video đã được tải trước:', name);  
             }
         }
     }      
