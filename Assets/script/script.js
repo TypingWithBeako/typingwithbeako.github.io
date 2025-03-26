@@ -18,7 +18,7 @@ if (typeof MediaMetadata !== 'function') {
 // DOM <video> element for preloading
 const nextVideo = document.createElement('video');
 
-const URL = "https://pub-fe4ca6c111c74811b6e05da87b0b1602.r2.dev/"
+const URL = "r2-cache-worker.thaituan150806.workers.dev/"
 var videoUrls = [
     `${URL}OP1 - Redo.mp4`,
     `${URL}ED1 - STYX HELIX.mp4`,
