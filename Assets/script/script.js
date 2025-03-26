@@ -18,28 +18,29 @@ if (typeof MediaMetadata !== 'function') {
 // DOM <video> element for preloading
 const nextVideo = document.createElement('video');
 
+const URL = "https://pub-fe4ca6c111c74811b6e05da87b0b1602.r2.dev/"
 var videoUrls = [
-    "Openings_and_Endings/OP1 - Redo.mp4",
-    "Openings_and_Endings/ED1 - STYX HELIX.mp4",
-    "Openings_and_Endings/OP2 - Paradisus - Paradoxum.mp4",
-    "Openings_and_Endings/ED2 - Stay Alive.webm",
-    "Openings_and_Endings/OP3 - Realize.mp4",
-    "Openings_and_Endings/ED3 - Memento.mp4",
-    "Openings_and_Endings/OP4 - Long shot.mp4",
-    "Openings_and_Endings/ED4 - Believe in you.webm",
-    "Openings_and_Endings/OP5 - Reweave.mp4",
-    "Openings_and_Endings/ED5 - NOX LUX.mp4",
+    `${URL}OP1 - Redo.mp4`,
+    `${URL}ED1 - STYX HELIX.mp4`,
+    `${URL}OP2 - Paradisus - Paradoxum.mp4`,
+    `${URL}ED2 - Stay Alive.webm`,
+    `${URL}OP3 - Realize.mp4`,
+    `${URL}ED3 - Memento.mp4`,
+    `${URL}OP4 - Long shot.mp4`,
+    `${URL}ED4 - Believe in you.mp4`,
+    `${URL}OP5 - Reweave.mp4`,
+    `${URL}ED5 - NOX LUX.mp4`,
 ];
 var newvideoUrls = [
-    "Insert_Songs/STRAIGHT BET.mp4",
-    "Insert_Songs/Bouya no Yume yo.mp4",
-    "Insert_Songs/Memories.mp4",
-    "Insert_Songs/White White Snow.mp4",
-    "Insert_Songs/Yuki no hate ni Kimi no na wo.mp4",
-    "Insert_Songs/Wishing.mp4",
-    "Insert_Songs/Door.mp4",
-    "Insert_Songs/What you don't know.mp4",
-    "Insert_Songs/I Trust You.mp4",
+    `${URL}STRAIGHT BET.mp4`,
+    `${URL}Bouya no Yume yo.mp4`,
+    `${URL}Memories.mp4`,
+    `${URL}White White Snow.mp4`,
+    `${URL}Yuki no hate ni Kimi no na wo.mp4`,
+    `${URL}Wishing.mp4`,
+    `${URL}Door.mp4`,
+    `${URL}What you don't know.mp4`,
+    `${URL}I Trust You.mp4`,
 ];
     
 let isPosterSet = false; //Track if poster is set
@@ -582,10 +583,15 @@ shuffleButton.addEventListener('click', function() {
     if (TheaterModeFlag)
         setTimeout(Fullscreen,0)
 // You can now use the shuffled videoUrls array for playing the songs in a random order
-    if (clickCount % 2 == 1)
-        console.log('Danh sách video sau khi trộn là: ', newvideoUrls);
-    else
-        console.log('Danh sách video sau khi trộn là: ', videoUrls);
+    if (clickCount % 2 == 1){
+        const newcleanNames = newvideoUrls.map(url => cleanVideoSrcName(url));
+        console.log('Danh sách video sau khi trộn là: ', newcleanNames);
+    }
+    else {
+        const cleanNames = videoUrls.map(url => cleanVideoSrcName(url));
+        console.log('Danh sách video sau khi trộn là: ', cleanNames);
+    }
+        
 });
     
 // Update the delay variable
@@ -794,17 +800,17 @@ document.addEventListener("keydown", function(event) {
     else if (event.code === "KeyT"){
         TheaterMode.click();
     }
-    else if (event.code === "KeyD"){
-        playVideo("Insert_Songs/Theater D.mp4")
+    if (event.code === "KeyD"){
+        playVideo(`${URL}Theater D.mp4`)
     }
-    else if (event.code === "KeyO"){
-        playVideo("Openings_and_Endings/S1 Ending.mp4");
+    if (event.code === "KeyO"){
+        playVideo(`${URL}S1 Ending.mp4`);
     }
-    else if (event.code === "KeyP"){
-        playVideo("Openings_and_Endings/S2 Ending.mp4")
+    if (event.code === "KeyP"){
+        playVideo(`${URL}S2 Ending.mp4`)
     }
-    else if (event.code === "KeyS"){
-        playVideo("Openings_and_Endings/ED1 - STYX HELIX slow.mp4");
+    if (event.code === "KeyS"){
+        playVideo(`${URL}ED1 - STYX HELIX slow.mp4`);
     }
     else if (event.code === "KeyB"){
         ChangeStyxHelix();
@@ -1052,8 +1058,8 @@ function ChangeStyxHelix(){
     keyB++;
         if (keyB%2==1)
         {
-            originalIndex = videoUrls.indexOf('Openings_and_Endings/ED1 - STYX HELIX.mp4');
-            videoUrls[originalIndex] = 'Openings_and_Endings/ED1 - STYX HELIX nocut.mp4';
+            originalIndex = videoUrls.indexOf(`${URL}ED1 - STYX HELIX.mp4`);
+            videoUrls[originalIndex] = `${URL}ED1 - STYX HELIX nocut.mp4`;
             OG.style.display = 'none';
             OG_sidebar.style.display = 'none';
             FULL.style.display = 'inline';
@@ -1065,8 +1071,8 @@ function ChangeStyxHelix(){
         }
         else
         {
-            originalIndex = videoUrls.indexOf('Openings_and_Endings/ED1 - STYX HELIX nocut.mp4');
-            videoUrls[originalIndex] = 'Openings_and_Endings/ED1 - STYX HELIX.mp4';
+            originalIndex = videoUrls.indexOf(`${URL}ED1 - STYX HELIX nocut.mp4`);
+            videoUrls[originalIndex] = `${URL}ED1 - STYX HELIX.mp4`;
             OG.style.display = 'inline';
             OG_sidebar.style.display = 'flex';
             FULL.style.display = 'none';

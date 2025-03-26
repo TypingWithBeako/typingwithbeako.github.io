@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-echidna-approved-v1';
+const CACHE_NAME = 'rezero-cache-echidna-approved-cloudflare_v1';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
