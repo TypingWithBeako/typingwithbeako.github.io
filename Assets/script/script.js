@@ -27,7 +27,7 @@ var videoUrls = [
     `${URL}OP3 - Realize.mp4`,
     `${URL}ED3 - Memento.mp4`,
     `${URL}OP4 - Long shot.mp4`,
-    `${URL}ED4 - Believe in you.mp4`,
+    `${URL}ED4 - Believe in you.webm`,
     `${URL}OP5 - Reweave.mp4`,
     `${URL}ED5 - NOX LUX.mp4`,
 ];
@@ -348,8 +348,8 @@ moveableimg.addEventListener('click', function(){
         navbarContent.style.display = 'none';
         newnavbarContent.style.display ='flex';
         videoPlayer.src= newvideoUrls[0];
-        newcurrentIndex=0;
-        videoPlayer.currentTime = videoPlayer.currentTime
+        newcurrentIndex = 0;
+        currentIndex = -1;
         clearTimeout(nextVideoTimeout);
         clearTimeout(videoLoopingTimeout);
         textToChange.classList.add('fade-in');
@@ -375,8 +375,8 @@ moveableimg.addEventListener('click', function(){
         navbarContent.style.display ='flex';
         newnavbarContent.style.display ='none';
         videoPlayer.src = videoUrls[0];
-        currentIndex=0;
-        videoPlayer.currentTime = videoPlayer.currentTime
+        currentIndex = 0;
+        newcurrentIndex = -1;
         clearTimeout(nextVideoTimeout); 
         clearTimeout(videoLoopingTimeout);
         textToChange.classList.add('fade-in');
@@ -1147,3 +1147,13 @@ document.addEventListener("visibilitychange", () => {
         },300)   // Needs delay (300ms) to work reliably + to make user experience a little bit normal
     }
 });
+
+// Display first frame of the video when changing from Openings and Endings / Insert Songs
+videoPlayer.addEventListener('loadeddata', () => {
+    if (isPosterSet && 
+        (currentIndex === 0 || newcurrentIndex === 0) && 
+        !(currentIndex === -1 && newcurrentIndex === -1)) {
+        
+        videoPlayer.currentTime = 0;
+    }
+})
