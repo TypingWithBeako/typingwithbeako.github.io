@@ -333,11 +333,9 @@ const SidebarButton = document.getElementById('SidebarButton');
 const Trademark = document.getElementById('trademark');
 const DelayButton = document.getElementById('Delay');
 
-moveableimg.addEventListener('click', function(){
-        
-    if (isAnimating || this.hasAttribute('disabled')) {
-    return; // Exit the function if an animation is already in progress or the element is disabled
-    }
+moveableimg.addEventListener('click', function(){    
+    if (isAnimating || this.hasAttribute('disabled')) 
+        return; // Exit the function if an animation is already in progress or the element is disabled
     isAnimating = true; // Set the flag to indicate that an animation is in progress
     this.setAttribute('disabled', 'disabled'); // Disable the clickable element
     clickCount++;
@@ -368,6 +366,10 @@ moveableimg.addEventListener('click', function(){
         Insert_Songs_Content.style.display = '';
         SidebarButton.innerHTML = "Chuyển sang OPs và EDs";
         console.log("- Chuyển sang trình phát Nhạc chủ đề - ");
+        videoPlayer.addEventListener('loadeddata', () => {
+            if (isPosterSet)
+                videoPlayer.currentTime = 0;
+        },{once:true})
     }
     else {
         bodytext.innerHTML = 'Mở đầu và Kết thúc<span class="bodytext--title title" title="Cách gọi khác: Opening (OP) và Ending (ED)">ℹ️</span>';
@@ -394,6 +396,10 @@ moveableimg.addEventListener('click', function(){
         Insert_Songs_Content.style.display = 'none';
         SidebarButton.innerHTML = "Chuyển sang Nhạc chủ đề";
         console.log("- Chuyển sang trình phát Mở đầu và kết thúc - ");
+        videoPlayer.addEventListener('loadeddata', () => {
+            if (isPosterSet)
+                videoPlayer.currentTime = 0;
+        },{once:true})
     }
     setTimeout(() => {
     isAnimating = false; // Reset the flag once the animation is complete
@@ -1149,11 +1155,3 @@ document.addEventListener("visibilitychange", () => {
 });
 
 // Display first frame of the video when changing from Openings and Endings / Insert Songs
-videoPlayer.addEventListener('loadeddata', () => {
-    if (isPosterSet && 
-        (currentIndex === 0 || newcurrentIndex === 0) && 
-        !(currentIndex === -1 && newcurrentIndex === -1)) {
-        
-        videoPlayer.currentTime = 0;
-    }
-})
