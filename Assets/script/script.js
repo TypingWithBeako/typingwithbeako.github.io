@@ -61,6 +61,7 @@ let keyB = 0
 let TheaterModeFlag = false;
 let TheaterModeClickCount = 0;
 let currentVolume = 1 // 1 stands for maximum volume, 0 stands for muted
+let errorReloadTimeout;
 
 function playVideo(videoName) {
     nextVideo.src = '';
@@ -78,15 +79,17 @@ function playVideo(videoName) {
         videoPlayer.poster = "Other_Files/black.png";
         isPosterSet = true;
     }
-    // Clear the timeout for playNextVideo and enableLoopingListener
+    // Clear the timeout for playNextVideo, enableLoopingListener and error handling timeout
     clearTimeout(nextVideoTimeout);
-    clearTimeout(videoLoopingTimeout); 
+    clearTimeout(videoLoopingTimeout);
+    clearTimeout(errorReloadTimeout); 
     simulateClick();
 }
 const videoPlayer = document.getElementById('videoPlayer');
 videoPlayer.addEventListener('play',function(){
     clearTimeout(nextVideoTimeout);
     clearTimeout(videoLoopingTimeout);
+    clearTimeout(errorReloadTimeout);
     if (!isPosterSet) {
         videoPlayer.poster = "Other_Files/black.png";
         isPosterSet = true;
@@ -312,10 +315,18 @@ function playNextVideo() {
     }, delay);     
 }
 
-// Add event listener to stop the timeout if playVideo is pressed while setTimeout is running
-videoPlayer.addEventListener('play', function() {
-    clearTimeout(nextVideoTimeout);
-});
+// Automatically attempt reloading the current video if any error happen with 7 seconds interval
+videoPlayer.addEventListener('error', () => {
+    const videoName = cleanVideoSrcName(videoPlayer.src);
+    clearTimeout(errorReloadTimeout);
+    errorReloadTimeout = setTimeout(() => {
+        console.log('Tải lại video:', videoName);
+        videoPlayer.src = videoPlayer.src
+        videoPlayer.play().catch(error => {
+            console.error('Lỗi khi phát video:', error, 'Tiến hành tải lại video sau 7 giây.');
+        });
+    }, 7000)
+})
 
 const mediaQuery = window.matchMedia('(max-width: 722px)'); // Define a media query for mobile devices
 const moveableimg = document.querySelector('.moveable_img');
@@ -1153,5 +1164,3 @@ document.addEventListener("visibilitychange", () => {
         },300)   // Needs delay (300ms) to work reliably + to make user experience a little bit normal
     }
 });
-
-// Display first frame of the video when changing from Openings and Endings / Insert Songs
