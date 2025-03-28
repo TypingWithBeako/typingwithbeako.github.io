@@ -429,6 +429,7 @@ songname.addEventListener('animationend', () => {
 });
 navbarContent.addEventListener('animationend', () => {
     navbarContent.classList.remove('slide-in');
+    navbarContent.classList.remove('fade-in');
 });
 newnavbarContent.addEventListener('animationend', () => {
     newnavbarContent.classList.remove('slide-in');
@@ -439,9 +440,6 @@ moveableimg.addEventListener('animationend', () => {
 S3.addEventListener('animationend', () => {
     S3.classList.remove('fade-in');
 })
-navbarContent.addEventListener('animationend', () => {
-    navbarContent.classList.remove('fade-in');
-});
 backButton.addEventListener('animationend', () => {
     backButton.classList.remove('fade-in');
 })
@@ -959,6 +957,8 @@ TheaterMode.addEventListener('click',function() {
     TheaterModeClickCount++;
     if (TheaterModeClickCount%2==1){
         navbarContent.style.display = 'none';
+        nextButton.style.display = 'none';
+        backButton.style.display = 'none';
         newnavbarContent.style.display = 'none';
         S3.style.display = 'none';
         paragraph.style.display = 'none';
@@ -1012,10 +1012,14 @@ TheaterMode.addEventListener('click',function() {
             if (nextClickCount%2==1){
                 S3.style.display = 'flex';
                 navbarContent.style.display = 'none';
+                nextButton.style.display = 'none';
+                backButton.style.display = 'inline';
             }
             else {
                 S3.style.display = 'none';
                 navbarContent.style.display = 'flex';
+                nextButton.style.display = 'inline';
+                backButton.style.display = 'none';
             }
             paragraph.style.display = 'block';
             ReZeroCast.style.display = 'block';
