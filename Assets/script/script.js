@@ -443,10 +443,11 @@ navbarContent.addEventListener('animationend', () => {
     navbarContent.classList.remove('fade-in');
 });
 backButton.addEventListener('animationend', () => {
-    backButton.classList.remove('fade-in-songname');
+    backButton.classList.remove('fade-in');
 })
 nextButton.addEventListener('animationend', () => {
     nextButton.classList.remove('fade-in-songname');
+    nextButton.classList.remove('fade-in');
 })
 
 function handleFontSizeChange(mediaQuery) {
