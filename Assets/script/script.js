@@ -1169,3 +1169,7 @@ document.addEventListener("visibilitychange", () => {
         },300)   // Needs delay (300ms) to work reliably + to make user experience a little bit normal
     }
 });
+
+songname.addEventListener('click',function(){
+    ChangeStyxHelix();
+})
