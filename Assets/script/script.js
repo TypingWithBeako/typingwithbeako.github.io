@@ -803,7 +803,7 @@ document.addEventListener("keydown", function(event) {
         if (clickCount % 2 === 0) {
             playVideo(videoUrls[7]);
         }
-        else{
+        else {
             playVideo(newvideoUrls[7]);
         }      
     }
@@ -811,12 +811,17 @@ document.addEventListener("keydown", function(event) {
         if (clickCount % 2 === 0) {
             playVideo(videoUrls[8]);
         }
-        else 
+        else {
             playVideo(newvideoUrls[8])   
+        }
+            
     }
     else if (event.code === 'Numpad0'||event.code === "Digit0") {
         if (clickCount % 2 === 0) {
             playVideo(videoUrls[9]);
+        }
+        else {
+            playVideo(newvideoUrls[9])
         }   
     }
     else if (event.code === 'Tab') {
