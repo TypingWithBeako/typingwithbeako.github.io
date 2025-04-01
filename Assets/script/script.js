@@ -333,12 +333,15 @@ const moveableimg = document.querySelector('.moveable_img');
 const textToChange = document.getElementById('text_to_change');
 const navbarContent = document.getElementById('oldnavbarContent');
 const newnavbarContent = document.getElementById('newnavbarContent');
+const newInsertSongs = document.getElementById('newInsertSongs');
 const bodytext =document.getElementById('bodytext');
 const songname =document.getElementById('songname');
 const disablePreloadingbutton = document.querySelector('.subaru');
 const enablePreloadingbutton = document.querySelector('.trademark');
 const nextButton = document.getElementById('nextButton');
 const backButton = document.getElementById('backButton');
+const newnextButton = document.getElementById('newnextButton');
+const newbackButton = document.getElementById('newbackButton');
 const S3 = document.getElementById('Season3Content');
 const SidebarButton = document.getElementById('SidebarButton');
 const Trademark = document.getElementById('trademark');
@@ -359,6 +362,7 @@ moveableimg.addEventListener('click', function(){
         videoPlayer.src= newvideoUrls[0];
         newcurrentIndex = 0;
         currentIndex = -1;
+        nextClickCount = 0;
         clearTimeout(nextVideoTimeout);
         clearTimeout(videoLoopingTimeout);
         textToChange.classList.add('fade-in');
@@ -368,6 +372,9 @@ moveableimg.addEventListener('click', function(){
         moveableimg.classList.add('fade-in');
         backButton.style.display ='none';
         nextButton.style.display ='none';
+        newnextButton.style.display = 'inline';
+        newbackButton.style.display = 'none';
+        newnextButton.classList.add('fade-in-songname')
         S3.style.display='none';
         Insert_Songs.style.display = '';
         Endings.style.display = 'none';
@@ -387,9 +394,11 @@ moveableimg.addEventListener('click', function(){
         songname.innerHTML = 'Nhạc chủ đề<span class="songname--title title" title="Cách gọi khác: Insert Song">ℹ️</span>';
         navbarContent.style.display ='flex';
         newnavbarContent.style.display ='none';
+        newInsertSongs.style.display = 'none';
         videoPlayer.src = videoUrls[0];
         currentIndex = 0;
         newcurrentIndex = -1;
+        nextClickCount = 0;
         clearTimeout(nextVideoTimeout); 
         clearTimeout(videoLoopingTimeout);
         textToChange.classList.add('fade-in');
@@ -399,6 +408,8 @@ moveableimg.addEventListener('click', function(){
         moveableimg.classList.add('fade-in');
         nextButton.style.display ='inline';
         nextButton.classList.add('fade-in-songname')
+        newnextButton.style.display = 'none';
+        newbackButton.style.display ='none';
         Insert_Songs.style.display='none';
         Openings.style.display = '';
         Endings.style.display = '';
@@ -433,6 +444,7 @@ navbarContent.addEventListener('animationend', () => {
 });
 newnavbarContent.addEventListener('animationend', () => {
     newnavbarContent.classList.remove('slide-in');
+    newnavbarContent.classList.remove('fade-in');
 });
 moveableimg.addEventListener('animationend', () => {
     moveableimg.classList.remove('fade-in');
@@ -440,12 +452,22 @@ moveableimg.addEventListener('animationend', () => {
 S3.addEventListener('animationend', () => {
     S3.classList.remove('fade-in');
 })
+newInsertSongs.addEventListener('animationend', () => {
+    newInsertSongs.classList.remove('fade-in');
+})
 backButton.addEventListener('animationend', () => {
     backButton.classList.remove('fade-in');
 })
 nextButton.addEventListener('animationend', () => {
     nextButton.classList.remove('fade-in-songname');
     nextButton.classList.remove('fade-in');
+})
+newbackButton.addEventListener('animationend', () => {
+    newbackButton.classList.remove('fade-in');
+})
+newnextButton.addEventListener('animationend', () => {
+    newnextButton.classList.remove('fade-in-songname');
+    newnextButton.classList.remove('fade-in');
 })
 
 function handleFontSizeChange(mediaQuery) {
@@ -905,6 +927,48 @@ backButton.addEventListener('click',function(){
     }, 2501);
 })
 
+// Next and Back button implementation (for Insert Songs):
+newnextButton.addEventListener('click',function(){
+    if (isAnimating || this.hasAttribute('disabled')) {
+        return; // Exit the function if an animation is already in progress or the element is disabled
+    }
+    nextClickCount++;
+    isAnimating = true; // Set the flag to indicate that an animation is in progress
+    this.setAttribute('disabled', 'disabled'); // Disable the clickable element
+    newbackButton.disabled = true;
+    newnavbarContent.style.display = 'none';
+    newInsertSongs.style.display = 'flex';
+    newnextButton.style.display ='none';
+    newbackButton.style.display ='inline';
+    newInsertSongs.classList.add('fade-in');
+    newbackButton.classList.add('fade-in');
+    setTimeout(() => {
+        isAnimating = false; // Reset the flag once the animation is complete
+        this.removeAttribute('disabled'); // Re-enable the clickable element
+        newbackButton.disabled = false;
+        }, 2501);
+})
+newbackButton.addEventListener('click',function(){
+    if (isAnimating || this.hasAttribute('disabled')) {
+        return; // Exit the function if an animation is already in progress or the element is disabled
+    }
+    nextClickCount--;
+    isAnimating = true; // Set the flag to indicate that an animation is in progress
+    this.setAttribute('disabled', 'disabled'); // Disable the clickable element
+    newnextButton.disabled = true; // Disable the clickable element
+    newnavbarContent.style.display = 'flex';
+    newInsertSongs.style.display = 'none';
+    newnextButton.style.display ='inline';
+    newbackButton.style.display ='none';
+    newnavbarContent.classList.add('fade-in');
+    newnextButton.classList.add('fade-in');
+    setTimeout(() => {
+        isAnimating = false; // Reset the flag once the animation is complete
+        this.removeAttribute('disabled'); // Re-enable the clickable element
+        newnextButton.disabled = false; // Disable the clickable element
+    }, 2501);
+})
+
 function simulateClick() {
     // Get the element at the bottom right corner of the screen
     const elementAtPoint = document.elementFromPoint(window.innerWidth - 10, window.innerHeight - 100);
@@ -962,8 +1026,11 @@ TheaterMode.addEventListener('click',function() {
         navbarContent.style.display = 'none';
         nextButton.style.display = 'none';
         backButton.style.display = 'none';
+        newnextButton.style.display = 'none';
+        newbackButton.style.display = 'none';
         newnavbarContent.style.display = 'none';
         S3.style.display = 'none';
+        newInsertSongs.style.display = 'none';
         paragraph.style.display = 'none';
         ReZeroCast.style.display = 'none';
         Trademark.style.display = 'none';
@@ -989,7 +1056,18 @@ TheaterMode.addEventListener('click',function() {
     }
     else {
         if (clickCount%2==1){
-            newnavbarContent.style.display = 'flex';
+            if (nextClickCount == 1){
+                newInsertSongs.style.display = 'flex';
+                newnavbarContent.style.display = 'none';
+                newnextButton.style.display = 'none';
+                newbackButton.style.display = 'inline';
+            }
+            else if (nextClickCount == 0){
+                newInsertSongs.style.display = 'none';
+                newnavbarContent.style.display = 'flex';
+                newnextButton.style.display = 'inline';
+                newbackButton.style.display = 'none';
+            }
             paragraph.style.display = 'block';
             ReZeroCast.style.display = 'block';
             Trademark.style.display = 'block';
@@ -1012,13 +1090,13 @@ TheaterMode.addEventListener('click',function() {
             closeFullscreen();
         }
         else {
-            if (nextClickCount%2==1){
+            if (nextClickCount == 1){
                 S3.style.display = 'flex';
                 navbarContent.style.display = 'none';
                 nextButton.style.display = 'none';
                 backButton.style.display = 'inline';
             }
-            else {
+            else if (nextClickCount == 0){
                 S3.style.display = 'none';
                 navbarContent.style.display = 'flex';
                 nextButton.style.display = 'inline';
@@ -1047,13 +1125,7 @@ TheaterMode.addEventListener('click',function() {
         }
     }
 })
-function ChangeToInsertSongs() {
-    moveableimg.click();
-    if (TheaterModeFlag==true) {
-        newnavbarContent.style.display='none';
-        navbarContent.style.display='none';
-    }
-}
+
 function ExitTheaterMode() {
     TheaterMode.click();
 }

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-echidna-approved-final';
+const CACHE_NAME = 'rezero-cache-echidna-approved-final-v1';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
@@ -65,11 +65,12 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const isVideo = url.hostname === 'r2-cache-worker.thaituan150806.workers.dev';
   const isMainScript = url.pathname.includes('script.min.js');  // Only main script
+  const isMainStyle = url.pathname.includes('style.min.css');  // Only main style
   const isMainHTML = url.pathname.endsWith('index.html') || url.pathname === '/'; // Only index.html
 
   if (isVideo) {
     return;  // Let the browser handle it normally
-  } else if (isMainScript || isMainHTML) {
+  } else if (isMainScript || isMainHTML || isMainStyle) {
     // Network-first strategy
     event.respondWith(
       fetch(event.request)

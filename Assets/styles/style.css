@@ -81,7 +81,7 @@ button:disabled {
     font-size: 0.625vw;
     vertical-align: text-top;
 }
-#nextButton,#backButton {
+#nextButton,#backButton, #newnextButton, #newbackButton {
     position:absolute;
     margin: 0;
     top: 20% !important;
@@ -90,37 +90,42 @@ button:disabled {
     border:none;
     outline: none;
 }
-#nextButton {
+#nextButton, #newnextButton {
     right:0;
 }
-#backButton {
+#backButton, #newbackButton {
     left: 0;
     display: none;
 }
-.backIcon {
+#newnextButton {
+    display: none;
+}
+.nextIcon, .backIcon {
     width: 2vw;
     height: 2vw;
 }
-.nextIcon {
-    width: 2vw;
-    height: 2vw;
-}
-#Season3Content {
+#Season3Content, #newInsertSongs {
     display:none;
     text-align: center;
 }
-.oldtopnav {
+.oldtopnav, .newtopnav {
     position: relative;
     overflow: hidden;
     background-color: #333;
+}
+.oldtopnav {
     margin-top: 3vh;
 }
-#oldnavbarContent,#newnavbarContent,#Season3Content{
+#oldnavbarContent,#newnavbarContent,#Season3Content,#newInsertSongs {
     display: flex;
     justify-content: space-evenly;
 }
 #Season3Content {
     width: 55%;
+    display: none;
+}
+#newInsertSongs {
+    width: 10%;
     display: none;
 }
 nav li {
@@ -131,10 +136,6 @@ nav li {
     text-decoration: none;
     font-size: 0.911vw;
     white-space: nowrap; /* Prevent text wrapping */  
-}
-.newtopnav {
-    overflow: hidden;
-    background-color: #333;
 }
 .newtopnav li {
     float: left;
