@@ -37,6 +37,7 @@ var newvideoUrls = [
     `${URL}Memories.mp4`,
     `${URL}White White Snow.mp4`,
     `${URL}Yuki no hate ni Kimi no na wo.mp4`,
+    `${URL}Requiem of Silence.mp4`,
     `${URL}Wishing.mp4`,
     `${URL}Door.mp4`,
     `${URL}What you don't know.mp4`,
@@ -107,32 +108,32 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/STYX_HELIX_Cover.webp",
                 sizes: "1008x1000",
-                type: "image/png",
+                type: "image/webp",
               }
         else if (name == 'Paradisus - Paradoxum')
             musicArtwork = {
                 src: "Icons/artworks/Paradisus-Paradoxum_Cover.webp",
                 sizes: "1000x993",
-                type: "image/png",
+                type: "image/webp",
               }
         else if (name == 'NOX LUX')
             musicArtwork = {
-                src: "Icons/artworks/NOX_LOX_Cover.webp",
+                src: "Icons/artworks/NOX_LUX_Cover.webp",
                 sizes: "1080x1080",
-                type: "image/png",
+                type: "image/webp",
               }
         else if (name == 'STRAIGHT BET')
             musicArtwork = {
                 src: "Icons/artworks/STRAIGHT_BET_Cover.jpg",
                 sizes: "721x720",
-                type: "image/png",
+                type: "image/jpeg",
               }
         else if (name == 'S1 Ending'){
             name = 'Kết thúc Mùa 1'
             musicArtwork = {
                 src: "Icons/artworks/STYX_HELIX_Cover.webp",
                 sizes: "1008x1000",
-                type: "image/png",
+                type: "image/webp",
               }
         }
         else if (name == 'S2 Ending'){
@@ -140,30 +141,29 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Long_Shot_Cover.webp",
                 sizes: "997x992",
-                type: "image/png",
+                type: "image/webp",
               }
         }
         else if (name == 'Theater D')
             musicArtwork = {
                 src: "Icons/artworks/Theater_D_Cover.jpg",
                 sizes: "1080x1080",
-                type: "image/png",
+                type: "image/jpeg",
               }
         else if (name == 'STYX HELIX slow'){
             name = "STYX HELIX (bản chậm)"
             musicArtwork = {
                 src: "Icons/artworks/STYX_HELIX_Cover.webp",
                 sizes: "1008x1000",
-                type: "image/png",
+                type: "image/webp",
               }
         }
         else if (name == 'STYX HELIX nocut') {
-            name = 'STYX HELIX'
             artist = 'Myth & Roid'
             musicArtwork = {
                 src: "Icons/artworks/STYX_HELIX_Cover.webp",
-                sizes: "997x992",
-                type: "image/png",
+                sizes: "1008x1000",
+                type: "image/webp",
             }
         }
     }
@@ -172,7 +172,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Long_Shot_Cover.webp",
             sizes: "1400x1400",
-            type: "image/png",
+            type: "image/webp",
           }
     }
     else if (name == 'Redo' || name == 'Realize' || name == 'Reweave'){
@@ -181,19 +181,19 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Redo_Cover.webp",
                 sizes: "997x992",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Realize')
             musicArtwork = {
                 src: "Icons/artworks/Realize_cover.webp",
                 sizes: "500x500",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Reweave')
             musicArtwork = {
                 src: "Icons/artworks/Reweave_Cover.webp",
                 sizes: "1600x1600",
-                type: "image/png",
+                type: "image/webp",
             }
     }
     else if (name == 'Stay Alive' || name == 'Door' || name == 'I Trust You' || name == 'Bouya no Yume yo'){
@@ -202,25 +202,25 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Stay_Alive_Cover.webp",
                 sizes: "1280x1281",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Door')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'I Trust You')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Bouya no Yume yo')
             musicArtwork = {
                 src: "Icons/artworks/Character_song_album.webp",
                 sizes: "1280x1280",
-                type: "image/png",
+                type: "image/webp",
             }
     }
     else if (name == 'Memento' || name == 'Believe in you' || name == 'Yuki no hate ni Kimi no na wo' || name == 'White White Snow'){
@@ -229,25 +229,25 @@ videoPlayer.addEventListener('play',function(){
             musicArtwork = {
                 src: "Icons/artworks/Memento_cover.webp",
                 sizes: "500x500",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Believe in you')
             musicArtwork = {
                 src: "Icons/artworks/Believe_in_you_cover.webp",
                 sizes: "500x500",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'Yuki no hate ni Kimi no na wo')
             musicArtwork = {
                 src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
                 sizes: "640x640",
-                type: "image/png",
+                type: "image/webp",
             }
         else if (name == 'White White Snow')
             musicArtwork = {
                 src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
                 sizes: "640x640",
-                type: "image/png",
+                type: "image/webp",
             }
     }
     else if (name == 'Memories'){
@@ -255,7 +255,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
             sizes: "640x640",
-            type: "image/png",
+            type: "image/webp",
         }
     }
     else if (name == 'Wishing'){
@@ -263,7 +263,7 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Character_song_album.webp",
             sizes: "1280x1280",
-            type: "image/png",
+            type: "image/webp",
         }
     }
     else if (name == 'What you don\'t know'){
@@ -271,7 +271,15 @@ videoPlayer.addEventListener('play',function(){
         musicArtwork = {
             src: "Icons/artworks/Character_song_album.webp",
             sizes: "1280x1280",
-            type: "image/png",
+            type: "image/webp",
+        }
+    }
+    else if (name == 'Requiem of Silence'){
+        artist = 'Kenichiro Suehiro'
+        musicArtwork = {
+            src: "Icons/artworks/Re_Zero_Soundtrack_Cover.webp",
+            sizes: "320x317",
+            type: "image/webp",
         }
     }
 
