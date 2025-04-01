@@ -346,6 +346,12 @@ const S3 = document.getElementById('Season3Content');
 const SidebarButton = document.getElementById('SidebarButton');
 const Trademark = document.getElementById('trademark');
 const DelayButton = document.getElementById('Delay');
+const Openings = document.getElementById('Openings');
+const Endings = document.getElementById('Endings');
+const Insert_Songs = document.getElementById('Insert_Songs');
+const Openings_Content = document.getElementById('Openings_Content');
+const Endings_Content = document.getElementById('Endings_Content');
+const Insert_Songs_Content = document.getElementById('Insert_Songs_Content');
 
 moveableimg.addEventListener('click', function(){    
     if (isAnimating || this.hasAttribute('disabled')) 
