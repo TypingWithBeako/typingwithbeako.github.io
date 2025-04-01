@@ -616,27 +616,30 @@ shuffleButton.addEventListener('click', function() {
     
 // Update the delay variable
 function updateDelay(newDelay) {
-    delay = newDelay; 
+    delay = newDelay * 1000; // Convert to milliseconds
 }
 // Add event listener for button click
 document.getElementById("Delay").addEventListener("click", function() {
     // Prompt user for new delay
-    let newDelay = parseInt(prompt("Nhập độ trễ mới bằng mili giây: (Độ trễ hiện tại: " + delay + "ms)"));
-    // Validate user input
+    let newDelay = parseFloat(prompt("Nhập độ trễ giữa các chuyển cảnh: (Độ trễ hiện tại: " + delay/1000 + " giây)"));
+    newDelay = Number (newDelay.toFixed(3)) // Fix to 3 significant digits
+    // Restore fullscreen if in Theater mode
     if (TheaterModeFlag)
         setTimeout(Fullscreen,0)
+
+    // Validate user input
     if (isNaN(newDelay) || newDelay < 0) {
         alert("Độ trễ không đúng. Vui lòng nhập lại độ trễ.");
-    return;
+        return;
     }
-    if (newDelay > 25000) {
+
+    if (newDelay > 25) {
         alert("Đây không phải là nơi để bạn đi ngủ :V");
-    return;
+        return;
     }
     // Update delay and optionally display confirmation
     updateDelay(newDelay);
-    console.log("Độ trễ được cập nhật thành: ", newDelay, "ms");
-    
+    console.log("Độ trễ được cập nhật thành: ", newDelay, " giây");
 });
 
 // Check for orientation change using matchMedia (for mobile devices)
@@ -1119,19 +1122,27 @@ videoPlayer.addEventListener('volumechange',() =>{
 
 // Get current volume from video player before exiting site
 window.addEventListener('beforeunload', () => {
-    currentVolume = videoPlayer.volume.toFixed(2);
     // Save to local storage
-    localStorage.setItem('volume', currentVolume);
+    localStorage.setItem('volume', currentVolume.toFixed(2));
+    localStorage.setItem('delay', delay.toFixed(3));
 });
 // Load volume when page loads
 document.addEventListener('DOMContentLoaded', () => {
     // Check if we have a saved volume
     const savedVolume = localStorage.getItem('volume');
+    const savedDelay = localStorage.getItem('delay')
     // Apply saved volume if it exists
     if (savedVolume !== null) {
         const volumeNumber = Number (parseFloat(savedVolume).toFixed(2)); // Take only 2 significant digits
         videoPlayer.volume = volumeNumber
         console.log("Thiết lập âm lượng đã lưu:", volumeNumber*100 + "%");
+    }
+
+    // Apply saved delay if it exists
+    if (savedDelay !== null) {
+        const delayNumber = Number (parseFloat(savedDelay).toFixed(3)); // Take only 3 significant digits
+        delay = delayNumber;
+        console.log("Thiết lập độ trễ đã lưu:", delay/1000 + " giây")
     }
 });
 
