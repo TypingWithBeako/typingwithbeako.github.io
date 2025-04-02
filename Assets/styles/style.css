@@ -25,7 +25,7 @@ h3 a:visited {
 h3 a:link:active, h3 a:visited:active {
     color: #FF0000; 
 }
-a,button,i,.moveable_img,
+a,button,i,.moveable_img, #songname,
 video::-webkit-media-controls-play-button,
 video::-webkit-media-controls-volume-slider-container,
 video::-webkit-media-controls-volume-slider,

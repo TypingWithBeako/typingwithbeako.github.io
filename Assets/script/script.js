@@ -1249,12 +1249,13 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+ // Only handle tab switching, not other visibility changes
 document.addEventListener("visibilitychange", () => {
-    // Only handle tab switching, not other visibility changes
-    if (document.hidden && !document.pictureInPictureElement && videoPlayer.paused === false) {
-        // Enter PiP when switching away
-        videoPlayer.requestPictureInPicture().catch(e => console.log("Lỗi khi sử dụng tính năng Hình trong Hình:", e));
-    } 
+    if (!document.hidden && !document.pictureInPictureElement) {
+        setTimeout(() => { 
+            videoPlayer.currentTime = videoPlayer.currentTime;
+        }, 300)   // Needs delay (300ms) to work reliably + to make user experience better
+    }
     else if (!document.hidden && document.pictureInPictureElement) {
         // Exit PiP when returning to tab
         document.exitPictureInPicture().catch(e => console.log("Lỗi khi thoát tính năng Hình trong Hình:", e));
