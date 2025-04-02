@@ -734,6 +734,14 @@ function previousVideoTrack() {
     }
 }
 
+function togglePlaylist() {
+    moveableimg.click();
+    if (TheaterModeFlag) {
+        newnavbarContent.style.display='none';
+        navbarContent.style.display='none';
+    }
+}
+
 // Register key being pressed
 document.addEventListener("keydown", function(event) {
     // Play/pause the video when pressing space
@@ -834,11 +842,7 @@ document.addEventListener("keydown", function(event) {
     }
     else if (event.code === 'Tab') {
         event.preventDefault(); // Prevent the default tab behavior
-        moveableimg.click();
-        if (TheaterModeFlag){
-            newnavbarContent.style.display='none';
-            navbarContent.style.display='none';
-        }
+        togglePlaylist();
     }
     else if (event.code === 'KeyQ') {
         shuffleButton.click();

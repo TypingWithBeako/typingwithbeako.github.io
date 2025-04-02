@@ -27,32 +27,11 @@
       "label": "Long shot"
     },
     {
-      "src": "Other_Files/Screenshots/Long shot.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Long shot"
-    },
-    {
       "src": "Other_Files/Screenshots/STYX HELIX.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "STYX HELIX"
-    },
-    {
-      "src": "Other_Files/Screenshots/STYX HELIX.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "STYX HELIX"
-    },
-    {
-      "src": "Other_Files/Screenshots/Your Name.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Your Name"
     },
     {
       "src": "Other_Files/Screenshots/Your Name.png",
@@ -66,13 +45,6 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Wishing"
-    },
-    {
-      "src": "Other_Files/Screenshots/Wishing.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "narrow",
       "label": "Wishing"
     }
   ]
