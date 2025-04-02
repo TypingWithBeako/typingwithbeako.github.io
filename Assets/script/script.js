@@ -1256,10 +1256,6 @@ document.addEventListener("visibilitychange", () => {
             videoPlayer.currentTime = videoPlayer.currentTime;
         }, 300)   // Needs delay (300ms) to work reliably + to make user experience better
     }
-    else if (!document.hidden && document.pictureInPictureElement) {
-        // Exit PiP when returning to tab
-        document.exitPictureInPicture().catch(e => console.log("Lỗi khi thoát tính năng Hình trong Hình:", e));
-    }
 });
 
 songname.addEventListener('click',function(){
