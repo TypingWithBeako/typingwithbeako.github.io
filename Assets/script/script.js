@@ -1249,26 +1249,15 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Function to check if app is running as installed PWA
-function isRunningAsInstalledPWA() {
-    // Check standard display modes
-    const standaloneMode = window.matchMedia('(display-mode: standalone)').matches;
-    const fullscreenMode = window.matchMedia('(display-mode: fullscreen)').matches;
-    const minimalUiMode = window.matchMedia('(display-mode: minimal-ui)').matches;
-
-    // Check iOS-specific property
-    const iosStandaloneMode = window.navigator.standalone === true;
-    
-    return standaloneMode || fullscreenMode || minimalUiMode || iosStandaloneMode;
-}
-
-// Audio resync when changing from tabs to tabs
 document.addEventListener("visibilitychange", () => {
-    // Skip resync if installed or already in PiP mode
-    if (!isRunningAsInstalledPWA() && !document.hidden && !document.pictureInPictureElement) {
-        setTimeout(() => { 
-            videoPlayer.currentTime = videoPlayer.currentTime;
-        },300)   // Needs delay (300ms) to work reliably + to make user experience a little bit normal
+    // Only handle tab switching, not other visibility changes
+    if (document.hidden && !document.pictureInPictureElement && videoPlayer.paused === false) {
+        // Enter PiP when switching away
+        videoPlayer.requestPictureInPicture().catch(e => console.log("Lỗi khi sử dụng tính năng Hình trong Hình:", e));
+    } 
+    else if (!document.hidden && document.pictureInPictureElement) {
+        // Exit PiP when returning to tab
+        document.exitPictureInPicture().catch(e => console.log("Lỗi khi thoát tính năng Hình trong Hình:", e));
     }
 });
 
