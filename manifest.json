@@ -3,7 +3,7 @@
     "short_name": "Trình phát nhạc Re:Zero",
     "description": "Trình phát video Mở đầu, Kết thúc và Nhạc chủ đề của Re:Zero",
     "start_url": "/",
-    "display": "standalone",
+    "display": "fullscreen",
     "background_color": "#000000",
     "theme_color": "#4a4a4a",
     "icons": [
@@ -27,10 +27,24 @@
       "label": "Long shot"
     },
     {
+      "src": "Other_Files/Screenshots/Long shot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Long shot"
+    },
+    {
       "src": "Other_Files/Screenshots/STYX HELIX.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
+      "label": "STYX HELIX"
+    },
+    {
+      "src": "Other_Files/Screenshots/STYX HELIX.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "narrow",
       "label": "STYX HELIX"
     },
     {
@@ -41,10 +55,24 @@
       "label": "Your Name"
     },
     {
+      "src": "Other_Files/Screenshots/Your Name.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Your Name"
+    },
+    {
       "src": "Other_Files/Screenshots/Wishing.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
+      "label": "Wishing"
+    },
+    {
+      "src": "Other_Files/Screenshots/Wishing.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "narrow",
       "label": "Wishing"
     }
   ]
