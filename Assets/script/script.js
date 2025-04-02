@@ -1249,9 +1249,24 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// Check if we're on Chrome 136 or higher (Chrome 136 is Chrome Dev - this version fixed audio desync)
+function isChrome136OrHigher() {
+    const userAgent = navigator.userAgent;
+    
+    // Check if browser is Chrome
+    const chromeMatch = userAgent.match(/Chrome\/(\d+)/);
+    if (!chromeMatch) return false;
+    
+    // Extract Chrome version
+    const chromeVersion = parseInt(chromeMatch[1], 10);
+    
+    // Return true if Chrome 136 or higher
+    return chromeVersion >= 136;
+  }
+
  // Only handle tab switching, not other visibility changes
 document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && !document.pictureInPictureElement) {
+    if (!document.hidden && !document.pictureInPictureElement && !isChrome136OrHigher()) {
         setTimeout(() => { 
             videoPlayer.currentTime = videoPlayer.currentTime;
         }, 300)   // Needs delay (300ms) to work reliably + to make user experience better
