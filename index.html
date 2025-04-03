@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html data-version="1" lang="vi">
 <head>
+    <title>Re:Zero − Âm nhạc từ thế giới khác</title>
+
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="ozjk4erhsD2FOxpNG82x7Wk8H1IJ8O84zK_nEoz3WRI" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Trình phát video Mở đầu, Kết thúc và Nhạc chủ đề của Re:Zero">
     <meta http-equiv="Cache-Control" content="max-age=31536000"> <!-- 1 year = 365 days * 24 hours * 3600 seconds -->
     <meta http-equiv="Expires" content="Thu, 11 Oct 2025 08:00:00 GMT"> <!-- Expires 1 year from the specified date -->
-    <title>Re:Zero − Âm nhạc từ thế giới khác</title>
+
+    <meta property="og:title" content="Re:Zero − Âm nhạc từ thế giới khác">
+    <meta property="og:description" content="Trình phát video Mở đầu, Kết thúc và Nhạc chủ đề của Re:Zero">
+    <meta property="og:image" content="https://typingwithbeako.github.io/Other_Files/Screenshots/Questioning Beako.jpg">
+    <meta property="og:url" content="https://typingwithbeako.github.io/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Re:Zero − Âm nhạc từ thế giới khác">
+    <meta name="twitter:description" content="Trình phát video Mở đầu, Kết thúc và Nhạc chủ đề của Re:Zero">
+    <meta name="twitter:image" content="https://typingwithbeako.github.io/Other_Files/Screenshots/Questioning Beako.jpg">
+    <meta name="keywords" content="Re:Zero, Rezero, anime music, OP, ED, soundtrack, Redo, STYX HELIX, Paradisus-Paradoxum, Stay Alive, Wishing">
+
+    <link rel="canonical" href="https://typingwithbeako.github.io/">
     <link rel="Icons/apple-touch-icon" sizes="180x180" href="Icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="Icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Icons/favicon-16x16.png">
@@ -168,9 +183,9 @@
             (Nhấn vào logo để chuyển sang <span id="songname">Nhạc chủ đề<span class="songname--title title" title="Cách gọi khác: Insert Song">ℹ️</span></span>)
         </p>
         <div id="github">
-            <a href="https://github.com/TypingWithBeako/typingwithbeako.github.io" target="_blank">
+            <a href="https://github.com/TypingWithBeako/typingwithbeako.github.io" target="_blank" aria-label="GitHub repo">
                 <span style="color: black;">
-                    <i class="fab fa-github fa-2xl" style="font-size:2vw;display: block;"></i>
+                    <i class="fab fa-github fa-2xl" style="font-size:2vw;display: block;" aria-hidden="true"></i>
                 </span>
             </a>
         </div>
@@ -179,7 +194,7 @@
         <div class="content__navbar">
             <div class="oldtopnav">
                 <button id="backButton">
-                    <img class = "backIcon" src="Other_Files/previous.png">
+                    <img class = "backIcon" src="Other_Files/previous.png" alt="Back button">
                 </button>
                 <nav id = "oldnavbarContent">
                     <li><a data-tooltip-target="tooltip-Redo" data-tooltip-placement="bottom" href="#" onclick="r2_playVideo('OP1 - Redo.mp4')">OP1 - Redo</a></li>
@@ -193,7 +208,7 @@
                     <li><a data-tooltip-target="tooltip-Believe_in_you" data-tooltip-placement="bottom" href="#" onclick="r2_playVideo('ED4 - Believe in you.webm')">ED4 - Believe in you</a></li> 
                 </nav>
                 <button id="nextButton">
-                    <img class="nextIcon" src="Other_Files/next.png">
+                    <img class="nextIcon" src="Other_Files/next.png" alt="Next button">
                 </button>
                 <nav id = "Season3Content">
                     <li><a data-tooltip-target="tooltip-Reweave" data-tooltip-placement="bottom" href="#" onclick="r2_playVideo('OP5 - Reweave.mp4')">OP5 - Reweave</a></li>
@@ -204,7 +219,7 @@
             </div>
             <div class ="newtopnav">
                 <button id="newbackButton">
-                    <img class = "backIcon" src="Other_Files/previous.png">
+                    <img class = "backIcon" src="Other_Files/previous.png" alt="Back button">
                 </button>
                 <nav id = "newnavbarContent">
                     <li><a data-tooltip-target="tooltip-STRAIGHT_BET" data-tooltip-placement="bottom" href="#" onclick="r2_playVideo('STRAIGHT BET.mp4')">STRAIGHT BET</a></li>
@@ -218,7 +233,7 @@
                     <li><a data-tooltip-target="tooltip-What_you_dont_know" data-tooltip-placement="bottom" href="#" onclick="r2_playVideo('What you don\'t know.mp4')">What you don't know</a></li>
                 </nav>
                 <button id="newnextButton">
-                    <img class="nextIcon" src="Other_Files/next.png">
+                    <img class="nextIcon" src="Other_Files/next.png" alt="Next button">
                 </button>
                 <nav id = "newInsertSongs">
                     <li><a data-tooltip-target="tooltip-I_Trust_You" data-tooltip-placement="bottom" href="#" onclick="r2_playVideo('I Trust You.mp4')">I Trust You</a></li>
@@ -434,6 +449,7 @@
         </div>
     </div>
 </body>
+<script src="schema.json" type="application/ld+json"></script>
 <script src="Assets/script/jquery.min.js"></script>
 <script src="Assets/script/loader.min.js"></script>
 <script src="Assets/script/micromodal.min.js"></script>
