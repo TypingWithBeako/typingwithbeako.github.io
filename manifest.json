@@ -20,32 +20,46 @@
     ],
     "screenshots": [
     {
-      "src": "Other_Files/Screenshots/Long shot.png",
+      "src": "Other_Files/Screenshots/Long shot.webp",
       "sizes": "1280x720",
-      "type": "image/png",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "Long shot"
     },
     {
-      "src": "Other_Files/Screenshots/STYX HELIX.png",
+      "src": "Other_Files/Screenshots/STYX HELIX.webp",
       "sizes": "1280x720",
-      "type": "image/png",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "STYX HELIX"
     },
     {
-      "src": "Other_Files/Screenshots/Your Name.png",
+      "src": "Other_Files/Thumbnails/Wishing.mp4_snapshot_03.40.705.webp",
       "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Your Name"
-    },
-    {
-      "src": "Other_Files/Screenshots/Wishing.png",
-      "sizes": "1280x720",
-      "type": "image/png",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "Wishing"
+    },
+    {
+      "src": "Other_Files/Screenshots/Redo.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Redo"
+    },
+    {
+      "src": "Other_Files/Screenshots/Believe in you.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Believe in you"
+    },
+    {
+      "src": "Other_Files/Screenshots/Your Name.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Your Name"
     }
   ]
 }
