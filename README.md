@@ -41,16 +41,16 @@ Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát
 
 ## 🔮 Ý nghĩa Triết học của dự án
 
-> *"Hãy cùng bắt đầu từ đây, từ con số một. Không,.. từ số 0!"* - Rem, Re:Zero
+> ***"Hãy cùng bắt đầu từ đây, từ con số một. Không,.. từ số 0!"*** - Rem, Re:Zero
 
 ### 💫 Mối liên hệ với Re:Zero
 
-Dự án này được sinh ra bởi vì Re:Zero đã **cứu cuộc đời** của mình. Giống như Subaru, mình đã bắt đầu từ con số 0, với không một kinh nghiệm lập trình nào, dùng chỉ những công nghệ cơ bản của lập trình web. Qua hơn 446 commits xuyên suốt 6 tháng, dự án này mang đậm lời nhắn của **Re:Zero: Bắt đầu từ con số 0** và **đạt được điều không thể qua ý chí kiên cường**.
+Dự án này được sinh ra bởi vì Re:Zero đã **cứu cuộc đời** của mình. Giống như Subaru, mình đã bắt đầu từ con số 0, với không một kinh nghiệm lập trình nào, dùng chỉ những công nghệ cơ bản của lập trình web. Qua hơn 482 commits xuyên suốt 6 tháng, dự án này mang đậm lời nhắn của Re:Zero: **Bắt đầu từ con số 0 và đạt được điều không thể qua ý chí kiên cường**.
 
 
 ### 🧱 Cách tiếp cận thô sơ nhất
 
-Dự án này sử dụng **HTML, CSS và JavaScript thuần túy** ở tính năng chính của nó. Giống như Subaru phải học tất cả từ con số 0, mình đã tạo dự án này bằng cách sử dụng những thứ cơ bản nhất (Thật ra là do mình *không biết framework* lúc bắt đầu dự án 😅):
+Dự án này sử dụng **HTML, CSS và JavaScript thuần túy** ở tính năng chính của nó. Giống như Subaru phải học tất cả từ con số 0, mình đã tạo dự án này bằng cách sử dụng những thứ cơ bản nhất *(Thật ra là do mình không biết framework lúc bắt đầu dự án 😅)*:
 
 - 🏗️ Các phần tử HTML **tự làm**
 
@@ -172,39 +172,39 @@ Dự án này được phát triển trên một laptop không ổn định:
 
 ## ⌨️ Phím tắt bàn phím
 
--  `Space`: **Phát/Tạm dừng**
+-  `Space`: Phát/Tạm dừng
 
--  `←`/`→`: **Video Trước/Tiếp theo**
+-  `←`/`→`: Video Trước/Tiếp theo
 
--  `↑`/`↓`: **Tăng/Giảm âm lượng**
+-  `↑`/`↓`: Tăng/Giảm âm lượng
 
--  `0-9`: **Phát Video cụ thể (số 1 tương ứng với video đầu tiên)**
+-  `0-9`: Phát Video cụ thể (số 1 tương ứng với video đầu tiên)
 
--  `Tab`: **Chuyển đổi giữa Mở đầu/Kết thúc và Nhạc chủ đề**
+-  `Tab`: Chuyển đổi giữa Mở đầu/Kết thúc và Nhạc chủ đề
 
--  `Q`: **Phát ngẫu nhiên**
+-  `Q`: Phát ngẫu nhiên
 
--  `W`: **Bật/Tắt Lặp video**
+-  `W`: Bật/Tắt Lặp video
 
--  `E`: **Thay đổi Độ trễ**
+-  `E`: Thay đổi Độ trễ
 
--  `R`: **Bật/Tắt chế độ Hình trong hình**
+-  `R`: Bật/Tắt chế độ Hình trong hình
 
--  `F`: **Bật/Tắt chế độ Toàn màn hình**
+-  `F`: Bật/Tắt chế độ Toàn màn hình
 
--  `T`: **Bật/Tắt chế độ Nhà hát**
+-  `T`: Bật/Tắt chế độ Nhà hát
 
--  `D`: **Phát "Theater D"**
+-  `D`: Phát "Theater D"
 
--  `O`: **Phát "Kết thúc Mùa 1"**
+-  `O`: Phát "Kết thúc Mùa 1"
 
--  `P`: **Phát "Kết thúc Mùa 2"**
+-  `P`: Phát "Kết thúc Mùa 2"
 
--  `S`: **Phát "STYX HELIX (bản chậm)"**
+-  `S`: Phát "STYX HELIX (bản chậm)"
 
--  `Escape`: **Thoát chế độ Nhà hát**
+-  `Escape`: Thoát chế độ Nhà hát
 
--  `B`: **Chuyển đổi giữa bản cắt và bản đầy đủ của "STYX HELIX"**
+-  `B`: Chuyển đổi giữa bản cắt và bản đầy đủ của "STYX HELIX"
 
 ## 👥 Đóng góp
 
