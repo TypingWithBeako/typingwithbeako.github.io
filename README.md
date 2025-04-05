@@ -25,7 +25,7 @@ Dự án này sử dụng nội dung Re:Zero được cấp phép bởi **Muse V
 
 Tất cả các quyền được bảo lưu bởi chủ sở hữu bản quyền tương ứng.
 
-Để có trải nghiệm Re:Zero toàn vẹn nhất, hãy truy cập **[kênh YouTube chính thức của Muse Việt Nam](https://www.youtube.com/c/MuseVi%E1%BB%87tNam)**.
+Để có trải nghiệm Re:Zero toàn vẹn nhất, hãy xem ở **[kênh YouTube chính thức của Muse Việt Nam](https://www.youtube.com/watch?v=6rLSlfCmn0Y)**.
 
 Đây là một dự án **giáo dục** và **không được dùng để kiếm tiền**.
 
