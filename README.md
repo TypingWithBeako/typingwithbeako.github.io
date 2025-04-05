@@ -45,7 +45,7 @@ Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát
 
 ### 💫 Mối liên hệ với Re:Zero
 
-Dự án này được sinh ra bởi vì Re:Zero đã **cứu cuộc đời** của mình. Giống như Subaru, mình đã bắt đầu từ con số 0, với không một kinh nghiệm lập trình nào, dùng chỉ những công nghệ cơ bản của lập trình web. Qua hơn 482 commits xuyên suốt 6 tháng, dự án này mang đậm lời nhắn của Re:Zero: **Bắt đầu từ con số 0 và đạt được điều không thể qua ý chí kiên cường**.
+Dự án này được sinh ra bởi vì Re:Zero đã **cứu cuộc đời** của mình. Giống như Subaru, mình đã bắt đầu từ con số 0, với không một kinh nghiệm lập trình nào, dùng chỉ những công nghệ cơ bản của lập trình web. Qua hơn 490 commits xuyên suốt 6 tháng, dự án này mang đậm lời nhắn của Re:Zero: **Bắt đầu từ con số 0 và đạt được điều không thể qua ý chí kiên cường**.
 
 
 ### 🧱 Cách tiếp cận thô sơ nhất
@@ -163,7 +163,7 @@ Dự án này được phát triển trên một laptop không ổn định:
 
 ## 🚀 Cách sử dụng
   
-- Sử dụng trình phát trực tiếp tại [https://typingwithbeako.github.io](https://typingwithbeako.github.io)
+- Sử dụng trình phát trực tiếp tại [https://re-zero.pages.dev](https://re-zero.pages.dev)
 
 ### 📝 Lưu ý
 
