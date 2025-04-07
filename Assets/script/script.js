@@ -933,7 +933,7 @@ backButton.addEventListener('click',function(){
     if (isAnimating || this.hasAttribute('disabled')) {
         return; // Exit the function if an animation is already in progress or the element is disabled
     }
-    nextClickCount++;
+    nextClickCount--;
     isAnimating = true; // Set the flag to indicate that an animation is in progress
     this.setAttribute('disabled', 'disabled'); // Disable the clickable element
     nextButton.disabled = true; // Disable the clickable element
