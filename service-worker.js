@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-echidna-and-beatrice-approved-finished-v1';
+const CACHE_NAME = 'rezero-cache-echidna-and-beatrice-approved-finished-v2';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
@@ -67,8 +67,9 @@ self.addEventListener('fetch', event => {
   const isMainScript = url.pathname.includes('script.min.js');  // Only main script
   const isMainStyle = url.pathname.includes('style.min.css');  // Only main style
   const isMainHTML = url.pathname.endsWith('index.html') || url.pathname === '/'; // Only index.html
+  const isAnalytics = url.hostname.includes('cloudflareinsights.com'); // For analytics files from CloudFlare
 
-  if (isVideo) {
+  if (isVideo || isAnalytics) {
     return;  // Let the browser handle it normally
   } else if (isMainScript || isMainHTML || isMainStyle) {
     // Network-first strategy
