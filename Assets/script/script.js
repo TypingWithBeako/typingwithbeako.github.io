@@ -1280,3 +1280,35 @@ document.addEventListener("visibilitychange", () => {
 songname.addEventListener('click',function(){
     ChangeStyxHelix();
 })
+
+const standaloneMediaQuery = window.matchMedia('(display-mode: standalone)');
+const fullscreenMediaQuery = window.matchMedia('(display-mode: fullscreen)');
+const minimalUiMediaQuery = window.matchMedia('(display-mode: minimal-ui)');
+
+// Function to check if app is running as installed PWA (checks current state)
+function isRunningAsInstalledPWA() {
+    // Check standard display modes using the current .matches state
+    const isStandalone = standaloneMediaQuery.matches;
+    const isFullscreen = fullscreenMediaQuery.matches;
+    const isMinimalUi = minimalUiMediaQuery.matches;
+
+    return isStandalone || isFullscreen || isMinimalUi;
+}
+
+// Function to handle display mode changes
+function handleDisplayModeChange() { 
+    // Check if video is paused before changing title
+    if (videoPlayer.paused) {
+        if (isRunningAsInstalledPWA()) 
+            document.title = '';  // Running as PWA
+        else 
+            document.title = 'Re:Zero - Âm nhạc từ thế giới khác'; // Running in browser
+    }
+}
+
+standaloneMediaQuery.addEventListener('change', handleDisplayModeChange);
+fullscreenMediaQuery.addEventListener('change', handleDisplayModeChange);
+minimalUiMediaQuery.addEventListener('change', handleDisplayModeChange);
+
+// Initial call to check PWA or not
+handleDisplayModeChange(isRunningAsInstalledPWA());
