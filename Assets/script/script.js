@@ -865,19 +865,27 @@ document.addEventListener("keydown", function(event) {
         else 
             openFullscreen();  // Video is not in fullscreen mode, so open fullscreen
     }
+    else if (event.code === "KeyC"){
+        if (videoPlayer.hasAttribute('controls')) {
+            videoPlayer.removeAttribute('controls');
+        } 
+        else {
+            videoPlayer.setAttribute('controls', '');
+        }
+    }
     else if (event.code === "KeyT"){
         TheaterMode.click();
     }
-    if (event.code === "KeyD"){
+    else if (event.code === "KeyD"){
         playVideo(`${URL}Theater D.mp4`)
     }
-    if (event.code === "KeyO"){
+    else if (event.code === "KeyO"){
         playVideo(`${URL}S1 Ending.webm`);
     }
-    if (event.code === "KeyP"){
+    else if (event.code === "KeyP"){
         playVideo(`${URL}S2 Ending.mp4`)
     }
-    if (event.code === "KeyS"){
+    else if (event.code === "KeyS"){
         playVideo(`${URL}ED1 - STYX HELIX slow.mp4`);
     }
     else if (event.code === "KeyB"){
@@ -1220,12 +1228,14 @@ window.addEventListener('beforeunload', () => {
     // Save to local storage
     localStorage.setItem('volume', currentVolume.toFixed(2));
     localStorage.setItem('delay', delay.toFixed(3));
+    localStorage.setItem('controls', videoPlayer.hasAttribute('controls') ? 'true' : 'false');
 });
 // Load volume when page loads
 document.addEventListener('DOMContentLoaded', () => {
     // Check if we have a saved volume
     const savedVolume = localStorage.getItem('volume');
     const savedDelay = localStorage.getItem('delay')
+    const savedControls = localStorage.getItem('controls');
     // Apply saved volume if it exists
     if (savedVolume !== null) {
         const volumeNumber = Number (parseFloat(savedVolume).toFixed(2)); // Take only 2 significant digits
@@ -1238,6 +1248,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const delayNumber = Number (parseFloat(savedDelay).toFixed(3)); // Take only 3 significant digits
         delay = delayNumber;
         console.log("Thiết lập độ trễ đã lưu:", delay/1000 + " giây")
+    }
+
+    // Apply saved controls preference if it exists
+    if (savedControls !== null) {
+        if (savedControls === 'false') { // Only needs to check for false, default is true
+            videoPlayer.removeAttribute('controls');
+        }
+        console.log("Thiết lập điều khiển video đã lưu:", savedControls === 'true' ? "Hiển thị" : "Ẩn");
     }
 });
 

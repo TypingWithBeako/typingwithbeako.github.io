@@ -133,7 +133,7 @@ Dự án này được phát triển trên một laptop không ổn định:
 
 - 📲 **Ứng dụng PWA:** Cài đặt như ứng dụng trên thiết bị và truy cập nhanh hơn vào các lần tiếp theo.
 
-- 🔊 **Lưu trữ âm lượng:** Ghi nhớ cài đặt âm lượng ưa thích của bạn giữa các phiên sử dụng.
+- ⚙️ **Lưu trữ cài đặt:** Ghi nhớ cài đặt ưa thích của bạn (âm lượng, độ trễ, điều khiển) giữa các phiên sử dụng.
 
 - ☁️ **Video được host trên Cloudflare R2**: Lưu trữ và phân phối nội dung video với hiệu suất cao.
 
