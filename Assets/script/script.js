@@ -102,7 +102,7 @@ videoPlayer.addEventListener('play',function(){
     }
     let artist = ''
     let musicArtwork = ''
-    if (name == 'STYX HELIX' || name == 'Paradisus - Paradoxum' || name == 'NOX LUX' ||name == 'STRAIGHT BET' || name == 'S1 Ending' || name == 'S2 Ending' || name == 'Theater D' || name == 'STYX HELIX slow' || name == 'STYX HELIX nocut'){ 
+    if (name == 'STYX HELIX' || name == 'Paradisus - Paradoxum' || name == 'NOX LUX' ||name == 'STRAIGHT BET' || name == 'S1 Ending' || name == 'Theater D' || name == 'STYX HELIX slow' || name == 'STYX HELIX nocut'){ 
         artist = 'Myth & Roid'
         if (name == 'STYX HELIX')
             musicArtwork = {
@@ -136,14 +136,6 @@ videoPlayer.addEventListener('play',function(){
                 type: "image/webp",
               }
         }
-        else if (name == 'S2 Ending'){
-            name = "Kết thúc Mùa 2"
-            musicArtwork = {
-                src: "Icons/artworks/Long_Shot_Cover.webp",
-                sizes: "997x992",
-                type: "image/webp",
-              }
-        }
         else if (name == 'Theater D')
             musicArtwork = {
                 src: "Icons/artworks/Theater_D_Cover.jpg",
@@ -167,13 +159,16 @@ videoPlayer.addEventListener('play',function(){
             }
         }
     }
-    else if (name == 'Long shot'){
+    else if (name == 'Long shot' || name == 'S2 Ending'){
         artist = 'Mayu Maeshima'
         musicArtwork = {
             src: "Icons/artworks/Long_Shot_Cover.webp",
             sizes: "1400x1400",
             type: "image/webp",
           }
+        if (name == 'S2 Ending'){
+            name = 'Kết thúc Mùa 2'
+        }
     }
     else if (name == 'Redo' || name == 'Realize' || name == 'Reweave'){
         artist = 'Konomi Suzuki'
