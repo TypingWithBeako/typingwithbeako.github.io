@@ -6,8 +6,8 @@ Assets/script/jquery.min.js linguist-vendored=true
 Assets/script/flowbite.min.js linguist-vendored=true
 Assets/script/micromodal.min.js linguist-vendored=true
 
-# Font files (FontAwesome)
-Font/* linguist-vendored=true
+# FontAwesome - match all files in all subdirectories
+Font/**/* linguist-vendored=true
 
 # Minified versions excluded
 *.min.js linguist-vendored=true
