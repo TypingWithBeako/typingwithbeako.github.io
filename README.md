@@ -36,7 +36,7 @@ Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát
 
 ### ⏱️ Thời gian phát triển
 
-20/09/2024 - 03/04/2025 (≈ 6 tháng+)
+20/09/2024 - 20/09/2025 (= 7 tháng)
 
 
 ## 🔮 Ý nghĩa Triết học của dự án

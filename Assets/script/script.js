@@ -367,6 +367,7 @@ moveableimg.addEventListener('click', function(){
         bodytext.innerHTML = 'Nhạc chủ đề<span class="songname--title title" title="Cách gọi khác: Insert Song">ℹ️</span>';
         songname.innerHTML = 'Mở đầu và Kết thúc<span class="bodytext--title title" title="Cách gọi khác: Opening (OP) và Ending (ED)">ℹ️</span>';
         navbarContent.style.display = 'none';
+        S3.style.display='none';
         newnavbarContent.style.display ='flex';
         videoPlayer.src= newvideoUrls[0];
         newcurrentIndex = 0;
@@ -384,7 +385,6 @@ moveableimg.addEventListener('click', function(){
         newnextButton.style.display = 'inline';
         newbackButton.style.display = 'none';
         newnextButton.classList.add('fade-in-songname')
-        S3.style.display='none';
         Insert_Songs.style.display = '';
         Endings.style.display = 'none';
         Openings.style.display = 'none';
