@@ -582,6 +582,7 @@ const loopVideo = document.querySelector('#loop')
 const loopText = document.querySelector('.looptext')
 loopVideo.addEventListener('click',function() {
     loopclickCount++
+    loopVideo.classList.toggle('loop-active');
     const name = cleanVideoSrcName(videoPlayer.src)
     if (loopclickCount % 2 == 1){
         loopText.innerHTML = "Tắt lặp video";
