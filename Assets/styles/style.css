@@ -173,6 +173,7 @@ h1 {
 }
 .Re {
     font-size:1.4vw;
+    color: #9a8ad4;
     font-family: Joane;
 }
 .ZE {
@@ -262,8 +263,8 @@ nav li {
     top: 1vh;
 }
 .loop-active {
-    color: #7771b3;
-    text-shadow: 0 0 10px rgba(119, 113, 179, 0.5);
+    color: #9a8ad4;
+    text-shadow: 0 0 20px rgba(119, 113, 179, 0.5);
 }
 #text_to_change, #bodytext, #songname {
 transition: opacity 0.5s, transform 0.5s; /* Define the transition properties */
