@@ -4,7 +4,7 @@
 
  **Để có trải nghiệm tối ưu nhất:** Hãy sử dụng **Chrome Dev 136+** khi truy cập trình phát này.
 
- Hiện tại đang có lỗi video và nhạc không đồng bộ khi sử dụng trong nền ở bản **Chrome 135 trở về trước**, vì thế bạn hãy tải bản **Chrome Dev** hoặc đợi đến ngày **23/04/2025** và cập nhật Chrome lên bản 136.
+ Hiện tại đang có lỗi video và nhạc không đồng bộ khi sử dụng trong nền ở bản **Chrome 135 trở về trước**, vì thế bạn hãy tải bản **Chrome Dev** hoặc đợi đến ngày **29/04/2025** và cập nhật Chrome lên bản 136.
 
 **[Đường dẫn tải Chrome Dev](https://www.google.com/intl/vi/chrome/dev/)**
  
