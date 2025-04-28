@@ -36,16 +36,18 @@ Mình tạo ra dự án này để học các nguyên tắc cơ bản về phát
 
 ### ⏱️ Thời gian phát triển
 
-20/09/2024 - 20/09/2025 (= 7 tháng)
+20/09/2024 - 28/04/2025 (= 7 tháng+)
 
 
 ## 🔮 Ý nghĩa Triết học của dự án
 
 > ***"Hãy cùng bắt đầu từ đây, từ con số một. Không,.. từ số 0!"*** - Rem, Re:Zero
 
-### 💫 Mối liên hệ với Re:Zero
+Dự án này được sinh ra bởi vì Re:Zero đã **cứu cuộc đời** của mình trong một thời điểm tăm tối. Sau khi đạt được thành tích cao trong cuộc thi tiếng Anh quốc gia, mình nhận ra mọi người chỉ quan tâm đến tấm huy chương, không phải con người thực sự đằng sau nó. Cảm giác trống rỗng đó đã đẩy mình vào trạng thái trầm cảm kéo dài gần một năm.
 
-Dự án này được sinh ra bởi vì Re:Zero đã **cứu cuộc đời** của mình. Giống như Subaru, mình đã bắt đầu từ con số 0, với không một kinh nghiệm lập trình nào, dùng chỉ những công nghệ cơ bản của lập trình web. Qua hơn 490 commits xuyên suốt 6 tháng, dự án này mang đậm lời nhắn của Re:Zero: **Bắt đầu từ con số 0 và đạt được điều không thể qua ý chí kiên cường**.
+Re:Zero đã đến với mình vào lúc đó, với thông điệp về việc bắt đầu lại từ con số 0 và kiên trì theo đuổi điều có ý nghĩa thực sự. Giống như Subaru, mình đã quyết định bắt đầu lại từ đầu - không phải để đạt được giải thưởng hay sự công nhận, mà để tạo ra điều gì đó có giá trị thực sự với bản thân.
+
+Từ con số 0, không một kinh nghiệm lập trình nào, mình đã dùng những công cụ cơ bản nhất để xây dựng trình phát này. Qua hơn 500 commits xuyên suốt 7 tháng, dự án này đã trở thành minh chứng sống cho thông điệp mạnh mẽ của Re:Zero: **Bắt đầu từ con số 0 và đạt được điều không thể qua ý chí kiên cường**.
 
 
 ### 🧱 Cách tiếp cận thô sơ nhất
