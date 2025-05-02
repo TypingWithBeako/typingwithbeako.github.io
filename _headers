@@ -1,9 +1,8 @@
-/Assets/*
-  Cache-Control: public, max-age=31536000
+# Caching is handled by Service Worker so no need to HTTP cache the files (if not, the files will be permanently cached, unaffected by Service Worker*)
+/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
 /Font/*
   Cache-Control: public, max-age=31536000
 /Icons/*
   Cache-Control: public, max-age=31536000
-/Other_Files/*
-  Cache-Control: public, max-age=31536000
-
