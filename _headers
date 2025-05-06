@@ -6,3 +6,5 @@
   Cache-Control: public, max-age=31536000
 /Icons/*
   Cache-Control: public, max-age=31536000
+/Other_Files/*
+  Cache-Control: public, max-age=31536000
