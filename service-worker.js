@@ -63,7 +63,7 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
-  const isVideo = url.hostname === 'r2-cache-worker.thaituan150806.workers.dev';
+  const isVideo = url.hostname === 'rezero-vi.7849684.xyz';
   const isMainScript = url.pathname.includes('script.min.js');  // Only main script
   const isMainStyle = url.pathname.includes('style.min.css');  // Only main style
   const isMainHTML = url.pathname.endsWith('index.html') || url.pathname === '/'; // Only index.html
