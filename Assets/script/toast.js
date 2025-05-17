@@ -64,10 +64,9 @@ function showToast(message, type = 'success', duration = 5000) {
 
     // Define your Re:Zero SVG paths here (these are placeholders)
     const reZeroInfoIconPath = "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"; // Example: Info Circle
-    const reZeroSuccessIconPath = "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"; // Example: Star
-    const reZeroWarningIconPath = "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"; // Example: Warning Triangle
-    const reZeroErrorIconPath = "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"; // Example: Eye / Cult Symbol
-
+    const reZeroSuccessIconPath = "M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z";
+    const reZeroWarningIconPath = "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"; 
+    const reZeroErrorIconPath = "m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"; 
 
     switch (type) {
         case 'success':
@@ -76,6 +75,11 @@ function showToast(message, type = 'success', duration = 5000) {
             iconBg = 'bg-green-200';
             iconText = 'text-green-700';
             iconPath.setAttribute('d', reZeroSuccessIconPath);
+            iconPath.setAttribute('stroke', 'currentColor');
+            iconPath.setAttribute('stroke-linecap', 'round');
+            iconPath.setAttribute('stroke-linejoin', 'round');
+            iconPath.setAttribute('stroke-width', '2');
+            iconPath.setAttribute('fill', 'none');
             srOnlyIconSpan.textContent = 'Success - Re:Zero Theme';
             closeHoverBg = 'hover:bg-green-500/10';
             closeFocusRing = 'focus:ring-green-400';
@@ -86,6 +90,11 @@ function showToast(message, type = 'success', duration = 5000) {
             iconBg = 'bg-red-200';
             iconText = 'text-red-700';
             iconPath.setAttribute('d', reZeroErrorIconPath);
+            iconPath.setAttribute('stroke', 'currentColor');
+            iconPath.setAttribute('stroke-linecap', 'round');
+            iconPath.setAttribute('stroke-linejoin', 'round');
+            iconPath.setAttribute('stroke-width', '2');
+            iconPath.setAttribute('fill', 'none');
             srOnlyIconSpan.textContent = 'Error - Re:Zero Theme';
             closeHoverBg = 'hover:bg-red-500/10';
             closeFocusRing = 'focus:ring-red-400';
