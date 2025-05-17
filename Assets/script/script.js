@@ -661,12 +661,12 @@ document.getElementById("Delay").addEventListener("click", function() {
 
     // Validate user input
     if (isNaN(newDelay) || newDelay < 0) {
-        showToast("Độ trễ không đúng. Vui lòng nhập lại độ trễ.");
+        showToast("Độ trễ không đúng. Vui lòng nhập lại độ trễ.", "error");
         return;
     }
 
     if (newDelay > 25) {
-        showToast("Đây không phải là nơi để bạn đi ngủ :V");
+        showToast("Đây không phải là nơi để bạn đi ngủ :V", "error");
         return;
     }
     // Update delay and optionally display confirmation
@@ -1014,7 +1014,7 @@ async function togglePictureInPicture() {
         try {
             await videoPlayer.requestPictureInPicture();
         } catch (error) {
-            console.error('Xuất hiện lỗi khi dùng tính năng Thu nhỏ video: ', error);
+            showToast('Xuất hiện lỗi khi dùng tính năng Thu nhỏ video: ', 'error');
         }
     }
 }
