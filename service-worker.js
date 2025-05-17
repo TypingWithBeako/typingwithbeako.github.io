@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-echidna-and-beatrice-approved-finished-I_suppose_v2';
+const CACHE_NAME = 'rezero-cache-echidna-and-beatrice-approved-finished-toast_v1';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
@@ -9,6 +9,7 @@ const INITIAL_ASSETS = [
   '/Assets/script/loader.min.js',
   '/Assets/script/micromodal.min.js',
   '/Assets/script/flowbite.min.js',
+  '/Assets/script/toast.min.js',
   '/Assets/styles/flowbite.min.css',
   '/Assets/styles/tailwind.min.css',
   '/Font/fontawesome/css/all.min.css',
