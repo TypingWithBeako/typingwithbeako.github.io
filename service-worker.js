@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-echidna-and-beatrice-approved-finished-toast_v5';
+const CACHE_NAME = 'rezero-cache-echidna-and-beatrice-approved-finished-toast_v6';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
