@@ -64,23 +64,44 @@ function showToast(message, type = 'success', duration = 5000) {
 
     // Define your Re:Zero SVG paths here (these are placeholders)
     const reZeroInfoIconPath = "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"; // Example: Info Circle
-    const reZeroSuccessIconPath = "M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z";
     const reZeroWarningIconPath = "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"; 
     const reZeroErrorIconPath = "m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"; 
 
     switch (type) {
         case 'success':
             mainBgColor = 'bg-green-100';
-            mainTextColor = 'text-green-700'; // Applied to toast, not messageDiv directly unless changed
+            mainTextColor = 'text-green-700';
             iconBg = 'bg-green-200';
             iconText = 'text-green-700';
-            iconPath.setAttribute('d', reZeroSuccessIconPath);
-            iconPath.setAttribute('stroke', 'currentColor');
-            iconPath.setAttribute('stroke-linecap', 'round');
-            iconPath.setAttribute('stroke-linejoin', 'round');
-            iconPath.setAttribute('stroke-width', '2');
-            iconPath.setAttribute('fill', 'none');
-            srOnlyIconSpan.textContent = 'Success - Re:Zero Theme';
+            
+            // Clear any existing paths
+            while (iconSvg.firstChild) {
+                iconSvg.removeChild(iconSvg.firstChild);
+            }
+            
+            // Create outer crystal shape
+            const outerPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            outerPath.setAttribute('d', 'M12 3L8 10L12 21L16 10L12 3z');
+            outerPath.setAttribute('fill', 'currentColor');
+            outerPath.setAttribute('opacity', '0.7');
+            
+            // Create middle layer
+            const middlePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            middlePath.setAttribute('d', 'M12 6L9.5 10L12 17.5L14.5 10L12 6z');
+            middlePath.setAttribute('fill', 'currentColor');
+            middlePath.setAttribute('opacity', '0.85');
+            
+            // Create center glow
+            const centerPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            centerPath.setAttribute('d', 'M12 8.5L11 11L12 14L13 11L12 8.5z');
+            centerPath.setAttribute('fill', 'currentColor');
+            centerPath.setAttribute('opacity', '1');
+            
+            iconSvg.appendChild(outerPath);
+            iconSvg.appendChild(middlePath);
+            iconSvg.appendChild(centerPath);
+            
+            srOnlyIconSpan.textContent = 'Success - Emilia\'s Crystal';
             closeHoverBg = 'hover:bg-green-500/10';
             closeFocusRing = 'focus:ring-green-400';
             break;
