@@ -369,6 +369,34 @@
                             <span class="flex-1 ml-3 text-left whitespace-nowrap"><span style="font-size: 0.9rem !important;" id="SidebarButton">Chuyển sang Nhạc chủ đề</span></span>
                         </footer>
                     </li>
+                    <li>
+                        <button type="button" id="Playlists" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-300" aria-controls="Playlists_Content" data-collapse-toggle="Playlists_Content">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a2 2 0 0 1 2-2h2ZM6 7h12v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Zm2 3a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap">Danh sách phát</span>
+                            <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <ul id="Playlists_Content" class="hidden py-2 space-y-2">
+                            <li>
+                                <button onclick="createNewPlaylist()" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Tạo danh sách mới
+                                </button>
+                            </li>
+                            <li>
+                                <button onclick="loadPlaylist('default')" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
+                                    Thiết lập mặc định
+                                </button>
+                            </li>
+                            <!-- Dynamic playlist items will be inserted here -->
+                            <div id="dynamic-playlists">
+                                <!-- Playlists from localStorage will be populated here -->
+                            </div>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             </aside>

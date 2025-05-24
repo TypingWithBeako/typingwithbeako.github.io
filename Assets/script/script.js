@@ -63,6 +63,7 @@ let TheaterModeFlag = false;
 let TheaterModeClickCount = 0;
 let currentVolume = 1 // 1 stands for maximum volume, 0 stands for muted
 let errorReloadTimeout;
+window.isEditingPlaylist = false; // NEW: Global editing mode flag
 
 function playVideo(videoName) {
     nextVideo.src = '';
