@@ -52,7 +52,7 @@ function loadPlaylist(playlistName) {
 }
 
 function convertToUrl(songName) {
-    if (songName === "Stay Alive" || songName === "Believe in you" || songName === "S1 Ending")
+    if (songName === "ED2 - Stay Alive" || songName === "ED4 - Believe in you" || songName === "S1 Ending")
         return `${URL}${songName}.webm`
     return `${URL}${songName}.mp4`; // or whatever your URL structure is
 }
