@@ -741,191 +741,194 @@ function togglePlaylist() {
 
 // Register key being pressed
 document.addEventListener("keydown", function(event) {
-    // Play/pause the video when pressing space
-    if (event.code === "Space") {
-        if (videoPlayer.paused)
-            videoPlayer.play();
-        else 
-            videoPlayer.pause();
-    }
-    // Skipping to the next video using the playVideo function when pressing right arrow key
-    else if (event.code === "ArrowRight") {
-        nextVideoTrack()
-    }
-    // Returning to the previous video using the playVideo function (doesn't work if used on first video)
-    else if (event.code === "ArrowLeft") {
-        previousVideoTrack()
-    }
-    else if (event.code === "Numpad1"||event.code === "Digit1")  {
-        if (clickCount % 2 === 1) {
-            playVideo(newvideoUrls[0]);
-        }   
-        else {
-            playVideo(videoUrls[0]);
+    // Don't register keyboard shortcuts in playlist editing mode (actually it's the search bar)
+    if (!isEditingPlaylist){
+        // Play/pause the video when pressing space
+        if (event.code === "Space") {
+            if (videoPlayer.paused)
+                videoPlayer.play();
+            else 
+                videoPlayer.pause();
         }
-    }
-    else if (event.code === "Numpad2"||event.code === "Digit2")  {
-        if (clickCount % 2 === 1) {
-            playVideo(newvideoUrls[1]);
-        }   
-        else {
-           playVideo(videoUrls[1]);
+        // Skipping to the next video using the playVideo function when pressing right arrow key
+        else if (event.code === "ArrowRight") {
+            nextVideoTrack()
+        }
+        // Returning to the previous video using the playVideo function (doesn't work if used on first video)
+        else if (event.code === "ArrowLeft") {
+            previousVideoTrack()
+        }
+        else if (event.code === "Numpad1"||event.code === "Digit1")  {
+            if (clickCount % 2 === 1) {
+                playVideo(newvideoUrls[0]);
+            }   
+            else {
+                playVideo(videoUrls[0]);
             }
-    }
-    else if (event.code === "Numpad3"||event.code === "Digit3")  {
-        if (clickCount % 2 === 1) {
-            playVideo(newvideoUrls[2]);
-        }   
-        else {
-            playVideo(videoUrls[2]);
         }
-    }
-    else if (event.code === "Numpad4"||event.code === "Digit4")  {
-        if (clickCount % 2 === 1) {
-            playVideo(newvideoUrls[3]);
-        }   
-        else {
-            playVideo(videoUrls[3]);
+        else if (event.code === "Numpad2"||event.code === "Digit2")  {
+            if (clickCount % 2 === 1) {
+                playVideo(newvideoUrls[1]);
+            }   
+            else {
+               playVideo(videoUrls[1]);
+                }
         }
-    }
-    else if (event.code === "Numpad5"||event.code === "Digit5")  {
-        if (clickCount % 2 === 1) {
-            playVideo(newvideoUrls[4]);
-        }   
-        else {
-            playVideo(videoUrls[4]);
-        }
-    }
-    else if (event.code === "Numpad6"||event.code === "Digit6")  {
-        if (clickCount % 2 === 1) {
-            playVideo(newvideoUrls[5]);
-        }   
-        else {
-            playVideo(videoUrls[5]);
-        }
-    }
-    else if (event.code === "Numpad7"||event.code === "Digit7")  {
-        if (clickCount % 2 === 1) {
-            playVideo(newvideoUrls[6]);
-        }   
-        else {
-            playVideo(videoUrls[6]);
+        else if (event.code === "Numpad3"||event.code === "Digit3")  {
+            if (clickCount % 2 === 1) {
+                playVideo(newvideoUrls[2]);
+            }   
+            else {
+                playVideo(videoUrls[2]);
             }
-    }
-    else if (event.code === "Numpad8"||event.code === "Digit8")  {
-        if (clickCount % 2 === 0) {
-            playVideo(videoUrls[7]);
         }
-        else {
-            playVideo(newvideoUrls[7]);
-        }      
-    }
-    else if (event.code === 'Numpad9'||event.code === "Digit9") {
-        if (clickCount % 2 === 0) {
-            playVideo(videoUrls[8]);
+        else if (event.code === "Numpad4"||event.code === "Digit4")  {
+            if (clickCount % 2 === 1) {
+                playVideo(newvideoUrls[3]);
+            }   
+            else {
+                playVideo(videoUrls[3]);
+            }
         }
-        else {
-            playVideo(newvideoUrls[8])   
+        else if (event.code === "Numpad5"||event.code === "Digit5")  {
+            if (clickCount % 2 === 1) {
+                playVideo(newvideoUrls[4]);
+            }   
+            else {
+                playVideo(videoUrls[4]);
+            }
         }
-            
-    }
-    else if (event.code === 'Numpad0'||event.code === "Digit0") {
-        if (clickCount % 2 === 0) {
-            playVideo(videoUrls[9]);
+        else if (event.code === "Numpad6"||event.code === "Digit6")  {
+            if (clickCount % 2 === 1) {
+                playVideo(newvideoUrls[5]);
+            }   
+            else {
+                playVideo(videoUrls[5]);
+            }
         }
-        else {
-            playVideo(newvideoUrls[9])
+        else if (event.code === "Numpad7"||event.code === "Digit7")  {
+            if (clickCount % 2 === 1) {
+                playVideo(newvideoUrls[6]);
+            }   
+            else {
+                playVideo(videoUrls[6]);
+                }
+        }
+        else if (event.code === "Numpad8"||event.code === "Digit8")  {
+            if (clickCount % 2 === 0) {
+                playVideo(videoUrls[7]);
+            }
+            else {
+                playVideo(newvideoUrls[7]);
+            }      
+        }
+        else if (event.code === 'Numpad9'||event.code === "Digit9") {
+            if (clickCount % 2 === 0) {
+                playVideo(videoUrls[8]);
+            }
+            else {
+                playVideo(newvideoUrls[8])   
+            }
+                
+        }
+        else if (event.code === 'Numpad0'||event.code === "Digit0") {
+            if (clickCount % 2 === 0) {
+                playVideo(videoUrls[9]);
+            }
+            else {
+                playVideo(newvideoUrls[9])
+            }   
+        }
+        else if (event.code === 'Tab') {
+            event.preventDefault(); // Prevent the default tab behavior
+            togglePlaylist();
+        }
+        else if (event.code === 'KeyQ') {
+            shuffleButton.click();
         }   
-    }
-    else if (event.code === 'Tab') {
-        event.preventDefault(); // Prevent the default tab behavior
-        togglePlaylist();
-    }
-    else if (event.code === 'KeyQ') {
-        shuffleButton.click();
-    }   
-    else if (event.code === 'KeyW') {
-        loopVideo.click();
-    }   
-    else if (event.code === 'KeyE') {
-        DelayButton.click();
-    }
-    else if (event.code === 'KeyR') {
-        togglePictureInPicture();
-    }
-    else if (event.code === 'KeyF'){
-        if ((document.fullscreenElement && document.fullscreenElement === videoPlayer) ||
-            (document.webkitFullscreenElement && document.webkitFullscreenElement === videoPlayer) ||
-            (document.msFullscreenElement && document.msFullscreenElement === videoPlayer)
-        ) 
-            closeFullscreen(); // Video is currently in fullscreen mode, so close fullscreen
-        else 
-            openFullscreen();  // Video is not in fullscreen mode, so open fullscreen
-    }
-    else if (event.code === "KeyC"){
-        if (videoPlayer.hasAttribute('controls')) {
-            videoPlayer.removeAttribute('controls');
-            showToast('Tắt điều khiển video')
-        } 
-        else {
-            videoPlayer.setAttribute('controls', '');
-            showToast('Bật điều khiển video')
+        else if (event.code === 'KeyW') {
+            loopVideo.click();
+        }   
+        else if (event.code === 'KeyE') {
+            DelayButton.click();
         }
-    }
-    else if (event.code === "KeyT"){
-        TheaterMode.click();
-    }
-    else if (event.code === "KeyD"){
-        playVideo(`${URL}Theater D.mp4`)
-    }
-    else if (event.code === "KeyO"){
-        playVideo(`${URL}S1 Ending.webm`);
-    }
-    else if (event.code === "KeyP"){
-        playVideo(`${URL}S2 Ending.mp4`)
-    }
-    else if (event.code === "KeyS"){
-        playVideo(`${URL}ED1 - STYX HELIX slow.mp4`);
-    }
-    else if (event.code === "KeyB"){
-        ChangeStyxHelix();
-    }
-    else if (event.code === 'Escape') {
-        if (TheaterModeFlag){
-           TheaterMode.click() // Exit Theater Mode if Theater Mode is active
-       }
-    }
-    else if (event.code === 'ArrowUp'){
-        if (videoPlayer.muted){
-            videoPlayer.muted = false;
-            return;
+        else if (event.code === 'KeyR') {
+            togglePictureInPicture();
         }
-        if (currentVolume + 0.1 > 1) // Check if the volume is already at 1
-        {
-            videoPlayer.volume = 1
+        else if (event.code === 'KeyF'){
+            if ((document.fullscreenElement && document.fullscreenElement === videoPlayer) ||
+                (document.webkitFullscreenElement && document.webkitFullscreenElement === videoPlayer) ||
+                (document.msFullscreenElement && document.msFullscreenElement === videoPlayer)
+            ) 
+                closeFullscreen(); // Video is currently in fullscreen mode, so close fullscreen
+            else 
+                openFullscreen();  // Video is not in fullscreen mode, so open fullscreen
+        }
+        else if (event.code === "KeyC"){
+            if (videoPlayer.hasAttribute('controls')) {
+                videoPlayer.removeAttribute('controls');
+                showToast('Tắt điều khiển video')
+            } 
+            else {
+                videoPlayer.setAttribute('controls', '');
+                showToast('Bật điều khiển video')
+            }
+        }
+        else if (event.code === "KeyT"){
+            TheaterMode.click();
+        }
+        else if (event.code === "KeyD"){
+            playVideo(`${URL}Theater D.mp4`)
+        }
+        else if (event.code === "KeyO"){
+            playVideo(`${URL}S1 Ending.webm`);
+        }
+        else if (event.code === "KeyP"){
+            playVideo(`${URL}S2 Ending.mp4`)
+        }
+        else if (event.code === "KeyS"){
+            playVideo(`${URL}ED1 - STYX HELIX slow.mp4`);
+        }
+        else if (event.code === "KeyB"){
+            ChangeStyxHelix();
+        }
+        else if (event.code === 'Escape') {
+            if (TheaterModeFlag){
+               TheaterMode.click() // Exit Theater Mode if Theater Mode is active
+           }
+        }
+        else if (event.code === 'ArrowUp'){
+            if (videoPlayer.muted){
+                videoPlayer.muted = false;
+                return;
+            }
+            if (currentVolume + 0.1 > 1) // Check if the volume is already at 1
+            {
+                videoPlayer.volume = 1
+                currentVolume = videoPlayer.volume
+                showVolumeToast(currentVolume); // Add this line
+                return;
+            }
+            videoPlayer.volume = currentVolume + 0.1
             currentVolume = videoPlayer.volume
             showVolumeToast(currentVolume); // Add this line
-            return;
         }
-        videoPlayer.volume = currentVolume + 0.1
-        currentVolume = videoPlayer.volume
-        showVolumeToast(currentVolume); // Add this line
-    }
-    else if (event.code === 'ArrowDown'){
-        if (videoPlayer.muted){
-            videoPlayer.muted = false;
-            return;
-        }
-        if (currentVolume - 0.1 < 1e-9) // Check if the volume is already at 0
-        {
-            videoPlayer.volume = 0.00
+        else if (event.code === 'ArrowDown'){
+            if (videoPlayer.muted){
+                videoPlayer.muted = false;
+                return;
+            }
+            if (currentVolume - 0.1 < 1e-9) // Check if the volume is already at 0
+            {
+                videoPlayer.volume = 0.00
+                currentVolume = videoPlayer.volume
+                showVolumeToast(currentVolume); // Add this line
+                return;
+            }
+            videoPlayer.volume = currentVolume - 0.1
             currentVolume = videoPlayer.volume
             showVolumeToast(currentVolume); // Add this line
-            return;
         }
-        videoPlayer.volume = currentVolume - 0.1
-        currentVolume = videoPlayer.volume
-        showVolumeToast(currentVolume); // Add this line
     }
 });
     
