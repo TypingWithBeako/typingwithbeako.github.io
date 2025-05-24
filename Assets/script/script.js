@@ -1343,3 +1343,22 @@ minimalUiMediaQuery.addEventListener('change', handleDisplayModeChange);
 
 // Initial call to check PWA or not
 handleDisplayModeChange(isRunningAsInstalledPWA());
+
+// Track number of times each song has been played
+function updatePlayCount(songName) {
+    // Get existing play counts object or create new one
+    let playCounts = JSON.parse(localStorage.getItem('songPlayCounts')) || {};
+    
+    // Update count for this song
+    playCounts[songName] = (playCounts[songName] || 0) + 1;
+    
+    // Save back to localStorage
+    localStorage.setItem('songPlayCounts', JSON.stringify(playCounts));
+    
+    console.log(`${songName} đã được phát ${playCounts[songName]} lần`);
+}
+
+videoPlayer.addEventListener('ended', ()=> {
+    let name = cleanVideoSrcName(videoPlayer.src);
+    updatePlayCount(name);
+})
