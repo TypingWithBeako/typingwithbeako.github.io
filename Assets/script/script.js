@@ -739,6 +739,38 @@ function togglePlaylist() {
     }
 }
 
+// For handling number key presses (1-9, 0) to play specific videos
+function handleNumberKeyPress(keyCode) {
+    // Extract the number from key code
+    let number;
+    if (keyCode.startsWith("Numpad")) {
+        number = parseInt(keyCode.replace("Numpad", ""));
+    } else if (keyCode.startsWith("Digit")) {
+        number = parseInt(keyCode.replace("Digit", ""));
+    }
+    
+    // Convert to array index (1-9 = index 0-8, 0 = index 9)
+    const index = number === 0 ? 9 : number - 1;
+    
+    // Choose the right array based on clickCount mode (just like your original code!)
+    if (clickCount % 2 === 1) {
+        // Insert Songs mode - use newvideoUrls
+        if (index < newvideoUrls.length)
+            playVideo(newvideoUrls[index]);
+        else 
+            showToast(`Video thứ ${number} không tồn tại (danh sách phát có ${videoUrls.length} bài hát)`, "error");
+    }
+    else {
+        // OP/ED mode - use videoUrls  
+        if (index < videoUrls.length) 
+            playVideo(videoUrls[index]);
+        else 
+            showToast(`Video thứ ${number} không tồn tại (danh sách phát có ${videoUrls.length} bài hát)`, "error");
+    }
+    
+}
+
+
 // Register key being pressed
 document.addEventListener("keydown", function(event) {
     // Don't register keyboard shortcuts in playlist editing mode (actually it's the search bar)
@@ -758,86 +790,9 @@ document.addEventListener("keydown", function(event) {
         else if (event.code === "ArrowLeft") {
             previousVideoTrack()
         }
-        else if (event.code === "Numpad1"||event.code === "Digit1")  {
-            if (clickCount % 2 === 1) {
-                playVideo(newvideoUrls[0]);
-            }   
-            else {
-                playVideo(videoUrls[0]);
-            }
-        }
-        else if (event.code === "Numpad2"||event.code === "Digit2")  {
-            if (clickCount % 2 === 1) {
-                playVideo(newvideoUrls[1]);
-            }   
-            else {
-               playVideo(videoUrls[1]);
-                }
-        }
-        else if (event.code === "Numpad3"||event.code === "Digit3")  {
-            if (clickCount % 2 === 1) {
-                playVideo(newvideoUrls[2]);
-            }   
-            else {
-                playVideo(videoUrls[2]);
-            }
-        }
-        else if (event.code === "Numpad4"||event.code === "Digit4")  {
-            if (clickCount % 2 === 1) {
-                playVideo(newvideoUrls[3]);
-            }   
-            else {
-                playVideo(videoUrls[3]);
-            }
-        }
-        else if (event.code === "Numpad5"||event.code === "Digit5")  {
-            if (clickCount % 2 === 1) {
-                playVideo(newvideoUrls[4]);
-            }   
-            else {
-                playVideo(videoUrls[4]);
-            }
-        }
-        else if (event.code === "Numpad6"||event.code === "Digit6")  {
-            if (clickCount % 2 === 1) {
-                playVideo(newvideoUrls[5]);
-            }   
-            else {
-                playVideo(videoUrls[5]);
-            }
-        }
-        else if (event.code === "Numpad7"||event.code === "Digit7")  {
-            if (clickCount % 2 === 1) {
-                playVideo(newvideoUrls[6]);
-            }   
-            else {
-                playVideo(videoUrls[6]);
-                }
-        }
-        else if (event.code === "Numpad8"||event.code === "Digit8")  {
-            if (clickCount % 2 === 0) {
-                playVideo(videoUrls[7]);
-            }
-            else {
-                playVideo(newvideoUrls[7]);
-            }      
-        }
-        else if (event.code === 'Numpad9'||event.code === "Digit9") {
-            if (clickCount % 2 === 0) {
-                playVideo(videoUrls[8]);
-            }
-            else {
-                playVideo(newvideoUrls[8])   
-            }
-                
-        }
-        else if (event.code === 'Numpad0'||event.code === "Digit0") {
-            if (clickCount % 2 === 0) {
-                playVideo(videoUrls[9]);
-            }
-            else {
-                playVideo(newvideoUrls[9])
-            }   
+        // Number keys presses (with 1 as the starting number)
+        else if (event.code.startsWith("Numpad") || event.code.startsWith("Digit")) {
+            handleNumberKeyPress(event.code);
         }
         else if (event.code === 'Tab') {
             event.preventDefault(); // Prevent the default tab behavior
