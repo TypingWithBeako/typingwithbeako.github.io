@@ -463,7 +463,7 @@ body {
 
 /* Custom height classes for playlist containers */
 .playlist-container-height {
-    height: 320px; /* Mobile default */
+    height: 25vh; /* Mobile default */
 }
 
 /* Responsive heights using standard CSS media queries */

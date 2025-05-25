@@ -2,7 +2,7 @@
     "openings": [
       {
         "id": "op1-redo",
-        "title": "OP1 - Redo",
+        "title": "Redo",
         "filename": "OP1 - Redo.mp4",
         "season": 1,
         "type": "opening",
@@ -11,16 +11,16 @@
       },
       {
         "id": "op2-paradisus",
-        "title": "OP2 - Paradisus - Paradoxum",
+        "title": "Paradisus-Paradoxum",
         "filename": "OP2 - Paradisus - Paradoxum.mp4",
         "season": 1,
         "type": "opening",
         "order": 2,
-        "artist": "MYTH & ROID"
+        "artist": "Myth & Roid"
       },
       {
         "id": "op3-realize",
-        "title": "OP3 - Realize",
+        "title": "Realize",
         "filename": "OP3 - Realize.mp4",
         "season": 2,
         "type": "opening",
@@ -29,7 +29,7 @@
       },
       {
         "id": "op4-longshot",
-        "title": "OP4 - Long shot",
+        "title": "Long shot",
         "filename": "OP4 - Long shot.mp4",
         "season": 2,
         "type": "opening",
@@ -38,7 +38,7 @@
       },
       {
         "id": "op5-reweave",
-        "title": "OP5 - Reweave",
+        "title": "Reweave",
         "filename": "OP5 - Reweave.mp4",
         "season": 3,
         "type": "opening",
@@ -49,36 +49,36 @@
     "endings": [
       {
         "id": "ed1-styx-helix",
-        "title": "ED1 - STYX HELIX",
+        "title": "STYX HELIX",
         "filename": "ED1 - STYX HELIX.mp4",
         "season": 1,
         "type": "ending",
         "order": 1,
-        "artist": "MYTH & ROID"
+        "artist": "Myth & Roid"
       },
       {
         "id": "ed1-styx-helix-nocut",
-        "title": "ED1 - STYX HELIX (Bản đầy đủ)",
+        "title": "STYX HELIX (Bản đầy đủ)",
         "filename": "ED1 - STYX HELIX nocut.mp4",
         "season": 1,
         "type": "ending",
         "order": 1.5,
-        "artist": "MYTH & ROID",
+        "artist": "Myth & Roid",
         "variant": "full"
       },
       {
         "id": "ed1-styx-helix-slow",
-        "title": "ED1 - STYX HELIX (Bản chậm)",
+        "title": "STYX HELIX (Bản chậm)",
         "filename": "ED1 - STYX HELIX slow.mp4",
         "season": 1,
         "type": "ending",
         "order": 1.6,
-        "artist": "MYTH & ROID",
+        "artist": "Myth & Roid",
         "variant": "slow"
       },
       {
         "id": "ed2-stay-alive",
-        "title": "ED2 - Stay Alive",
+        "title": "Stay Alive",
         "filename": "ED2 - Stay Alive.webm",
         "season": 1,
         "type": "ending",
@@ -87,7 +87,7 @@
       },
       {
         "id": "ed3-memento",
-        "title": "ED3 - Memento",
+        "title": "Memento",
         "filename": "ED3 - Memento.mp4",
         "season": 2,
         "type": "ending",
@@ -96,7 +96,7 @@
       },
       {
         "id": "ed4-believe-in-you",
-        "title": "ED4 - Believe in you",
+        "title": "Believe in you",
         "filename": "ED4 - Believe in you.webm",
         "season": 2,
         "type": "ending",
@@ -105,12 +105,12 @@
       },
       {
         "id": "ed5-nox-lux",
-        "title": "ED5 - NOX LUX",
+        "title": "NOX LUX",
         "filename": "ED5 - NOX LUX.mp4",
         "season": 3,
         "type": "ending",
         "order": 5,
-        "artist": "MYTH & ROID"
+        "artist": "Myth & Roid"
       }
     ],
     "inserts": [
@@ -121,7 +121,7 @@
         "season": 1,
         "type": "insert song",
         "order": 1,
-        "artist": "MYTH & ROID"
+        "artist": "Myth & Roid"
       },
       {
         "id": "bouya-no-yume-yo",
@@ -211,7 +211,7 @@
         "season": 1,
         "type": "insert song",
         "order": 11,
-        "artist": "MYTH & ROID"
+        "artist": "Myth & Roid"
       }
     ],
     "specials": [
@@ -222,7 +222,7 @@
         "season": 1,
         "type": "special",
         "order": 1,
-        "artist": "MYTH & ROID"
+        "artist": "Myth & Roid"
       },
       {
         "id": "s2-ending",
