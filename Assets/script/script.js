@@ -731,6 +731,9 @@ document.addEventListener("keydown", function(event) {
         else if (event.code === "KeyS"){
             playVideo(`${URL}ED1 - STYX HELIX slow.mp4`);
         }
+        else if (event.code === "KeyB"){
+            ChangeStyxHelix();
+        }
         else if (event.code === 'Escape') {
             if (TheaterModeFlag){
                TheaterMode.click() // Exit Theater Mode if Theater Mode is active
@@ -771,6 +774,43 @@ document.addEventListener("keydown", function(event) {
     }
 });
     
+// Switch OP1 - STYX HELIX between cut and full version
+function ChangeStyxHelix(){
+    keyB++;
+        if (keyB%2==1)
+        {
+            originalIndex = videoUrls.indexOf(`${URL}ED1 - STYX HELIX.mp4`);
+            if (originalIndex !== -1) {
+                videoUrls[originalIndex] = `${URL}ED1 - STYX HELIX nocut.mp4`;
+            }
+            OG.style.display = 'none';
+            OG_sidebar.style.display = 'none';
+            FULL.style.display = 'inline';
+            FULL_sidebar.style.display = 'flex';
+            for (let i = 0; i < SeasonsEndings.length; i++) {
+                SeasonsEndings[i].style.display = 'flex';
+            }
+            showToast('Chuyển "ED1 - STYX HELIX" sang bản đầy đủ', "info")
+        }
+        else
+        {
+            originalIndex = videoUrls.indexOf(`${URL}ED1 - STYX HELIX nocut.mp4`);
+            if (originalIndex !== -1) {
+                videoUrls[originalIndex] = `${URL}ED1 - STYX HELIX.mp4`;
+            }
+            OG.style.display = 'inline';
+            OG_sidebar.style.display = 'flex';
+            FULL.style.display = 'none';
+            FULL_sidebar.style.display = 'none';
+            for (let i = 0; i < SeasonsEndings.length; i++) {
+                SeasonsEndings[i].style.display = 'none';
+            }
+            showToast('Chuyển "ED1 - STYX HELIX" sang bản thường', "info")
+        }
+    if (TheaterModeFlag)
+        setTimeout(Fullscreen,0)
+}
+
 // Next and Back button implementation:
 nextButton.addEventListener('click',function(){
     if (isAnimating || this.hasAttribute('disabled')) {
