@@ -270,10 +270,10 @@ function dragEnd(event) {
 function filterAvailableSongs() {
     const searchTerm = document.getElementById('song-search').value.toLowerCase();
     const availableContainer = document.getElementById('available-songs');
-    const songElements = availableContainer.querySelectorAll('[data-song]');
+    const songElements = availableContainer.querySelectorAll('[data-song-title]');
     
     songElements.forEach(element => {
-        const songName = element.getAttribute('data-song').toLowerCase();
+        const songName = element.getAttribute('data-song-title').toLowerCase();
         if (songName.includes(searchTerm)) {
             element.style.display = 'flex';
         } else {
@@ -331,7 +331,7 @@ function getVietnameseType(type) {
     switch(type) {
         case 'opening': return 'Mở đầu';
         case 'ending': return 'Kết thúc';
-        case 'insert song': return 'Nhạc chèn';
+        case 'insert song': return 'Nhạc chủ đề';
         case 'special': return 'Đặc biệt';
         default: return type;
     }
