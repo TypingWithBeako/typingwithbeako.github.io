@@ -625,7 +625,7 @@ function savePlaylist() {
         playlists[newPlaylistName].songs = [...tempPlaylistSongs];
         playlists[newPlaylistName].modified = new Date().toISOString();
         
-        showToast(`Đã lưu thành công danh sách phát ${newPlaylistName}`);
+        showToast(`Đã lưu thành công danh sách phát "${newPlaylistName}"`);
     }
     
     localStorage.setItem('playlists', JSON.stringify(playlists));
