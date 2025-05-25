@@ -81,7 +81,7 @@ function populateSidebarPlaylists() {
 
         const li = document.createElement('li');
         li.innerHTML = `
-            <div class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
+            <div class="flex space-y-1 items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
                 <div onclick="loadPlaylist('${playlistName}')" class="flex-1 text-left">
                     ${playlistName} (${playlists[playlistName].songs.length} bài hát)
                 </div>
