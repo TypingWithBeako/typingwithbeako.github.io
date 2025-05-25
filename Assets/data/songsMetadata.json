@@ -233,5 +233,47 @@
         "order": 2,
         "artist": "Mayu Maeshima"
       }
+    ],
+    "concerts": [
+        {
+            "id": "op4-long-shot-live",
+            "title": "Long shot (LIVE)",
+            "filename": "OP4 - Long shot (LIVE).mp4",
+            "season": 2,
+            "type": "live concert",
+            "order": 1,
+            "artist": "Mayu Maeshima",
+            "original_song": "Long shot"
+        },
+        {
+            "id": "ed1-styx-helix-live",
+            "title": "STYX HELIX (LIVE)",
+            "filename": "ED1 - STYX HELIX (LIVE).mp4",
+            "season": 1,
+            "type": "live concert",
+            "order": 2,
+            "artist": "Myth & Roid",
+            "original_song": "STYX HELIX"
+        },
+        {
+            "id": "op1-redo-live",
+            "title": "Redo (LIVE)",
+            "filename": "OP1 - Redo (LIVE).mp4",
+            "season": 1,
+            "type": "live concert",
+            "order": 3,
+            "artist": "Konomi Suzuki",
+            "original_song": "Redo"
+        },
+        {
+            "id": "op3-realize-live",
+            "title": "Realize (LIVE)",
+            "filename": "OP3 - Realize (LIVE).mp4",
+            "season": 2,
+            "type": "live concert",
+            "order": 4,
+            "artist": "Konomi Suzuki",
+            "original_song": "Realize"
+        }
     ]
   }

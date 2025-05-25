@@ -450,8 +450,9 @@ function getVietnameseType(type) {
     switch(type) {
         case 'opening': return 'Mở đầu';
         case 'ending': return 'Kết thúc';
-        case 'insert song': return 'Nhạc chèn';
+        case 'insert song': return 'Nhạc chủ đề';
         case 'special': return 'Đặc biệt';
+        case 'live concert': return 'Live Concert';
         default: return type;
     }
 }
@@ -460,8 +461,9 @@ function getTypeColor(type) {
     switch(type) {
         case 'opening': return 'bg-blue-100 text-blue-800';
         case 'ending': return 'bg-green-100 text-green-800';
-        case 'insert song':  return 'bg-purple-100 text-purple-800';
+        case 'insert song': return 'bg-purple-100 text-purple-800';
         case 'special': return 'bg-yellow-100 text-yellow-800';
+        case 'live concert': return 'bg-red-100 text-red-800';
         default: return 'bg-gray-100 text-gray-800';
     }
 }
@@ -505,10 +507,11 @@ async function loadMasterSongs() {
             ...data.openings,
             ...data.endings, 
             ...data.inserts,
-            ...data.specials
+            ...data.specials,
+            ...data.concerts
         ].sort((a, b) => {
             // Sort by type first, then by order
-            const typeOrder = { 'opening': 1, 'ending': 2, 'insert': 3, 'special': 4 };
+            const typeOrder = { 'opening': 1, 'ending': 2, 'insert song': 3, 'special': 4, 'live concert': 5 };
             if (typeOrder[a.type] !== typeOrder[b.type]) {
                 return typeOrder[a.type] - typeOrder[b.type];
             }
