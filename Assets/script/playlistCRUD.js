@@ -34,6 +34,7 @@ function loadPlaylist(playlistName) {
         videoUrls = originalVideoUrls;
         newvideoUrls = originalNewVideoUrls;
         playVideo(videoUrls[0]);
+        showToast(`Đã khôi phục danh sách phát mặc định.`)
         return;
     }
 
@@ -69,9 +70,9 @@ function populateSidebarPlaylists() {
         const li = document.createElement('li');
         li.innerHTML = `
             <div class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
-                <button onclick="loadPlaylist('${playlistName}')" class="flex-1 text-left">
+                <div onclick="loadPlaylist('${playlistName}')" class="flex-1 text-left">
                     ${playlistName} (${playlists[playlistName].songs.length} bài hát)
-                </button>
+                </div>
                 <div class="flex gap-1">
                     <button onclick="editPlaylist('${playlistName}')" class="text-blue-500 hover:text-blue-700" title="Chỉnh sửa">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -88,6 +89,7 @@ function populateSidebarPlaylists() {
         `;
         container.appendChild(li);
     });
+    
 }
 
 function createNewPlaylist() {
@@ -101,6 +103,7 @@ function createNewPlaylist() {
         };
         localStorage.setItem('playlists', JSON.stringify(playlists));
         populateSidebarPlaylists();
+        showToast(`Đã thêm danh sách phát ${name} thành công.`)
         
         // Open playlist editor
         editPlaylist(name.trim());
@@ -212,7 +215,7 @@ function createPlaylistEditorModal(playlistName, playlist) {
 }
 
 function clearPlaylist(playlistName) {
-    if (confirm(`Xóa tất cả bài hát khỏi danh sách "${playlistName}"?`)) {
+    if (confirm(`Xóa tất cả bài hát khỏi danh sách "${playlistName}"? Lưu ý: Danh sách trống không thể được lưu.`)) {
         tempPlaylistSongs = [];
         refreshModalContent();
     }
@@ -350,6 +353,20 @@ function refreshModalContent() {
     if (availableContainer && currentContainer) {
         availableContainer.innerHTML = generateAvailableSongsList(tempPlaylistSongs);
         currentContainer.innerHTML = generateCurrentPlaylistList(tempPlaylistSongs);
+        
+        // Update save button state
+        const saveButton = document.querySelector('button[onclick*="savePlaylist"]');
+        if (saveButton) {
+            if (tempPlaylistSongs.length === 0) {
+                saveButton.disabled = true;
+                saveButton.className = saveButton.className.replace('bg-blue-500', 'bg-gray-400');
+                saveButton.className = saveButton.className.replace('hover:bg-blue-600', 'cursor-not-allowed');
+            } else {
+                saveButton.disabled = false;
+                saveButton.className = saveButton.className.replace('bg-gray-400', 'bg-blue-500');
+                saveButton.className = saveButton.className.replace('cursor-not-allowed', 'hover:bg-blue-600');
+            }
+        }
     }
 }
 
@@ -365,10 +382,17 @@ function closePlaylistEditor() {
 }
 
 function savePlaylist(playlistName) {
+    // Check if playlist is empty
+    if (tempPlaylistSongs.length === 0) {
+        showToast(`Danh sách phát không thể trống! Vui lòng thêm ít nhất 1 bài hát.`, 'error');
+        return; // Don't save, keep modal open
+    }
+    
     const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
     playlists[playlistName].songs = [...tempPlaylistSongs];
     localStorage.setItem('playlists', JSON.stringify(playlists));
     
     populateSidebarPlaylists();
     closePlaylistEditor();
+    showToast(`Đã lưu thành công danh sách phát ${playlistName}`)
 }

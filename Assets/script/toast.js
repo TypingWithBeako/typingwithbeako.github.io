@@ -2,6 +2,7 @@
 
 function showToast(message, type = 'success', duration = 5000) {
     const toastContainer = document.getElementById('toast-container');
+    toastContainer.style.zIndex = "999999"; // Always on top of everything
     if (!toastContainer) {
         console.error('Toast container not found!');
         alert(message); // Fallback
