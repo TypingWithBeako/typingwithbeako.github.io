@@ -45,7 +45,6 @@ function loadPlaylist(playlistName) {
     if (playlist && playlist.songs) {
         // BOOM: Just replace the entire array
         videoUrls = playlist.songs.map(songName => convertToUrl(songName));
-        currentIndex = 0; // Reset to start of playlist
         
         // Player doesn't even know anything changed!
         playVideo(videoUrls[0]);
@@ -53,12 +52,18 @@ function loadPlaylist(playlistName) {
 }
 
 function convertToUrl(songName) {
+    // Find song in master list
+    const song = MASTER_SONGS.find(s => s.title === songName);
+    if (song) {
+        return `${URL}${song.filename}`;
+    }
+    
+    // Fallback to old logic
     if (songName === "ED2 - Stay Alive" || songName === "ED4 - Believe in you" || songName === "S1 Ending")
         return `${URL}${songName}.webm`
-    return `${URL}${songName}.mp4`; // or whatever your URL structure is
+    return `${URL}${songName}.mp4`;
 }
 
-// ...existing loadPlaylist and convertToUrl functions...
 
 function populateSidebarPlaylists() {
     const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
@@ -67,6 +72,13 @@ function populateSidebarPlaylists() {
     container.innerHTML = ''; // Clear existing
     
     Object.keys(playlists).forEach(playlistName => {
+        const playlist = playlists[playlistName];
+        
+        // Skip empty playlists
+        if (!playlist.songs || playlist.songs.length === 0) {
+            return;
+        }
+
         const li = document.createElement('li');
         li.innerHTML = `
             <div class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
@@ -119,18 +131,17 @@ function deletePlaylist(name) {
     }
 }
 
-// Call this when the page loads
-document.addEventListener('DOMContentLoaded', populateSidebarPlaylists);
-
-// ...existing code...
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadMasterSongs();
+    populateSidebarPlaylists();
+});
 
 function editPlaylist(playlistName) {
     const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
     const playlist = playlists[playlistName];
     
-    // MISSING: Initialize tempPlaylistSongs with current playlist
     currentEditingPlaylist = playlistName;
-    tempPlaylistSongs = [...playlist.songs]; // ADD THIS LINE!
+    tempPlaylistSongs = [...playlist.songs];
 
     window.isEditingPlaylist = true; // Set editing mode
 
@@ -272,24 +283,78 @@ function filterAvailableSongs() {
 }
 
 function generateAvailableSongsList(currentSongs) {
-    const allSongs = getAllAvailableSongs();
-    return allSongs.map(song => {
-        const isInPlaylist = currentSongs.includes(song);
+    const availableSongs = MASTER_SONGS.filter(song => 
+        !currentSongs.includes(song.title)
+    );
+    
+    if (availableSongs.length === 0) {
         return `
-            <div class="flex items-center justify-between p-2 rounded hover:bg-white dark:hover:bg-gray-600 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-500 ${isInPlaylist ? 'opacity-50' : ''}" 
-                 ondblclick="addSongToCurrentPlaylist('${song}')" 
-                 data-song="${song}">
-                <span class="text-sm font-medium ${isInPlaylist ? 'line-through' : ''}">${song}</span>
-                <button onclick="addSongToCurrentPlaylist('${song}')" 
-                        class="text-blue-500 hover:text-blue-700 ${isInPlaylist ? 'opacity-50 cursor-not-allowed' : ''}"
-                        ${isInPlaylist ? 'disabled' : ''}>
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
+            <div class="text-center text-gray-500 py-8">
+                <div class="font-medium">Tất cả bài hát đã được thêm</div>
+                <div class="text-sm mt-1">Danh sách phát đã đầy!</div>
             </div>
         `;
-    }).join('');
+    }
+    
+    return availableSongs.map((song, index) => `
+        <div class="flex items-center justify-between p-2 rounded hover:bg-white dark:hover:bg-gray-600 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-500" 
+            ondblclick="addSongFromDataAttr(this)" 
+            data-song-title="${song.title}"
+            data-song-index="${index}">
+            <div class="flex items-center">
+                <span class="text-sm font-medium">${song.title}</span>
+                <span class="ml-2 px-2 py-1 text-xs rounded-full ${getTypeColor(song.type)}">
+                    ${getVietnameseType(song.type).toUpperCase()}
+                </span>
+            </div>
+            <button onclick="addSongFromDataAttr(this.parentElement)" 
+                    class="text-green-500 hover:text-green-700" title="Thêm">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+    `).join('');
+}
+
+function addSongFromDataAttr(element) {
+    const songTitle = element.getAttribute('data-song-title');
+    addSongToCurrentPlaylist(songTitle);
+}
+
+function removeSongFromDataAttr(element) {
+    const songTitle = element.getAttribute('data-song-title');
+    removeSongFromCurrentPlaylist(songTitle);
+}
+
+function getVietnameseType(type) {
+    switch(type) {
+        case 'opening': return 'Mở đầu';
+        case 'ending': return 'Kết thúc';
+        case 'insert song': return 'Nhạc chèn';
+        case 'special': return 'Đặc biệt';
+        default: return type;
+    }
+}
+
+function getTypeColor(type) {
+    switch(type) {
+        case 'opening': return 'bg-blue-100 text-blue-800';
+        case 'ending': return 'bg-green-100 text-green-800';
+        case 'insert song':  return 'bg-purple-100 text-purple-800';
+        case 'special': return 'bg-yellow-100 text-yellow-800';
+        default: return 'bg-gray-100 text-gray-800';
+    }
+}
+
+function getTypeColor(type) {
+    switch(type) {
+        case 'opening': return 'bg-blue-100 text-blue-800';
+        case 'ending': return 'bg-green-100 text-green-800';
+        case 'insert song': return 'bg-purple-100 text-purple-800';
+        case 'special': return 'bg-yellow-100 text-yellow-800';
+        default: return 'bg-gray-100 text-gray-800';
+    }
 }
 
 function generateCurrentPlaylistList(songs) {
@@ -318,10 +383,41 @@ function generateCurrentPlaylistList(songs) {
     `).join('');
 }
 
+let MASTER_SONGS = [];
+
+async function loadMasterSongs() {
+    try {
+        const response = await fetch('Assets/data/songsMetadata.json');
+        const data = await response.json();
+        
+        // Flatten all songs into single array with proper ordering
+        MASTER_SONGS = [
+            ...data.openings,
+            ...data.endings, 
+            ...data.inserts,
+            ...data.specials
+        ].sort((a, b) => {
+            // Sort by type first, then by order
+            const typeOrder = { 'opening': 1, 'ending': 2, 'insert': 3, 'special': 4 };
+            if (typeOrder[a.type] !== typeOrder[b.type]) {
+                return typeOrder[a.type] - typeOrder[b.type];
+            }
+            return a.order - b.order;
+        });
+    } catch (error) {
+        showToast('Gặp lỗi khi lấy thông tin video:', "error", error);
+        // Fallback to your current method
+        return getAllAvailableSongsLegacy();
+    }
+}
+
 function getAllAvailableSongs() {
+    return MASTER_SONGS.map(song => song.title);
+}
+
+// Keep your old function as backup
+function getAllAvailableSongsLegacy() {
     const allSongs = [];
-    
-    // Extract from both arrays (your existing logic)
     const allUrls = [...videoUrls, ...newvideoUrls];
     allUrls.forEach(url => {
         const songName = cleanVideoSrcName(url);
@@ -329,8 +425,7 @@ function getAllAvailableSongs() {
             allSongs.push(songName);
         }
     });
-    
-    return allSongs.sort(); // Alphabetical order
+    return allSongs.sort();
 }
 
 
@@ -384,8 +479,15 @@ function closePlaylistEditor() {
 function savePlaylist(playlistName) {
     // Check if playlist is empty
     if (tempPlaylistSongs.length === 0) {
-        showToast(`Danh sách phát không thể trống! Vui lòng thêm ít nhất 1 bài hát.`, 'error');
-        return; // Don't save, keep modal open
+        // Delete the empty playlist instead of showing error
+        const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
+        delete playlists[playlistName];
+        localStorage.setItem('playlists', JSON.stringify(playlists));
+        
+        closePlaylistEditor();
+        populateSidebarPlaylists();
+        showToast(`Đã xóa danh sách trống "${playlistName}"`, 'warning');
+        return;
     }
     
     const playlists = JSON.parse(localStorage.getItem('playlists')) || {};

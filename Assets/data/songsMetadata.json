@@ -1,0 +1,237 @@
+{
+    "openings": [
+      {
+        "id": "op1-redo",
+        "title": "OP1 - Redo",
+        "filename": "OP1 - Redo.mp4",
+        "season": 1,
+        "type": "opening",
+        "order": 1,
+        "artist": "Konomi Suzuki"
+      },
+      {
+        "id": "op2-paradisus",
+        "title": "OP2 - Paradisus - Paradoxum",
+        "filename": "OP2 - Paradisus - Paradoxum.mp4",
+        "season": 1,
+        "type": "opening",
+        "order": 2,
+        "artist": "MYTH & ROID"
+      },
+      {
+        "id": "op3-realize",
+        "title": "OP3 - Realize",
+        "filename": "OP3 - Realize.mp4",
+        "season": 2,
+        "type": "opening",
+        "order": 3,
+        "artist": "Konomi Suzuki"
+      },
+      {
+        "id": "op4-longshot",
+        "title": "OP4 - Long shot",
+        "filename": "OP4 - Long shot.mp4",
+        "season": 2,
+        "type": "opening",
+        "order": 4,
+        "artist": "Mayu Maeshima"
+      },
+      {
+        "id": "op5-reweave",
+        "title": "OP5 - Reweave",
+        "filename": "OP5 - Reweave.mp4",
+        "season": 3,
+        "type": "opening",
+        "order": 5,
+        "artist": "Konomi Suzuki"
+      }
+    ],
+    "endings": [
+      {
+        "id": "ed1-styx-helix",
+        "title": "ED1 - STYX HELIX",
+        "filename": "ED1 - STYX HELIX.mp4",
+        "season": 1,
+        "type": "ending",
+        "order": 1,
+        "artist": "MYTH & ROID"
+      },
+      {
+        "id": "ed1-styx-helix-nocut",
+        "title": "ED1 - STYX HELIX (Bản đầy đủ)",
+        "filename": "ED1 - STYX HELIX nocut.mp4",
+        "season": 1,
+        "type": "ending",
+        "order": 1.5,
+        "artist": "MYTH & ROID",
+        "variant": "full"
+      },
+      {
+        "id": "ed1-styx-helix-slow",
+        "title": "ED1 - STYX HELIX (Bản chậm)",
+        "filename": "ED1 - STYX HELIX slow.mp4",
+        "season": 1,
+        "type": "ending",
+        "order": 1.6,
+        "artist": "MYTH & ROID",
+        "variant": "slow"
+      },
+      {
+        "id": "ed2-stay-alive",
+        "title": "ED2 - Stay Alive",
+        "filename": "ED2 - Stay Alive.webm",
+        "season": 1,
+        "type": "ending",
+        "order": 2,
+        "artist": "Emilia (CV: Rie Takahashi)"
+      },
+      {
+        "id": "ed3-memento",
+        "title": "ED3 - Memento",
+        "filename": "ED3 - Memento.mp4",
+        "season": 2,
+        "type": "ending",
+        "order": 3,
+        "artist": "nonoc"
+      },
+      {
+        "id": "ed4-believe-in-you",
+        "title": "ED4 - Believe in you",
+        "filename": "ED4 - Believe in you.webm",
+        "season": 2,
+        "type": "ending",
+        "order": 4,
+        "artist": "nonoc"
+      },
+      {
+        "id": "ed5-nox-lux",
+        "title": "ED5 - NOX LUX",
+        "filename": "ED5 - NOX LUX.mp4",
+        "season": 3,
+        "type": "ending",
+        "order": 5,
+        "artist": "MYTH & ROID"
+      }
+    ],
+    "inserts": [
+      {
+        "id": "straight-bet",
+        "title": "STRAIGHT BET",
+        "filename": "STRAIGHT BET.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 1,
+        "artist": "MYTH & ROID"
+      },
+      {
+        "id": "bouya-no-yume-yo",
+        "title": "Bouya no Yume yo",
+        "filename": "Bouya no Yume yo.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 2,
+        "artist": "Emilia (CV: Rie Takahashi)"
+      },
+      {
+        "id": "memories",
+        "title": "Memories",
+        "filename": "Memories.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 3,
+        "artist": "Azuna Riko"
+      },
+      {
+        "id": "white-white-snow",
+        "title": "White White Snow",
+        "filename": "White White Snow.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 4,
+        "artist": "nonoc"
+      },
+      {
+        "id": "requiem-of-silence",
+        "title": "Requiem of Silence",
+        "filename": "Requiem of Silence.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 5,
+        "artist": "Kenichiro Suehiro"
+      },
+      {
+        "id": "wishing",
+        "title": "Wishing",
+        "filename": "Wishing.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 6,
+        "artist": "Rem (CV: Inori Minase)"
+      },
+      {
+        "id": "yuki-no-hate-ni",
+        "title": "Your Name",
+        "filename": "Yuki no hate ni Kimi no na wo.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 7,
+        "artist": "nonoc"
+      },
+      {
+        "id": "door",
+        "title": "Door",
+        "filename": "Door.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 8,
+        "artist": "Emilia (CV: Rie Takahashi)"
+      },
+      {
+        "id": "what-you-dont-know",
+        "title": "What you don't know",
+        "filename": "What you don't know.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 9,
+        "artist": "Ram (CV: Rie Murakawa)"
+      },
+      {
+        "id": "i-trust-you",
+        "title": "I Trust You",
+        "filename": "I Trust You.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 10,
+        "artist": "Emilia (CV: Rie Takahashi)"
+      },
+      {
+        "id": "theater-d",
+        "title": "Theater D",
+        "filename": "Theater D.mp4",
+        "season": 1,
+        "type": "insert song",
+        "order": 11,
+        "artist": "MYTH & ROID"
+      }
+    ],
+    "specials": [
+      {
+        "id": "s1-ending",
+        "title": "Kết thúc mùa 1",
+        "filename": "S1 Ending.webm",
+        "season": 1,
+        "type": "special",
+        "order": 1,
+        "artist": "MYTH & ROID"
+      },
+      {
+        "id": "s2-ending",
+        "title": "Kết thúc mùa 2",
+        "filename": "S2 Ending.mp4",
+        "season": 2,
+        "type": "special",
+        "order": 2,
+        "artist": "Mayu Maeshima"
+      }
+    ]
+  }
