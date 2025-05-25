@@ -70,7 +70,7 @@ function populateSidebarPlaylists() {
         li.innerHTML = `
             <div class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
                 <button onclick="loadPlaylist('${playlistName}')" class="flex-1 text-left">
-                    ${playlistName} (${playlists[playlistName].songs.length})
+                    ${playlistName} (${playlists[playlistName].songs.length} bài hát)
                 </button>
                 <div class="flex gap-1">
                     <button onclick="editPlaylist('${playlistName}')" class="text-blue-500 hover:text-blue-700" title="Chỉnh sửa">
@@ -165,25 +165,23 @@ function createPlaylistEditorModal(playlistName, playlist) {
                 <!-- Available Songs -->
                 <div class="flex flex-col min-h-0">
                     <div class="flex items-center justify-between mb-4 flex-shrink-0">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Bài hát có sẵn</h3>
                         <input type="text" id="song-search" placeholder="Tìm kiếm..." 
-                               class="px-3 py-1 border rounded text-sm w-48 dark:bg-gray-700 dark:border-gray-600" 
-                               oninput="filterAvailableSongs()">
+                            class="px-3 py-1 border rounded text-sm w-48 dark:bg-gray-700 dark:border-gray-600" 
+                            oninput="filterAvailableSongs()">
                     </div>
-                    <div id="available-songs" class="border rounded-lg p-4 overflow-y-auto flex-1 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 min-h-0">
+                    <div id="available-songs" class="border rounded-lg p-4 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 overflow-y-auto playlist-container-height">
                         ${generateAvailableSongsList(playlist.songs)}
                     </div>
                 </div>
                 
                 <!-- Current Playlist -->
                 <div class="flex flex-col min-h-0">
-                    <div class="flex items-center justify-between mb-4 flex-shrink-0">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Danh sách hiện tại</h3>
+                    <div class="flex items-center justify-between mb-6 flex-shrink-0">
                         <button onclick="clearPlaylist('${playlistName}')" class="text-red-500 hover:text-red-700 text-sm">
                             Xóa tất cả
                         </button>
                     </div>
-                    <div id="current-playlist" class="border rounded-lg p-4 overflow-y-auto flex-1 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 min-h-0">
+                    <div id="current-playlist" class="border rounded-lg p-4 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 overflow-y-auto playlist-container-height">
                         ${generateCurrentPlaylistList(playlist.songs)}
                     </div>
                 </div>

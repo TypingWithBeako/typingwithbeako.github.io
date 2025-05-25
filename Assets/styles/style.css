@@ -460,3 +460,27 @@ body {
     margin-top: 0;
 }
 }
+
+/* Custom height classes for playlist containers */
+.playlist-container-height {
+    height: 320px; /* Mobile default */
+}
+
+/* Responsive heights using standard CSS media queries */
+@media (min-width: 640px) {
+    .playlist-container-height {
+        height: 30vh; /* SM screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .playlist-container-height {
+        height: 60vh; /* LG+ screens */
+    }
+}
+
+@media (min-width: 1280px) {
+    .playlist-container-height {
+        height: 70vh; /* XL screens - your preferred */
+    }
+}
