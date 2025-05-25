@@ -46,11 +46,12 @@ function loadPlaylist(playlistName) {
         // BOOM: Just replace the entire array
         videoUrls = playlist.songs.map(songName => convertToUrl(songName));
         
-        // Player doesn't even know anything changed!
         playVideo(videoUrls[0]);
+        showToast(`Đã tải danh sách phát "${playlistName}" với ${playlist.songs.length} bài hát.`);
     }
 }
 
+// Replace lines ~47-52 with:
 function convertToUrl(songName) {
     // Find song in master list
     const song = MASTER_SONGS.find(s => s.title === songName);
@@ -115,7 +116,7 @@ function createNewPlaylist() {
         };
         localStorage.setItem('playlists', JSON.stringify(playlists));
         populateSidebarPlaylists();
-        showToast(`Đã thêm danh sách phát ${name} thành công.`)
+        showToast(`Đã thêm danh sách phát "${name}" thành công.`)
         
         // Open playlist editor
         editPlaylist(name.trim());
@@ -126,6 +127,7 @@ function deletePlaylist(name) {
     if (confirm(`Xóa danh sách "${name}"?`)) {
         const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
         delete playlists[name];
+        showToast(`Đã xóa danh sách "${name}" thành công!`, 'success');
         localStorage.setItem('playlists', JSON.stringify(playlists));
         populateSidebarPlaylists();
     }
@@ -141,7 +143,7 @@ function editPlaylist(playlistName) {
     const playlist = playlists[playlistName];
     
     currentEditingPlaylist = playlistName;
-    tempPlaylistSongs = [...playlist.songs];
+    tempPlaylistSongs = [...playlist.songs]; 
 
     window.isEditingPlaylist = true; // Set editing mode
 
@@ -164,12 +166,45 @@ function createPlaylistEditorModal(playlistName, playlist) {
     modal.innerHTML = `
         <div class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-6xl w-full mx-4 h-[90vh] overflow-hidden shadow-2xl flex flex-col">
             <div class="flex justify-between items-center mb-6 flex-shrink-0">
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Chỉnh sửa danh sách</h2>
-                    <h4 class="mt-1 font-medium text-gray-600 dark:text-gray-400">${playlistName} • ${playlist.songs.length} bài hát</h4>
+                <div class="flex-1 mr-4">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Chỉnh sửa danh sách</h2>
+                    <div class="flex items-center gap-2">
+                        <!-- Default view - just display name -->
+                        <div id="playlist-name-display" class="flex items-center gap-2">
+                            <span class="text-base font-medium text-gray-800 dark:text-gray-200">${playlistName}</span>
+                            <button onclick="startEditingName()" class="text-gray-500 hover:text-blue-500 transition-colors" title="Đổi tên">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Edit view - input field (hidden by default) -->
+                        <div id="playlist-name-edit" class="flex items-center gap-2" style="display: none;">
+                            <input type="text" 
+                                id="playlist-name-input" 
+                                value="${playlistName}" 
+                                class="text-base font-medium bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 focus:border-blue-500 focus:outline-none text-gray-800 dark:text-gray-200 min-w-0 max-w-xs"
+                                placeholder="Tên danh sách phát">
+                            <button onclick="saveNameEdit()" class="text-green-500 hover:text-green-700" title="Lưu">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <button onclick="cancelNameEdit()" class="text-red-500 hover:text-red-700" title="Hủy">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full" id="song-count-display">
+                            ${playlist.songs.length} bài
+                        </span>
+                    </div>
                 </div>
                 <button onclick="closePlaylistEditor()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
@@ -184,7 +219,7 @@ function createPlaylistEditorModal(playlistName, playlist) {
                             oninput="filterAvailableSongs()">
                     </div>
                     <div id="available-songs" class="border rounded-lg p-4 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 overflow-y-auto playlist-container-height">
-                        ${generateAvailableSongsList(playlist.songs)}
+                        ${generateAvailableSongsList(tempPlaylistSongs)}
                     </div>
                 </div>
                 
@@ -196,7 +231,7 @@ function createPlaylistEditorModal(playlistName, playlist) {
                         </button>
                     </div>
                     <div id="current-playlist" class="border rounded-lg p-4 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 overflow-y-auto playlist-container-height">
-                        ${generateCurrentPlaylistList(playlist.songs)}
+                        ${generateCurrentPlaylistList(tempPlaylistSongs)}
                     </div>
                 </div>
             </div>
@@ -209,7 +244,7 @@ function createPlaylistEditorModal(playlistName, playlist) {
                     <button onclick="closePlaylistEditor()" class="px-6 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors">
                         Hủy
                     </button>
-                    <button onclick="savePlaylist('${playlistName}')" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                    <button onclick="savePlaylist()" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
                         Lưu thay đổi
                     </button>
                 </div>
@@ -231,6 +266,90 @@ function clearPlaylist(playlistName) {
         refreshModalContent();
     }
 }
+
+
+function saveNameEdit() {
+    const input = document.getElementById('playlist-name-input');
+    const newName = input.value.trim();
+    
+    if (!newName) {
+        showToast('Tên danh sách phát không được để trống!', 'error');
+        return;
+    }
+    
+    // Update display
+    const displaySpan = document.querySelector('#playlist-name-display span');
+    displaySpan.textContent = newName;
+    
+    // Visual feedback
+    displaySpan.style.color = '#10b981';
+    setTimeout(() => {
+        displaySpan.style.color = '';
+    }, 1000);
+    
+    // Hide edit mode
+    cancelNameEdit();
+    
+    showToast('Tên đã được thay đổi. Nhớ nhấn "Lưu thay đổi" để hoàn tất!', 'info');
+}
+
+
+function getCurrentPlaylistName() {
+    // Check if we're in edit mode
+    const editDiv = document.getElementById('playlist-name-edit');
+    if (editDiv && editDiv.style.display !== 'none') {
+        const input = document.getElementById('playlist-name-input');
+        return input ? input.value.trim() : currentEditingPlaylist;
+    }
+    
+    // Otherwise get from display
+    const displaySpan = document.querySelector('#playlist-name-display span');
+    return displaySpan ? displaySpan.textContent.trim() : currentEditingPlaylist;
+}
+
+function startEditingName() {
+    const displayDiv = document.getElementById('playlist-name-display');
+    const editDiv = document.getElementById('playlist-name-edit');
+    const input = document.getElementById('playlist-name-input');
+    
+    displayDiv.style.display = 'none';
+    editDiv.style.display = 'flex';
+    
+    // Focus input and select text
+    setTimeout(() => {
+        input.focus();
+        input.select();
+        
+        // Add keyboard listeners
+        input.addEventListener('keydown', handleNameEditKeydown);
+    }, 100);
+}
+
+function handleNameEditKeydown(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        saveNameEdit();
+    } else if (event.key === 'Escape') {
+        event.preventDefault();
+        cancelNameEdit();
+    }
+}
+
+function cancelNameEdit() {
+    const displayDiv = document.getElementById('playlist-name-display');
+    const editDiv = document.getElementById('playlist-name-edit');
+    const input = document.getElementById('playlist-name-input');
+    
+    // Remove keyboard listeners
+    input.removeEventListener('keydown', handleNameEditKeydown);
+    
+    // Reset input to original value
+    input.value = currentEditingPlaylist;
+    
+    editDiv.style.display = 'none';
+    displayDiv.style.display = 'flex';
+}
+
 
 let draggedIndex = null;
 
@@ -270,10 +389,10 @@ function dragEnd(event) {
 function filterAvailableSongs() {
     const searchTerm = document.getElementById('song-search').value.toLowerCase();
     const availableContainer = document.getElementById('available-songs');
-    const songElements = availableContainer.querySelectorAll('[data-song-title]');
+    const songElements = availableContainer.querySelectorAll('[data-song-title]'); // Changed from [data-song]
     
     songElements.forEach(element => {
-        const songName = element.getAttribute('data-song-title').toLowerCase();
+        const songName = element.getAttribute('data-song-title').toLowerCase(); // Changed from data-song
         if (songName.includes(searchTerm)) {
             element.style.display = 'flex';
         } else {
@@ -331,7 +450,7 @@ function getVietnameseType(type) {
     switch(type) {
         case 'opening': return 'Mở đầu';
         case 'ending': return 'Kết thúc';
-        case 'insert song': return 'Nhạc chủ đề';
+        case 'insert song': return 'Nhạc chèn';
         case 'special': return 'Đặc biệt';
         default: return type;
     }
@@ -342,16 +461,6 @@ function getTypeColor(type) {
         case 'opening': return 'bg-blue-100 text-blue-800';
         case 'ending': return 'bg-green-100 text-green-800';
         case 'insert song':  return 'bg-purple-100 text-purple-800';
-        case 'special': return 'bg-yellow-100 text-yellow-800';
-        default: return 'bg-gray-100 text-gray-800';
-    }
-}
-
-function getTypeColor(type) {
-    switch(type) {
-        case 'opening': return 'bg-blue-100 text-blue-800';
-        case 'ending': return 'bg-green-100 text-green-800';
-        case 'insert song': return 'bg-purple-100 text-purple-800';
         case 'special': return 'bg-yellow-100 text-yellow-800';
         default: return 'bg-gray-100 text-gray-800';
     }
@@ -383,6 +492,7 @@ function generateCurrentPlaylistList(songs) {
     `).join('');
 }
 
+// Replace lines ~355-368 with:
 let MASTER_SONGS = [];
 
 async function loadMasterSongs() {
@@ -476,25 +586,60 @@ function closePlaylistEditor() {
     }
 }
 
-function savePlaylist(playlistName) {
+function savePlaylist() {
+    const newPlaylistName = getCurrentPlaylistName();
+    const oldPlaylistName = currentEditingPlaylist;
+    
+    // Validate name
+    if (!newPlaylistName) {
+        showToast('Tên danh sách phát không được để trống!', 'error');
+        return;
+    }
+    
     // Check if playlist is empty
     if (tempPlaylistSongs.length === 0) {
-        // Delete the empty playlist instead of showing error
         const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-        delete playlists[playlistName];
+        delete playlists[oldPlaylistName];
         localStorage.setItem('playlists', JSON.stringify(playlists));
         
         closePlaylistEditor();
         populateSidebarPlaylists();
-        showToast(`Đã xóa danh sách trống "${playlistName}"`, 'warning');
+        showToast(`Đã xóa danh sách trống "${oldPlaylistName}"`, 'warning');
         return;
     }
     
     const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-    playlists[playlistName].songs = [...tempPlaylistSongs];
+    
+    // Handle name change
+    if (newPlaylistName !== oldPlaylistName) {
+        // Check if new name already exists
+        if (playlists[newPlaylistName]) {
+            showToast(`Danh sách "${newPlaylistName}" đã tồn tại!`, 'error');
+            return;
+        }
+        
+        // Create new playlist with new name
+        playlists[newPlaylistName] = {
+            songs: [...tempPlaylistSongs],
+            created: playlists[oldPlaylistName].created,
+            description: playlists[oldPlaylistName].description || '',
+            modified: new Date().toISOString()
+        };
+        
+        // Delete old playlist
+        delete playlists[oldPlaylistName];
+        
+        showToast(`Đã đổi tên từ "${oldPlaylistName}" thành "${newPlaylistName}" và lưu thành công!`);
+    } else {
+        // Just update songs
+        playlists[newPlaylistName].songs = [...tempPlaylistSongs];
+        playlists[newPlaylistName].modified = new Date().toISOString();
+        
+        showToast(`Đã lưu thành công danh sách phát ${newPlaylistName}`);
+    }
+    
     localStorage.setItem('playlists', JSON.stringify(playlists));
     
     populateSidebarPlaylists();
     closePlaylistEditor();
-    showToast(`Đã lưu thành công danh sách phát ${playlistName}`)
 }
