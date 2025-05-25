@@ -134,7 +134,6 @@ function deletePlaylist(name) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadMasterSongs();
     populateSidebarPlaylists();
 });
 
@@ -492,36 +491,6 @@ function generateCurrentPlaylistList(songs) {
             </button>
         </div>
     `).join('');
-}
-
-// Replace lines ~355-368 with:
-let MASTER_SONGS = [];
-
-async function loadMasterSongs() {
-    try {
-        const response = await fetch('Assets/data/songsMetadata.json');
-        const data = await response.json();
-        
-        // Flatten all songs into single array with proper ordering
-        MASTER_SONGS = [
-            ...data.openings,
-            ...data.endings, 
-            ...data.inserts,
-            ...data.specials,
-            ...data.concerts
-        ].sort((a, b) => {
-            // Sort by type first, then by order
-            const typeOrder = { 'opening': 1, 'ending': 2, 'insert song': 3, 'special': 4, 'live concert': 5 };
-            if (typeOrder[a.type] !== typeOrder[b.type]) {
-                return typeOrder[a.type] - typeOrder[b.type];
-            }
-            return a.order - b.order;
-        });
-    } catch (error) {
-        showToast('Gặp lỗi khi lấy thông tin video:', "error", error);
-        // Fallback to your current method
-        return getAllAvailableSongsLegacy();
-    }
 }
 
 function getAllAvailableSongs() {

@@ -1,279 +1,424 @@
 {
-    "openings": [
-      {
-        "id": "op1-redo",
-        "title": "Redo",
-        "filename": "OP1 - Redo.mp4",
-        "season": 1,
-        "type": "opening",
-        "order": 1,
-        "artist": "Konomi Suzuki"
-      },
-      {
-        "id": "op2-paradisus",
-        "title": "Paradisus-Paradoxum",
-        "filename": "OP2 - Paradisus - Paradoxum.mp4",
-        "season": 1,
-        "type": "opening",
-        "order": 2,
-        "artist": "Myth & Roid"
-      },
-      {
-        "id": "op3-realize",
-        "title": "Realize",
-        "filename": "OP3 - Realize.mp4",
-        "season": 2,
-        "type": "opening",
-        "order": 3,
-        "artist": "Konomi Suzuki"
-      },
-      {
-        "id": "op4-longshot",
-        "title": "Long shot",
-        "filename": "OP4 - Long shot.mp4",
-        "season": 2,
-        "type": "opening",
-        "order": 4,
-        "artist": "Mayu Maeshima"
-      },
-      {
-        "id": "op5-reweave",
-        "title": "Reweave",
-        "filename": "OP5 - Reweave.mp4",
-        "season": 3,
-        "type": "opening",
-        "order": 5,
-        "artist": "Konomi Suzuki"
+  "openings": [
+    {
+      "id": "op1-redo",
+      "title": "Redo",
+      "filename": "OP1 - Redo.mp4",
+      "season": 1,
+      "type": "opening",
+      "order": 1,
+      "artist": "Konomi Suzuki",
+      "artwork": {
+          "src": "Icons/artworks/Redo_Cover.webp",
+          "sizes": "997x992",
+          "type": "image/webp"
       }
-    ],
-    "endings": [
-      {
-        "id": "ed1-styx-helix",
-        "title": "STYX HELIX",
-        "filename": "ED1 - STYX HELIX.mp4",
-        "season": 1,
-        "type": "ending",
-        "order": 1,
-        "artist": "Myth & Roid"
-      },
-      {
-        "id": "ed1-styx-helix-nocut",
-        "title": "STYX HELIX (Bản đầy đủ)",
-        "filename": "ED1 - STYX HELIX nocut.mp4",
-        "season": 1,
-        "type": "ending",
-        "order": 1.5,
-        "artist": "Myth & Roid",
-        "variant": "full"
-      },
-      {
-        "id": "ed1-styx-helix-slow",
-        "title": "STYX HELIX (Bản chậm)",
-        "filename": "ED1 - STYX HELIX slow.mp4",
-        "season": 1,
-        "type": "ending",
-        "order": 1.6,
-        "artist": "Myth & Roid",
-        "variant": "slow"
-      },
-      {
-        "id": "ed2-stay-alive",
-        "title": "Stay Alive",
-        "filename": "ED2 - Stay Alive.webm",
-        "season": 1,
-        "type": "ending",
-        "order": 2,
-        "artist": "Emilia (CV: Rie Takahashi)"
-      },
-      {
-        "id": "ed3-memento",
-        "title": "Memento",
-        "filename": "ED3 - Memento.mp4",
-        "season": 2,
-        "type": "ending",
-        "order": 3,
-        "artist": "nonoc"
-      },
-      {
-        "id": "ed4-believe-in-you",
-        "title": "Believe in you",
-        "filename": "ED4 - Believe in you.webm",
-        "season": 2,
-        "type": "ending",
-        "order": 4,
-        "artist": "nonoc"
-      },
-      {
-        "id": "ed5-nox-lux",
-        "title": "NOX LUX",
-        "filename": "ED5 - NOX LUX.mp4",
-        "season": 3,
-        "type": "ending",
-        "order": 5,
-        "artist": "Myth & Roid"
+    },
+    {
+      "id": "op2-paradisus",
+      "title": "Paradisus-Paradoxum",
+      "filename": "OP2 - Paradisus - Paradoxum.mp4",
+      "season": 1,
+      "type": "opening",
+      "order": 2,
+      "artist": "MYTH & ROID",
+      "artwork": {
+          "src": "Icons/artworks/Paradisus-Paradoxum_Cover.webp",
+          "sizes": "1000x993",
+          "type": "image/webp"
       }
-    ],
-    "inserts": [
-      {
-        "id": "straight-bet",
-        "title": "STRAIGHT BET",
-        "filename": "STRAIGHT BET.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 1,
-        "artist": "Myth & Roid"
-      },
-      {
-        "id": "bouya-no-yume-yo",
-        "title": "Bouya no Yume yo",
-        "filename": "Bouya no Yume yo.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 2,
-        "artist": "Emilia (CV: Rie Takahashi)"
-      },
-      {
-        "id": "memories",
-        "title": "Memories",
-        "filename": "Memories.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 3,
-        "artist": "Azuna Riko"
-      },
-      {
-        "id": "white-white-snow",
-        "title": "White White Snow",
-        "filename": "White White Snow.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 4,
-        "artist": "nonoc"
-      },
-      {
-        "id": "requiem-of-silence",
-        "title": "Requiem of Silence",
-        "filename": "Requiem of Silence.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 5,
-        "artist": "Kenichiro Suehiro"
-      },
-      {
-        "id": "wishing",
-        "title": "Wishing",
-        "filename": "Wishing.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 6,
-        "artist": "Rem (CV: Inori Minase)"
-      },
-      {
-        "id": "yuki-no-hate-ni",
-        "title": "Your Name",
-        "filename": "Yuki no hate ni Kimi no na wo.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 7,
-        "artist": "nonoc"
-      },
-      {
-        "id": "door",
-        "title": "Door",
-        "filename": "Door.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 8,
-        "artist": "Emilia (CV: Rie Takahashi)"
-      },
-      {
-        "id": "what-you-dont-know",
-        "title": "What you don't know",
-        "filename": "What you don't know.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 9,
-        "artist": "Ram (CV: Rie Murakawa)"
-      },
-      {
-        "id": "i-trust-you",
-        "title": "I Trust You",
-        "filename": "I Trust You.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 10,
-        "artist": "Emilia (CV: Rie Takahashi)"
-      },
-      {
-        "id": "theater-d",
-        "title": "Theater D",
-        "filename": "Theater D.mp4",
-        "season": 1,
-        "type": "insert song",
-        "order": 11,
-        "artist": "Myth & Roid"
+    },
+    {
+      "id": "op3-realize",
+      "title": "Realize",
+      "filename": "OP3 - Realize.mp4",
+      "season": 2,
+      "type": "opening",
+      "order": 3,
+      "artist": "Konomi Suzuki",
+      "artwork": {
+          "src": "Icons/artworks/Realize_cover.webp",
+          "sizes": "500x500",
+          "type": "image/webp"
       }
-    ],
-    "specials": [
+    },
+    {
+      "id": "op4-longshot",
+      "title": "Long shot",
+      "filename": "OP4 - Long shot.mp4",
+      "season": 2,
+      "type": "opening",
+      "order": 4,
+      "artist": "Mayu Maeshima",
+      "artwork": {
+          "src": "Icons/artworks/Long_Shot_Cover.webp",
+          "sizes": "1400x1400",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "op5-reweave",
+      "title": "Reweave",
+      "filename": "OP5 - Reweave.mp4",
+      "season": 3,
+      "type": "opening",
+      "order": 5,
+      "artist": "Konomi Suzuki",
+      "artwork": {
+          "src": "Icons/artworks/Reweave_Cover.webp",
+          "sizes": "1600x1600",
+          "type": "image/webp"
+      }
+    }
+  ],
+  "endings": [
+    {
+      "id": "ed1-styx-helix",
+      "title": "STYX HELIX",
+      "filename": "ED1 - STYX HELIX.mp4",
+      "season": 1,
+      "type": "ending",
+      "order": 1,
+      "artist": "MYTH & ROID",
+      "artwork": {
+          "src": "Icons/artworks/STYX_HELIX_Cover.webp",
+          "sizes": "1008x1000",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "ed1-styx-helix-nocut",
+      "title": "STYX HELIX (Bản đầy đủ)",
+      "filename": "ED1 - STYX HELIX nocut.mp4",
+      "season": 1,
+      "type": "ending",
+      "order": 1.5,
+      "artist": "MYTH & ROID",
+      "variant": "full",
+      "artwork": {
+          "src": "Icons/artworks/STYX_HELIX_Cover.webp",
+          "sizes": "1008x1000",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "ed1-styx-helix-slow",
+      "title": "STYX HELIX (Bản chậm)",
+      "filename": "ED1 - STYX HELIX slow.mp4",
+      "season": 1,
+      "type": "ending",
+      "order": 1.6,
+      "artist": "MYTH & ROID",
+      "variant": "slow",
+      "artwork": {
+          "src": "Icons/artworks/STYX_HELIX_Cover.webp",
+          "sizes": "1008x1000",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "ed2-stay-alive",
+      "title": "Stay Alive",
+      "filename": "ED2 - Stay Alive.webm",
+      "season": 1,
+      "type": "ending",
+      "order": 2,
+      "artist": "Emilia (CV: Rie Takahashi)",
+      "artwork": {
+          "src": "Icons/artworks/Stay_Alive_Cover.webp",
+          "sizes": "1280x1281",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "ed3-memento",
+      "title": "Memento",
+      "filename": "ED3 - Memento.mp4",
+      "season": 2,
+      "type": "ending",
+      "order": 3,
+      "artist": "nonoc",
+      "artwork": {
+          "src": "Icons/artworks/Memento_cover.webp",
+          "sizes": "500x500",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "ed4-believe-in-you",
+      "title": "Believe in you",
+      "filename": "ED4 - Believe in you.webm",
+      "season": 2,
+      "type": "ending",
+      "order": 4,
+      "artist": "nonoc",
+      "artwork": {
+          "src": "Icons/artworks/Believe_in_you_cover.webp",
+          "sizes": "500x500",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "ed5-nox-lux",
+      "title": "NOX LUX",
+      "filename": "ED5 - NOX LUX.mp4",
+      "season": 3,
+      "type": "ending",
+      "order": 5,
+      "artist": "MYTH & ROID",
+      "artwork": {
+          "src": "Icons/artworks/NOX_LUX_Cover.webp",
+          "sizes": "1080x1080",
+          "type": "image/webp"
+      }
+    }
+  ],
+  "inserts": [
+    {
+      "id": "straight-bet",
+      "title": "STRAIGHT BET",
+      "filename": "STRAIGHT BET.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 1,
+      "artist": "MYTH & ROID",
+      "artwork": {
+          "src": "Icons/artworks/STRAIGHT_BET_Cover.jpg",
+          "sizes": "721x720",
+          "type": "image/jpeg"
+      }
+    },
+    {
+      "id": "bouya-no-yume-yo",
+      "title": "Bouya no Yume yo",
+      "filename": "Bouya no Yume yo.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 2,
+      "artist": "Emilia (CV: Rie Takahashi)",
+      "artwork": {
+          "src": "Icons/artworks/Character_song_album.webp",
+          "sizes": "1280x1280",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "memories",
+      "title": "Memories",
+      "filename": "Memories.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 3,
+      "artist": "Azuna Riko",
+      "artwork": {
+          "src": "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
+          "sizes": "640x640",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "white-white-snow",
+      "title": "White White Snow",
+      "filename": "White White Snow.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 4,
+      "artist": "nonoc",
+      "artwork": {
+          "src": "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
+          "sizes": "640x640",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "requiem-of-silence",
+      "title": "Requiem of Silence",
+      "filename": "Requiem of Silence.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 5,
+      "artist": "Kenichiro Suehiro",
+      "artwork": {
+          "src": "Icons/artworks/Re_Zero_Soundtrack_Cover.webp",
+          "sizes": "320x317",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "wishing",
+      "title": "Wishing",
+      "filename": "Wishing.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 6,
+      "artist": "Rem (CV: Inori Minase)",
+      "artwork": {
+          "src": "Icons/artworks/Character_song_album.webp",
+          "sizes": "1280x1280",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "yuki-no-hate-ni",
+      "title": "Your Name",
+      "filename": "Yuki no hate ni Kimi no na wo.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 7,
+      "artist": "nonoc",
+      "artwork": {
+          "src": "Icons/artworks/Memory_Snow_OVA_Music_Cover.webp",
+          "sizes": "640x640",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "door",
+      "title": "Door",
+      "filename": "Door.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 8,
+      "artist": "Emilia (CV: Rie Takahashi)",
+      "artwork": {
+          "src": "Icons/artworks/Character_song_album.webp",
+          "sizes": "1280x1280",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "what-you-dont-know",
+      "title": "What you don't know",
+      "filename": "What you don't know.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 9,
+      "artist": "Ram (CV: Rie Murakawa)",
+      "artwork": {
+          "src": "Icons/artworks/Character_song_album.webp",
+          "sizes": "1280x1280",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "i-trust-you",
+      "title": "I Trust You",
+      "filename": "I Trust You.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 10,
+      "artist": "Emilia (CV: Rie Takahashi)",
+      "artwork": {
+          "src": "Icons/artworks/Character_song_album.webp",
+          "sizes": "1280x1280",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "theater-d",
+      "title": "Theater D",
+      "filename": "Theater D.mp4",
+      "season": 1,
+      "type": "insert song",
+      "order": 11,
+      "artist": "MYTH & ROID",
+      "artwork": {
+          "src": "Icons/artworks/Theater_D_Cover.jpg",
+          "sizes": "1080x1080",
+          "type": "image/jpeg"
+      }
+    }
+  ],
+  "specials": [
+    {
+      "id": "s1-ending",
+      "title": "Kết thúc mùa 1",
+      "filename": "S1 Ending.webm",
+      "season": 1,
+      "type": "special",
+      "order": 1,
+      "artist": "MYTH & ROID",
+      "artwork": {
+          "src": "Icons/artworks/STYX_HELIX_Cover.webp",
+          "sizes": "1008x1000",
+          "type": "image/webp"
+      }
+    },
+    {
+      "id": "s2-ending",
+      "title": "Kết thúc mùa 2",
+      "filename": "S2 Ending.mp4",
+      "season": 2,
+      "type": "special",
+      "order": 2,
+      "artist": "Mayu Maeshima",
+      "artwork": {
+          "src": "Icons/artworks/Long_Shot_Cover.webp",
+          "sizes": "1400x1400",
+          "type": "image/webp"
+      }
+    }
+  ],
+  "concerts": [
       {
-        "id": "s1-ending",
-        "title": "Kết thúc mùa 1",
-        "filename": "S1 Ending.webm",
-        "season": 1,
-        "type": "special",
-        "order": 1,
-        "artist": "Myth & Roid"
+          "id": "op4-long-shot-live",
+          "title": "Long shot (LIVE)",
+          "filename": "OP4 - Long shot (LIVE).mp4",
+          "season": 2,
+          "type": "live concert",
+          "order": 1,
+          "artist": "Mayu Maeshima",
+          "original_song": "Long shot",
+          "artwork": {
+              "src": "Icons/artworks/Long_Shot_Cover.webp",
+              "sizes": "1400x1400",
+              "type": "image/webp"
+          }
       },
       {
-        "id": "s2-ending",
-        "title": "Kết thúc mùa 2",
-        "filename": "S2 Ending.mp4",
-        "season": 2,
-        "type": "special",
-        "order": 2,
-        "artist": "Mayu Maeshima"
+          "id": "ed1-styx-helix-live",
+          "title": "STYX HELIX (LIVE)",
+          "filename": "ED1 - STYX HELIX (LIVE).mp4",
+          "season": 1,
+          "type": "live concert",
+          "order": 2,
+          "artist": "MYTH & ROID",
+          "original_song": "STYX HELIX",
+          "artwork": {
+              "src": "Icons/artworks/STYX_HELIX_Cover.webp",
+              "sizes": "1008x1000",
+              "type": "image/webp"
+          }
+      },
+      {
+          "id": "op1-redo-live",
+          "title": "Redo (LIVE)",
+          "filename": "OP1 - Redo (LIVE).mp4",
+          "season": 1,
+          "type": "live concert",
+          "order": 3,
+          "artist": "Konomi Suzuki",
+          "original_song": "Redo",
+          "artwork": {
+              "src": "Icons/artworks/Redo_Cover.webp",
+              "sizes": "997x992",
+              "type": "image/webp"
+          }
+      },
+      {
+          "id": "op3-realize-live",
+          "title": "Realize (LIVE)",
+          "filename": "OP3 - Realize (LIVE).mp4",
+          "season": 2,
+          "type": "live concert",
+          "order": 4,
+          "artist": "Konomi Suzuki",
+          "original_song": "Realize",
+          "artwork": {
+              "src": "Icons/artworks/Realize_cover.webp",
+              "sizes": "500x500",
+              "type": "image/webp"
+          }
       }
-    ],
-    "concerts": [
-        {
-            "id": "op4-long-shot-live",
-            "title": "Long shot (LIVE)",
-            "filename": "OP4 - Long shot (LIVE).mp4",
-            "season": 2,
-            "type": "live concert",
-            "order": 1,
-            "artist": "Mayu Maeshima",
-            "original_song": "Long shot"
-        },
-        {
-            "id": "ed1-styx-helix-live",
-            "title": "STYX HELIX (LIVE)",
-            "filename": "ED1 - STYX HELIX (LIVE).mp4",
-            "season": 1,
-            "type": "live concert",
-            "order": 2,
-            "artist": "Myth & Roid",
-            "original_song": "STYX HELIX"
-        },
-        {
-            "id": "op1-redo-live",
-            "title": "Redo (LIVE)",
-            "filename": "OP1 - Redo (LIVE).mp4",
-            "season": 1,
-            "type": "live concert",
-            "order": 3,
-            "artist": "Konomi Suzuki",
-            "original_song": "Redo"
-        },
-        {
-            "id": "op3-realize-live",
-            "title": "Realize (LIVE)",
-            "filename": "OP3 - Realize (LIVE).mp4",
-            "season": 2,
-            "type": "live concert",
-            "order": 4,
-            "artist": "Konomi Suzuki",
-            "original_song": "Realize"
-        }
-    ]
-  }
+  ]
+}
