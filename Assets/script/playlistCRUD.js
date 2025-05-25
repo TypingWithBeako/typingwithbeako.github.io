@@ -523,13 +523,31 @@ function removeSongFromCurrentPlaylist(songName) {
     refreshModalContent();
 }
 
+// Replace your current refreshModalContent function with this improved version:
 function refreshModalContent() {
     const availableContainer = document.getElementById('available-songs');
     const currentContainer = document.getElementById('current-playlist');
+    const searchInput = document.getElementById('song-search');
     
     if (availableContainer && currentContainer) {
+        // Save current search term
+        const currentSearchTerm = searchInput ? searchInput.value : '';
+        
+        // Update content
         availableContainer.innerHTML = generateAvailableSongsList(tempPlaylistSongs);
         currentContainer.innerHTML = generateCurrentPlaylistList(tempPlaylistSongs);
+        
+        // Restore search term and apply filter
+        if (currentSearchTerm && searchInput) {
+            searchInput.value = currentSearchTerm;
+            filterAvailableSongs(); // Reapply the filter
+        }
+        
+        // Update song count in header
+        const songCountDisplay = document.getElementById('song-count-display');
+        if (songCountDisplay) {
+            songCountDisplay.textContent = `${tempPlaylistSongs.length} bài`;
+        }
         
         // Update save button state
         const saveButton = document.querySelector('button[onclick*="savePlaylist"]');
