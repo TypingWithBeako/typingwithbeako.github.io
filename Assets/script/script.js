@@ -844,9 +844,6 @@ document.addEventListener("keydown", function(event) {
         else if (event.code === "KeyS"){
             playVideo(`${URL}ED1 - STYX HELIX slow.mp4`);
         }
-        else if (event.code === "KeyB"){
-            ChangeStyxHelix();
-        }
         else if (event.code === 'Escape') {
             if (TheaterModeFlag){
                TheaterMode.click() // Exit Theater Mode if Theater Mode is active
@@ -1156,38 +1153,6 @@ const OG = document.getElementById('STYX_HELIX_OG')
 const OG_sidebar = document.getElementById('STYX_HELIX_OG_sidebar')
 const SeasonsEndings = document.getElementsByClassName('Endings--Seasons')
 
-// Switch OP1 - STYX HELIX between cut and full version
-function ChangeStyxHelix(){
-    keyB++;
-        if (keyB%2==1)
-        {
-            originalIndex = videoUrls.indexOf(`${URL}ED1 - STYX HELIX.mp4`);
-            videoUrls[originalIndex] = `${URL}ED1 - STYX HELIX nocut.mp4`;
-            OG.style.display = 'none';
-            OG_sidebar.style.display = 'none';
-            FULL.style.display = 'inline';
-            FULL_sidebar.style.display = 'flex';
-            for (let i = 0; i < SeasonsEndings.length; i++) {
-                SeasonsEndings[i].style.display = 'flex';
-            }
-            showToast("Đã chuyển ED1 - STYX HELIX sang bản đầy đủ", "info")
-        }
-        else
-        {
-            originalIndex = videoUrls.indexOf(`${URL}ED1 - STYX HELIX nocut.mp4`);
-            videoUrls[originalIndex] = `${URL}ED1 - STYX HELIX.mp4`;
-            OG.style.display = 'inline';
-            OG_sidebar.style.display = 'flex';
-            FULL.style.display = 'none';
-            FULL_sidebar.style.display = 'none';
-            for (let i = 0; i < SeasonsEndings.length; i++) {
-                SeasonsEndings[i].style.display = 'none';
-            }
-            showToast("Đã đảo ngược các thay đổi lên ED1 - STYX HELIX", "info")
-        }
-    if (TheaterModeFlag)
-        setTimeout(Fullscreen,0)
-}
 
 // Dynamically change the volume (if the user used the volume slider)
 videoPlayer.addEventListener('volumechange',() =>{
