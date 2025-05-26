@@ -33,7 +33,10 @@ function loadPlaylist(playlistName) {
         
         videoUrls = originalVideoUrls;
         newvideoUrls = originalNewVideoUrls;
-        playVideo(videoUrls[0]);
+        if (window.clickCount % 2 === 1) 
+            playVideo(newvideoUrls[0]);
+        else
+            playVideo(videoUrls[0]);
         showToast(`Đã khôi phục danh sách phát mặc định.`)
         return;
     }
@@ -44,9 +47,14 @@ function loadPlaylist(playlistName) {
     
     if (playlist && playlist.songs) {
         // BOOM: Just replace the entire array
-        videoUrls = playlist.songs.map(songName => convertToUrl(songName));
-        
-        playVideo(videoUrls[0]);
+        if (window.clickCount % 2 === 1) {
+            newvideoUrls = playlist.songs.map(songName => convertToUrl(songName));
+            playVideo(newvideoUrls[0]); 
+        }
+        else {
+            videoUrls = playlist.songs.map(songName => convertToUrl(songName));
+            playVideo(videoUrls[0]);
+        }
         showToast(`Đã tải danh sách phát "${playlistName}" với ${playlist.songs.length} bài hát.`);
     }
 }

@@ -47,7 +47,7 @@ var newvideoUrls = [
 let isPosterSet = false; //Track if poster is set
 let currentIndex = 0; // For videoUrls
 let newcurrentIndex =0; // For newvideoUrls
-let clickCount = 0;
+window.clickCount = 0 // Global click count for toggling between video types
 let preloadedVideos = [];
 let disablePreloading = false;
 let nextVideoTimeout;
