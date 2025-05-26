@@ -645,7 +645,7 @@ function handleNumberKeyPress(keyCode) {
         if (index < newvideoUrls.length)
             playVideo(newvideoUrls[index]);
         else 
-            showToast(`Video thứ ${number} không tồn tại (danh sách phát có ${videoUrls.length} bài hát)`, "error");
+            showToast(`Video thứ ${number} không tồn tại (danh sách phát có ${newvideoUrls.length} bài hát)`, "error");
     }
     else {
         // OP/ED mode - use videoUrls  
