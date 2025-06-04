@@ -519,7 +519,7 @@ shuffleButton.addEventListener('click', function() {
         playVideo(videoUrls[0]);
         preloadedVideos = [];
     }
-    showToast("Danh sách video đã được xáo");
+    showToast("Danh sách video đã được xáo!");
     if (TheaterModeFlag)
         setTimeout(Fullscreen,0)
 // You can now use the shuffled videoUrls array for playing the songs in a random order
@@ -537,6 +537,7 @@ shuffleButton.addEventListener('click', function() {
 // Update the delay variable
 function updateDelay(newDelay) {
     delay = newDelay * 1000; // Convert to milliseconds
+    localStorage.setItem('delay', delay.toFixed(3));
 }
 // Add event listener for button click
 document.getElementById("Delay").addEventListener("click", function() {
@@ -709,12 +710,13 @@ document.addEventListener("keydown", function(event) {
         else if (event.code === "KeyC"){
             if (videoPlayer.hasAttribute('controls')) {
                 videoPlayer.removeAttribute('controls');
-                showToast('Tắt điều khiển video')
+                showToast('Tắt điều khiển video!')
             } 
             else {
                 videoPlayer.setAttribute('controls', '');
-                showToast('Bật điều khiển video')
+                showToast('Bật điều khiển video!')
             }
+            localStorage.setItem('controls', videoPlayer.hasAttribute('controls') ? 'true' : 'false');
         }
         else if (event.code === "KeyT"){
             TheaterMode.click();
@@ -1085,15 +1087,9 @@ const SeasonsEndings = document.getElementsByClassName('Endings--Seasons')
 videoPlayer.addEventListener('volumechange',() =>{
     currentVolume = videoPlayer.volume
     showVolumeToast(currentVolume)
+    localStorage.setItem('volume', currentVolume.toFixed(2));
 })
 
-// Get current volume from video player before exiting site
-window.addEventListener('beforeunload', () => {
-    // Save to local storage
-    localStorage.setItem('volume', currentVolume.toFixed(2));
-    localStorage.setItem('delay', delay.toFixed(3));
-    localStorage.setItem('controls', videoPlayer.hasAttribute('controls') ? 'true' : 'false');
-});
 // Load volume when page loads
 document.addEventListener('DOMContentLoaded', () => {
     // Check if we have a saved volume
@@ -1206,7 +1202,7 @@ function updatePlayCount(songName) {
     // Save back to localStorage
     localStorage.setItem('songPlayCounts', JSON.stringify(playCounts));
     
-    console.log(`${songName} đã được phát ${playCounts[songName]} lần`);
+    console.log(`${songName} đã được phát ${playCounts[songName]} lần.`);
 }
 
 videoPlayer.addEventListener('ended', ()=> {
