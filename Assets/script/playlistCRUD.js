@@ -487,12 +487,13 @@ function generateCurrentPlaylistList(songs) {
              ondragover="dragOver(event)" 
              ondrop="dragDrop(event, ${index})"
              ondragend="dragEnd(event)"
-             ondblclick="removeSongFromCurrentPlaylist('${song}')">
+             ondblclick="removeSongFromDataAttr(this)"
+             data-song-title="${song}">
             <div class="flex items-center">
                 <span class="text-gray-400 mr-3 font-mono text-sm">${(index + 1).toString().padStart(2, '0')}</span>
                 <span class="font-medium">${song}</span>
             </div>
-            <button onclick="removeSongFromCurrentPlaylist('${song}')" class="text-red-500 hover:text-red-700">
+            <button onclick="removeSongFromDataAttr(this.parentElement)" class="text-red-500 hover:text-red-700">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                 </svg>
