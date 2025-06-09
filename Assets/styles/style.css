@@ -168,7 +168,7 @@ h1 {
     color: black; 
     font-size: 1.979vw;
     text-align:center;
-    margin-top: -2vh;
+    margin-top: -10px;
     font-weight: bolder!important;
 }
 .Re {
@@ -227,7 +227,7 @@ p {
     text-align: center;
     font-size: 1.146vw;
     font-weight: bold;  
-    margin-top: -2vh;
+    margin-top: -10px;
 }
 #videoPlayer {
     width: auto; /*40vw*/
