@@ -477,13 +477,16 @@ body {
     .playlist-container-height {
         height: 60vh; /* LG+ screens */
     }
-    h1 {
-        margin-top: -10px;
-    }
 }
 
 @media (min-width: 1280px) {
     .playlist-container-height {
         height: 70vh; /* XL screens - your preferred */
+    }
+}
+
+@media (max-width: 1024px) {
+    h1 {
+        margin-top: 10px;
     }
 }
