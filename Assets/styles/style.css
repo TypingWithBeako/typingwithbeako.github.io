@@ -487,6 +487,6 @@ body {
 
 @media (max-width: 1024px) {
     h1 {
-        margin-top: 10px;
+        margin-top: -10px;
     }
 }
