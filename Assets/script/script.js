@@ -566,8 +566,7 @@ document.getElementById("Delay").addEventListener("click", function() {
 // Check for orientation change using matchMedia (for mobile devices)
 const checkOrientation = () => {
     if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
-        body.addEventListener('click',Fullscreen(),{once :  true})
-        body.removeEventListener('click', Fullscreen(),{once : true})
+        showFullscreenToast("Nhấn vào đây để vào chế độ toàn màn hình!");
         setTimeout(function(){
             videoPlayer.style.width = "auto";
             videoPlayer.style.height = "100vh";
