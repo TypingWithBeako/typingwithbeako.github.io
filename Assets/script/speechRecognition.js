@@ -19,7 +19,7 @@ function setupSpeechRecognition() {
 
     recognition.onstart = function() {
         isSpeechRecognitionActive = true;
-        console.log("Điều khiển bằng giọng nói đã được bật và đang lắng nghe...");
+        // console.log("Điều khiển bằng giọng nói đã được bật và đang lắng nghe...");
         // Optionally show a toast, but might be too frequent if it restarts often
     };
 
@@ -98,11 +98,10 @@ function setupSpeechRecognition() {
     };
 
     recognition.onerror = function(event) {
-        console.error("Lỗi nhận dạng giọng nói:", event.error);
-        isSpeechRecognitionActive = false; // Assume it stopped
+        // console.error("Lỗi nhận dạng giọng nói:", event.error);
         if (event.error === 'no-speech') {
             // Restart if no speech was detected, browser might stop it.
-            startSpeechRecognition();
+            // console.warn("Không có giọng nói được phát hiện. Sẽ thử khởi động lại.");
         } else if (event.error === 'audio-capture') {
             showToast("Lỗi thu âm thanh cho điều khiển giọng nói.", "error");
         } else if (event.error === 'not-allowed') {
@@ -116,11 +115,11 @@ function setupSpeechRecognition() {
     };
 
     recognition.onend = function() {
-        console.log("Kết thúc phiên nhận dạng giọng nói.");
+        // console.log("Kết thúc phiên nhận dạng giọng nói.");
         // If it ended and we still want it active (e.g., not manually stopped), restart it.
         // This handles cases where continuous listening might stop after a while.
         if (isSpeechRecognitionActive) {
-            console.log("Tự động khởi động lại điều khiển giọng nói.");
+            // console.log("Tự động khởi động lại điều khiển giọng nói.");
             try {
                 recognition.start();
             } catch(e) {
@@ -187,19 +186,3 @@ function wordsToNumbers(text) {
 }
 
 setupSpeechRecognition();
-    if (recognition) {
-        try {
-            // Attempt to start. If it requires a user gesture, it might not start immediately
-            // or might prompt for permission.
-            startSpeechRecognition();
-        } catch (e) {
-            console.error("Không thể tự động bắt đầu nhận dạng giọng nói khi tải trang:", e);
-            showToast("Nhấn vào trang để thử kích hoạt điều khiển giọng nói.", "info");
-            // Add a one-time click listener to the document to try starting it after user interaction
-            document.body.addEventListener('click', function attemptStartSpeechAfterInteraction() {
-                console.log("Thử kích hoạt điều khiển giọng nói sau khi người dùng tương tác.");
-                startSpeechRecognition();
-                document.body.removeEventListener('click', attemptStartSpeechAfterInteraction); // Remove listener after first attempt
-            }, { once: true });
-        }
-    }
