@@ -76,10 +76,11 @@ function setupSpeechRecognition() {
         }
         if (transcript.includes("độ trễ") || transcript.includes("delay")) {
             // Find any number in the transcript
-            const numberMatch = transcript.match(/[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)/);
+            const numberMatch = transcript.match(/[+-]?([0-9]+([.,][0-9]*)?|[.][0-9]+)/);
+            const delayString = numberMatch[0].replace(",", ".")
             
             if (numberMatch) {
-                const delaySeconds = parseFloat(numberMatch[0], 10);
+                const delaySeconds = parseFloat(delayString, 10);
                 if (isNaN(delaySeconds) || delaySeconds < 0) {
                     showToast("Độ trễ không đúng. Vui lòng nhập lại độ trễ.", "error");
                     return;
