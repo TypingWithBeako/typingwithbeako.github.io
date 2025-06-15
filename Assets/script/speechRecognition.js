@@ -48,19 +48,16 @@ function setupSpeechRecognition() {
             previousVideoTrack();
         }
         if (transcript.includes("lặp") || transcript.includes("loop")) {
-            loopVideo.click(); // This will also trigger its own toast
-            showToast("Lệnh giọng nói: Bật/Tắt lặp video", "info");
+            loopVideo.click();
         }
         if (transcript.includes("dừng") || transcript.includes("pause")) {
             if (!videoPlayer.paused) {
                 videoPlayer.pause();
-                showToast("Lệnh giọng nói: Tạm dừng", "info");
             }
         }
         if (transcript.includes("phát") || transcript.includes("play") || transcript.includes("tiếp tục")) {
             if (videoPlayer.paused) {
                 videoPlayer.play();
-                showToast("Lệnh giọng nói: Phát nhạc", "info");
             }
         }
         if (transcript.includes("ngẫu nhiên") || transcript.includes("random")){
@@ -68,6 +65,9 @@ function setupSpeechRecognition() {
         }
         if (transcript.includes("default") || transcript.includes("mặc định")){
             loadPlaylist("default")
+        }
+        if (transcript.includes("Chuyển") || transcript.includes("Switch")){
+            moveableimg.click()
         }
         if (transcript.includes("âm lượng") || transcript.includes("volume")){
             const numberMatch = transcript.match(/[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)/);
@@ -153,6 +153,7 @@ function startSpeechRecognition() {
             startSpeechRecognition(); // Try starting again
         }
     }
+    localStorage.setItem('speech', 'true');
 }
 
 function stopSpeechRecognition() {
@@ -161,6 +162,7 @@ function stopSpeechRecognition() {
         recognition.stop();
         console.log("Điều khiển bằng giọng nói đã được tắt.");
     }
+    localStorage.setItem('speech', 'false');
 }
 
 function wordsToNumbers(text) {
@@ -185,4 +187,23 @@ function wordsToNumbers(text) {
     return result;
 }
 
-setupSpeechRecognition();
+const voiceRecognition = document.getElementById("VoiceRecognition")
+voiceRecognition.addEventListener("click", () => {
+    if (!isSpeechRecognitionActive){
+        setupSpeechRecognition();
+        startSpeechRecognition();
+    }
+    else {
+        stopSpeechRecognition();
+    }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if we have a saved volume
+    const savedSpeech = localStorage.getItem('speech');
+    // Apply saved volume if it exists
+    if (savedSpeech === 'true') {
+        setupSpeechRecognition();
+        startSpeechRecognition();
+    }
+})
