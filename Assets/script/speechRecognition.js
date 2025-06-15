@@ -66,8 +66,9 @@ function setupSpeechRecognition() {
         if (transcript.includes("default") || transcript.includes("mặc định")){
             loadPlaylist("default")
         }
-        if (transcript.includes("Chuyển") || transcript.includes("Switch")){
+        if (transcript.includes("chuyển") || transcript.includes("đổi") || transcript.includes("switch")){
             moveableimg.click()
+            videoPlayer.play()
         }
         if (transcript.includes("âm lượng") || transcript.includes("volume")){
             const numberMatch = transcript.match(/[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)/);
