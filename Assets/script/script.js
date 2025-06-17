@@ -1216,3 +1216,26 @@ videoPlayer.addEventListener('ended', ()=> {
     let name = cleanVideoSrcName(videoPlayer.src);
     updatePlayCount(name);
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mediaTheme = document.querySelector('media-theme-sutro');
+    const mediaController = mediaTheme.shadowRoot?.querySelector('media-controller');
+
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'mediaisfullscreen') {
+          if (mediaController.hasAttribute('mediaisfullscreen')) {
+            videoPlayer.style.width = '100%';
+            videoPlayer.style.height = '100%';
+          } 
+          else {
+            videoPlayer.style.width = '';
+            videoPlayer.style.height = '';
+          }
+        }
+      }
+    });
+
+    // Start observing the media-controller for attribute changes
+    observer.observe(mediaController, { attributes: true });
+});
