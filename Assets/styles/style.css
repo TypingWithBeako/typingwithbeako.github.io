@@ -241,6 +241,7 @@ p {
     margin-top:2vh;
     display: flex; 
     justify-content: center;
+    overflow: hidden;
 }
 
 nav li {

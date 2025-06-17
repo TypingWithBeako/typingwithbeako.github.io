@@ -713,17 +713,6 @@ document.addEventListener("keydown", function(event) {
             else 
                 openFullscreen();  // Video is not in fullscreen mode, so open fullscreen
         }
-        else if (event.code === "KeyC"){
-            if (videoPlayer.hasAttribute('controls')) {
-                videoPlayer.removeAttribute('controls');
-                showToast('Tắt điều khiển video!')
-            } 
-            else {
-                videoPlayer.setAttribute('controls', '');
-                showToast('Bật điều khiển video!')
-            }
-            localStorage.setItem('controls', videoPlayer.hasAttribute('controls') ? 'true' : 'false');
-        }
         else if (event.code === "KeyT"){
             TheaterMode.click();
         }
