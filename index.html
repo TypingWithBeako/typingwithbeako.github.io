@@ -37,6 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/player.style/sutro/+esm"></script>
 </head>
 <div class="loader--wrapper">
     <span class="loader">
@@ -411,7 +412,19 @@
                 </span>
                 <span id ="Theater-text" style="font-family: Arial, Helvetica, sans-serif;font-size: 1vw;font-family:Arial, Helvetica, sans-serif;">Chế độ nhà hát</span>
             </div>
-            <video src="https://rezero-vi.7849684.xyz/OP1 - Redo.mp4"  tabindex="-1" id="videoPlayer" width="640px" height="360px" poster="Other_Files/Beatrice_Anime (2).webp" controls preload="metadata" playsinline onended="playNextVideo()">
+            <div id="content__video__video-player">
+                <media-theme-sutro>
+                    <video
+                        id="videoPlayer"
+                        slot="media"
+                        playsinline
+                        poster="Other_Files/Beatrice_Anime (2).webp"
+                        preload="metadata"
+                        onended="playNextVideo()"
+                    ></video>
+                </media-theme-sutro>
+            </div>
+            <video  >
             </video>
             <div class="button-container-mobile">
                 <span onclick="togglePictureInPicture()" class="fa-stack fa-1x" style="font-size: 1.05vw;" >
