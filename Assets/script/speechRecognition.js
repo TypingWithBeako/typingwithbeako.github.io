@@ -47,7 +47,7 @@ function setupSpeechRecognition() {
             showToast("Lệnh giọng nói: Quay lại bài trước", "info");
             previousVideoTrack();
         }
-        if (transcript.includes("lặp") || transcript.includes("loop")) {
+        if (transcript.includes("lặp") || transcript.includes("lập") || transcript.includes("loop")) {
             loopVideo.click();
         }
         if (transcript.includes("dừng") || transcript.includes("pause")) {

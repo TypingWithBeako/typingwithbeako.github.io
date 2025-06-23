@@ -129,17 +129,15 @@ function setMediaSessionMetadata(songName) {
         'S1 Ending': 'Kết thúc Mùa 1',
         'S2 Ending': 'Kết thúc Mùa 2', 
         'STYX HELIX slow': 'STYX HELIX (bản chậm)',
-        'STYX HELIX nocut': 'STYX HELIX (Bản đầy đủ)'
+        'STYX HELIX nocut': 'STYX HELIX (bản đầy đủ)'
     };
     
     const displayName = displayNames[songName] || songName;
     
     // Find song in master data
     let song = MASTER_SONGS.find(s => 
-        s.title === songName || 
         s.filename.includes(songName) ||
-        s.title === displayName ||
-        cleanVideoSrcName(`${URL}${s.filename}`) === songName
+        s.title === displayName
     );
     
     if (song) {
