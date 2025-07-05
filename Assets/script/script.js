@@ -188,6 +188,18 @@ navigator.mediaSession.setActionHandler("nexttrack", () => {
     nextVideoTrack()
 });
 
+function toggleControls(){
+    if (videoPlayer.hasAttribute('controls')) {
+        videoPlayer.removeAttribute('controls');
+        showToast('Tắt điều khiển video!')
+    } 
+    else {
+        videoPlayer.setAttribute('controls', '');
+        showToast('Bật điều khiển video!')
+    }
+    localStorage.setItem('controls', videoPlayer.hasAttribute('controls') ? 'true' : 'false');
+}
+
 // Automatically play next video after ending with a delay
 function playNextVideo() {
     // Delay before switching to the next video
@@ -710,15 +722,7 @@ document.addEventListener("keydown", function(event) {
                 openFullscreen();  // Video is not in fullscreen mode, so open fullscreen
         }
         else if (event.code === "KeyC"){
-            if (videoPlayer.hasAttribute('controls')) {
-                videoPlayer.removeAttribute('controls');
-                showToast('Tắt điều khiển video!')
-            } 
-            else {
-                videoPlayer.setAttribute('controls', '');
-                showToast('Bật điều khiển video!')
-            }
-            localStorage.setItem('controls', videoPlayer.hasAttribute('controls') ? 'true' : 'false');
+            toggleControls();
         }
         else if (event.code === "KeyT"){
             TheaterMode.click();
