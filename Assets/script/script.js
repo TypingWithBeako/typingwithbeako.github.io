@@ -653,6 +653,10 @@ function handleNumberKeyPress(keyCode) {
         number = parseInt(keyCode.replace("Digit", ""));
     }
     
+    if (typeof number === 'undefined' || isNaN(number)) {
+        return; // Exit the function if number is not valid
+    }
+    
     // Convert to array index (1-9 = index 0-8, 0 = index 9)
     const index = number === 0 ? 9 : number - 1;
     
