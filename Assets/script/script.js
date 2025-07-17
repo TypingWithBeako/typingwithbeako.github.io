@@ -645,9 +645,11 @@ function togglePlaylist() {
 function handleNumberKeyPress(keyCode) {
     // Extract the number from key code
     let number;
-    if (keyCode.startsWith("Numpad")) {
+     // Check if the keyCode starts with "Numpad"/ "Digit" and is followed by a single digit
+    if (keyCode.startsWith("Numpad") && keyCode.length === 7 && !isNaN(parseInt(keyCode.charAt(6)))) {
         number = parseInt(keyCode.replace("Numpad", ""));
-    } else if (keyCode.startsWith("Digit")) {
+
+    } else if (keyCode.startsWith("Digit")  && keyCode.length === 6 && !isNaN(parseInt(keyCode.charAt(5)))) {
         number = parseInt(keyCode.replace("Digit", ""));
     }
     
