@@ -90,17 +90,17 @@ function populateSidebarPlaylists() {
 
         const li = document.createElement('li');
         li.innerHTML = `
-            <div class="flex space-y-1 items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
-                <div onclick="loadPlaylist('${playlistName}')" class="flex-1 text-left">
+            <div onclick="loadPlaylist('${playlistName}')" class="flex space-y-1 items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
+                <div class="flex-1 text-left">
                     ${playlistName} (${playlists[playlistName].songs.length} bài hát)
                 </div>
                 <div class="flex gap-1">
-                    <button onclick="editPlaylist('${playlistName}')" class="text-blue-500 hover:text-blue-700" title="Chỉnh sửa">
+                    <button onclick="event.stopPropagation(); editPlaylist('${playlistName}')" class="text-blue-500 hover:text-blue-700" title="Chỉnh sửa">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                         </svg>
                     </button>
-                    <button onclick="deletePlaylist('${playlistName}')" class="text-red-500 hover:text-red-700" title="Xóa">
+                    <button onclick="event.stopPropagation(); deletePlaylist('${playlistName}')" class="text-red-500 hover:text-red-700" title="Xóa">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9zM4 5a2 2 0 012-2h8a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 102 0v3a1 1 0 11-2 0V9zm4 0a1 1 0 10-2 0v3a1 1 0 102 0V9z" clip-rule="evenodd"></path>
                         </svg>
