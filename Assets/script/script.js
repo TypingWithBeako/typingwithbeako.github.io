@@ -992,7 +992,8 @@ TheaterMode.addEventListener('click',function() {
             document.exitPictureInPicture();
         TheaterModeFlag = true;
         ExitTheaterModeButton.style.display ='flex';
-        navbar.style.marginTop = '2vh'
+        navbar.style.display = "none";
+        heading.style.display = "none";
     }
     else {
         if (clickCount%2==1){
@@ -1026,7 +1027,8 @@ TheaterMode.addEventListener('click',function() {
             videoPlayer.style.marginTop = '2vh';
             ExitTheaterModeButton.style.display ='none';
             TheaterModeFlag = false;
-            navbar.style.marginTop = '3vh'
+            navbar.style.display = "block";
+            heading.style.display = "block";
             closeFullscreen();
         }
         else {
@@ -1060,7 +1062,8 @@ TheaterMode.addEventListener('click',function() {
             videoPlayer.style.marginTop = '2vh';
             ExitTheaterModeButton.style.display ='none';
             TheaterModeFlag = false;
-            navbar.style.marginTop = '3vh'
+            navbar.style.display = "block";
+            heading.style.display = "block";
             closeFullscreen();
         }
     }
