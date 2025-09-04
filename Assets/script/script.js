@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Polyfill for MediaSession API
 if (!('mediaSession' in navigator)) {
     navigator.mediaSession = {

@@ -357,6 +357,34 @@
           "sizes": "1400x1400",
           "type": "image/webp"
       }
+    },
+    {
+      "id": "Yusha",
+      "title": "Yusha",
+      "filename": "Yusha.mp4",
+      "season": null,
+      "type": "special",
+      "order": 3,
+      "artist": "YOASOBI",
+      "artwork": {
+        "src": "Icons/artworks/Yusha_Cover.png",
+        "sizes": "300x300",
+        "type": "image/png"
+      }
+    },
+    {
+      "id": "Haru",
+      "title": "Haru",
+      "filename": "Haru.mp4",
+      "season": null,
+      "type": "special",
+      "order": 4,
+      "artist": "Yorushika",
+      "artwork": {
+        "src": "Icons/artworks/Haru_Cover.jpg",
+        "sizes": "300x300",
+        "type": "image/jpeg"
+      }
     }
   ],
   "concerts": [
