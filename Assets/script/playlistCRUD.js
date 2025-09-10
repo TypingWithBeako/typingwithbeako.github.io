@@ -1,95 +1,91 @@
+// @ts-nocheck
 // Modal interaction functions
-let currentEditingPlaylist = '';
+let currentEditingPlaylist = "";
 let tempPlaylistSongs = [];
+let PLAYLIST_VERSION = "v2";
 
 function loadPlaylist(playlistName) {
-    // Handle "All Songs" special case
-    if (playlistName === 'default') {
-        // Reset to original arrays - combine both videoUrls and newvideoUrls
-        var originalVideoUrls = [
-            `${URL}OP1 - Redo.mp4`,
-            `${URL}ED1 - STYX HELIX.mp4`,
-            `${URL}OP2 - Paradisus - Paradoxum.mp4`,
-            `${URL}ED2 - Stay Alive.webm`,
-            `${URL}OP3 - Realize.mp4`,
-            `${URL}ED3 - Memento.mp4`,
-            `${URL}OP4 - Long shot.mp4`,
-            `${URL}ED4 - Believe in you.webm`,
-            `${URL}OP5 - Reweave.mp4`,
-            `${URL}ED5 - NOX LUX.mp4`,
-        ];
-        var originalNewVideoUrls = [
-            `${URL}STRAIGHT BET.mp4`,
-            `${URL}Bouya no Yume yo.mp4`,
-            `${URL}Memories.mp4`,
-            `${URL}White White Snow.mp4`,
-            `${URL}Requiem of Silence.mp4`,
-            `${URL}Wishing.mp4`,
-            `${URL}Yuki no hate ni Kimi no na wo.mp4`,
-            `${URL}Door.mp4`,
-            `${URL}What you don't know.mp4`,
-            `${URL}I Trust You.mp4`,
-        ];
-        
-        videoUrls = originalVideoUrls;
-        newvideoUrls = originalNewVideoUrls;
-        if (window.clickCount % 2 === 1) 
-            playVideo(newvideoUrls[0]);
-        else
-            playVideo(videoUrls[0]);
-        showToast(`Đã khôi phục danh sách phát mặc định.`)
-        return;
-    }
+  // Handle "All Songs" special case
+  if (playlistName === "default") {
+    // Reset to original arrays - combine both videoUrls and newvideoUrls
+    var originalVideoUrls = [
+      `${URL}OP1 - Redo.mp4`,
+      `${URL}ED1 - STYX HELIX.mp4`,
+      `${URL}OP2 - Paradisus - Paradoxum.mp4`,
+      `${URL}ED2 - Stay Alive.webm`,
+      `${URL}OP3 - Realize.mp4`,
+      `${URL}ED3 - Memento.mp4`,
+      `${URL}OP4 - Long shot.mp4`,
+      `${URL}ED4 - Believe in you.webm`,
+      `${URL}OP5 - Reweave.mp4`,
+      `${URL}ED5 - NOX LUX.mp4`,
+    ];
+    var originalNewVideoUrls = [
+      `${URL}STRAIGHT BET.mp4`,
+      `${URL}Bouya no Yume yo.mp4`,
+      `${URL}Memories.mp4`,
+      `${URL}White White Snow.mp4`,
+      `${URL}Requiem of Silence.mp4`,
+      `${URL}Wishing.mp4`,
+      `${URL}Yuki no hate ni Kimi no na wo.mp4`,
+      `${URL}Door.mp4`,
+      `${URL}What you don't know.mp4`,
+      `${URL}I Trust You.mp4`,
+    ];
 
-    // Get playlist from localStorage
-    let playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-    let playlist = playlists[playlistName];
-    
-    if (playlist && playlist.songs) {
-        // BOOM: Just replace the entire array
-        if (window.clickCount % 2 === 1) {
-            newvideoUrls = playlist.songs.map(songName => convertToUrl(songName));
-            playVideo(newvideoUrls[0]); 
-        }
-        else {
-            videoUrls = playlist.songs.map(songName => convertToUrl(songName));
-            playVideo(videoUrls[0]);
-        }
-        showToast(`Đã tải danh sách phát "${playlistName}" với ${playlist.songs.length} bài hát.`);
+    videoUrls = originalVideoUrls;
+    newvideoUrls = originalNewVideoUrls;
+    if (window.clickCount % 2 === 1) playVideo(newvideoUrls[0]);
+    else playVideo(videoUrls[0]);
+    showToast(`Đã khôi phục danh sách phát mặc định.`);
+    return;
+  }
+
+  // Get playlist from localStorage
+  let playlists =
+    JSON.parse(localStorage.getItem("playlists_" + PLAYLIST_VERSION)) || {};
+  let playlist = playlists[playlistName];
+
+  if (playlist && playlist.songs) {
+    // BOOM: Just replace the entire array
+    if (window.clickCount % 2 === 1) {
+      newvideoUrls = playlist.songs.map((songId) => convertToUrl(songId));
+      playVideo(newvideoUrls[0]);
+    } else {
+      videoUrls = playlist.songs.map((songId) => convertToUrl(songId));
+      playVideo(videoUrls[0]);
     }
+    showToast(
+      `Đã tải danh sách phát "${playlistName}" với ${playlist.songs.length} bài hát.`
+    );
+  }
 }
 
-// Replace lines ~47-52 with:
-function convertToUrl(songName) {
-    // Find song in master list
-    const song = MASTER_SONGS.find(s => s.title === songName);
-    if (song) {
-        return `${URL}${song.filename}`;
-    }
-    
-    // Fallback to old logic
-    if (songName === "ED2 - Stay Alive" || songName === "ED4 - Believe in you" || songName === "S1 Ending")
-        return `${URL}${songName}.webm`
-    return `${URL}${songName}.mp4`;
+function convertToUrl(songId) {
+  // Find song in master list
+  const song = MASTER_SONGS.find((s) => s.id === songId);
+  if (song) {
+    return `${URL}${song.filename}`;
+  }
 }
-
 
 function populateSidebarPlaylists() {
-    const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-    const container = document.getElementById('dynamic-playlists');
-    
-    container.innerHTML = ''; // Clear existing
-    
-    Object.keys(playlists).forEach(playlistName => {
-        const playlist = playlists[playlistName];
-        
-        // Skip empty playlists
-        if (!playlist.songs || playlist.songs.length === 0) {
-            return;
-        }
+  const playlists =
+    JSON.parse(localStorage.getItem("playlists_" + PLAYLIST_VERSION)) || {};
+  const container = document.getElementById("dynamic-playlists");
 
-        const li = document.createElement('li');
-        li.innerHTML = `
+  container.innerHTML = ""; // Clear existing
+
+  Object.keys(playlists).forEach((playlistName) => {
+    const playlist = playlists[playlistName];
+
+    // Skip empty playlists
+    if (!playlist.songs || playlist.songs.length === 0) {
+      return;
+    }
+
+    const li = document.createElement("li");
+    li.innerHTML = `
             <div onclick="loadPlaylist('${playlistName}')" class="flex space-y-1 items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-blue-100">
                 <div class="flex-1 text-left">
                     ${playlistName} (${playlists[playlistName].songs.length} bài hát)
@@ -108,69 +104,78 @@ function populateSidebarPlaylists() {
                 </div>
             </div>
         `;
-        container.appendChild(li);
-    });
-    
+    container.appendChild(li);
+  });
 }
 
 function createNewPlaylist() {
-    const name = prompt('Tên danh sách phát:');
-    if (name && name.trim()) {
-        const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-        playlists[name.trim()] = {
-            songs: [],
-            created: new Date().toISOString(),
-            description: ''
-        };
-        localStorage.setItem('playlists', JSON.stringify(playlists));
-        populateSidebarPlaylists();
-        showToast(`Đã thêm danh sách phát "${name}" thành công.`)
-        
-        // Open playlist editor
-        editPlaylist(name.trim());
-    }
+  const name = prompt("Tên danh sách phát:");
+  if (name && name.trim()) {
+    const playlists =
+      JSON.parse(localStorage.getItem("playlists_" + PLAYLIST_VERSION)) || {};
+    playlists[name.trim()] = {
+      songs: [],
+      created: new Date().toISOString(),
+      description: "",
+    };
+    localStorage.setItem(
+      "playlists_" + PLAYLIST_VERSION,
+      JSON.stringify(playlists)
+    );
+    populateSidebarPlaylists();
+    showToast(`Đã thêm danh sách phát "${name}" thành công.`);
+
+    // Open playlist editor
+    editPlaylist(name.trim());
+  }
 }
 
 function deletePlaylist(name) {
-    if (confirm(`Xóa danh sách "${name}"?`)) {
-        const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-        delete playlists[name];
-        showToast(`Đã xóa danh sách "${name}" thành công!`, 'success');
-        localStorage.setItem('playlists', JSON.stringify(playlists));
-        populateSidebarPlaylists();
-    }
+  if (confirm(`Xóa danh sách "${name}"?`)) {
+    const playlists =
+      JSON.parse(localStorage.getItem("playlists_" + PLAYLIST_VERSION)) || {};
+    delete playlists[name];
+    showToast(`Đã xóa danh sách "${name}" thành công!`, "success");
+    localStorage.setItem(
+      "playlists_" + PLAYLIST_VERSION,
+      JSON.stringify(playlists)
+    );
+    populateSidebarPlaylists();
+  }
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-    populateSidebarPlaylists();
+document.addEventListener("DOMContentLoaded", async () => {
+  populateSidebarPlaylists();
 });
 
 function editPlaylist(playlistName) {
-    const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-    const playlist = playlists[playlistName];
-    
-    currentEditingPlaylist = playlistName;
-    tempPlaylistSongs = [...playlist.songs]; 
+  const playlists =
+    JSON.parse(localStorage.getItem("playlists_" + PLAYLIST_VERSION)) || {};
+  const playlist = playlists[playlistName];
 
-    window.isEditingPlaylist = true; // Set editing mode
+  currentEditingPlaylist = playlistName;
+  tempPlaylistSongs = [...playlist.songs];
 
-    if (!playlist) return;
-    
-    // Create modal dynamically
-    const modal = createPlaylistEditorModal(playlistName, playlist);
-    document.body.appendChild(modal);
-    
-    // Show modal with fade-in effect
-    setTimeout(() => modal.style.opacity = '1', 10);
+  window.isEditingPlaylist = true; // Set editing mode
+
+  if (!playlist) return;
+
+  // Create modal dynamically
+  const modal = createPlaylistEditorModal(playlistName, playlist);
+  document.body.appendChild(modal);
+
+  // Show modal with fade-in effect
+  setTimeout(() => (modal.style.opacity = "1"), 10);
 }
 
 function createPlaylistEditorModal(playlistName, playlist) {
-    const modal = document.createElement('div');
-    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300';
-    modal.style.opacity = '0';
-    modal.id = 'playlist-editor-modal';
-    
-    modal.innerHTML = `
+  const modal = document.createElement("div");
+  modal.className =
+    "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300";
+  modal.style.opacity = "0";
+  modal.id = "playlist-editor-modal";
+
+  modal.innerHTML = `
         <div class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-6xl w-full mx-4 h-[90vh] overflow-hidden shadow-2xl flex flex-col">
             <div class="flex justify-between items-center mb-6 flex-shrink-0">
                 <div class="flex-1 mr-4">
@@ -258,178 +263,186 @@ function createPlaylistEditorModal(playlistName, playlist) {
             </div>
         </div>
     `;
-    
-    // Close modal on backdrop click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closePlaylistEditor();
-    });
-    
-    return modal;
+
+  // Close modal on backdrop click
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closePlaylistEditor();
+  });
+
+  return modal;
 }
 
 function clearPlaylist(playlistName) {
-    if (confirm(`Xóa tất cả bài hát khỏi danh sách "${playlistName}"? Lưu ý: Danh sách trống không thể được lưu.`)) {
-        tempPlaylistSongs = [];
-        refreshModalContent();
-    }
+  if (
+    confirm(
+      `Xóa tất cả bài hát khỏi danh sách "${playlistName}"? Lưu ý: Danh sách trống không thể được lưu.`
+    )
+  ) {
+    tempPlaylistSongs = [];
+    refreshModalContent();
+  }
 }
-
 
 function saveNameEdit() {
-    const input = document.getElementById('playlist-name-input');
-    const newName = input.value.trim();
-    
-    if (!newName) {
-        showToast('Tên danh sách phát không được để trống!', 'error');
-        return;
-    }
-    
-    // Update display
-    const displaySpan = document.querySelector('#playlist-name-display span');
-    displaySpan.textContent = newName;
-    
-    // Visual feedback
-    displaySpan.style.color = '#10b981';
-    setTimeout(() => {
-        displaySpan.style.color = '';
-    }, 1000);
-    
-    // Hide edit mode
-    cancelNameEdit();
-    
-    showToast('Tên đã được thay đổi. Nhớ nhấn "Lưu thay đổi" để hoàn tất!', 'info');
+  const input = document.getElementById("playlist-name-input");
+  const newName = input.value.trim();
+
+  if (!newName) {
+    showToast("Tên danh sách phát không được để trống!", "error");
+    return;
+  }
+
+  // Update display
+  const displaySpan = document.querySelector("#playlist-name-display span");
+  displaySpan.textContent = newName;
+
+  // Visual feedback
+  displaySpan.style.color = "#10b981";
+  setTimeout(() => {
+    displaySpan.style.color = "";
+  }, 1000);
+
+  // Hide edit mode
+  cancelNameEdit();
+
+  showToast(
+    'Tên đã được thay đổi. Nhớ nhấn "Lưu thay đổi" để hoàn tất!',
+    "info"
+  );
 }
 
-
 function getCurrentPlaylistName() {
-    // Check if we're in edit mode
-    const editDiv = document.getElementById('playlist-name-edit');
-    if (editDiv && editDiv.style.display !== 'none') {
-        const input = document.getElementById('playlist-name-input');
-        return input ? input.value.trim() : currentEditingPlaylist;
-    }
-    
-    // Otherwise get from display
-    const displaySpan = document.querySelector('#playlist-name-display span');
-    return displaySpan ? displaySpan.textContent.trim() : currentEditingPlaylist;
+  // Check if we're in edit mode
+  const editDiv = document.getElementById("playlist-name-edit");
+  if (editDiv && editDiv.style.display !== "none") {
+    const input = document.getElementById("playlist-name-input");
+    return input ? input.value.trim() : currentEditingPlaylist;
+  }
+
+  // Otherwise get from display
+  const displaySpan = document.querySelector("#playlist-name-display span");
+  return displaySpan ? displaySpan.textContent.trim() : currentEditingPlaylist;
 }
 
 function startEditingName() {
-    const displayDiv = document.getElementById('playlist-name-display');
-    const editDiv = document.getElementById('playlist-name-edit');
-    const input = document.getElementById('playlist-name-input');
-    
-    displayDiv.style.display = 'none';
-    editDiv.style.display = 'flex';
-    
-    // Focus input and select text
-    setTimeout(() => {
-        input.focus();
-        input.select();
-        
-        // Add keyboard listeners
-        input.addEventListener('keydown', handleNameEditKeydown);
-    }, 100);
+  const displayDiv = document.getElementById("playlist-name-display");
+  const editDiv = document.getElementById("playlist-name-edit");
+  const input = document.getElementById("playlist-name-input");
+
+  displayDiv.style.display = "none";
+  editDiv.style.display = "flex";
+
+  // Focus input and select text
+  setTimeout(() => {
+    input.focus();
+    input.select();
+
+    // Add keyboard listeners
+    input.addEventListener("keydown", handleNameEditKeydown);
+  }, 100);
 }
 
 function handleNameEditKeydown(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        saveNameEdit();
-    } else if (event.key === 'Escape') {
-        event.preventDefault();
-        cancelNameEdit();
-    }
+  if (event.key === "Enter") {
+    event.preventDefault();
+    saveNameEdit();
+  } else if (event.key === "Escape") {
+    event.preventDefault();
+    cancelNameEdit();
+  }
 }
 
 function cancelNameEdit() {
-    const displayDiv = document.getElementById('playlist-name-display');
-    const editDiv = document.getElementById('playlist-name-edit');
-    const input = document.getElementById('playlist-name-input');
-    
-    // Remove keyboard listeners
-    input.removeEventListener('keydown', handleNameEditKeydown);
-    
-    // Reset input to original value
-    input.value = currentEditingPlaylist;
-    
-    editDiv.style.display = 'none';
-    displayDiv.style.display = 'flex';
-}
+  const displayDiv = document.getElementById("playlist-name-display");
+  const editDiv = document.getElementById("playlist-name-edit");
+  const input = document.getElementById("playlist-name-input");
 
+  // Remove keyboard listeners
+  input.removeEventListener("keydown", handleNameEditKeydown);
+
+  // Reset input to original value
+  input.value = currentEditingPlaylist;
+
+  editDiv.style.display = "none";
+  displayDiv.style.display = "flex";
+}
 
 let draggedIndex = null;
 
 function dragStart(event, index) {
-    draggedIndex = index;
-    event.dataTransfer.effectAllowed = 'move';
-    event.target.style.opacity = '0.5';
+  draggedIndex = index;
+  event.dataTransfer.effectAllowed = "move";
+  event.target.style.opacity = "0.5";
 }
 
 function dragOver(event) {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
+  event.preventDefault();
+  event.dataTransfer.dropEffect = "move";
 }
 
 function dragDrop(event, targetIndex) {
-    event.preventDefault();
-    
-    if (draggedIndex !== null && draggedIndex !== targetIndex) {
-        // Reorder the tempPlaylistSongs array
-        const draggedSong = tempPlaylistSongs[draggedIndex];
-        tempPlaylistSongs.splice(draggedIndex, 1);
-        tempPlaylistSongs.splice(targetIndex, 0, draggedSong);
-        
-        refreshModalContent();
-    }
-    
-    // Reset dragged state
-    draggedIndex = null;
-    event.target.style.opacity = '1';
+  event.preventDefault();
+
+  if (draggedIndex !== null && draggedIndex !== targetIndex) {
+    // Reorder the tempPlaylistSongs array
+    const draggedSong = tempPlaylistSongs[draggedIndex];
+    tempPlaylistSongs.splice(draggedIndex, 1);
+    tempPlaylistSongs.splice(targetIndex, 0, draggedSong);
+
+    refreshModalContent();
+  }
+
+  // Reset dragged state
+  draggedIndex = null;
+  event.target.style.opacity = "1";
 }
 
 function dragEnd(event) {
-    event.target.style.opacity = '1';
-    draggedIndex = null;
+  event.target.style.opacity = "1";
+  draggedIndex = null;
 }
 
 function filterAvailableSongs() {
-    const searchTerm = document.getElementById('song-search').value.toLowerCase();
-    const availableContainer = document.getElementById('available-songs');
-    const songElements = availableContainer.querySelectorAll('[data-song-title]'); // Changed from [data-song]
-    
-    songElements.forEach(element => {
-        const songName = element.getAttribute('data-song-title').toLowerCase(); // Changed from data-song
-        if (songName.includes(searchTerm)) {
-            element.style.display = 'flex';
-        } else {
-            element.style.display = 'none';
-        }
-    });
+  const searchTerm = document.getElementById("song-search").value.toLowerCase();
+  const availableContainer = document.getElementById("available-songs");
+  const songElements = availableContainer.querySelectorAll("[data-song-id]"); // Changed from [data-song-title]
+
+  songElements.forEach((element) => {
+    const songId = element.getAttribute("data-song-id").toLowerCase(); // Changed from data-song-title
+    if (songId.includes(searchTerm)) {
+      element.style.display = "flex";
+    } else {
+      element.style.display = "none";
+    }
+  });
 }
 
 function generateAvailableSongsList(currentSongs) {
-    const availableSongs = MASTER_SONGS.filter(song => 
-        !currentSongs.includes(song.title)
-    );
-    
-    if (availableSongs.length === 0) {
-        return `
+  const availableSongs = MASTER_SONGS.filter(
+    (song) => !currentSongs.includes(song.id)
+  );
+
+  if (availableSongs.length === 0) {
+    return `
             <div class="text-center text-gray-500 py-8">
                 <div class="font-medium">Tất cả bài hát đã được thêm</div>
                 <div class="text-sm mt-1">Danh sách phát đã đầy!</div>
             </div>
         `;
-    }
-    
-    return availableSongs.map((song, index) => `
+  }
+
+  return availableSongs
+    .map(
+      (song, index) => `
         <div class="flex items-center justify-between p-2 rounded hover:bg-white dark:hover:bg-gray-600 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-500" 
             ondblclick="addSongFromDataAttr(this)" 
-            data-song-title="${song.title}"
+            data-song-id="${song.id}"
             data-song-index="${index}">
             <div class="flex items-center">
                 <span class="text-sm font-medium">${song.title}</span>
-                <span class="ml-2 px-2 py-1 text-xs rounded-full ${getTypeColor(song.type)}">
+                <span class="ml-2 px-2 py-1 text-xs rounded-full ${getTypeColor(
+                  song.type
+                )}">
                     ${getVietnameseType(song.type).toUpperCase()}
                 </span>
             </div>
@@ -440,47 +453,65 @@ function generateAvailableSongsList(currentSongs) {
                 </svg>
             </button>
         </div>
-    `).join('');
+    `
+    )
+    .join("");
 }
 
 function addSongFromDataAttr(element) {
-    const songTitle = element.getAttribute('data-song-title');
-    addSongToCurrentPlaylist(songTitle);
+  const songId = element.getAttribute("data-song-id");
+  addSongToCurrentPlaylist(songId);
 }
 
 function removeSongFromDataAttr(element) {
-    const songTitle = element.getAttribute('data-song-title');
-    removeSongFromCurrentPlaylist(songTitle);
+  const songId = element.getAttribute("data-song-id");
+  removeSongFromCurrentPlaylist(songId);
 }
 
 function getVietnameseType(type) {
-    switch(type) {
-        case 'opening': return 'Mở đầu';
-        case 'ending': return 'Kết thúc';
-        case 'insert song': return 'Nhạc chủ đề';
-        case 'special': return 'Đặc biệt';
-        case 'live concert': return 'Live Concert';
-        default: return type;
-    }
+  switch (type) {
+    case "opening":
+      return "Mở đầu";
+    case "ending":
+      return "Kết thúc";
+    case "insert song":
+      return "Nhạc chủ đề";
+    case "special":
+      return "Đặc biệt";
+    case "live concert":
+      return "Live Concert";
+    default:
+      return type;
+  }
 }
 
 function getTypeColor(type) {
-    switch(type) {
-        case 'opening': return 'bg-blue-100 text-blue-800';
-        case 'ending': return 'bg-green-100 text-green-800';
-        case 'insert song': return 'bg-purple-100 text-purple-800';
-        case 'special': return 'bg-yellow-100 text-yellow-800';
-        case 'live concert': return 'bg-red-100 text-red-800';
-        default: return 'bg-gray-100 text-gray-800';
-    }
+  switch (type) {
+    case "opening":
+      return "bg-blue-100 text-blue-800";
+    case "ending":
+      return "bg-green-100 text-green-800";
+    case "insert song":
+      return "bg-purple-100 text-purple-800";
+    case "special":
+      return "bg-yellow-100 text-yellow-800";
+    case "live concert":
+      return "bg-red-100 text-red-800";
+    default:
+      return "bg-gray-100 text-gray-800";
+  }
 }
 
 function generateCurrentPlaylistList(songs) {
-    if (songs.length === 0) {
-        return '<div class="text-center text-gray-500 dark:text-gray-400 py-8">Danh sách trống<br><small>Thêm bài hát từ cột bên trái</small></div>';
-    }
-    
-    return songs.map((song, index) => `
+  if (songs.length === 0) {
+    return '<div class="text-center text-gray-500 dark:text-gray-400 py-8">Danh sách trống<br><small>Thêm bài hát từ cột bên trái</small></div>';
+  }
+
+  return songs
+    .map((songId, index) => {
+      const song = MASTER_SONGS.find((s) => s.id === songId);
+      const songTitle = song ? song.title : songId; // Fallback to songId if not found
+      return `
         <div class="flex items-center justify-between p-3 rounded bg-white dark:bg-gray-600 border dark:border-gray-500 mb-2 cursor-move" 
              draggable="true" 
              ondragstart="dragStart(event, ${index})" 
@@ -488,10 +519,12 @@ function generateCurrentPlaylistList(songs) {
              ondrop="dragDrop(event, ${index})"
              ondragend="dragEnd(event)"
              ondblclick="removeSongFromDataAttr(this)"
-             data-song-title="${song}">
+             data-song-id="${songId}">
             <div class="flex items-center">
-                <span class="text-gray-400 mr-3 font-mono text-sm">${(index + 1).toString().padStart(2, '0')}</span>
-                <span class="font-medium">${song}</span>
+                <span class="text-gray-400 mr-3 font-mono text-sm">${(index + 1)
+                  .toString()
+                  .padStart(2, "0")}</span>
+                <span class="font-medium">${songTitle}</span>
             </div>
             <button onclick="removeSongFromDataAttr(this.parentElement)" class="text-red-500 hover:text-red-700">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -499,146 +532,172 @@ function generateCurrentPlaylistList(songs) {
                 </svg>
             </button>
         </div>
-    `).join('');
+    `;
+    })
+    .join("");
 }
 
 function getAllAvailableSongs() {
-    return MASTER_SONGS.map(song => song.title);
+  return MASTER_SONGS.map((song) => song.id);
 }
 
 // Keep your old function as backup
 function getAllAvailableSongsLegacy() {
-    const allSongs = [];
-    const allUrls = [...videoUrls, ...newvideoUrls];
-    allUrls.forEach(url => {
-        const songName = cleanVideoSrcName(url);
-        if (!allSongs.includes(songName)) {
-            allSongs.push(songName);
-        }
-    });
-    return allSongs.sort();
-}
-
-
-function addSongToCurrentPlaylist(songName) {
-    if (!tempPlaylistSongs.includes(songName)) {
-        tempPlaylistSongs.push(songName);
-        refreshModalContent();
+  const allSongs = [];
+  const allUrls = [...videoUrls, ...newvideoUrls];
+  allUrls.forEach((url) => {
+    const songName = cleanVideoSrcName(url);
+    if (!allSongs.includes(songName)) {
+      allSongs.push(songName);
     }
+  });
+  return allSongs.sort();
 }
 
-function removeSongFromCurrentPlaylist(songName) {
-    tempPlaylistSongs = tempPlaylistSongs.filter(song => song !== songName);
+function addSongToCurrentPlaylist(songId) {
+  if (!tempPlaylistSongs.includes(songId)) {
+    tempPlaylistSongs.push(songId);
     refreshModalContent();
+  }
+}
+
+function removeSongFromCurrentPlaylist(songId) {
+  tempPlaylistSongs = tempPlaylistSongs.filter((song) => song !== songId);
+  refreshModalContent();
 }
 
 // Replace your current refreshModalContent function with this improved version:
 function refreshModalContent() {
-    const availableContainer = document.getElementById('available-songs');
-    const currentContainer = document.getElementById('current-playlist');
-    const searchInput = document.getElementById('song-search');
-    
-    if (availableContainer && currentContainer) {
-        // Save current search term
-        const currentSearchTerm = searchInput ? searchInput.value : '';
-        
-        // Update content
-        availableContainer.innerHTML = generateAvailableSongsList(tempPlaylistSongs);
-        currentContainer.innerHTML = generateCurrentPlaylistList(tempPlaylistSongs);
-        
-        // Restore search term and apply filter
-        if (currentSearchTerm && searchInput) {
-            searchInput.value = currentSearchTerm;
-            filterAvailableSongs(); // Reapply the filter
-        }
-        
-        // Update song count in header
-        const songCountDisplay = document.getElementById('song-count-display');
-        if (songCountDisplay) {
-            songCountDisplay.textContent = `${tempPlaylistSongs.length} bài`;
-        }
-        
-        // Update save button state
-        const saveButton = document.querySelector('button[onclick*="savePlaylist"]');
-        if (saveButton) {
-            if (tempPlaylistSongs.length === 0) {
-                saveButton.disabled = true;
-                saveButton.className = saveButton.className.replace('bg-blue-500', 'bg-gray-400');
-                saveButton.className = saveButton.className.replace('hover:bg-blue-600', 'cursor-not-allowed');
-            } else {
-                saveButton.disabled = false;
-                saveButton.className = saveButton.className.replace('bg-gray-400', 'bg-blue-500');
-                saveButton.className = saveButton.className.replace('cursor-not-allowed', 'hover:bg-blue-600');
-            }
-        }
+  const availableContainer = document.getElementById("available-songs");
+  const currentContainer = document.getElementById("current-playlist");
+  const searchInput = document.getElementById("song-search");
+
+  if (availableContainer && currentContainer) {
+    // Save current search term
+    const currentSearchTerm = searchInput ? searchInput.value : "";
+
+    // Update content
+    availableContainer.innerHTML =
+      generateAvailableSongsList(tempPlaylistSongs);
+    currentContainer.innerHTML = generateCurrentPlaylistList(tempPlaylistSongs);
+
+    // Restore search term and apply filter
+    if (currentSearchTerm && searchInput) {
+      searchInput.value = currentSearchTerm;
+      filterAvailableSongs(); // Reapply the filter
     }
+
+    // Update song count in header
+    const songCountDisplay = document.getElementById("song-count-display");
+    if (songCountDisplay) {
+      songCountDisplay.textContent = `${tempPlaylistSongs.length} bài`;
+    }
+
+    // Update save button state
+    const saveButton = document.querySelector(
+      'button[onclick*="savePlaylist"]'
+    );
+    if (saveButton) {
+      if (tempPlaylistSongs.length === 0) {
+        saveButton.disabled = true;
+        saveButton.className = saveButton.className.replace(
+          "bg-blue-500",
+          "bg-gray-400"
+        );
+        saveButton.className = saveButton.className.replace(
+          "hover:bg-blue-600",
+          "cursor-not-allowed"
+        );
+      } else {
+        saveButton.disabled = false;
+        saveButton.className = saveButton.className.replace(
+          "bg-gray-400",
+          "bg-blue-500"
+        );
+        saveButton.className = saveButton.className.replace(
+          "cursor-not-allowed",
+          "hover:bg-blue-600"
+        );
+      }
+    }
+  }
 }
 
 function closePlaylistEditor() {
-    const modal = document.getElementById('playlist-editor-modal');
-    if (modal) {
-        modal.style.opacity = '0';
-        setTimeout(() => {
-            modal.remove()
-            window.isEditingPlaylist = false;
-        },300);
-    }
+  const modal = document.getElementById("playlist-editor-modal");
+  if (modal) {
+    modal.style.opacity = "0";
+    setTimeout(() => {
+      modal.remove();
+      window.isEditingPlaylist = false;
+    }, 300);
+  }
 }
 
 function savePlaylist() {
-    const newPlaylistName = getCurrentPlaylistName();
-    const oldPlaylistName = currentEditingPlaylist;
-    
-    // Validate name
-    if (!newPlaylistName) {
-        showToast('Tên danh sách phát không được để trống!', 'error');
-        return;
-    }
-    
-    // Check if playlist is empty
-    if (tempPlaylistSongs.length === 0) {
-        const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-        delete playlists[oldPlaylistName];
-        localStorage.setItem('playlists', JSON.stringify(playlists));
-        
-        closePlaylistEditor();
-        populateSidebarPlaylists();
-        showToast(`Đã xóa danh sách trống "${oldPlaylistName}"`, 'warning');
-        return;
-    }
-    
-    const playlists = JSON.parse(localStorage.getItem('playlists')) || {};
-    
-    // Handle name change
-    if (newPlaylistName !== oldPlaylistName) {
-        // Check if new name already exists
-        if (playlists[newPlaylistName]) {
-            showToast(`Danh sách "${newPlaylistName}" đã tồn tại!`, 'error');
-            return;
-        }
-        
-        // Create new playlist with new name
-        playlists[newPlaylistName] = {
-            songs: [...tempPlaylistSongs],
-            created: playlists[oldPlaylistName].created,
-            description: playlists[oldPlaylistName].description || '',
-            modified: new Date().toISOString()
-        };
-        
-        // Delete old playlist
-        delete playlists[oldPlaylistName];
-        
-        showToast(`Đã đổi tên từ "${oldPlaylistName}" thành "${newPlaylistName}" và lưu thành công!`);
-    } else {
-        // Just update songs
-        playlists[newPlaylistName].songs = [...tempPlaylistSongs];
-        playlists[newPlaylistName].modified = new Date().toISOString();
-        
-        showToast(`Đã lưu thành công danh sách phát "${newPlaylistName}"`);
-    }
-    
-    localStorage.setItem('playlists', JSON.stringify(playlists));
-    
-    populateSidebarPlaylists();
+  const newPlaylistName = getCurrentPlaylistName();
+  const oldPlaylistName = currentEditingPlaylist;
+
+  // Validate name
+  if (!newPlaylistName) {
+    showToast("Tên danh sách phát không được để trống!", "error");
+    return;
+  }
+
+  // Check if playlist is empty
+  if (tempPlaylistSongs.length === 0) {
+    const playlists =
+      JSON.parse(localStorage.getItem("playlists_" + PLAYLIST_VERSION)) || {};
+    delete playlists[oldPlaylistName];
+    localStorage.setItem(
+      "playlists_" + PLAYLIST_VERSION,
+      JSON.stringify(playlists)
+    );
+
     closePlaylistEditor();
+    populateSidebarPlaylists();
+    showToast(`Đã xóa danh sách trống "${oldPlaylistName}"`, "warning");
+    return;
+  }
+
+  const playlists =
+    JSON.parse(localStorage.getItem("playlists_" + PLAYLIST_VERSION)) || {};
+
+  // Handle name change
+  if (newPlaylistName !== oldPlaylistName) {
+    // Check if new name already exists
+    if (playlists[newPlaylistName]) {
+      showToast(`Danh sách "${newPlaylistName}" đã tồn tại!`, "error");
+      return;
+    }
+
+    // Create new playlist with new name
+    playlists[newPlaylistName] = {
+      songs: [...tempPlaylistSongs],
+      created: playlists[oldPlaylistName].created,
+      description: playlists[oldPlaylistName].description || "",
+      modified: new Date().toISOString(),
+    };
+
+    // Delete old playlist
+    delete playlists[oldPlaylistName];
+
+    showToast(
+      `Đã đổi tên từ "${oldPlaylistName}" thành "${newPlaylistName}" và lưu thành công!`
+    );
+  } else {
+    // Just update songs
+    playlists[newPlaylistName].songs = [...tempPlaylistSongs];
+    playlists[newPlaylistName].modified = new Date().toISOString();
+
+    showToast(`Đã lưu thành công danh sách phát "${newPlaylistName}"`);
+  }
+
+  localStorage.setItem(
+    "playlists_" + PLAYLIST_VERSION,
+    JSON.stringify(playlists)
+  );
+
+  populateSidebarPlaylists();
+  closePlaylistEditor();
 }

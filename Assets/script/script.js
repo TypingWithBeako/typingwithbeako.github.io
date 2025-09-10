@@ -124,38 +124,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(`MASTER_SONGS ready with ${MASTER_SONGS.length} songs for media session`);
 });
 
-// Keep your existing setMediaSessionMetadata function unchanged
 function setMediaSessionMetadata(songName) {
-    const displayNames = {
-        'S1 Ending': 'Kết thúc Mùa 1',
-        'S2 Ending': 'Kết thúc Mùa 2', 
-        'STYX HELIX slow': 'STYX HELIX (bản chậm)',
-        'STYX HELIX nocut': 'STYX HELIX (bản đầy đủ)'
-    };
-    
-    const displayName = displayNames[songName] || songName;
-    
     // Find song in master data
     let song = MASTER_SONGS.find(s => 
-        s.filename.includes(songName) ||
-        s.title === displayName
+        s.filename.includes(songName)
     );
     
     if (song) {
         navigator.mediaSession.metadata = new MediaMetadata({
-            title: displayName,
+            title: song.title,
             artist: song.artist,
             artwork: song.artwork ? [song.artwork] : []
         });
-        document.title = "「" + displayName + "」";
+        document.title = "「" + song.title + "」";
     } else {
         // Fallback for songs not found
         navigator.mediaSession.metadata = new MediaMetadata({
-            title: displayName,
-            artist: "Unknown Artist",
+            title: songName,
+            artist: "Không rõ :V",
             artwork: []
         });
-        document.title = "「" + displayName + "」";
+        document.title = "「" + songName + "」";
     }
 }
 
