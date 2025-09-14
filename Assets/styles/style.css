@@ -453,8 +453,8 @@ to {
     margin: 0 auto;
 }
 body {
-    background-color: #000000;
-    background-image: none;
+    background-color: #000000 !important;
+    background-image: none !important;
 }
 .oldtopnav {
     margin-top: 0;

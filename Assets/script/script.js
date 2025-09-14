@@ -966,7 +966,7 @@ TheaterMode.addEventListener('click',function() {
         Trademark.style.display = 'none';
         GitHub.style.display = 'none';
         KeyboardControls.style.display = 'none';
-        moveableimg.style.setProperty('display', 'none', 'important');
+        moveableimg.style.display = "none";
         textToChange.style.display = 'none';
         for (let i = 0; i < ButtonContainer.length; i++) {
             ButtonContainer[i].style.display = 'none';
@@ -1004,7 +1004,7 @@ TheaterMode.addEventListener('click',function() {
             Trademark.style.display = 'block';
             GitHub.style.display = 'block';
             KeyboardControls.style.display = 'flex';
-            moveableimg.style.setProperty('display', 'inline', 'important');
+            moveableimg.style.display = "inline";
             textToChange.style.display = 'inline';
             for (let i = 0; i < ButtonContainer.length; i++) {
                 ButtonContainer[i].style.display = 'block';
@@ -1039,7 +1039,7 @@ TheaterMode.addEventListener('click',function() {
             Trademark.style.display = 'block';
             GitHub.style.display = 'block';
             KeyboardControls.style.display = 'flex';
-            moveableimg.style.setProperty('display', 'inline', 'important');
+            moveableimg.style.display = "inline";
             textToChange.style.display = 'inline';
             for (let i = 0; i < ButtonContainer.length; i++) {
                 ButtonContainer[i].style.display = 'block';
