@@ -107,6 +107,8 @@ function setupSpeechRecognition() {
             showToast("Lỗi thu âm thanh cho điều khiển giọng nói.", "error");
         } else if (event.error === 'not-allowed') {
             showToast("Bạn cần cấp quyền truy cập micro cho điều khiển giọng nói.", "error");
+            // Stop trying and clears localStorage value to false if permission is denied once (user denied or not granted)
+            stopSpeechRecognition();
         } else if (event.error === 'network') {
             // If network error, it might be good to retry after a delay
             // but continuous retries can be problematic. For now, just log.
