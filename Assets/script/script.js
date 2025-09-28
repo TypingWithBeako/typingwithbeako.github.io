@@ -566,12 +566,8 @@ document.getElementById("Delay").addEventListener("click", function() {
 // Check for orientation change using matchMedia (for mobile devices)
 const checkOrientation = () => {
     if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
-        if (!document.fullscreenElement && 
-            !document.mozFullScreenElement && 
-            !document.webkitFullscreenElement && 
-            !document.msFullscreenElement) {
-            showFullscreenToast("Nhấn vào đây để vào chế độ toàn màn hình!");
-        }
+        videoPlayer.controlsList = "nofullscreen";
+        showFullscreenToast("Nhấn vào đây để vào chế độ toàn màn hình!", 10000);
         setTimeout(function(){
             videoPlayer.style.width = "auto";
             videoPlayer.style.height = "100vh";
@@ -579,10 +575,12 @@ const checkOrientation = () => {
         },700)
     }
     else if (window.matchMedia("(max-width: 768px) and (orientation: portrait").matches) {
+        videoPlayer.controlsList = "";
         videoPlayer.style.height = "auto";
         videoPlayer.style.marginTop = "6vw";
     }
     else if (!TheaterModeFlag){
+        videoPlayer.controlsList = "";
         videoPlayer.style.height = "46.855vh"
         videoPlayer.style.marginTop = "2vh"
     }
