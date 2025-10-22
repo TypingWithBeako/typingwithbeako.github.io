@@ -122,6 +122,7 @@ async function loadMasterSongs() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadMasterSongs();
     console.log(`MASTER_SONGS ready with ${MASTER_SONGS.length} songs for media session`);
+    handleRouting()
 });
 
 function setMediaSessionMetadata(songName) {
@@ -1212,3 +1213,12 @@ videoPlayer.addEventListener('ended', ()=> {
     let name = cleanVideoSrcName(videoPlayer.src);
     updatePlayCount(name);
 })
+
+function isSamsungTVBrowser() {
+  const userAgent = navigator.userAgent;
+  return /SMART-TV|SamsungBrowser/i.test(userAgent);
+}
+
+if (isSamsungTVBrowser()) {
+  disablePreloadingbutton.click()
+}

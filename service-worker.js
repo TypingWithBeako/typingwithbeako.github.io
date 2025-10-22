@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rezero-cache-echidna-and-beatrice-approved-finished-toast-speech-v44';
+const CACHE_NAME = 'rezero-cache-echidna-and-beatrice-approved-finished-toast-speech-v45';
 // Assets to cache initially
 const INITIAL_ASSETS = [
   '/',
@@ -10,6 +10,7 @@ const INITIAL_ASSETS = [
   '/Assets/script/minified/micromodal.min.js',
   '/Assets/script/minified/flowbite.min.js',
   '/Assets/script/minified/toast.min.js',
+  '/Assets/script/minified/router.min.js',
   '/Assets/script/minified/volumeToast.min.js',
   '/Assets/script/minified/playlistCRUD.min.js',
   '/Assets/script/minified/showFullscreenToast.min.js',
