@@ -31,6 +31,20 @@ function SkipLoading(){
     $(window).off('load');
     clearTimeout(loader);
 }
+
+async function autoplayVideo() {
+  try {
+    await $("#videoPlayer")[0].play()
+    $(".loader--wrapper").fadeOut(400);
+    $(".loader").fadeOut(400);
+    $(".skip").fadeOut(400);
+    $(window).off("load");
+    clearTimeout(loader);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

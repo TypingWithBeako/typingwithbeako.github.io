@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadMasterSongs();
     console.log(`MASTER_SONGS ready with ${MASTER_SONGS.length} songs for media session`);
     handleRouting()
+    autoplayVideo()
 });
 
 function setMediaSessionMetadata(songName) {
